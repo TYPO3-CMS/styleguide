@@ -42,7 +42,7 @@
 			</tr>
 			<tr>
 				<td style="white-space: nowrap">
-					<span class="t3-table-tree"><img src="sysext/t3skin/icons/gfx/ol/join-30px.gif" width="16" height="30" alt="" /></span>
+					<bu:SpriteManagerIcon iconName="treeline-join" />
 
 					<a href="#" onClick="Clickmenu.show('', '', '1', '', '', ''); return false;"><bu:SpriteManagerIcon iconName="mimetypes-other-other" /></a>
 
@@ -59,12 +59,8 @@
 			</tr>
 			<tr>
 				<td style="white-space: nowrap">
-					<span class="t3-table-tree">
-						<img src="sysext/t3skin/icons/gfx/ol/line-30px.gif" width="16" height="30" alt="" />
-					</span>
-					<span class="t3-table-tree">
-						<img src="sysext/t3skin/icons/gfx/ol/joinbottom-30px.gif" width="16" height="30" alt="" />
-					</span>
+					<bu:SpriteManagerIcon iconName="treeline-line" />
+					<bu:SpriteManagerIcon iconName="treeline-join" />
 
 					<a href="#" onClick="Clickmenu.show('', '', '1', '', '', ''); return false;"><bu:SpriteManagerIcon iconName="mimetypes-other-other" /></a>
 
@@ -81,9 +77,25 @@
 			</tr>
 			<tr>
 				<td style="white-space: nowrap">
-					<span class="t3-table-tree">
-						<img src="sysext/t3skin/icons/gfx/ol/joinbottom-30px.gif" width="16" height="30" alt="" />
-					</span>
+					<bu:SpriteManagerIcon iconName="treeline-line" />
+					<bu:SpriteManagerIcon iconName="treeline-joinbottom" />
+
+					<a href="#" onClick="Clickmenu.show('', '', '1', '', '', ''); return false;"><bu:SpriteManagerIcon iconName="mimetypes-other-other" /></a>
+
+					<b>Record title always bold</b>
+				</td>
+				<td><a href="#">Donec id elit</a></td>
+				<td class="nowrap">
+					<a href="#" onClick="alert('Ok'); return false;"><bu:spriteManagerIcon iconName="actions-document-open" /></a>
+					<a href="#" onClick="alert('Ok'); return false;"><bu:spriteManagerIcon iconName="actions-document-info" /></a>
+					<a href="#" onClick="alert('Ok'); return false;"><bu:spriteManagerIcon iconName="actions-edit-hide" /></a>
+					<a href="#" onClick="alert('Ok'); return false;"><bu:spriteManagerIcon iconName="actions-edit-delete" /></a>
+				</td>
+				<td>Content Goes Here</td>
+			</tr>
+			<tr>
+				<td style="white-space: nowrap">
+					<bu:SpriteManagerIcon iconName="treeline-joinbottom" />
 
 					<a href="#" onClick="Clickmenu.show('', '', '1', '', '', ''); return false;"><bu:SpriteManagerIcon iconName="mimetypes-other-other" /></a>
 
@@ -110,7 +122,8 @@
 	&lt;/thead&gt;
 	&lt;tbody&gt;
 		&lt;td&gt;
-			&lt;span class="t3-table-tree"&gt;Icon&lt;/span&gt;
+			&lt;span class="t3-icon t3-icon-treeline t3-icon-treeline-join t3-icon-join"&gt;&amp;nbsp;&lt;/span&gt;
+			Icon from the "treeline" icons sprite
 		&lt;/td&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;</pre>
