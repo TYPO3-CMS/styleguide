@@ -404,33 +404,7 @@ return [
             'label' => 'input_34 wizard colorbox',
             'config' => [
                 'type' => 'input',
-                'wizards' => [
-                    'colorpicker' => [
-                        'type' => 'colorbox',
-                        'title' => 'Color picker',
-                        'module' => [
-                            'name' => 'wizard_colorpicker',
-                        ],
-                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
-                    ],
-                ],
-            ],
-        ],
-        'input_35' => [
-            'label' => 'input_35 wizard colorbox with image',
-            'config' => [
-                'type' => 'input',
-                'wizards' => [
-                    'colorpicker' => [
-                        'type' => 'colorbox',
-                        'title' => 'Color picker',
-                        'module' => [
-                            'name' => 'wizard_colorpicker',
-                        ],
-                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
-                        'exampleImg' => 'EXT:styleguide/Resources/Public/Images/colorpicker.jpg',
-                    ],
-                ],
+                'renderType' => 'colorpicker',
             ],
         ],
         'input_36' => [
