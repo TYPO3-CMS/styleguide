@@ -1545,30 +1545,6 @@ return array(
                 'maxitems' => 2, // @TODO: Warning sign is missing if too many entries are added
             ),
         ),
-        'group_11' => array(
-            'exclude' => 1,
-            'label' => 'GROUP: 11 group FAL field',
-            'config' => array(
-                'type' => 'group',
-                'internal_type' => 'db',
-                'allowed' => 'sys_file',
-                'MM' => 'sys_file_reference',
-                'MM_match_fields' => array(
-                    'fieldname' => 'image_fal_group',
-                ),
-                'prepend_tname' => true,
-                'appearance' => array(
-                    'elementBrowserAllowed' => 'jpg, png, gif',
-                    'elementBrowserType' => 'file',
-                ),
-                'max_size' => 2000,
-                'show_thumbs' => true,
-                'size' => '3',
-                'maxitems' => 200,
-                'minitems' => 0,
-                'autoSizeMax' => 40,
-            ),
-        ),
         'group_12' => array(
             'exclude' => 1,
             'label' => 'GROUP: 12 readonly',
@@ -2686,7 +2662,7 @@ return array(
 			select_21, select_22, select_23, select_24, select_25, select_26, select_27, select_28, select_29,
 			select_30, select_31, select_32, select_33, select_34,
 			group_1, group_2, group_3, group_4, group_5, group_6, group_7, group_8, group_9, group_10,
-			group_11, group_12, group_13,
+			group_12, group_13,
 			none_1, none_2, none_3, none_4, none_5, none_6,
 			passthrough_1,
 			user_1, user_2,
@@ -2725,7 +2701,7 @@ return array(
 					select_30, select_31, select_32,
 				--div--;Group,
 					group_1, group_12, group_2, group_3, group_4, group_5, group_6, group_7, group_8, group_9, group_10,
-					group_11, group_13,
+					group_13,
 				--div--;Passthrough,
 					passthrough_1,
 				--div--;None,
