@@ -11,7 +11,7 @@
   "type": "typo3-cms-extension",
   "description": "TYPO3 CMS Backend Styleguide",
   "homepage": "https://github.com/7elix/TYPO3.CMS.Styleguide",
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "keywords": [
     "typo3",
     "style guide"
