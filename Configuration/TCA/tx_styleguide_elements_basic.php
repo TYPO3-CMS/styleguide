@@ -1093,6 +1093,33 @@ return [
                 'cols' => '4',
             ]
         ],
+        'checkbox_24' => [
+            'exclude' => 1,
+            'label' => 'checkbox_24 multiple toggles checkbox',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => 'foo',
+                        1 => '',
+                    ],
+                    [
+                        0 => 'bar',
+                        1 => '',
+                    ],
+                    [
+                        0 => 'baz',
+                        1 => '',
+                    ],
+                    [
+                        0 => 'husel',
+                        1 => '',
+                    ]
+                ],
+                'cols' => '4',
+            ]
+        ],
 
 
         'radio_1' => [
