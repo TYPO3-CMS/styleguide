@@ -1,0 +1,34 @@
+language: php
+
+php:
+  - 7.2
+  - 7.3
+
+sudo: true
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+notifications:
+  email:
+    recipients:
+      - lolli@schwarzbu.ch
+    on_success: change
+    on_failure: change
+
+before_script:
+  - Build/Scripts/runTests.sh -s composerInstall -p $TRAVIS_PHP_VERSION
+
+script:
+  - >
+    echo "Running composer validate"
+    Build/Scripts/runTests.sh -s composerValidate -p $TRAVIS_PHP_VERSION
+
+  - >
+    echo "Running unit tests";
+    Build/Scripts/runTests.sh -s unit -p $TRAVIS_PHP_VERSION
+
+  - >
+    echo "Running php lint";
+    Build/Scripts/runTests.sh -s lint -p $TRAVIS_PHP_VERSION
