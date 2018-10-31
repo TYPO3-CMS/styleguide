@@ -40,7 +40,7 @@
   },
   "require-dev": {
     "typo3/cms-core": "^9.5",
-    "typo3/testing-framework": "dev-master"
+    "typo3/testing-framework": "^4.10.3"
   },
   "autoload-dev": {
     "psr-4": {
