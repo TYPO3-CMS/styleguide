@@ -49,6 +49,14 @@ Options:
             - lint: PHP linting
             - unit (default): PHP unit tests
 
+    -d <mariadb|mssql|postgres|sqlite>
+        Only with -s functional
+        Specifies on which DBMS tests are performed
+            - mariadb (default): use mariadb
+            - mssql: use mssql microsoft sql server
+            - postgres: use postgres
+            - sqlite: use sqlite
+
     -p <7.2|7.3>
         Specifies the PHP minor version to be used
             - 7.2 (default): use PHP 7.2
@@ -121,10 +129,13 @@ OPTIND=1
 # Array for invalid options
 INVALID_OPTIONS=();
 # Simple option parsing based on getopts (! not getopt)
-while getopts ":s:p:e:xy:huv" OPT; do
+while getopts ":s:d:p:e:xy:huv" OPT; do
     case ${OPT} in
         s)
             TEST_SUITE=${OPTARG}
+            ;;
+        d)
+            DBMS=${OPTARG}
             ;;
         p)
             PHP_VERSION=${OPTARG}
@@ -174,7 +185,7 @@ DOCKER_PHP_IMAGE=`echo "php${PHP_VERSION}" | sed -e 's/\.//'`
 # Set $1 to first mass argument, this is the optional test file or test directory to execute
 shift $((OPTIND - 1))
 if [ -n "${1}" ]; then
-    TEST_FILE=${1}
+    TEST_FILE="Web/typo3conf/ext/styleguide/${1}"
 else
     case ${TEST_SUITE} in
         unit)
@@ -202,6 +213,33 @@ case ${TEST_SUITE} in
         setUpDockerComposeDotEnv
         docker-compose run composer_validate
         SUITE_EXIT_CODE=$?
+        docker-compose down
+        ;;
+    functional)
+        setUpDockerComposeDotEnv
+        case ${DBMS} in
+            mariadb)
+                docker-compose run functional_mariadb10
+                SUITE_EXIT_CODE=$?
+                ;;
+            mssql)
+                docker-compose run functional_mssql2017cu9
+                SUITE_EXIT_CODE=$?
+                ;;
+            postgres)
+                docker-compose run functional_postgres10
+                SUITE_EXIT_CODE=$?
+                ;;
+            sqlite)
+                docker-compose run functional_sqlite
+                SUITE_EXIT_CODE=$?
+                ;;
+            *)
+                echo "Invalid -d option argument ${DBMS}" >&2
+                echo >&2
+                echo "${HELP}" >&2
+                exit 1
+        esac
         docker-compose down
         ;;
     lint)
