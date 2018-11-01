@@ -35,6 +35,9 @@ services:
     - ${ROOT_DIR}:${ROOT_DIR}
     - /etc/passwd:/etc/passwd:ro
     - /etc/group:/etc/group:ro
+    environment:
+      TYPO3_PATH_ROOT: ${ROOT_DIR}/.Build/Web/typo3temp/var/tests/acceptance
+      TYPO3_PATH_APP: ${ROOT_DIR}/.Build/Web/typo3temp/var/tests/acceptance
     command: php -n -c /etc/php/cli-no-xdebug/php.ini -S web:8000 -t ${ROOT_DIR}/.Build/Web
 
   acceptance_backend_mariadb10:

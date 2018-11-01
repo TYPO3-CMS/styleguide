@@ -52,3 +52,7 @@ script:
   - >
     echo "Running functional tests with sqlite";
     Build/Scripts/runTests.sh -s functional -d sqlite -p $TRAVIS_PHP_VERSION
+
+  - >
+    echo "Running acceptance tests";
+    Build/Scripts/runTests.sh -s acceptance -p $TRAVIS_PHP_VERSION

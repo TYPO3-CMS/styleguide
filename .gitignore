@@ -3,4 +3,4 @@ node_modules
 .idea/
 Build/testing-docker/.env
 composer.lock
-var/
+Tests/Acceptance/Support/_generated/

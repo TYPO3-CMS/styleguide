@@ -43,7 +43,8 @@
     "typo3/cms-extensionmanager": "^9.5",
     "typo3/cms-frontend": "^9.5",
     "typo3/cms-install": "^9.5",
-    "typo3/testing-framework": "^4.10.3",
+    "typo3/cms-about": "^9.5",
+    "typo3/testing-framework": "dev-master",
     "codeception/codeception": "^2.4"
   },
   "autoload-dev": {
@@ -58,6 +59,7 @@
   },
   "extra": {
     "typo3/cms": {
+      "app-dir": ".Build",
       "web-dir": ".Build/Web",
       "extension-key": "styleguide"
     }
