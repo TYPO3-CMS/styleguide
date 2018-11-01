@@ -44,8 +44,10 @@ No arguments: Run all unit tests with PHP 7.2
 Options:
     -s <...>
         Specifies which test suite to run
+            - acceptance: backend acceptance tests
             - composerInstall: "composer install", handy if host has no PHP, uses composer cache of users home
             - composerValidate: "composer validate"
+            - functional: functional tests
             - lint: PHP linting
             - unit (default): PHP unit tests
 
@@ -62,15 +64,15 @@ Options:
             - 7.2 (default): use PHP 7.2
             - 7.3: use PHP 7.3
 
-    -e "<phpunit options>"
-        Only with -s unit
-        Additional options to send to phpunit tests.
-        For phpunit, options starting with "--" must be added after options starting with "-".
+    -e "<phpunit or codeception options>"
+        Only with -s acceptance|functional|unit
+        Additional options to send to phpunit (unit & functional tests) or codeception (acceptance
+        tests). For phpunit, options starting with "--" must be added after options starting with "-".
         Example -e "-v --filter canRetrieveValueWithGP" to enable verbose output AND filter tests
         named "canRetrieveValueWithGP"
 
     -x
-        Only with -s unit
+        Only with -s functional|unit
         Send information to host instance for test or system under test break points. This is especially
         useful if a local PhpStorm instance is listening on default xdebug port 9000. A different port
         can be selected with -y
@@ -188,11 +190,14 @@ if [ -n "${1}" ]; then
     TEST_FILE="Web/typo3conf/ext/styleguide/${1}"
 else
     case ${TEST_SUITE} in
-        unit)
-            TEST_FILE="Web/typo3conf/ext/styleguide/Tests/Unit"
+        acceptance)
+            TEST_FILE="Web/typo3conf/ext/styleguide/Tests/Acceptance"
             ;;
         functional)
             TEST_FILE="Web/typo3conf/ext/styleguide/Tests/Functional"
+            ;;
+        unit)
+            TEST_FILE="Web/typo3conf/ext/styleguide/Tests/Unit"
             ;;
     esac
 fi
@@ -203,6 +208,12 @@ fi
 
 # Suite execution
 case ${TEST_SUITE} in
+    acceptance)
+        setUpDockerComposeDotEnv
+        docker-compose run acceptance_backend_mariadb10
+        SUITE_EXIT_CODE=$?
+        docker-compose down
+        ;;
     composerInstall)
         setUpDockerComposeDotEnv
         docker-compose run composer_install

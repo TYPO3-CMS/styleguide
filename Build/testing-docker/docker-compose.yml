@@ -1,5 +1,8 @@
 version: '2.3'
 services:
+  chrome:
+    image: selenium/standalone-chrome:3.12
+
   mariadb10:
     image: mariadb:10
     environment:
@@ -23,6 +26,48 @@ services:
       POSTGRES_USER: ${HOST_USER}
     tmpfs:
     - /var/lib/postgresql/data:rw,noexec,nosuid
+
+  web:
+    image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest
+    user: ${HOST_UID}
+    stop_grace_period: 1s
+    volumes:
+    - ${ROOT_DIR}:${ROOT_DIR}
+    - /etc/passwd:/etc/passwd:ro
+    - /etc/group:/etc/group:ro
+    command: php -n -c /etc/php/cli-no-xdebug/php.ini -S web:8000 -t ${ROOT_DIR}/.Build/Web
+
+  acceptance_backend_mariadb10:
+    image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest
+    user: ${HOST_UID}
+    links:
+    - mariadb10
+    - chrome
+    - web
+    environment:
+      typo3DatabaseName: func_test
+      typo3DatabaseUsername: root
+      typo3DatabasePassword: funcp
+      typo3DatabaseHost: mariadb10
+    volumes:
+    - ${ROOT_DIR}:${ROOT_DIR}
+    - ${HOST_HOME}:${HOST_HOME}
+    - /etc/passwd:/etc/passwd:ro
+    - /etc/group:/etc/group:ro
+    working_dir: ${ROOT_DIR}/.Build
+    command: >
+      /bin/sh -c "
+        if [ ${SCRIPT_VERBOSE} -eq 1 ]; then
+          set -x
+        fi
+        echo Waiting for database start...;
+        while ! nc -z mariadb10 3306; do
+          sleep 1;
+        done;
+        echo Database is up;
+        mkdir -p Web/typo3temp/var/tests/ \
+          && vendor/codeception/codeception/codecept run Backend -d -c Web/typo3conf/ext/styleguide/Tests/codeception.yml ${TEST_FILE}
+      "
 
   composer_install:
     image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest

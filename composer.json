@@ -40,7 +40,11 @@
   },
   "require-dev": {
     "typo3/cms-core": "^9.5",
-    "typo3/testing-framework": "^4.10.3"
+    "typo3/cms-extensionmanager": "^9.5",
+    "typo3/cms-frontend": "^9.5",
+    "typo3/cms-install": "^9.5",
+    "typo3/testing-framework": "^4.10.3",
+    "codeception/codeception": "^2.4"
   },
   "autoload-dev": {
     "psr-4": {
