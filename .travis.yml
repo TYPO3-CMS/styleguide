@@ -20,6 +20,11 @@ notifications:
 install:
   - Build/Scripts/runTests.sh -s composerInstall -p $TRAVIS_PHP_VERSION
 
+stages:
+  - lint
+  - functional
+  - acceptance
+
 jobs:
   include:
     - stage: lint
