@@ -37,18 +37,21 @@ jobs:
       php: 7.3
 
     - &unit
+      stage: test
       name: "Unit tests"
       script: Build/Scripts/runTests.sh -s unit -p $TRAVIS_PHP_VERSION
     - <<: *unit
       php: 7.3
 
     - &functional-mariadb
+      stage: test
       name: "MariaDB functional tests"
       script: Build/Scripts/runTests.sh -s functional -d mariadb -p $TRAVIS_PHP_VERSION
     - <<: *functional-mariadb
       php: 7.3
 
     - &functional-mssql
+      stage: test
       name: "MSSQL functional tests"
       script: Build/Scripts/runTests.sh -s functional -d mssql -p $TRAVIS_PHP_VERSION;
     # Running functional tests with mssql not supported with PHP 7.3 yet
@@ -56,6 +59,7 @@ jobs:
     #  php: 7.3
 
     - &functional-postgresql
+      stage: test
       name: "PostgreSQL functional tests"
       script: Build/Scripts/runTests.sh -s functional -d postgres -p $TRAVIS_PHP_VERSION
     - <<: *functional-postgresql
