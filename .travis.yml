@@ -2,7 +2,6 @@ language: php
 
 php:
   - 7.2
-  - 7.3
 
 sudo: true
 
@@ -22,40 +21,56 @@ install:
 
 stages:
   - lint
-  - functional
-  - acceptance
+  - test
 
 jobs:
   include:
     - stage: lint
       name: "Composer validate"
       script: Build/Scripts/runTests.sh -s composerValidate -p $TRAVIS_PHP_VERSION
-    - stage: lint
+
+    - &lint
+      stage: lint
       name: "PHP lint"
       script: Build/Scripts/runTests.sh -s lint -p $TRAVIS_PHP_VERSION
+    - <<: *lint
+      php: 7.3
 
-    - stage: functional
+    - &unit
       name: "Unit tests"
       script: Build/Scripts/runTests.sh -s unit -p $TRAVIS_PHP_VERSION
-    - stage: functional
+    - <<: *unit
+      php: 7.3
+
+    - &functional-mariadb
       name: "MariaDB functional tests"
       script: Build/Scripts/runTests.sh -s functional -d mariadb -p $TRAVIS_PHP_VERSION
-    - stage: functional
+    - <<: *functional-mariadb
+      php: 7.3
+
+    - &functional-mssql
       name: "MSSQL functional tests"
-      script: |
-        if [ ${TRAVIS_PHP_VERSION} = "7.2" ]; then
-          echo "Running functional tests with mssql";
-          Build/Scripts/runTests.sh -s functional -d mssql -p $TRAVIS_PHP_VERSION;
-        else
-          echo "Running functional tests with mssql not supported with PHP 7.3 yet";
-        fi
-    - stage: functional
+      script: Build/Scripts/runTests.sh -s functional -d mssql -p $TRAVIS_PHP_VERSION;
+    # Running functional tests with mssql not supported with PHP 7.3 yet
+    #- <<: *functional-mssql
+    #  php: 7.3
+
+    - &functional-postgresql
       name: "PostgreSQL functional tests"
       script: Build/Scripts/runTests.sh -s functional -d postgres -p $TRAVIS_PHP_VERSION
-    - stage: functional
+    - <<: *functional-postgresql
+      php: 7.3
+
+    - &functional-sqlite
+      stage: test
       name: "SQLite functional tests"
       script: Build/Scripts/runTests.sh -s functional -d sqlite -p $TRAVIS_PHP_VERSION
+    - <<: *functional-sqlite
+      php: 7.3
 
-    - stage: acceptance
+    - &acceptance
+      stage: test
       name: "Acceptance tests"
-      script: Build/Scripts/runTests.sh -s acceptance -p $TRAVIS_PHP_VERSION 
+      script: Build/Scripts/runTests.sh -s acceptance -p $TRAVIS_PHP_VERSION
+    - <<: *acceptance
+      php: 7.3
