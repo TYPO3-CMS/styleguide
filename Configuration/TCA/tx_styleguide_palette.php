@@ -215,6 +215,7 @@ return [
     'palettes' => [
         'palette_1' => [
             'label' => 'palette_1',
+            'description' => 'palette description',
             'showitem' => 'palette_1_1, palette_1_2, palette_1_3',
         ],
         'palette_2' => [
