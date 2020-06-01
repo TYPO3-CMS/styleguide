@@ -18,7 +18,6 @@ return [
         ],
     ],
 
-
     'columns' => [
         'sys_language_uid' => [
             'exclude' => 1,
@@ -31,7 +30,8 @@ return [
                 'items' => [
                     ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1],
                     ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0]
-                ]
+                ],
+                'default' => 0,
             ]
         ],
         'l10n_parent' => [
@@ -78,7 +78,6 @@ return [
             ],
         ],
 
-
         'parentid' => [
             'config' => [
                 'type' => 'passthrough',
@@ -97,15 +96,12 @@ return [
             ],
         ],
 
-
     ],
-
 
     'types' => [
         '0' => [
             'showitem' => 'input_1',
         ],
     ],
-
 
 ];
