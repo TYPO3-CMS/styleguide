@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 namespace TYPO3\CMS\Styleguide\TcaDataGenerator\TableHandler;
 
@@ -42,10 +43,9 @@ class AbstractTableHandler
 
     /**
      * @param string $tableName
-     * @param $recordFinder
-     * @param $fieldValues
+     * @param array $fieldValues
      */
-    protected function generateTranslatedRecords(string $tableName, $fieldValues)
+    protected function generateTranslatedRecords(string $tableName, $fieldValues): void
     {
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
         $demoLanguages = $recordFinder->findUidsOfDemoLanguages();

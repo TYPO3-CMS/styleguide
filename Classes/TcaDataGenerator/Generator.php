@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 namespace TYPO3\CMS\Styleguide\TcaDataGenerator;
 
@@ -56,7 +57,7 @@ class Generator
      * @throws Exception
      * @throws GeneratorNotFoundException
      */
-    public function create()
+    public function create(): void
     {
         // Add entry page on top level
         $newIdOfEntryPage = StringUtility::getUniqueId('NEW');
@@ -129,9 +130,8 @@ class Generator
                 }
                 if ($generator->match($mainTable)) {
                     break;
-                } else {
-                    $generator = null;
                 }
+                $generator = null;
             }
             if (is_null($generator)) {
                 throw new GeneratorNotFoundException(
@@ -146,10 +146,8 @@ class Generator
     /**
      * Delete all pages and their records that belong to the
      * tx_styleguide demo pages
-     *
-     * @return void
      */
-    public function delete()
+    public function delete(): void
     {
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
 
@@ -210,10 +208,8 @@ class Generator
 
     /**
      * Add rows for third party tables like be_users or FAL
-     *
-     * @return void
      */
-    protected function populateRowsOfThirdPartyTables()
+    protected function populateRowsOfThirdPartyTables(): void
     {
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
 

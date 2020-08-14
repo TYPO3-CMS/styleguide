@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'title' => 'Form engine elements - t3editor child flex_1 inline_1',

@@ -28,6 +28,7 @@ setUpDockerComposeDotEnv() {
     echo "DOCKER_PHP_IMAGE=${DOCKER_PHP_IMAGE}" >> .env
     echo "EXTRA_TEST_OPTIONS=${EXTRA_TEST_OPTIONS}" >> .env
     echo "SCRIPT_VERBOSE=${SCRIPT_VERBOSE}" >> .env
+    echo "CGLCHECK_DRY_RUN=${CGLCHECK_DRY_RUN}" >> .env
 }
 
 # Load help text into $HELP
@@ -45,10 +46,12 @@ Options:
     -s <...>
         Specifies which test suite to run
             - acceptance: backend acceptance tests
+            - cgl: cgl test and fix all php files
             - composerInstall: "composer install", handy if host has no PHP, uses composer cache of users home
             - composerValidate: "composer validate"
             - functional: functional tests
             - lint: PHP linting
+            - phpstan: phpstan analyze
             - unit (default): PHP unit tests
 
     -d <mariadb|mssql|postgres|sqlite>
@@ -59,10 +62,11 @@ Options:
             - postgres: use postgres
             - sqlite: use sqlite
 
-    -p <7.2|7.3>
+    -p <7.2|7.3|7.4>
         Specifies the PHP minor version to be used
             - 7.2 (default): use PHP 7.2
             - 7.3: use PHP 7.3
+            - 7.4: use PHP 7.4
 
     -e "<phpunit or codeception options>"
         Only with -s acceptance|functional|unit
@@ -81,6 +85,10 @@ Options:
         Send xdebug information to a different port than default 9000 if an IDE like PhpStorm
         is not listening on default port.
 
+    -n
+        Only with -s cgl
+        Activate dry-run in CGL check that does not actively change files and only prints broken ones.
+
     -u
         Update existing typo3gmbh/phpXY:latest docker images. Maintenance call to docker pull latest
         versions of the main php images. The images are updated once in a while and only the youngest
@@ -97,8 +105,8 @@ Examples:
     # Run unit tests using PHP 7.2
     ./Build/Scripts/runTests.sh
 
-    # Run unit tests using PHP 7.3
-    ./Build/Scripts/runTests.sh -p 7.3
+    # Run unit tests using PHP 7.4
+    ./Build/Scripts/runTests.sh -p 7.4
 EOF
 
 # Test if docker-compose exists, else exit out with error
@@ -124,6 +132,7 @@ PHP_XDEBUG_ON=0
 PHP_XDEBUG_PORT=9000
 EXTRA_TEST_OPTIONS=""
 SCRIPT_VERBOSE=0
+CGLCHECK_DRY_RUN=""
 
 # Option parsing
 # Reset in case getopts has been used previously in the shell
@@ -131,7 +140,7 @@ OPTIND=1
 # Array for invalid options
 INVALID_OPTIONS=();
 # Simple option parsing based on getopts (! not getopt)
-while getopts ":s:d:p:e:xy:huv" OPT; do
+while getopts ":s:d:p:e:xy:nhuv" OPT; do
     case ${OPT} in
         s)
             TEST_SUITE=${OPTARG}
@@ -154,6 +163,9 @@ while getopts ":s:d:p:e:xy:huv" OPT; do
         h)
             echo "${HELP}"
             exit 0
+            ;;
+        n)
+            CGLCHECK_DRY_RUN="-n"
             ;;
         u)
             TEST_SUITE=update
@@ -214,6 +226,16 @@ case ${TEST_SUITE} in
         SUITE_EXIT_CODE=$?
         docker-compose down
         ;;
+    cgl)
+        # Active dry-run for cgl needs not "-n" but specific options
+        if [[ ! -z ${CGLCHECK_DRY_RUN} ]]; then
+            CGLCHECK_DRY_RUN="--dry-run --diff --diff-format udiff"
+        fi
+        setUpDockerComposeDotEnv
+        docker-compose run cgl
+        SUITE_EXIT_CODE=$?
+        docker-compose down
+        ;;
     composerInstall)
         setUpDockerComposeDotEnv
         docker-compose run composer_install
@@ -234,7 +256,7 @@ case ${TEST_SUITE} in
                 SUITE_EXIT_CODE=$?
                 ;;
             mssql)
-                docker-compose run functional_mssql2017cu9
+                docker-compose run functional_mssql2019latest
                 SUITE_EXIT_CODE=$?
                 ;;
             postgres)
@@ -256,6 +278,12 @@ case ${TEST_SUITE} in
     lint)
         setUpDockerComposeDotEnv
         docker-compose run lint
+        SUITE_EXIT_CODE=$?
+        docker-compose down
+        ;;
+    phpstan)
+        setUpDockerComposeDotEnv
+        docker-compose run phpstan
         SUITE_EXIT_CODE=$?
         docker-compose down
         ;;

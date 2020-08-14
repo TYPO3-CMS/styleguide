@@ -1,4 +1,5 @@
 <?php
+
 namespace TYPO3\CMS\Styleguide\Tests\Functional\TcaDataGenerator;
 
 /*
@@ -37,9 +38,9 @@ class GeneratorTest extends FunctionalTestCase
      *
      * @test
      */
-    public function dummy()
+    public function dummy(): void
     {
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     /**
@@ -47,8 +48,11 @@ class GeneratorTest extends FunctionalTestCase
      * @group not-mssql
      * @todo Generator does not work using mssql DMBS yet ... fix this
      */
-    public function generatorCreatesBasicRecord()
+    public function generatorCreatesBasicRecord(): void
     {
+        // This call is a hack. Path stuff should be solved by typo3/testing-framework
+        // correctly at this point already so single extension functional tests do not
+        // need to deal with this anymore.
         Environment::initialize(
             new ApplicationContext('Production'),
             Environment::isCli(),
@@ -60,6 +64,7 @@ class GeneratorTest extends FunctionalTestCase
             Environment::getBackendPath() . '/index.php',
             Environment::isWindows() ? 'WINDOWS' : 'UNIX'
         );
+
         // styleguide generator uses DataHandler for some parts. DataHandler needs an
         // initialized BE user with admin right and the live workspace.
         Bootstrap::initializeBackendUser();
@@ -75,7 +80,7 @@ class GeneratorTest extends FunctionalTestCase
             ->from('tx_styleguide_elements_basic')
             ->execute()
             ->fetchColumn(0);
-        $this->assertEquals(0, $count);
+        self::assertEquals(0, $count);
 
         $generator = new Generator();
         $generator->create();
@@ -87,6 +92,6 @@ class GeneratorTest extends FunctionalTestCase
             ->from('tx_styleguide_elements_basic')
             ->execute()
             ->fetchColumn(0);
-        $this->assertGreaterThan(0, $count);
+        self::assertGreaterThan(0, $count);
     }
 }
