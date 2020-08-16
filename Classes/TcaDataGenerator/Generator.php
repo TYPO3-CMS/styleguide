@@ -62,7 +62,7 @@ class Generator
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
 
         // Create should not be called if demo data exists already
-        if (count($recordFinder)) {
+        if (count($recordFinder->findUidsOfStyleguideEntryPages())) {
             throw new Exception(
                 'Can not create a second styleguide demo record tree',
                 1597577827
