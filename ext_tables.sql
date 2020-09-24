@@ -363,7 +363,7 @@ CREATE TABLE tx_styleguide_inline_1n1n_childchild (
 
 
 CREATE TABLE tx_styleguide_inline_expand (
-	inline_1 text
+	inline_1 text,
 	inline_2 text
 );
 
