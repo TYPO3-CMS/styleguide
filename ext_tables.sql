@@ -364,11 +364,13 @@ CREATE TABLE tx_styleguide_inline_1n1n_childchild (
 
 CREATE TABLE tx_styleguide_inline_expand (
 	inline_1 text
+	inline_2 text
 );
 
 
 CREATE TABLE tx_styleguide_inline_expand_inline_1_child (
 	parentid int(11) DEFAULT '0' NOT NULL,
+	parentid2 int(11) DEFAULT '0' NOT NULL,
 	parenttable text,
 
 	dummy_1 text,
