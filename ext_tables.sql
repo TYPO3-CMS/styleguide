@@ -370,7 +370,7 @@ CREATE TABLE tx_styleguide_inline_expand (
 
 CREATE TABLE tx_styleguide_inline_expand_inline_1_child (
 	parentid int(11) DEFAULT '0' NOT NULL,
-	parentid2 int(11) DEFAULT '0' NOT NULL,
+	parentid_2 int(11) DEFAULT '0' NOT NULL,
 	parenttable text,
 
 	dummy_1 text,
