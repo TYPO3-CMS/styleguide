@@ -381,7 +381,9 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectCheckBox',
-                'expandAll' => true,
+                'appearance' => [
+                    'expandAll' => true
+                ],
                 'items' => [
                     ['div 1', '--div--'],
                     ['foo 1', 1],
