@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 namespace TYPO3\CMS\Styleguide\TcaDataGenerator\TableHandler;
 
@@ -15,6 +16,7 @@ namespace TYPO3\CMS\Styleguide\TcaDataGenerator\TableHandler;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\RecordData;
@@ -35,14 +37,14 @@ class InlineMnGroup extends AbstractTableHandler implements TableHandlerInterfac
      * Create 1 main row, 4 child child rows, add 2 child child rows in mn
      *
      * @param string $tableName
-     * @return string
      * @throws \TYPO3\CMS\Styleguide\TcaDataGenerator\Exception
      */
-    public function handle(string $tableName)
+    public function handle(string $tableName): void
     {
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
         $pidOfMainTable = $recordFinder->findPidOfMainTableRecord($tableName);
         $recordData = GeneralUtility::makeInstance(RecordData::class);
+        $context = GeneralUtility::makeInstance(Context::class);
 
         $childRelationUids = [];
         $numberOfChildRelationsToCreate = 2;
@@ -51,6 +53,9 @@ class InlineMnGroup extends AbstractTableHandler implements TableHandlerInterfac
         for ($i = 0; $i < $numberOfChildRows; $i ++) {
             $fieldValues = [
                 'pid' => $pidOfMainTable,
+                'tstamp' => $context->getAspect('date')->get('timestamp'),
+                'crdate' => $context->getAspect('date')->get('timestamp'),
+                'cruser_id' => $context->getAspect('backend.user')->get('id'),
             ];
             $connection = $connectionPool->getConnectionForTable('tx_styleguide_inline_mngroup_child');
             $connection->insert('tx_styleguide_inline_mngroup_child', $fieldValues);
@@ -59,24 +64,33 @@ class InlineMnGroup extends AbstractTableHandler implements TableHandlerInterfac
                 $childRelationUids[] = $fieldValues['uid'];
             }
             $fieldValues = $recordData->generate('tx_styleguide_inline_mngroup_child', $fieldValues);
+            // Do not update primary identifier uid anymore, db's choke on that for good reason
+            $updateValues = $fieldValues;
+            unset($updateValues['uid']);
             $connection->update(
                 'tx_styleguide_inline_mngroup_child',
-                $fieldValues,
+                $updateValues,
                 [ 'uid' => (int)$fieldValues['uid'] ]
             );
         }
 
         $fieldValues = [
             'pid' => $pidOfMainTable,
+            'tstamp' => $context->getAspect('date')->get('timestamp'),
+            'crdate' => $context->getAspect('date')->get('timestamp'),
+            'cruser_id' => $context->getAspect('backend.user')->get('id'),
             'inline_1' => $numberOfChildRelationsToCreate,
         ];
         $connection = $connectionPool->getConnectionForTable($tableName);
         $connection->insert($tableName, $fieldValues);
         $parentid = $fieldValues['uid'] = $connection->lastInsertId($tableName);
         $fieldValues = $recordData->generate($tableName, $fieldValues);
+        // Do not update primary identifier uid anymore, db's choke on that for good reason
+        $updateValues = $fieldValues;
+        unset($updateValues['uid']);
         $connection->update(
             $tableName,
-            $fieldValues,
+            $updateValues,
             [ 'uid' => (int)$fieldValues['uid'] ]
         );
 
@@ -85,6 +99,9 @@ class InlineMnGroup extends AbstractTableHandler implements TableHandlerInterfac
         foreach ($childRelationUids as $uid) {
             $mmFieldValues = [
                 'pid' => $pidOfMainTable,
+                'tstamp' => $context->getAspect('date')->get('timestamp'),
+                'crdate' => $context->getAspect('date')->get('timestamp'),
+                'cruser_id' => $context->getAspect('backend.user')->get('id'),
                 'parentid' => $parentid,
                 'childid' => $uid,
             ];

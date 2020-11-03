@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'title' => 'Form engine - palette',
@@ -44,7 +45,8 @@ return [
                 'items' => [
                     ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1],
                     ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0]
-                ]
+                ],
+                'default' => 0,
             ]
         ],
         'l10n_parent' => [
@@ -58,6 +60,7 @@ return [
                 ],
                 'foreign_table' => 'tx_styleguide_palette',
                 'foreign_table_where' => 'AND {#tx_styleguide_palette}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_palette}.{#sys_language_uid} IN (-1,0)',
+                'default' => 0
             ]
         ],
         'l10n_source' => [
@@ -91,15 +94,6 @@ return [
             'config' => [
                 'type' => 'check',
                 'default' => 1,
-            ],
-        ],
-        'palette_1_2' => [
-            'exclude' => 1,
-            'label' => 'palette_1_2',
-            'config' => [
-                'default' => true,
-                'type' => 'user',
-                'userFunc' => 'TYPO3\\CMS\\Styleguide\\UserFunctions\\FormEngine\\TypeUserPalette->render',
             ],
         ],
         'palette_1_3' => [
@@ -209,7 +203,7 @@ return [
     'palettes' => [
         'palette_1' => [
             'label' => 'palette_1',
-            'showitem' => 'palette_1_1, palette_1_2, palette_1_3',
+            'showitem' => 'palette_1_1, palette_1_3',
         ],
         'palette_2' => [
             'showitem' => 'palette_2_1',

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 namespace TYPO3\CMS\Styleguide\TcaDataGenerator\TableHandler;
 
@@ -17,6 +18,7 @@ namespace TYPO3\CMS\Styleguide\TcaDataGenerator\TableHandler;
 
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Styleguide\TcaDataGenerator\Exception;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\RecordFinder;
 
 /**
@@ -42,10 +44,9 @@ class AbstractTableHandler
 
     /**
      * @param string $tableName
-     * @param $recordFinder
-     * @param $fieldValues
+     * @param array $fieldValues
      */
-    protected function generateTranslatedRecords(string $tableName, $fieldValues)
+    protected function generateTranslatedRecords(string $tableName, $fieldValues): void
     {
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
         $demoLanguages = $recordFinder->findUidsOfDemoLanguages();
@@ -54,27 +55,35 @@ class AbstractTableHandler
         foreach ($demoLanguages as $demoLanguageIndex => $demoLanguageUid) {
             switch ($demoLanguageIndex) {
                 case 0:
+                    // danish: 'copy / free mode', l10n_parent = 0, l10n_source = default lang record
                     $this->copyRecordToLanguage($tableName, $fieldValues['uid'], $demoLanguageUid);
                     break;
                 case 1:
+                    // german: 'translate / connected mode', l10n_parent = default lang record, l10n_source = default lang record
                     $result = $this->localizeRecord($tableName, $fieldValues['uid'], $demoLanguageUid);
                     $translatedRecord = $result[$tableName][$fieldValues['uid']];
                     break;
                 case 2:
+                    // french: 'translate / connected mode' german as source, l10n_parent = default lang record, source = german record
                     $result = $this->localizeRecord($tableName, $translatedRecord, $demoLanguageUid);
                     $translatedRecord = $result[$tableName][$translatedRecord];
                     break;
                 case 3:
+                    // spanish: 'copy mode / free mode', french as source, l10n_parent = default lang record, source = french record
                     $this->copyRecordToLanguage($tableName, $translatedRecord, $demoLanguageUid);
                     break;
                 default:
-                    $this->localizeRecord($tableName, $fieldValues['uid'], $demoLanguageUid);
-                    break;
+                    throw new Exception(
+                        'Unknown language. No idea what to do with sys_language record ' . (int)$demoLanguageUid . ' for table ' . $tableName,
+                        1597437985
+                    );
             }
         }
     }
 
     /**
+     * Create a 'translate / connected mode' localization
+     *
      * @param string $tableName
      * @param int $uid
      * @param int $languageId
@@ -96,6 +105,8 @@ class AbstractTableHandler
     }
 
     /**
+     * Create a 'copy / free mode' localization
+     *
      * @param string $tableName
      * @param int $uid
      * @param int $languageId

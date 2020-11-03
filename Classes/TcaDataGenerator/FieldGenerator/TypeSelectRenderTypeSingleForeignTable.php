@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 namespace TYPO3\CMS\Styleguide\TcaDataGenerator\FieldGenerator;
 
@@ -50,6 +51,7 @@ class TypeSelectRenderTypeSingleForeignTable extends AbstractFieldGenerator impl
     {
         $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
         $connection = $connectionPool->getConnectionForTable('tx_styleguide_elements_select_single_12_foreign');
+        $childFieldValues = [];
         $childRowsToCreate = 2;
         for ($i = 0; $i < $childRowsToCreate; $i++) {
             // Insert an empty row again to have the uid already. This is useful for

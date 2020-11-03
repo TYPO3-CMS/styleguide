@@ -1,4 +1,5 @@
 <?php
+
 namespace TYPO3\CMS\Styleguide\Tests\Unit\Service;
 
 /**
@@ -25,8 +26,8 @@ class KauderwelschServiceTest extends UnitTestCase
     /**
      * @test
      */
-    public function getWortReturnsWord()
+    public function getWortReturnsWord(): void
     {
-        $this->assertEquals('lipsum', (new KauderwelschService())->getWord());
+        self::assertEquals('lipsum', (new KauderwelschService())->getWord());
     }
 }

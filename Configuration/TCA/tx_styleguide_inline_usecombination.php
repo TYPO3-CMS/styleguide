@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'title' => 'Form engine - inline use combination',
@@ -43,7 +44,8 @@ return [
                 'items' => [
                     ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1],
                     ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0]
-                ]
+                ],
+                'default' => 0,
             ]
         ],
         'l10n_parent' => [
@@ -57,6 +59,7 @@ return [
                 ],
                 'foreign_table' => 'tx_styleguide_inline_usecombination',
                 'foreign_table_where' => 'AND {#tx_styleguide_inline_usecombination}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_usecombination}.{#sys_language_uid} IN (-1,0)',
+                'default' => 0
             ]
         ],
         'l10n_source' => [

@@ -1,4 +1,5 @@
 <?php
+
 namespace TYPO3\CMS\Styleguide\UserFunctions\FormEngine;
 
 /**
@@ -22,9 +23,9 @@ class TypeCheckbox8ItemsProcFunc
     /**
      * Add two items to existing ones
      *
-     * @param $params
+     * @param array $params
      */
-    public function itemsProcFunc(&$params)
+    public function itemsProcFunc(&$params): void
     {
         $params['items'][] = ['item 1 from itemProcFunc()', ''];
         $params['items'][] = ['item 2 from itemProcFunc()', ''];

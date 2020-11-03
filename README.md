@@ -32,19 +32,29 @@ This Styleguide comes as a TYPO3 extension for the TYPO3 backend. It appears as 
 With composer based [TYPO3 installation](https://wiki.typo3.org/Composer) add this Styleguide by running the following command on shell within project root (where the root composer.json file resides):
 
 ```
-composer require typo3/cms-styleguide
+composer require --dev typo3/cms-styleguide
 ```
 
-Composer will automatically find, download and extract the appropriate version into extension manager. Activate Styleguide extension from TYPO3 backend in Extension Manager.
-
-Hint: If [helhum/typo3-console](https://github.com/helhum/typo3_console/) has been installed locally. Activate Styleguide extension on shell:
+Composer will automatically find, download and extract the appropriate version into extension manager.
+After that, activate Styleguide extension from TYPO3 backend in Extension Manager, or via cli:
 
 ```
-./typo3cms extension:install styleguide
+bin/typo3 extension:activate styleguide
 ```
 
 ## TYPO3 Extension Repository
-Head to TYPO3 backend > Extension Manager > Get Extensions. Search for and install extension key „styleguide“. Activate Styleguide extension within TYPO3 backend in Extension Manager.
+The extension is currently not uploaded to the TER. Please consider switching to a composer based setup.
+
+# Usage
+Once loaded, the extension will hook into the '?' menu in the toolbar of your TYPO3 backend. See
+above screenshot. It will show a happy little menu with tons of functionality. Have fun to explore!
+
+Menu section 'TCA / Records' allows to create a set of demo data. Clicking 'Create ...' over there, your
+system will be busy with some record crunching for a while. Give it some time until a 'Data created' message
+shows up. Going to the Web -> List modules afterwards, a new page tree 'styleguide TCA demo' has been created
+with lots of sub pages. 'elements basic' is a good start, just open the 'English' default language record
+to be impressed by all the capabilities of just the 'simple' TCA types. If you want to use something like
+that in own extension, have a look at the Configuration/TCA folder for details.
 
 # Legal
 Disclaimer: This styleguide does not look perfect - besides documentation the guide should also point out missing concepts and styles.

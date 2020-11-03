@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 namespace TYPO3\CMS\Styleguide\Form\Element;
 
 /**
@@ -23,7 +24,7 @@ use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 class User1Element extends AbstractFormElement
 {
     /**
-     * @return array As defined in initializeResultArray() of AbstractNode
+     * @return array<string> As defined in initializeResultArray() of AbstractNode
      */
     public function render()
     {
@@ -39,7 +40,7 @@ class User1Element extends AbstractFormElement
             . ' onchange="' . htmlspecialchars(implode('', $parameters['fieldChangeFunc'])) . '"' . $parameters['onFocus']
             . ' />';
         $html[] = '</div>';
-        $result['html'] = implode(LF, $html);
+        $result['html'] = implode(chr(10), $html);
         return $result;
     }
 }

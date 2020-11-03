@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 namespace TYPO3\CMS\Styleguide\Controller;
 
@@ -18,6 +19,7 @@ namespace TYPO3\CMS\Styleguide\Controller;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -25,6 +27,7 @@ use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Styleguide\Service\KauderwelschService;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\Generator;
+use TYPO3\CMS\Styleguide\TcaDataGenerator\RecordFinder;
 
 /**
  * Backend module for Styleguide
@@ -57,7 +60,7 @@ class StyleguideController extends ActionController
      *
      * @param ViewInterface $view
      */
-    protected function initializeView(ViewInterface $view)
+    protected function initializeView(ViewInterface $view): void
     {
         parent::initializeView($view);
 
@@ -90,58 +93,70 @@ class StyleguideController extends ActionController
     /**
      * Buttons
      */
-    public function buttonsAction()
+    public function buttonsAction(): void
     {
     }
 
     /**
      * Index
      */
-    public function indexAction()
+    public function indexAction(): void
     {
     }
 
     /**
      * Typography
      */
-    public function typographyAction()
+    public function typographyAction(): void
     {
     }
 
     /**
      * Trees
      */
-    public function treesAction()
+    public function treesAction(): void
     {
     }
 
     /**
      * Tables
      */
-    public function tablesAction()
+    public function tablesAction(): void
     {
     }
 
     /**
      * TCA
      */
-    public function tcaAction()
+    public function tcaAction(): void
     {
+        $finder = GeneralUtility::makeInstance(RecordFinder::class);
+        $demoExists = count($finder->findUidsOfStyleguideEntryPages());
+        $this->view->assign('demoExists', $demoExists);
     }
 
     /**
      * TCA create default data action
      */
-    public function tcaCreateAction()
+    public function tcaCreateAction(): void
     {
-        /** @var Generator $generator */
-        $generator = GeneralUtility::makeInstance(Generator::class);
-        $generator->create();
-        // Tell something was done here
-        $this->addFlashMessage(
-            LocalizationUtility::translate($this->languageFilePrefix . 'tcaCreateActionOkBody', 'styleguide'),
-            LocalizationUtility::translate($this->languageFilePrefix . 'tcaCreateActionOkTitle', 'styleguide')
-        );
+        $finder = GeneralUtility::makeInstance(RecordFinder::class);
+        if (count($finder->findUidsOfStyleguideEntryPages())) {
+            // Tell something was done here
+            $this->addFlashMessage(
+                LocalizationUtility::translate($this->languageFilePrefix . 'tcaCreateActionFailedBody', 'styleguide'),
+                LocalizationUtility::translate($this->languageFilePrefix . 'tcaCreateActionFailedTitle', 'styleguide'),
+                AbstractMessage::ERROR
+            );
+        } else {
+            $generator = GeneralUtility::makeInstance(Generator::class);
+            $generator->create();
+            // Tell something was done here
+            $this->addFlashMessage(
+                LocalizationUtility::translate($this->languageFilePrefix . 'tcaCreateActionOkBody', 'styleguide'),
+                LocalizationUtility::translate($this->languageFilePrefix . 'tcaCreateActionOkTitle', 'styleguide')
+            );
+        }
         // And redirect to display action
         $this->forward('tca');
     }
@@ -149,7 +164,7 @@ class StyleguideController extends ActionController
     /**
      * TCA delete default data action
      */
-    public function tcaDeleteAction()
+    public function tcaDeleteAction(): void
     {
         /** @var Generator $generator */
         $generator = GeneralUtility::makeInstance(Generator::class);
@@ -166,14 +181,14 @@ class StyleguideController extends ActionController
     /**
      * Debug
      */
-    public function debugAction()
+    public function debugAction(): void
     {
     }
 
     /**
      * Icons
      */
-    public function iconsAction()
+    public function iconsAction(): void
     {
         $iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
         $allIcons = $iconRegistry->getAllRegisteredIconIdentifiers();
@@ -194,14 +209,14 @@ class StyleguideController extends ActionController
     /**
      * Infobox
      */
-    public function infoboxAction()
+    public function infoboxAction(): void
     {
     }
 
     /**
      * FlashMessages
      */
-    public function flashMessagesAction()
+    public function flashMessagesAction(): void
     {
         $loremIpsum = $this->objectManager->get(KauderwelschService::class)->getLoremIpsum();
         $this->addFlashMessage($loremIpsum, 'Info - Title for Info message', FlashMessage::INFO, true);
@@ -214,14 +229,14 @@ class StyleguideController extends ActionController
     /**
      * Helpers
      */
-    public function helpersAction()
+    public function helpersAction(): void
     {
     }
 
     /**
      * Avatar
      */
-    public function avatarAction()
+    public function avatarAction(): void
     {
         $this->view->assign(
             'backendUser',
@@ -232,7 +247,7 @@ class StyleguideController extends ActionController
     /**
      * Tabs
      */
-    public function tabAction()
+    public function tabAction(): void
     {
         $module = GeneralUtility::makeInstance(ModuleTemplate::class);
 
@@ -254,7 +269,7 @@ class StyleguideController extends ActionController
         $this->view->assign('tabs', $tabs);
     }
 
-    public function modalAction()
+    public function modalAction(): void
     {
     }
 }

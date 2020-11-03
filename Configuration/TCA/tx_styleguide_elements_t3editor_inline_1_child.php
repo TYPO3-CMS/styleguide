@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'title' => 'Form engine elements - t3editor child inline_1',
@@ -30,7 +31,8 @@ return [
                 'items' => [
                     ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1],
                     ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0]
-                ]
+                ],
+                'default' => 0,
             ]
         ],
         'l10n_parent' => [
@@ -44,6 +46,7 @@ return [
                 ],
                 'foreign_table' => 'tx_styleguide_elements_t3editor_inline_1_child',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_t3editor_inline_1_child}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_t3editor_inline_1_child}.{#sys_language_uid} IN (-1,0)',
+                'default' => 0
             ]
         ],
         'l10n_source' => [

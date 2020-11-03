@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 namespace TYPO3\CMS\Styleguide\TcaDataGenerator;
 
@@ -16,6 +17,7 @@ namespace TYPO3\CMS\Styleguide\TcaDataGenerator;
  */
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Configuration\SiteConfiguration;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -24,6 +26,7 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Resource\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\Exception\ExistingTargetFolderException;
 use TYPO3\CMS\Core\Resource\StorageRepository;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Core\Utility\StringUtility;
@@ -56,8 +59,18 @@ class Generator
      * @throws Exception
      * @throws GeneratorNotFoundException
      */
-    public function create()
+    public function create(): void
     {
+        $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
+
+        // Create should not be called if demo data exists already
+        if (count($recordFinder->findUidsOfStyleguideEntryPages())) {
+            throw new Exception(
+                'Can not create a second styleguide demo record tree',
+                1597577827
+            );
+        }
+
         // Add entry page on top level
         $newIdOfEntryPage = StringUtility::getUniqueId('NEW');
         $data = [
@@ -73,10 +86,9 @@ class Generator
             ],
         ];
 
-        // Add rows of third party tables like be_users and fal records
+        // Add rows of third party tables like be_users, fal and sys_language records
         $this->populateRowsOfThirdPartyTables();
 
-        $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
         $sysLanguageStyleguideDemoUids = $recordFinder->findUidsOfDemoLanguages();
 
         // Add a page for each main table below entry page
@@ -84,6 +96,7 @@ class Generator
         // Have the first main table inside entry page
         $neighborPage = $newIdOfEntryPage;
         foreach ($mainTables as $mainTable) {
+            // Add default language page
             $newIdOfPage = StringUtility::getUniqueId('NEW');
             $data['pages'][$newIdOfPage] = [
                 'title' => str_replace('_', ' ', substr($mainTable, strlen('tx_styleguide_'))),
@@ -92,6 +105,7 @@ class Generator
                 'pid' => $neighborPage,
             ];
 
+            // Add page translations for all styleguide languages
             if (!empty($sysLanguageStyleguideDemoUids)) {
                 foreach ($sysLanguageStyleguideDemoUids as $languageUid) {
                     $newIdOfLocalizedPage = StringUtility::getUniqueId('NEW');
@@ -116,6 +130,9 @@ class Generator
         $dataHandler->process_datamap();
         BackendUtility::setUpdateSignal('updatePageTree');
 
+        // Create a site configuration on root page
+        $this->createSiteConfiguration();
+
         // Create data for each main table
         foreach ($mainTables as $mainTable) {
             $generator = null;
@@ -129,9 +146,8 @@ class Generator
                 }
                 if ($generator->match($mainTable)) {
                     break;
-                } else {
-                    $generator = null;
                 }
+                $generator = null;
             }
             if (is_null($generator)) {
                 throw new GeneratorNotFoundException(
@@ -146,10 +162,8 @@ class Generator
     /**
      * Delete all pages and their records that belong to the
      * tx_styleguide demo pages
-     *
-     * @return void
      */
-    public function delete()
+    public function delete(): void
     {
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
 
@@ -206,14 +220,121 @@ class Generator
         } catch (\InvalidArgumentException $e) {
             // No op if folder does not exist
         }
+
+        // Delete site configuration
+        $site = GeneralUtility::makeInstance(SiteFinder::class)->getSiteByRootPageId($topUids[0]);
+        GeneralUtility::makeInstance(SiteConfiguration::class)->delete($site->getIdentifier());
+    }
+
+    /**
+     * Create a site configuration on new styleguide root page
+     */
+    protected function createSiteConfiguration(): void
+    {
+        $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
+        // There can be only one entry page at this point since it has been checked in create() early.
+        $topPageUid = $recordFinder->findUidsOfStyleguideEntryPages()[0];
+        // When the DataHandler created the page tree, a default site configuration has been added. Fetch,  rename, update.
+        $site = GeneralUtility::makeInstance(SiteFinder::class)->getSiteByRootPageId($topPageUid);
+        $siteConfiguration = GeneralUtility::makeInstance(SiteConfiguration::class);
+        $siteIdentifier = 'styleguide-demo-' . $topPageUid;
+        $siteConfiguration->rename($site->getIdentifier(), $siteIdentifier);
+        $styleguideSysLanguages = $recordFinder->findUidsOfDemoLanguages();
+        $configuration = [
+            'base' => 'http://localhost/styleguide-demo-' . $topPageUid,
+            'rootPageId' => $topPageUid,
+            'routes' => [],
+            'websiteTitle' => 'styleguide demo ' . $topPageUid,
+            'baseVariants' => [],
+            'errorHandling' => [],
+            'languages' => [
+                [
+                    'title' => 'English',
+                    'enabled' => true,
+                    'languageId' => 0,
+                    'base' => '/',
+                    'typo3Language' => 'default',
+                    'locale' => 'en_US.UTF-8',
+                    'iso-639-1' => 'en',
+                    'navigationTitle' => 'English',
+                    'hreflang' => 'en-us',
+                    'direction' => 'ltr',
+                    'flag' => 'us',
+                    'websiteTitle' => '',
+                ],
+                [
+                    'title' => 'styleguide demo language danish',
+                    'enabled' => true,
+                    'base' => '/da/',
+                    'typo3Language' => 'da',
+                    'locale' => 'da_DK.UTF-8',
+                    'iso-639-1' => 'da',
+                    'websiteTitle' => '',
+                    'navigationTitle' => '',
+                    'hreflang' => '',
+                    'direction' => '',
+                    'fallbackType' => 'strict',
+                    'fallbacks' => '',
+                    'flag' => 'dk',
+                    'languageId' => $styleguideSysLanguages[0],
+                ],
+                [
+                    'title' => 'styleguide demo language german',
+                    'enabled' => true,
+                    'base' => '/de/',
+                    'typo3Language' => 'de',
+                    'locale' => 'de_DE.UTF-8',
+                    'iso-639-1' => 'de',
+                    'websiteTitle' => '',
+                    'navigationTitle' => '',
+                    'hreflang' => '',
+                    'direction' => '',
+                    'fallbackType' => 'strict',
+                    'fallbacks' => '',
+                    'flag' => 'de',
+                    'languageId' => $styleguideSysLanguages[1],
+                ],
+                [
+                    'title' => 'styleguide demo language french',
+                    'enabled' => true,
+                    'base' => '/fr/',
+                    'typo3Language' => 'fr',
+                    'locale' => 'fr_FR.UTF-8',
+                    'iso-639-1' => 'fr',
+                    'websiteTitle' => '',
+                    'navigationTitle' => '',
+                    'hreflang' => '',
+                    'direction' => '',
+                    'fallbackType' => 'strict',
+                    'fallbacks' => '',
+                    'flag' => 'fr',
+                    'languageId' => $styleguideSysLanguages[2],
+                ],
+                [
+                    'title' => 'styleguide demo language spanish',
+                    'enabled' => true,
+                    'base' => '/es/',
+                    'typo3Language' => 'es',
+                    'locale' => 'es_ES.UTF-8',
+                    'iso-639-1' => 'es',
+                    'websiteTitle' => '',
+                    'navigationTitle' => '',
+                    'hreflang' => '',
+                    'direction' => '',
+                    'fallbackType' => 'strict',
+                    'fallbacks' => '',
+                    'flag' => 'es',
+                    'languageId' => $styleguideSysLanguages[3],
+                ]
+            ]
+        ];
+        $siteConfiguration->write($siteIdentifier, $configuration);
     }
 
     /**
      * Add rows for third party tables like be_users or FAL
-     *
-     * @return void
      */
-    protected function populateRowsOfThirdPartyTables()
+    protected function populateRowsOfThirdPartyTables(): void
     {
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
 
@@ -265,21 +386,21 @@ class Generator
             $fields = [
                 'pid' => 0,
                 'tx_styleguide_isdemorecord' => 1,
-                'title' => 'styleguide demo language 1',
+                'title' => 'styleguide demo language danish',
                 'language_isocode' => 'da',
                 'flag' => 'dk',
             ];
             $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('sys_language');
             $connection->insert('sys_language', $fields);
-            $fields['title'] = 'styleguide demo language 2';
+            $fields['title'] = 'styleguide demo language german';
             $fields['language_isocode'] = 'de';
             $fields['flag'] = 'de';
             $connection->insert('sys_language', $fields);
-            $fields['title'] = 'styleguide demo language 3';
+            $fields['title'] = 'styleguide demo language french';
             $fields['language_isocode'] = 'fr';
             $fields['flag'] = 'fr';
             $connection->insert('sys_language', $fields);
-            $fields['title'] = 'styleguide demo language 4';
+            $fields['title'] = 'styleguide demo language spanish';
             $fields['language_isocode'] = 'es';
             $fields['flag'] = 'es';
             $connection->insert('sys_language', $fields);

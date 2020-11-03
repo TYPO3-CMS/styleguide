@@ -1,30 +1,17 @@
 <?php
 
-/*
- *  This file is part of the TYPO3 CMS project.
- *
- *  It is free software; you can redistribute it and/or modify it under
- *  the terms of the GNU General Public License, either version 2
- *  of the License, or any later version.
- *
- *  For the full copyright and license information, please read the
- *  LICENSE.txt file that was distributed with this source code.
- *
- *  The TYPO3 project - inspiring people to share!
- */
-
 defined('TYPO3_MODE') or die();
 
 if (TYPO3_MODE === 'BE') {
 
     // Register "Styleguide" backend module
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-        'TYPO3.CMS.styleguide',
+        'styleguide',
         'help',
         'styleguide',
         '',
         [
-            'Styleguide' => 'index, typography, trees, tables, buttons, infobox, avatar, flashMessages, tca, tcaCreate, tcaDelete, debug, helpers, icons, tab, modal'
+            \TYPO3\CMS\Styleguide\Controller\StyleguideController::class => 'index, typography, trees, tables, buttons, infobox, avatar, flashMessages, tca, tcaCreate, tcaDelete, debug, helpers, icons, tab, modal'
         ],
         [
             'access' => 'user,group',

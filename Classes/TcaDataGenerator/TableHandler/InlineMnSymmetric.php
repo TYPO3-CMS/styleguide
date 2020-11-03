@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 namespace TYPO3\CMS\Styleguide\TcaDataGenerator\TableHandler;
 
@@ -15,6 +16,7 @@ namespace TYPO3\CMS\Styleguide\TcaDataGenerator\TableHandler;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\RecordData;
@@ -35,15 +37,15 @@ class InlineMnSymmetric extends AbstractTableHandler implements TableHandlerInte
      * Create 4 rows, add row 2 and 3 as branch to row 1
      *
      * @param string $tableName
-     * @return string
      */
-    public function handle(string $tableName)
+    public function handle(string $tableName): void
     {
         $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
 
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
         $pidOfMainTable = $recordFinder->findPidOfMainTableRecord($tableName);
         $recordData = GeneralUtility::makeInstance(RecordData::class);
+        $context = GeneralUtility::makeInstance(Context::class);
 
         $isFirst = true;
         $numberOfRelationsForFirstRecord = 2;
@@ -52,6 +54,9 @@ class InlineMnSymmetric extends AbstractTableHandler implements TableHandlerInte
         for ($i = 0; $i < 4; $i++) {
             $fieldValues = [
                 'pid' => $pidOfMainTable,
+                'tstamp' => $context->getAspect('date')->get('timestamp'),
+                'crdate' => $context->getAspect('date')->get('timestamp'),
+                'cruser_id' => $context->getAspect('backend.user')->get('id'),
             ];
             $connection = $connectionPool->getConnectionForTable($tableName);
             $connection->insert($tableName, $fieldValues);
@@ -61,9 +66,12 @@ class InlineMnSymmetric extends AbstractTableHandler implements TableHandlerInte
                 $uidOfFirstRecord = $fieldValues['uid'];
             }
             $fieldValues = $recordData->generate($tableName, $fieldValues);
+            // Do not update primary identifier uid anymore, db's choke on that for good reason
+            $updateValues = $fieldValues;
+            unset($updateValues['uid']);
             $connection->update(
                 $tableName,
-                $fieldValues,
+                $updateValues,
                 [ 'uid' => $fieldValues['uid'] ]
             );
 
@@ -79,6 +87,9 @@ class InlineMnSymmetric extends AbstractTableHandler implements TableHandlerInte
         foreach ($relationUids as $uid) {
             $mmFieldValues = [
                 'pid' => $pidOfMainTable,
+                'tstamp' => $context->getAspect('date')->get('timestamp'),
+                'crdate' => $context->getAspect('date')->get('timestamp'),
+                'cruser_id' => $context->getAspect('backend.user')->get('id'),
                 'hotelid' => $uidOfFirstRecord,
                 'branchid' => $uid,
             ];

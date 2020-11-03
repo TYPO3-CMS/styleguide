@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 namespace TYPO3\CMS\Styleguide\TcaDataGenerator;
 
@@ -33,7 +34,6 @@ interface TableHandlerInterface
      * Handle data for a given table
      *
      * @param string $tableName
-     * @return void
      */
-    public function handle(string $tableName);
+    public function handle(string $tableName): void;
 }

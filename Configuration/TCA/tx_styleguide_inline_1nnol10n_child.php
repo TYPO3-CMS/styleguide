@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'title' => 'Form engine - inline 1:n foreign field child without l10n',
@@ -47,7 +48,7 @@ return [
         '0' => [
             'showitem' => '
                 --div--;General, input_1,
-                --div--;meta, disable, sys_language_uid, l10n_parent, l10n_source,
+                --div--;meta, disable,
             ',
         ],
     ],
