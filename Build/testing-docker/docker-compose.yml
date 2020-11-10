@@ -111,7 +111,7 @@ services:
           set -x
         fi
         php -v | grep '^PHP';
-        composer install;
+        composer install --no-progress --no-interaction;
       "
 
   composer_validate:
