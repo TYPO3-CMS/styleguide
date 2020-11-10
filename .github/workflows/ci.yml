@@ -10,12 +10,9 @@ jobs:
     strategy:
       matrix:
         php: [ '7.2', '7.3', '7.4' ]
-        branch: [ '10', 'master' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: ${{ matrix.branch }}
 
       - name: Install testing system
         run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s composerInstall
