@@ -994,6 +994,7 @@ return [
                     ['Su', ''],
                 ],
                 'cols' => 'inline',
+                'default' => 5
             ],
         ],
         'checkbox_17' => [
