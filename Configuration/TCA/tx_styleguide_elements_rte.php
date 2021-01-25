@@ -275,7 +275,7 @@ return [
         '0' => [
             'showitem' => '
                 --div--;rte,
-                    rte_1, rte_2, rte_3,
+                    rte_1, rte_2, rte_3, rte_4, rte_5,
                 --div--;in inline,
                     rte_inline_1,
                 --div--;in flex,
