@@ -125,6 +125,24 @@ return [
                 'enableRichtext' => true,
             ],
         ],
+        'rte_4' => [
+            'exclude' => 1,
+            'label' => 'rte_3 eval=null',
+            'config' => [
+                'type' => 'text',
+                'enableRichtext' => true,
+                'richtextConfiguration' => 'minimal'
+            ],
+        ],
+        'rte_5' => [
+            'exclude' => 1,
+            'label' => 'rte_3 eval=null',
+            'config' => [
+                'type' => 'text',
+                'enableRichtext' => true,
+                'richtextConfiguration' => 'full'
+            ],
+        ],
 
         'rte_inline_1' => [
             'exclude' => 1,
