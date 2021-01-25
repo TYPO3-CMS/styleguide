@@ -350,7 +350,7 @@ return [
         '0' => [
             'showitem' => '
                 --div--;internal_type=db,
-                    group_db_1, group_db_2, group_db_9, group_db_3, group_db_8, group_db_4, group_db_5, group_db_7, group_db_10
+                    group_db_1, group_db_2, group_db_9, group_db_3, group_db_8, group_db_4, group_db_5, group_db_7, group_db_10,
                 --div--;internal_type=folder,
                     group_folder_1,
                 --div--;in flex,
