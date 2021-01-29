@@ -193,6 +193,14 @@ CREATE TABLE tx_styleguide_elements_select (
 
 	select_singlebox_1 text,
 	select_singlebox_2 text,
+    select_singlebox_3 text,
+    select_singlebox_4 text,
+    select_singlebox_5 text,
+    select_singlebox_6 text,
+    select_singlebox_7 text,
+    select_singlebox_8 text,
+    select_singlebox_9 text,
+    select_singlebox_10 text,
 
 	select_checkbox_1 text,
 	select_checkbox_2 text,

@@ -303,7 +303,7 @@ return [
         ],
         'select_singlebox_2' => [
             'exclude' => 1,
-            'label' => 'select_singlebox_1 readOnly description',
+            'label' => 'select_singlebox_2 readOnly description',
             'description' => 'field description',
             'config' => [
                 'type' => 'select',
@@ -316,6 +316,86 @@ return [
                     ['foo 3', 3],
                     ['foo 4', 4],
                 ],
+            ],
+        ],
+        'select_singlebox_3' => [
+            'exclude' => 1,
+            'label' => 'select_singlebox_3 special=languages',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'special' => 'languages'
+            ],
+        ],
+        'select_singlebox_4' => [
+            'exclude' => 1,
+            'label' => 'select_singlebox_4 special=tables',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'special' => 'tables'
+            ],
+        ],
+        'select_singlebox_5' => [
+            'exclude' => 1,
+            'label' => 'select_singlebox_5 special=pagetypes',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'special' => 'pagetypes'
+            ],
+        ],
+        'select_singlebox_6' => [
+            'exclude' => 1,
+            'label' => 'select_singlebox_6 special=exclude',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'special' => 'exclude'
+            ],
+        ],
+        'select_singlebox_7' => [
+            'exclude' => 1,
+            'label' => 'select_singlebox_7 special=modListGroup',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'special' => 'modListGroup'
+            ],
+        ],
+        'select_singlebox_8' => [
+            'exclude' => 1,
+            'label' => 'select_singlebox_8 special=modListUser',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'special' => 'modListUser'
+            ],
+        ],
+        'select_singlebox_9' => [
+            'exclude' => 1,
+            'label' => 'select_singlebox_9 special=explicitValues',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'special' => 'explicitValues'
+            ],
+        ],
+        'select_singlebox_10' => [
+            'exclude' => 1,
+            'label' => 'select_singlebox_10 special=custom',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'special' => 'custom'
             ],
         ],
 
@@ -993,7 +1073,10 @@ return [
                     select_single_7, select_single_12, select_single_8, select_single_13, select_single_10,
                     select_single_11, select_single_14, select_single_15,
                 --div--;renderType=selectSingleBox,
-                    select_singlebox_1, select_singlebox_2,
+                    select_singlebox_1, select_singlebox_2, select_singlebox_3,
+                    select_singlebox_4, select_singlebox_5, select_singlebox_6,
+                    select_singlebox_7, select_singlebox_8, select_singlebox_9,
+                    select_singlebox_10,
                 --div--;renderType=selectCheckBox,
                     select_checkbox_1, select_checkbox_2, select_checkbox_3, select_checkbox_4, select_checkbox_5, select_checkbox_6,
                 --div--;renderType=selectMultipleSideBySide,
