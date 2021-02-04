@@ -19,7 +19,7 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'type' => 'type',
+        'type' => 'record_type',
     ],
 
     'columns' => [
@@ -88,17 +88,31 @@ return [
             ]
         ],
 
-        'type' => [
-            'exclude' => 1,
+        'record_type' => [
             'label' => 'type',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
                     ['type 0', '0'],
+                    ['Type with changed fields', 'withChangedFields'],
+                    ['Type with columnsOverrides', 'withOverriddenColumns'],
                     ['type test', 'test'],
                 ],
             ],
+        ],
+        'title' => [
+            'label' => 'title',
+            'config' => [
+                'type' => 'input',
+            ]
+        ],
+        'color' => [
+            'label' => 'color',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'colorpicker'
+            ]
         ],
 
         'text_1' => [
@@ -113,10 +127,31 @@ return [
 
     'types' => [
         '0' => [
-            'showitem' => 'type, text_1',
+            'showitem' => 'record_type, title, text_1',
+        ],
+        'withChangedFields' => [
+            'showitem' => 'record_type, title, color, text_1',
+        ],
+        'withOverriddenColumns' => [
+            'showitem' => 'record_type, title, color, text_1',
+            'columnsOverrides' => [
+                'color' => [
+                    'config' => [
+                        'renderType' => '',
+                        'readOnly' => true,
+                        'size' => 10,
+                    ],
+                ],
+                'text_1' => [
+                    'config' => [
+                        'renderType' => 't3editor',
+                        'format' => 'html',
+                    ],
+                ],
+            ],
         ],
         'test' => [
-            'showitem' => 'type, text_1',
+            'showitem' => 'record_type, title, text_1',
             'columnsOverrides' => [
                 'text_1' => [
                     'config' => [
