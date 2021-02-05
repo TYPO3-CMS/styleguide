@@ -2,7 +2,7 @@
 
 return [
     'ctrl' => [
-        'title' => 'Form engine - type',
+        'title' => 'Form engine - type stored in foreign table',
         'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -19,7 +19,7 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'type' => 'record_type',
+        'type' => 'foreign_table:record_type',
     ],
 
     'columns' => [
@@ -88,17 +88,16 @@ return [
             ]
         ],
 
-        'record_type' => [
-            'label' => 'type',
+        'foreign_table' => [
+            'label' => 'type stored in foreign table',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => [
-                    ['type 0', '0'],
-                    ['Type with changed fields', 'withChangedFields'],
-                    ['Type with columnsOverrides', 'withOverriddenColumns'],
-                    ['type test', 'test'],
-                ],
+                'foreign_table' => 'tx_styleguide_type',
+                'minitems' => 1,
+                'maxitems' => 1,
+                'size' => 1,
+                'default' => 0,
             ],
         ],
         'title' => [
@@ -127,13 +126,13 @@ return [
 
     'types' => [
         '0' => [
-            'showitem' => 'record_type, title, text_1',
+            'showitem' => 'foreign_table, title, text_1',
         ],
         'withChangedFields' => [
-            'showitem' => 'record_type, title, color, text_1',
+            'showitem' => 'foreign_table, title, color, text_1',
         ],
         'withOverriddenColumns' => [
-            'showitem' => 'record_type, title, color, text_1',
+            'showitem' => 'foreign_table, title, color, text_1',
             'columnsOverrides' => [
                 'color' => [
                     'config' => [
@@ -151,7 +150,7 @@ return [
             ],
         ],
         'test' => [
-            'showitem' => 'record_type, title, text_1',
+            'showitem' => 'foreign_table, title, text_1',
             'columnsOverrides' => [
                 'text_1' => [
                     'config' => [
