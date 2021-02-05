@@ -2,7 +2,7 @@
 
 return [
     'ctrl' => [
-        'title' => 'Form engine - type',
+        'title' => 'Form engine - type stored in foreign table',
         'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -19,7 +19,7 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'type' => 'type',
+        'type' => 'foreign_table:record_type',
     ],
 
     'columns' => [
@@ -88,17 +88,30 @@ return [
             ]
         ],
 
-        'type' => [
-            'exclude' => 1,
-            'label' => 'type',
+        'foreign_table' => [
+            'label' => 'type stored in foreign table',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => [
-                    ['type 0', '0'],
-                    ['type test', 'test'],
-                ],
+                'foreign_table' => 'tx_styleguide_type',
+                'minitems' => 1,
+                'maxitems' => 1,
+                'size' => 1,
+                'default' => 0,
             ],
+        ],
+        'title' => [
+            'label' => 'title',
+            'config' => [
+                'type' => 'input',
+            ]
+        ],
+        'color' => [
+            'label' => 'color',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'colorpicker'
+            ]
         ],
 
         'text_1' => [
@@ -113,10 +126,31 @@ return [
 
     'types' => [
         '0' => [
-            'showitem' => 'type, text_1',
+            'showitem' => 'foreign_table, title, text_1',
+        ],
+        'withChangedFields' => [
+            'showitem' => 'foreign_table, title, color, text_1',
+        ],
+        'withOverriddenColumns' => [
+            'showitem' => 'foreign_table, title, color, text_1',
+            'columnsOverrides' => [
+                'color' => [
+                    'config' => [
+                        'renderType' => '',
+                        'readOnly' => true,
+                        'size' => 10,
+                    ],
+                ],
+                'text_1' => [
+                    'config' => [
+                        'renderType' => 't3editor',
+                        'format' => 'html',
+                    ],
+                ],
+            ],
         ],
         'test' => [
-            'showitem' => 'type, text_1',
+            'showitem' => 'foreign_table, title, text_1',
             'columnsOverrides' => [
                 'text_1' => [
                     'config' => [

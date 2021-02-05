@@ -665,6 +665,13 @@ CREATE TABLE tx_styleguide_type (
 	text_1 text
 );
 
+CREATE TABLE tx_styleguide_type_foreign(
+   foreign_table int(11) DEFAULT '0' NOT NULL,
+   title text,
+   color text,
+   text_1 text
+);
+
 
 CREATE TABLE tx_styleguide_valuesdefault (
 	input_1 text,
