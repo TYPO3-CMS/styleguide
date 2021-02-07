@@ -92,6 +92,39 @@ return [
                 'default' => ''
             ]
         ],
+        'flex_file_1' => [
+            'exclude' => 1,
+            'label' => 'flex_file_1 simple flexform in external file',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'flex',
+                'ds' => [
+                    'default' => 'FILE:EXT:styleguide/Configuration/FlexForms/Simple.xml',
+                ],
+            ],
+        ],
+        'flex_file_2' => [
+            'exclude' => 1,
+            'label' => 'flex_file_1 simple flexform in external file',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'flex',
+                'ds' => [
+                    'default' => 'FILE:EXT:styleguide/Configuration/FlexForms/Simple.xml',
+                ],
+            ],
+        ],
+        'flex_file_3' => [
+            'exclude' => 1,
+            'label' => 'flex_file_1 simple flexform in external file',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'flex',
+                'ds' => [
+                    'default' => 'FILE:EXT:styleguide/Configuration/FlexForms/Simple.xml',
+                ],
+            ],
+        ],
 
         'flex_5' => [
             'exclude' => 1,
@@ -853,6 +886,8 @@ return [
     'types' => [
         '0' => [
             'showitem' => '
+                --div--;Simple Flexform,
+                    flex_file_1,
                 --div--;no sheets,
                     flex_5,
                 --div--;sheet description,
