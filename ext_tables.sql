@@ -287,6 +287,9 @@ CREATE TABLE tx_styleguide_elements_t3editor_inline_1_child (
 
 
 CREATE TABLE tx_styleguide_flex (
+    flex_file_1 text,
+    flex_file_2 text,
+    flex_file_3 text,
 	flex_1 text,
 	flex_2 text,
 	flex_3 text,
