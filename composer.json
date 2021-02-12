@@ -41,5 +41,8 @@
     "typo3/cms": {
       "extension-key": "styleguide"
     }
+  },
+  "require-dev": {
+    "typo3/tailor": "^1.2"
   }
 }
