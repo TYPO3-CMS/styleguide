@@ -39,5 +39,10 @@
       "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/",
       "TYPO3\\CMS\\Fluid\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
     }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "styleguide"
+    }
   }
 }
