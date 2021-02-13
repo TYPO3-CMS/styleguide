@@ -235,7 +235,7 @@ return [
                 --div--;basic,
                     input_1, input_2, input_3,
                     text_1,
-                    checkbox_1, checkbox_2, checkbox_3,
+                    checkbox_1, checkbox_2, checkbox_3, checkbox_16,
                     radio_1,
                 --div--;select,
                     select_1,select_2,
