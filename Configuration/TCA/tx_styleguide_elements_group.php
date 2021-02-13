@@ -207,7 +207,6 @@ return [
                 'maxitems' => 1,
                 'minitems' => 0,
                 'size' => 1,
-                'default' => 0,
                 'suggestOptions' => [
                     'default' => [
                         'additionalSearchFields' => 'nav_title, alias, url',
