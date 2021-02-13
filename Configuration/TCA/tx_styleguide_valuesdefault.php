@@ -162,6 +162,24 @@ return [
                 'default' => 5,
             ],
         ],
+        'checkbox_16' => [
+            'exclude' => 1,
+            'label' => 'checkbox_16 cols=inline',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    ['Mo', ''],
+                    ['Tu', ''],
+                    ['We', ''],
+                    ['Th', ''],
+                    ['Fr', ''],
+                    ['Sa', ''],
+                    ['Su', ''],
+                ],
+                'cols' => 'inline',
+                'default' => 5,
+            ],
+        ],
 
         'radio_1' => [
             'exclude' => 1,
