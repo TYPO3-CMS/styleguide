@@ -3,7 +3,7 @@
 return [
     'ctrl' => [
         'title' => 'Form engine - type',
-        'label' => 'title',
+        'label' => 'uid',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
