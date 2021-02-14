@@ -127,7 +127,7 @@ return [
         ],
         'rte_4' => [
             'exclude' => 1,
-            'label' => 'rte_3 eval=null',
+            'label' => 'rte_4 richtextConfiguration=minimal',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
@@ -136,7 +136,7 @@ return [
         ],
         'rte_5' => [
             'exclude' => 1,
-            'label' => 'rte_3 eval=null',
+            'label' => 'rte_5 richtextConfiguration=full',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
