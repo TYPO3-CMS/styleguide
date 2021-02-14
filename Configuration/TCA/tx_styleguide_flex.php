@@ -93,6 +93,18 @@ return [
             ]
         ],
 
+        'flex_file_1' => [
+            'exclude' => 1,
+            'label' => 'flex_file_1 simple flexform in external file',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'flex',
+                'ds' => [
+                    'default' => 'FILE:EXT:styleguide/Configuration/FlexForms/Simple.xml',
+                ],
+            ],
+        ],
+
         'flex_5' => [
             'exclude' => 1,
             'label' => 'flex_5 no sheets description',
@@ -139,6 +151,47 @@ return [
                                             </config>
                                         </TCEforms>
                                     </passthrough_2>
+                                    <checkbox_1>
+                                       <TCEforms>
+                                           <label>checkbox_1 one checkbox with label</label>
+                                           <config>
+                                               <type>check</type>
+                                               <items type="array">
+                                                   <numIndex index="0" type="array">
+                                                       <numIndex index="0">foo</numIndex>
+                                                       <numIndex index="1"></numIndex>
+                                                   </numIndex>
+                                               </items>
+                                           </config>
+                                       </TCEforms>
+                                    </checkbox_1>
+                                    <checkbox_2>
+                                       <TCEforms>
+                                           <label>checkbox_2 cols=3</label>
+                                           <config>
+                                               <type>check</type>
+                                               <items type="array">
+                                                   <numIndex index="0" type="array">
+                                                       <numIndex index="0">foo1</numIndex>
+                                                       <numIndex index="1"></numIndex>
+                                                   </numIndex>
+                                                   <numIndex index="1" type="array">
+                                                       <numIndex index="0">foo2</numIndex>
+                                                       <numIndex index="1"></numIndex>
+                                                   </numIndex>
+                                                   <numIndex index="2" type="array">
+                                                       <numIndex index="0">foo3</numIndex>
+                                                       <numIndex index="1"></numIndex>
+                                                   </numIndex>
+                                                   <numIndex index="3" type="array">
+                                                       <numIndex index="0">foo4</numIndex>
+                                                       <numIndex index="1"></numIndex>
+                                                   </numIndex>
+                                               </items>
+                                               <cols>3</cols>
+                                           </config>
+                                       </TCEforms>
+                                    </checkbox_2>
                                 </el>
                             </ROOT>
                         </T3DataStructure>
@@ -812,6 +865,8 @@ return [
     'types' => [
         '0' => [
             'showitem' => '
+                --div--;simple,
+                    flex_file_1,
                 --div--;no sheets,
                     flex_5,
                 --div--;sheet description,

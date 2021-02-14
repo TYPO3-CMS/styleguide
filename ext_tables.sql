@@ -142,6 +142,7 @@ CREATE TABLE tx_styleguide_elements_group (
 	group_db_8 text,
 	group_db_9 text,
 	group_db_10 text,
+    group_db_11 text,
 	group_folder_1 text,
 	group_requestUpdate_1 text,
 
@@ -153,6 +154,8 @@ CREATE TABLE tx_styleguide_elements_rte (
 	rte_1 text,
 	rte_2 text,
 	rte_3 text,
+	rte_4 text,
+	rte_5 text,
 	rte_inline_1 text,
 	rte_flex_1 text,
 	input_palette_1 text,
@@ -287,6 +290,7 @@ CREATE TABLE tx_styleguide_elements_t3editor_inline_1_child (
 
 
 CREATE TABLE tx_styleguide_flex (
+    flex_file_1 text,
 	flex_1 text,
 	flex_2 text,
 	flex_3 text,
@@ -660,9 +664,18 @@ CREATE TABLE tx_styleguide_staticdata (
 
 
 CREATE TABLE tx_styleguide_type (
-	type text,
-
+    record_type text,
+    input_1 text,
+    input_2 text,
 	text_1 text
+);
+
+
+CREATE TABLE tx_styleguide_typeforeign (
+   foreign_table int(11) DEFAULT '0' NOT NULL,
+   input_1 text,
+   input_2 text,
+   text_1 text
 );
 
 
@@ -676,8 +689,11 @@ CREATE TABLE tx_styleguide_valuesdefault (
 	checkbox_1 int(11) DEFAULT '0' NOT NULL,
 	checkbox_2 int(11) DEFAULT '0' NOT NULL,
 	checkbox_3 int(11) DEFAULT '0' NOT NULL,
+    checkbox_4 int(11) DEFAULT '0' NOT NULL,
 
 	radio_1 int(11) DEFAULT '0' NOT NULL,
+    radio_2 text,
+    radio_3 text,
 
 	select_1 text,
 	select_2 text
