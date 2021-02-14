@@ -2,7 +2,7 @@
 
 return [
     'ctrl' => [
-        'title' => 'Common table control',
+        'title' => 'Form engine - Common table control',
         'label' => 'title_field',
         'descriptionColumn' => 'description_field',
         'tstamp' => 'tstamp',
@@ -125,7 +125,6 @@ return [
            'label' => 'description_field',
            'config' => [
                'type' => 'text',
-               'default' => '',
            ],
        ],
    ],

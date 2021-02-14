@@ -88,7 +88,7 @@
 				<source>A localized help text</source>
 			</trans-unit>
 			<trans-unit id="minimalTableTitle" xml:space="preserve">
-				<source>Minimal table configuration</source>
+				<source>Form engine - Minimal table configuration</source>
 			</trans-unit>
 			<trans-unit id="minimalTableTitleField" xml:space="preserve">
 				<source>Title field</source>
