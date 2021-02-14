@@ -151,9 +151,9 @@ return [
                                             </config>
                                         </TCEforms>
                                     </passthrough_2>
-                                    <settings.checkbox_2>
+                                    <checkbox_1>
                                        <TCEforms>
-                                           <label>checkbox_2 one checkbox with label</label>
+                                           <label>checkbox_1 one checkbox with label</label>
                                            <config>
                                                <type>check</type>
                                                <items type="array">
@@ -164,10 +164,10 @@ return [
                                                </items>
                                            </config>
                                        </TCEforms>
-                                    </settings.checkbox_2>
-                                    <settings.checkbox_12>
+                                    </checkbox_1>
+                                    <checkbox_2>
                                        <TCEforms>
-                                           <label>checkbox_12 cols=3</label>
+                                           <label>checkbox_2 cols=3</label>
                                            <config>
                                                <type>check</type>
                                                <items type="array">
@@ -191,7 +191,7 @@ return [
                                                <cols>3</cols>
                                            </config>
                                        </TCEforms>
-                                    </settings.checkbox_12>
+                                    </checkbox_2>
                                 </el>
                             </ROOT>
                         </T3DataStructure>
