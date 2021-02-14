@@ -167,10 +167,9 @@ return [
                 'multiple' => true,
             ],
         ],
-
         'group_db_11' => [
             'exclude' => 1,
-            'label' => 'group_db_8 hideSuggest=true allowed=tx_styleguide_staticdata, multiple',
+            'label' => 'group_db_11 hideSuggest=true allowed=tx_styleguide_staticdata, multiple',
             'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
