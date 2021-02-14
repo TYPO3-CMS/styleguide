@@ -176,8 +176,6 @@ return [
                 'default' => 2,
             ],
         ],
-
-
         'radio_2' => [
             'exclude' => 1,
             'label' => 'radio_2 default=y, three options, second pre-selected',
@@ -191,10 +189,9 @@ return [
                 'default' => 'y',
             ],
         ],
-
         'radio_3' => [
             'exclude' => 1,
-            'label' => 'radio_2 empty default',
+            'label' => 'radio_3 empty default',
             'config' => [
                 'type' => 'radio',
                 'items' => [
