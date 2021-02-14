@@ -663,8 +663,8 @@ CREATE TABLE tx_styleguide_staticdata (
 
 CREATE TABLE tx_styleguide_type (
     record_type text,
-    title text,
-    color text,
+    input_1 text,
+    input_2 text,
 	text_1 text
 );
 

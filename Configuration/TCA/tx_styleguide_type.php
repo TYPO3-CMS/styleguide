@@ -3,7 +3,7 @@
 return [
     'ctrl' => [
         'title' => 'Form engine - type',
-        'label' => 'title',
+        'label' => 'uid',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -96,19 +96,18 @@ return [
                 'items' => [
                     ['type 0', '0'],
                     ['Type with changed fields', 'withChangedFields'],
-                    ['Type with columnsOverrides', 'withOverriddenColumns'],
-                    ['type test', 'test'],
+                    ['Type with columnsOverrides', 'withColumnsOverrides'],
                 ],
             ],
         ],
-        'title' => [
-            'label' => 'title',
+        'input_1' => [
+            'label' => 'input_1',
             'config' => [
                 'type' => 'input',
             ]
         ],
-        'color' => [
-            'label' => 'color',
+        'input_2' => [
+            'label' => 'input_2, renderType=colorpicker',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'colorpicker'
@@ -127,32 +126,21 @@ return [
 
     'types' => [
         '0' => [
-            'showitem' => 'record_type, title, text_1',
+            'showitem' => 'record_type, input_1, text_1',
         ],
         'withChangedFields' => [
-            'showitem' => 'record_type, title, color, text_1',
+            'showitem' => 'record_type, input_1, input_2, text_1',
         ],
-        'withOverriddenColumns' => [
-            'showitem' => 'record_type, title, color, text_1',
+        'withColumnsOverrides' => [
+            'showitem' => 'record_type, input_1, input_2, text_1',
             'columnsOverrides' => [
-                'color' => [
+                'input_2' => [
                     'config' => [
                         'renderType' => '',
                         'readOnly' => true,
                         'size' => 10,
                     ],
                 ],
-                'text_1' => [
-                    'config' => [
-                        'renderType' => 't3editor',
-                        'format' => 'html',
-                    ],
-                ],
-            ],
-        ],
-        'test' => [
-            'showitem' => 'record_type, title, text_1',
-            'columnsOverrides' => [
                 'text_1' => [
                     'config' => [
                         'renderType' => 't3editor',
