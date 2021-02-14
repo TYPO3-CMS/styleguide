@@ -135,6 +135,7 @@ return [
             'showitem' => 'record_type, input_1, input_2, text_1',
             'columnsOverrides' => [
                 'input_2' => [
+                    'label' => 'input_2, readOnly, size=10, empty renderType',
                     'config' => [
                         'renderType' => '',
                         'readOnly' => true,
