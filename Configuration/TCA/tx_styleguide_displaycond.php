@@ -220,6 +220,7 @@ return [
                 'maxitems' => 1,
             ],
         ],
+        // Tab FIELD AND OR start
         'checkbox_1' => [
             'exclude' => 1,
             'label' => 'checkbox_1',
@@ -345,7 +346,6 @@ return [
                 'type' => 'input',
             ],
         ],
-
         // Tab VERSION:IS end
         // Tab Flexforms start
 
