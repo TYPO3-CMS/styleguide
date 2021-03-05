@@ -324,7 +324,7 @@ return [
         'input_29' => [
             'exclude' => 1,
             'label' => 'input_29',
-            'description' => 'renderType=inputLink field description',
+            'description' => 'renderType=inputLink',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputLink',
