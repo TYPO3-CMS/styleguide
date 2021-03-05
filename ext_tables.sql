@@ -623,6 +623,12 @@ CREATE TABLE tx_styleguide_displaycond (
 
     select_1 text,
     select_2 text,
+    select_3 text,
+    select_4 text,
+
+    flex_1 text,
+    flex_2 text,
+    flex_3 text,
 );
 
 
