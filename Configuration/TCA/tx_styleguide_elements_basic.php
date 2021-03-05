@@ -408,7 +408,7 @@ return [
         'input_34' => [
             'exclude' => 1,
             'label' => 'input_34',
-            'description' => 'renderType=colorpicker field description',
+            'description' => 'renderType=colorpicker',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'colorpicker',
@@ -498,7 +498,7 @@ return [
         'input_40' => [
             'exclude' => 1,
             'label' => 'input_40',
-            'description' => 'readOnly field description',
+            'description' => 'readOnly',
             'config' => [
                 'type' => 'input',
                 'readOnly' => true,
@@ -507,7 +507,7 @@ return [
         'input_41' => [
             'exclude' => 1,
             'label' => 'input_41',
-            'description' => 'renderType=inputLink readOnly field description',
+            'description' => 'renderType=inputLink readOnly',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputLink',
@@ -517,7 +517,7 @@ return [
         'input_42' => [
             'exclude' => 1,
             'label' => 'input_42',
-            'description' => 'renderType=colorpicker readOnly field description',
+            'description' => 'renderType=colorpicker readOnly',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'colorpicker',
@@ -528,7 +528,7 @@ return [
         'inputdatetime_1' => [
             'exclude' => 1,
             'label' => 'inputdatetime_1',
-            'description' => 'eval=date field description',
+            'description' => 'eval=date',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -592,7 +592,7 @@ return [
         'inputdatetime_7' => [
             'exclude' => 1,
             'label' => 'inputdatetime_7',
-            'description' => 'eval=date readOnly field description',
+            'description' => 'eval=date readOnly',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -724,7 +724,7 @@ return [
         'text_9' => [
             'exclude' => 1,
             'label' => 'text_9',
-            'description' => 'readOnly=1 field description',
+            'description' => 'readOnly=1',
             'config' => [
                 'type' => 'text',
                 'readOnly' => 1,
@@ -808,7 +808,7 @@ return [
         ],
         'text_17' => [
             'label' => 'text_17',
-            'description' => 'renderType=textTable field description',
+            'description' => 'renderType=textTable',
             'config' => [
                 'type' => 'text',
                 'renderType' => 'textTable',
@@ -827,7 +827,7 @@ return [
         ],
         'text_19' => [
             'label' => 'text_19',
-            'description' => 'renderType=textTable readOnly field description',
+            'description' => 'renderType=textTable readOnly',
             'config' => [
                 'type' => 'text',
                 'renderType' => 'textTable',
@@ -838,7 +838,7 @@ return [
         ],
         'text_20' => [
             'label' => 'text_20',
-            'description' => 'renderType=belayoutwizard field description',
+            'description' => 'renderType=belayoutwizard',
             'config' => [
                 'type' => 'text',
                 'renderType' => 'belayoutwizard',
@@ -978,7 +978,7 @@ mod.web_layout.BackendLayouts {
         'checkbox_9' => [
             'exclude' => 1,
             'label' => 'checkbox_9',
-            'description' => 'readonly=1 field description',
+            'description' => 'readonly=1',
             'config' => [
                 'type' => 'check',
                 'readOnly' => 1,
@@ -1111,7 +1111,7 @@ mod.web_layout.BackendLayouts {
         'checkbox_17' => [
             'exclude' => 1,
             'label' => 'checkbox_17',
-            'description' => 'renderType=checkboxToggle single field description',
+            'description' => 'renderType=checkboxToggle single',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -1146,7 +1146,7 @@ mod.web_layout.BackendLayouts {
         'checkbox_19' => [
             'exclude' => 1,
             'label' => 'checkbox_19',
-            'description' => 'renderType=checkboxLabeledToggle single field description',
+            'description' => 'renderType=checkboxLabeledToggle single',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxLabeledToggle',
@@ -1239,7 +1239,7 @@ mod.web_layout.BackendLayouts {
         'checkbox_25' => [
             'exclude' => 1,
             'label' => 'checkbox_25',
-            'description' => 'renderType=checkboxToggle single readOnly field description',
+            'description' => 'renderType=checkboxToggle single readOnly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -1257,7 +1257,7 @@ mod.web_layout.BackendLayouts {
         'checkbox_26' => [
             'exclude' => 1,
             'label' => 'checkbox_26 description',
-            'description' => 'renderType=checkboxLabeledToggle single readOnly field description',
+            'description' => 'renderType=checkboxLabeledToggle single readOnly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxLabeledToggle',
@@ -1276,7 +1276,7 @@ mod.web_layout.BackendLayouts {
         'radio_1' => [
             'exclude' => 1,
             'label' => 'description',
-            'description' => 'radio_1 three options, one without label field description',
+            'description' => 'radio_1 three options, one without label',
             'config' => [
                 'type' => 'radio',
                 'items' => [
@@ -1360,7 +1360,7 @@ mod.web_layout.BackendLayouts {
         'radio_6' => [
             'exclude' => 1,
             'label' => 'radio_6',
-            'description' => 'readonly=1 field description',
+            'description' => 'readonly=1',
             'config' => [
                 'type' => 'radio',
                 'readOnly' => 1,
@@ -1374,7 +1374,7 @@ mod.web_layout.BackendLayouts {
         'none_1' => [
             'exclude' => 1,
             'label' => 'none_1',
-            'description' => 'pass_content=1 field description',
+            'description' => 'pass_content=1',
             'config' => [
                 'type' => 'none',
                 'pass_content' => 1,
