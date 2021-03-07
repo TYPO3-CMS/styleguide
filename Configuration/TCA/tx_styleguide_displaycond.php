@@ -19,7 +19,6 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-
     ],
 
     'columns' => [
@@ -113,7 +112,6 @@ return [
                 ],
             ],
         ],
-
         'input_1' => [
             'exclude' => 1,
             'label' => 'input_1',
@@ -133,6 +131,7 @@ return [
             ],
         ],
         // Tab FIELD REQ end
+
         // Tab FIELD compare start
         'input_3' => [
             'exclude' => 1,
@@ -220,7 +219,6 @@ return [
                 'maxitems' => 1,
             ],
         ],
-        // Tab FIELD AND OR start
         'checkbox_1' => [
             'exclude' => 1,
             'label' => 'checkbox_1',
@@ -283,7 +281,7 @@ return [
                 'type' => 'input',
             ],
         ],
-        // Tab REC:NEW OR end
+        // Tab REC:NEW end
 
         // Tab HIDE_FOR_NON_ADMINS start
         'input_13' => [
@@ -347,8 +345,8 @@ return [
             ],
         ],
         // Tab VERSION:IS end
-        // Tab Flexforms start
 
+        // Tab Flexforms start
         'select_3' => [
             'exclude' => 1,
             'label' => 'select_3',
@@ -755,9 +753,9 @@ return [
                 ],
             ],
         ],
-
         // Tab Flexforms end
     ],
+
     'types' => [
         '0' => [
             'showitem' => '
