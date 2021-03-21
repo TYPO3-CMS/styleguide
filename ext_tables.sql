@@ -324,6 +324,7 @@ CREATE TABLE tx_styleguide_inline_1n_child (
 
 	input_1 text,
 	input_2 text,
+	input_3 text,
 	group_db_1 text,
 	select_tree_1 text
 );
@@ -397,6 +398,7 @@ CREATE TABLE tx_styleguide_inline_fal (
 	inline_2 int(11) DEFAULT '0' NOT NULL,
 	inline_3 int(11) DEFAULT '0' NOT NULL,
 	inline_4 int(11) DEFAULT '0' NOT NULL,
+	inline_5 int(11) DEFAULT '0' NOT NULL,
 	inline_flex_1 text
 );
 
