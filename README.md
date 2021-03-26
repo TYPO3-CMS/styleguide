@@ -1,63 +1,123 @@
-[![Build Status](https://travis-ci.org/TYPO3/styleguide.svg?branch=master)](https://travis-ci.org/TYPO3/styleguide)
+![tests](https://github.com/TYPO3/styleguide/workflows/tests/badge.svg)
 
 TYPO3 CMS Backend Styleguide
 ============================
 
-Welcome to the living Styleguide for TYPO3 CMS backend.
-Presents supported styles for TYPO3 backend modules.
-
 ![](Documentation/styleguide_index.png)
 
-[Official repository for TYPO3 CMS extension "styleguide" with changelog.](https://github.com/TYPO3/styleguide)
 
-# Table of content
+# What is it?
 
-1. Typography
-2. TCA / Records
-3. Trees
-4. Tab
-5. Tables
-6. Avatar
-7. Buttons
-8. Infobox
-9. FlashMessages / Notification
-10. Icons
-11. Debug
-12. Helpers
+Styleguide is a TYPO3 extension. It provides a backend module that hooks
+into the 'Help' menu of the top toolbar of the TYPO3 Backend. It can also create a
+page tree to show examples.
+
+This extension in maintained in the official [TYPO3 github organization.](https://github.com/TYPO3/styleguide)
+
+Styleguide is developed "core-near": When TYPO3 core adds or deprecates features
+covered by this extension, core developers strive to keep it updated, reflecting
+these changes.
+
+Styleguide is a reference to show a lot of TYPO3 backend features, often relevant
+for own extensions:
+
+* A set of snippets showing how to use default backend functionality like
+  tables, buttons, boxes or notifications.
+* A huge set of 'TCA' examples, showing "all" features of the backend editing forms.
+
+
+# Usages
+
+* The extension is interesting for **backend extension developers** as a reference
+  to see how casual stuff like buttons and other HTML related things are solved or
+  used in the backend, and to copy+paste solutions. Additionally, the TCA examples
+  is a near-complete show-case of [FormEngine](https://docs.typo3.org/m/typo3/reference-coreapi/10.4/en-us/ApiOverview/FormEngine/Index.html)
+  (editing records in the backend). Developers will see new things they did not
+  know yet. Guaranteed!
+
+* The extension can be interesting for **technical project managers** to get an idea
+  of what the backend editing is capable of out-of-the-box and which parts can be
+  sold to customers without adding expensive implementation burdens to developers.
+
+* Styleguide is a "require-dev" dependency of the [TYPO3 CMS core mono repository](https://github.com/TYPO3/TYPO3.CMS).
+  It is used by **core developers** to test and verify changes to JavaScript, HTML
+  and PHP code do not break layout or functionality of backend modules. The extension
+  is also used in core backend acceptance tests to verify FormEngine details do not
+  break when developing core patches.
+
+* Styleguide is used within the official core documentation to provide examples, screenshots
+  and possible usages of core functionality. Especially the [TCA reference](https://docs.typo3.org/m/typo3/reference-tca/master/en-us/)
+  heavily relies on it.
+
+* Styleguide comes with a simple set up of unit, functional and acceptance tests that
+  are executed by github action workflow "tests.yml" - or locally if desired. This setup
+  is documented as a working test set up example within the official [TYPO3 explained testing section](https://docs.typo3.org/m/typo3/reference-coreapi/10.4/en-us/Testing/Index.html)
+  and can be used as a copy+paste boilerplate in own extensions.
 
 # Installation
-This Styleguide comes as a TYPO3 extension for the TYPO3 backend. It appears as backend module within the Help/Manuals navigation section.
+
+Styleguide comes as a TYPO3 extension for the TYPO3 backend. It appears as backend module
+within the "Help" section of the top toolbar. After initial installation, it is advisable
+to let styleguide create an example page tree with records by clicking the
+"TCA / records -> Create styleguide page tree with data", and waiting for a couple of
+seconds for the system to crunch the data.
 
 ## Composer
-With composer based [TYPO3 installation](https://wiki.typo3.org/Composer) add this Styleguide by running the following command on shell within project root (where the root composer.json file resides):
+With [composer based](https://docs.typo3.org/m/typo3/guide-installation/master/en-us/QuickInstall/Composer/Index.html)
+TYPO3 installations, styleguide is easily added to the project:
 
 ```
 composer require --dev typo3/cms-styleguide
 ```
 
-Composer will automatically find, download and extract the appropriate version into extension manager.
-After that, activate Styleguide extension from TYPO3 backend in Extension Manager, or via cli:
+Composer will automatically find, download and extract the appropriate version. After
+that, activate Styleguide using TYPO3 Extension Manager, or via CLI:
 
 ```
 bin/typo3 extension:activate styleguide
 ```
 
 ## TYPO3 Extension Repository
-The extension is currently not uploaded to the TER. Please consider switching to a composer based setup.
+For non-composer projects, the extension is available in TER as extension key `styleguide` and can
+be installed using the extension manager.
 
-# Usage
-Once loaded, the extension will hook into the '?' menu in the toolbar of your TYPO3 backend. See
-above screenshot. It will show a happy little menu with tons of functionality. Have fun to explore!
 
-Menu section 'TCA / Records' allows to create a set of demo data. Clicking 'Create ...' over there, your
-system will be busy with some record crunching for a while. Give it some time until a 'Data created' message
-shows up. Going to the Web -> List modules afterwards, a new page tree 'styleguide TCA demo' has been created
-with lots of sub pages. 'elements basic' is a good start, just open the 'English' default language record
-to be impressed by all the capabilities of just the 'simple' TCA types. If you want to use something like
-that in own extension, have a look at the Configuration/TCA folder for details.
+# Running tests
+
+Styleguide comes with a simple demo set of unit, functional and acceptance tests. It relies
+on the runTests.sh script which is a simplified version of a similar script from the TYPO3 core.
+Find detailed usage examples by executing `Build/Scripts/runTests.sh -h` and have a look at
+`.github/workflows/tests.yml` to see how this is used in CI.
+
+Example usage:
+
+```
+Build/Scripts/runTests.sh -s composerInstall
+Build/Scripts/runTests.sh -s unit
+```
+
+
+# Tagging and releasing
+
+[packagist.org](https://packagist.org/packages/typo3/cms-styleguide) is enabled via the casual github hook.
+TER releases are created by the "publish.yml" github workflow when tagging versions
+using [tailor](https://github.com/TYPO3/tailor). The commit message of the commit a tag points to is
+used as TER upload comment.
+
+Example:
+
+```
+composer install
+.Build/bin/tailor set-version 11.0.3
+git commit -am "[RELEASE] 11.0.3 Bug fixes and improved core v11 compatibility"
+git tag 11.0.3
+git push
+git push --tags
+```
+
 
 # Legal
-Disclaimer: This styleguide does not look perfect - besides documentation the guide should also point out missing concepts and styles.
-Therefore every imperfect style also is a todo. The solution could be included in the TYPO3 CMS core at any stage.
+This project is released under GPLv2 license. See LICENSE.txt for details.
 
-This guide is highly inspired by Bootstrap, Zurb Foundation and Pattern Lab.
+* The "tree" icon is from [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/)
+* Placeholder texts are from [Bacon Ipsum](http://baconipsum.com/)
