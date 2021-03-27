@@ -40,7 +40,7 @@ Successfully tested with docker version 18.06.1-ce and docker-compose 1.21.2.
 
 Usage: $0 [options] [file]
 
-No arguments: Run all unit tests with PHP 7.2
+No arguments: Run all unit tests with PHP 7.4
 
 Options:
     -s <...>
@@ -62,11 +62,10 @@ Options:
             - postgres: use postgres
             - sqlite: use sqlite
 
-    -p <7.2|7.3|7.4>
+    -p <7.4|8.0>
         Specifies the PHP minor version to be used
-            - 7.2 (default): use PHP 7.2
-            - 7.3: use PHP 7.3
-            - 7.4: use PHP 7.4
+            - 7.4 (default): use PHP 7.4
+            - 8.0: use PHP 8.0
 
     -e "<phpunit or codeception options>"
         Only with -s acceptance|functional|unit
@@ -78,11 +77,11 @@ Options:
     -x
         Only with -s functional|unit
         Send information to host instance for test or system under test break points. This is especially
-        useful if a local PhpStorm instance is listening on default xdebug port 9000. A different port
+        useful if a local PhpStorm instance is listening on default xdebug port 9003. A different port
         can be selected with -y
 
     -y <port>
-        Send xdebug information to a different port than default 9000 if an IDE like PhpStorm
+        Send xdebug information to a different port than default 9003 if an IDE like PhpStorm
         is not listening on default port.
 
     -n
@@ -90,10 +89,10 @@ Options:
         Activate dry-run in CGL check that does not actively change files and only prints broken ones.
 
     -u
-        Update existing typo3gmbh/phpXY:latest docker images. Maintenance call to docker pull latest
+        Update existing typo3/core-testing-*:latest docker images. Maintenance call to docker pull latest
         versions of the main php images. The images are updated once in a while and only the youngest
         ones are supported by core testing. Use this if weird test errors occur. Also removes obsolete
-        image versions of typo3gmbh/phpXY.
+        image versions of typo3/core-testing-*.
 
     -v
         Enable verbose script output. Shows variables and docker commands.
@@ -102,11 +101,8 @@ Options:
         Show this help.
 
 Examples:
-    # Run unit tests using PHP 7.2
-    ./Build/Scripts/runTests.sh
-
     # Run unit tests using PHP 7.4
-    ./Build/Scripts/runTests.sh -p 7.4
+    ./Build/Scripts/runTests.sh
 EOF
 
 # Test if docker-compose exists, else exit out with error
@@ -127,9 +123,9 @@ cd ../testing-docker || exit 1
 ROOT_DIR=`readlink -f ${PWD}/../../`
 TEST_SUITE="unit"
 DBMS="mariadb"
-PHP_VERSION="7.2"
+PHP_VERSION="7.4"
 PHP_XDEBUG_ON=0
-PHP_XDEBUG_PORT=9000
+PHP_XDEBUG_PORT=9003
 EXTRA_TEST_OPTIONS=""
 SCRIPT_VERBOSE=0
 CGLCHECK_DRY_RUN=""
@@ -193,7 +189,7 @@ if [ ${#INVALID_OPTIONS[@]} -ne 0 ]; then
     exit 1
 fi
 
-# Move "7.2" to "php72", the latter is the docker container name
+# Move "7.4" to "php74", the latter is the docker container name
 DOCKER_PHP_IMAGE=`echo "php${PHP_VERSION}" | sed -e 's/\.//'`
 
 # Set $1 to first mass argument, this is the optional test file or test directory to execute
@@ -294,10 +290,10 @@ case ${TEST_SUITE} in
         docker-compose down
         ;;
     update)
-        # pull typo3gmbh/phpXY:latest versions of those ones that exist locally
-        docker images typo3gmbh/php*:latest --format "{{.Repository}}:latest" | xargs -I {} docker pull {}
-        # remove "dangling" typo3gmbh/phpXY images (those tagged as <none>)
-        docker images typo3gmbh/php* --filter "dangling=true" --format "{{.ID}}" | xargs -I {} docker rmi {}
+        # pull typo3/core-testing-*:latest versions of those ones that exist locally
+        docker images typo3/core-testing-*:latest --format "{{.Repository}}:latest" | xargs -I {} docker pull {}
+        # remove "dangling" typo3/core-testing-* images (those tagged as <none>)
+        docker images typo3/core-testing-* --filter "dangling=true" --format "{{.ID}}" | xargs -I {} docker rmi {}
         ;;
     *)
         echo "Invalid -s option argument ${TEST_SUITE}" >&2

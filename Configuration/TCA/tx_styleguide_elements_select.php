@@ -303,7 +303,7 @@ return [
         ],
         'select_singlebox_2' => [
             'exclude' => 1,
-            'label' => 'select_singlebox_1 readOnly description',
+            'label' => 'select_singlebox_2 readOnly description',
             'description' => 'field description',
             'config' => [
                 'type' => 'select',
@@ -373,6 +373,43 @@ return [
                 'items' => [
                     ['foo 1', 1],
                     ['foo 2', 2],
+                ],
+            ],
+        ],
+        'select_checkbox_5' => [
+            'exclude' => 1,
+            'label' => 'select_checkbox_5 dividers, expandAll',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectCheckBox',
+                'appearance' => [
+                    'expandAll' => true
+                ],
+                'items' => [
+                    ['div 1', '--div--'],
+                    ['foo 1', 1],
+                    ['foo 2', 2],
+                    ['foo 3', 3],
+                    ['div 2', '--div--'],
+                    ['foo 4', 4],
+                    ['foo 5', 5],
+                ],
+            ],
+        ],
+        'select_checkbox_6' => [
+            'exclude' => 1,
+            'label' => 'select_checkbox_5 dividers',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectCheckBox',
+                'items' => [
+                    ['div 1', '--div--'],
+                    ['foo 1', 1],
+                    ['foo 2', 2],
+                    ['foo 3', 3],
+                    ['div 2', '--div--'],
+                    ['foo 4', 4],
+                    ['foo 5', 5],
                 ],
             ],
         ],
@@ -675,7 +712,6 @@ return [
                     'default' => '
                         <T3DataStructure>
                             <sheets>
-
                                 <sSingle>
                                     <ROOT>
                                         <type>array</type>
@@ -765,34 +801,6 @@ return [
                                                     </config>
                                                 </TCEforms>
                                             </select_tree_1>
-                                            <select_tree_2_condition>
-                                                <TCEforms>
-                                                    <label>select_tree_2_condition, display select_tree_2?</label>
-                                                    <config>
-                                                        <type>check</type>
-                                                    </config>
-                                                </TCEforms>
-                                            </select_tree_2_condition>
-                                            <select_tree_2>
-                                                <TCEforms>
-                                                    <label>select_tree_2 displayCond</label>
-                                                    <displayCond>FIELD:select_tree_2_condition:REQ:TRUE</displayCond>
-                                                    <config>
-                                                        <type>select</type>
-                                                        <renderType>selectTree</renderType>
-                                                        <foreign_table>pages</foreign_table>
-                                                        <size>20</size>
-                                                        <maxitems>4</maxitems>
-                                                        <treeConfig>
-                                                            <expandAll>1</expandAll>
-                                                            <parentField>pid</parentField>
-                                                            <appearance>
-                                                                <showHeader>1</showHeader>
-                                                            </appearance>
-                                                        </treeConfig>
-                                                    </config>
-                                                </TCEforms>
-                                            </select_tree_2>
                                         </el>
                                     </ROOT>
                                 </sTree>
@@ -958,7 +966,7 @@ return [
                 --div--;renderType=selectSingleBox,
                     select_singlebox_1, select_singlebox_2,
                 --div--;renderType=selectCheckBox,
-                    select_checkbox_1, select_checkbox_2, select_checkbox_3, select_checkbox_4,
+                    select_checkbox_1, select_checkbox_2, select_checkbox_3, select_checkbox_4, select_checkbox_5, select_checkbox_6,
                 --div--;renderType=selectMultipleSideBySide,
                     select_multiplesidebyside_1, select_multiplesidebyside_2, select_multiplesidebyside_3,
                     select_multiplesidebyside_5, select_multiplesidebyside_6,

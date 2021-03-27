@@ -3,6 +3,9 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-05-01T00:00:000" product-name="styleguide">
 		<header/>
 		<body>
+			<trans-unit id="styleguide" xml:space="preserve">
+				<source>Styleguide</source>
+			</trans-unit>
 			<trans-unit id="backendStyleguide" xml:space="preserve">
 				<source>TYPO3 CMS Backend Styleguide</source>
 			</trans-unit>
@@ -83,6 +86,12 @@
 			</trans-unit>
 			<trans-unit id="translatedHelpTextForSelectCheckBox3" xml:space="preserve">
 				<source>A localized help text</source>
+			</trans-unit>
+			<trans-unit id="minimalTableTitle" xml:space="preserve">
+				<source>Form engine - Minimal table configuration</source>
+			</trans-unit>
+			<trans-unit id="minimalTableTitleField" xml:space="preserve">
+				<source>Title field</source>
 			</trans-unit>
 		</body>
 	</file>
