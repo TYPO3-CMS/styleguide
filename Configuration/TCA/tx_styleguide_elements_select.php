@@ -481,10 +481,11 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectCheckBox',
                 'items' => [
-                    ['item 1', 1, '', 'group1'],
-                    ['item 2', 2, '', 'group1'],
-                    ['item 3', 3, '', 'group3'],
-                    ['item 4', 3],
+                    ['foo 1', 1, '', 'group1'],
+                    ['foo 2', 2, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg', 'group1'],
+                    ['foo 3', 3, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg'],
+                    ['foo 4', 4],
+                    ['foo 5', 1, '', 'group3'],
                 ],
                 'itemGroups' => [
                     'group1' => 'Group 1 with items',
