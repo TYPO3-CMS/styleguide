@@ -26,7 +26,7 @@ class SelectItemSorter
      *
      * @param array $items
      */
-    public function sortReverseTitles(&$items)
+    public function sortReverseTitles(&$items): void
     {
         @usort(
             $items,
