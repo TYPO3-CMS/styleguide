@@ -213,8 +213,12 @@ CREATE TABLE tx_styleguide_elements_rte (
 CREATE TABLE tx_styleguide_elements_slugs (
     input_1 text,
     input_2 text,
+    input_3 text,
     slug_1 text,
     slug_2 text,
+    slug_3 text,
+    slug_4 text,
+    slug_5 text,
 );
 
 

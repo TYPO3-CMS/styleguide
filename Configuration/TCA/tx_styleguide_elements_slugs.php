@@ -139,7 +139,64 @@ return [
                 'fallbackCharacter' => '-',
                 'eval' => 'uniqueInSite',
                 'default' => ''
-            ]
+            ],
+        ],
+        'slug_4' => [
+            'exclude' => 1,
+            'label' => 'slug_4',
+            'config' => [
+                'type' => 'slug',
+                'generatorOptions' => [
+                    'fields' => ['input_1', 'input_2'],
+                    'prefixParentPageSlug' => false
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => ''
+            ],
+        ],
+        'slug_5' => [
+            'exclude' => 1,
+            'label' => 'slug_5',
+            'config' => [
+                'type' => 'slug',
+                'generatorOptions' => [
+                    'fields' => [['input_1', 'input_2']],
+                    'prefixParentPageSlug' => false
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => ''
+            ],
+        ],
+
+        'input_3' => [
+            'l10n_mode' => 'prefixLangTitle',
+            'exclude' => 1,
+            'label' => 'input_2',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'input',
+                'default' => 'Some Job in city1/city2 (f/m)',
+            ],
+        ],
+        'slug_3' => [
+            'exclude' => 1,
+            'label' => 'slug_3',
+            'description' => 'remove string (f/m)',
+            'config' => [
+                'type' => 'slug',
+                'generatorOptions' => [
+                    'fields' => ['input_3'],
+                    'replacements' => [
+                        '(f/m)' => '',
+                        '/' => '-'
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'prependSlash' => true,
+                'eval' => 'uniqueInPid',
+            ],
         ],
 
     ],
@@ -147,7 +204,7 @@ return [
     'types' => [
         '0' => [
             'showitem' => '
-                    input_1, input_2, slug_1, slug_2
+                    input_1, input_2, slug_1, slug_2, slug_4, slug_5, input_3, slug_3
             ',
         ],
     ],
