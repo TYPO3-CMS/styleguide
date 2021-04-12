@@ -198,6 +198,16 @@ CREATE TABLE tx_styleguide_elements_group (
 );
 
 
+CREATE TABLE tx_styleguide_elements_imagemanipulation (
+    file_1 int(11) DEFAULT '0' NOT NULL,
+    file_2 int(11) DEFAULT '0' NOT NULL,
+    file_3 int(11) DEFAULT '0' NOT NULL,
+    crop_1 text,
+    crop_2 text,
+    crop_3 text
+);
+
+
 CREATE TABLE tx_styleguide_elements_rte (
     rte_1 text,
     rte_2 text,
