@@ -199,12 +199,17 @@ CREATE TABLE tx_styleguide_elements_group (
 
 
 CREATE TABLE tx_styleguide_elements_imagemanipulation (
-    file_1 int(11) DEFAULT '0' NOT NULL,
-    file_2 int(11) DEFAULT '0' NOT NULL,
-    file_3 int(11) DEFAULT '0' NOT NULL,
+    group_db_1 text,
+    group_db_2 text,
+    group_db_3 text,
     crop_1 text,
     crop_2 text,
-    crop_3 text
+    crop_3 text,
+    crop_4 text,
+    crop_5 text,
+    crop_6 text,
+    crop_7 text,
+    crop_8 text
 );
 
 

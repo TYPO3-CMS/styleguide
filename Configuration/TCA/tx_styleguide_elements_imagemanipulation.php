@@ -82,28 +82,40 @@ return [
                 'default' => ''
             ]
         ],
-        'file_1' => [
+        'group_db_1' => [
             'exclude' => 1,
-            'label' => 'file_1',
+            'label' => 'group_db_1',
             'config' => [
-                'type' => 'input',
-                'eval' => 'int'
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'sys_file',
+                'maxitems' => 1,
+                'minitems' => 0,
+                'size' => 1,
             ],
         ],
-        'file_2' => [
+        'group_db_2' => [
             'exclude' => 1,
-            'label' => 'file_2',
+            'label' => 'group_db_2',
             'config' => [
-                'type' => 'input',
-                'eval' => 'int'
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'sys_file',
+                'maxitems' => 1,
+                'minitems' => 0,
+                'size' => 1,
             ],
         ],
-        'file_3' => [
+        'group_db_3' => [
             'exclude' => 1,
-            'label' => 'file_3',
+            'label' => 'group_db_3',
             'config' => [
-                'type' => 'input',
-                'eval' => 'int'
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'sys_file',
+                'maxitems' => 1,
+                'minitems' => 0,
+                'size' => 1,
             ],
         ],
         'crop_1' => [
@@ -112,7 +124,7 @@ return [
             'description' => 'standard configuration',
             'config' => [
                 'type' => 'imageManipulation',
-                'file_field' => 'file_1'
+                'file_field' => 'group_db_1'
             ],
         ],
         'crop_2' => [
@@ -121,7 +133,7 @@ return [
             'description' => 'limit to png',
             'config' => [
                 'type' => 'imageManipulation',
-                'file_field' => 'file_2',
+                'file_field' => 'group_db_2',
                 'allowedExtensions' => 'png'
             ],
         ],
@@ -131,38 +143,182 @@ return [
             'description' => 'limit to jpg',
             'config' => [
                 'type' => 'imageManipulation',
-                'file_field' => 'file_2',
+                'file_field' => 'group_db_2',
                 'allowedExtensions' => 'jpg'
             ],
         ],
         'crop_3' => [
             'exclude' => 1,
             'label' => 'crop_3',
-            'description' => 'mobile cropVariant with cropArea',
+            'description' => 'one crop variant',
             'config' => [
                 'type' => 'imageManipulation',
-                'file_field' => 'file_3',
+                'file_field' => 'group_db_3',
                 'cropVariants' => [
-                    'mobile' => [
-                        'title' => 'mobile cropVariant with cropArea',
+                    'default' => [
+                        'title' => 'foo bar',
+                        'allowedAspectRatios' => [
+                            '16:9' => [
+                                'title' => '16 / 9',
+                                'value' => 16 / 9
+                            ],
+                            '3:2' => [
+                                'title' => '3 / 2',
+                                'value' => 3 / 2
+                            ],
+                            '4:3' => [
+                                'title' => '4 / 3',
+                                'value' => 4 / 3
+                            ],
+                            '1:1' => [
+                                'title' => '1 / 1',
+                                'value' => 1.0
+                            ],
+                            'NaN' => [
+                                'title' => 'free',
+                                'value' => 0.0
+                            ],
+                        ],
+                        'selectedRatio' => 'NaN',
                         'cropArea' => [
-                            'x' => 0.1,
-                            'y' => 0.1,
+                            'x' => 0.0,
+                            'y' => 0.0,
+                            'width' => 1.0,
+                            'height' => 1.0,
+                        ],
+                    ],
+                ]
+            ],
+        ],
+        'crop_5' => [
+            'exclude' => 1,
+            'label' => 'crop_5',
+            'description' => 'several cropVariants',
+            'config' => [
+                'type' => 'imageManipulation',
+                'file_field' => 'group_db_3', 'cropVariants' => [
+                    'mobile' => [
+                        'title' => 'mobile',
+                        'allowedAspectRatios' => [
+                            '1:1' => [
+                                'title' => '1 / 1',
+                                'value' => 1.0
+                            ],
+                        ],
+                    ],
+                    'desktop' => [
+                        'title' => 'desktop',
+                        'allowedAspectRatios' => [
+                            '4:3' => [
+                                'title' => '4 / 3',
+                                'value' => 4 / 3
+                            ],
+                            'NaN' => [
+                                'title' => 'free',
+                                'value' => 0.0
+                            ],
+                        ],
+                    ],
+                ]
+            ],
+        ],
+        'crop_6' => [
+            'exclude' => 1,
+            'label' => 'crop_6',
+            'description' => 'initial crop area',
+            'config' => [
+                'type' => 'imageManipulation',
+                'file_field' => 'group_db_3',
+                'cropVariants' => [
+                    'default' => [
+                        'title' => 'foo bar',
+                        'allowedAspectRatios' => [
+                            '1:1' => [
+                                'title' => '1 / 1',
+                                'value' => 1.0
+                            ],
+                        ],
+                        'selectedRatio' => '1:1',
+                        'cropArea' => [
+                            'x' => 0,
+                            'y' => 0,
                             'width' => 0.8,
                             'height' => 0.8,
                         ],
                     ],
-                ],
+                ]
             ],
         ],
-
+        'crop_7' => [
+            'exclude' => 1,
+            'label' => 'crop_7',
+            'description' => 'with focus area',
+            'config' => [
+                'type' => 'imageManipulation',
+                'file_field' => 'group_db_3',
+                'cropVariants' => [
+                    'default' => [
+                        'title' => 'foo bar',
+                        'allowedAspectRatios' => [
+                            '1:1' => [
+                                'title' => '1 / 1',
+                                'value' => 1.0
+                            ],
+                        ],
+                        'selectedRatio' => '1:1',
+                        'focusArea' => [
+                            'x' => 1 / 4,
+                            'y' => 1 / 4,
+                            'width' => 3 / 4,
+                            'height' => 3 / 4,
+                        ],
+                    ],
+                ]
+            ],
+        ],
+        'crop_8' => [
+            'exclude' => 1,
+            'label' => 'crop_8',
+            'description' => 'crop variant with cover areas',
+            'config' => [
+                'type' => 'imageManipulation',
+                'file_field' => 'group_db_3',
+                'cropVariants' => [
+                    'default' => [
+                        'title' => 'foo bar',
+                        'allowedAspectRatios' => [
+                            '1:1' => [
+                                'title' => '1 / 1',
+                                'value' => 1.0
+                            ],
+                        ],
+                        'selectedRatio' => '1:1',
+                        'coverAreas' => [
+                            [
+                                'x' => 0.05,
+                                'y' => 0.85,
+                                'width' => 0.9,
+                                'height' => 0.1,
+                            ],
+                            [
+                                'x' => 0.05,
+                                'y' => 0.05,
+                                'width' => 1 / 4,
+                                'height' => 1 / 4,
+                            ]
+                        ],
+                    ],
+                ]
+            ],
+        ],
     ],
 
     'types' => [
         '0' => [
             'showitem' => '
                 --div--;crop,
-                    file_1, crop_1, file_2, crop_2, crop_4, file_3, crop_3,
+                    group_db_1, crop_1, group_db_2, crop_2, crop_4, group_db_3,
+                    crop_3, crop_5, crop_6, crop_7, crop_8,
                 --div--;meta,
                 disable, sys_language_uid, l10n_parent, l10n_source,
             ',
