@@ -2,7 +2,7 @@
 
 return [
     'ctrl' => [
-        'title' => 'Form engine elements - group',
+        'title' => 'Form engine elements - imageManipulation',
         'label' => 'uid',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -82,7 +82,30 @@ return [
                 'default' => ''
             ]
         ],
-
+        'file_1' => [
+            'exclude' => 1,
+            'label' => 'file_1',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'int'
+            ],
+        ],
+        'file_2' => [
+            'exclude' => 1,
+            'label' => 'file_2',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'int'
+            ],
+        ],
+        'file_3' => [
+            'exclude' => 1,
+            'label' => 'file_3',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'int'
+            ],
+        ],
         'crop_1' => [
             'exclude' => 1,
             'label' => 'crop_1',
@@ -100,6 +123,16 @@ return [
                 'type' => 'imageManipulation',
                 'file_field' => 'file_2',
                 'allowedExtensions' => 'png'
+            ],
+        ],
+        'crop_4' => [
+            'exclude' => 1,
+            'label' => 'crop_4',
+            'description' => 'limit to jpg',
+            'config' => [
+                'type' => 'imageManipulation',
+                'file_field' => 'file_2',
+                'allowedExtensions' => 'jpg'
             ],
         ],
         'crop_3' => [
@@ -128,8 +161,8 @@ return [
     'types' => [
         '0' => [
             'showitem' => '
-                --div--;Crop,
-                    crop_1, crop_2, crop_3,
+                --div--;crop,
+                    file_1, crop_1, file_2, crop_2, crop_4, file_3, crop_3,
                 --div--;meta,
                 disable, sys_language_uid, l10n_parent, l10n_source,
             ',
