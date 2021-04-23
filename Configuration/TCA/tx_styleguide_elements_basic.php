@@ -1469,7 +1469,6 @@ mod.web_layout.BackendLayouts {
                                                                 <options>
                                                                     <title>Link</title>
                                                                     <blindLinkOptions>mail,folder,spec</blindLinkOptions>
-                                                                    <windowOpenParameters>height=300,width=500,status=0,menubar=0,scrollbars=1</windowOpenParameters>
                                                                 </options>
                                                             </linkPopup>
                                                         </fieldControl>
