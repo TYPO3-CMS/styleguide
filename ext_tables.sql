@@ -132,6 +132,7 @@ CREATE TABLE tx_styleguide_elements_basic (
     text_18 text,
     text_19 text,
     text_20 text,
+    text_21 text,
 
     checkbox_1 int(11) DEFAULT '0' NOT NULL,
     checkbox_2 int(11) DEFAULT '0' NOT NULL,
@@ -223,6 +224,17 @@ CREATE TABLE tx_styleguide_elements_rte (
     rte_flex_1 text,
     input_palette_1 text,
     rte_palette_1 text
+);
+
+CREATE TABLE tx_styleguide_elements_slugs (
+    input_1 text,
+    input_2 text,
+    input_3 text,
+    slug_1 text,
+    slug_2 text,
+    slug_3 text,
+    slug_4 text,
+    slug_5 text,
 );
 
 
