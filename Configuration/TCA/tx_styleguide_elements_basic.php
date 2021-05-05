@@ -888,24 +888,6 @@ mod.web_layout.BackendLayouts {
                 ],
             ],
         ],
-        // It doesn't seem to work like that yet, only an empty wizard is shown
-        'text_22' => [
-            'label' => 'text_22',
-            'description' => 'tableWizard options xmlOutput=true',
-            'config' => [
-                'type' => 'text',
-                'renderType' => 'textTable',
-                'cols' => 40,
-                'rows' => 5,
-                'fieldControl' => [
-                    'tableWizard' => [
-                        'options' => [
-                            'xmlOutput' => true,
-                        ],
-                    ],
-                ],
-            ],
-        ],
 
         'checkbox_1' => [
             'exclude' => 1,
@@ -1775,7 +1757,7 @@ mod.web_layout.BackendLayouts {
                 --div--;text,
                     text_1, text_2, text_3, text_4, text_5, text_6, text_7, text_8, text_9, text_10,
                     text_11, text_12, text_13, text_18, text_14, text_15, text_16, text_17, text_19,
-                    text_21, text_22, text_20,
+                    text_21, text_20,
                 --div--;check,
                     checkbox_1, checkbox_9, checkbox_2, checkbox_17, checkbox_25, checkbox_18, checkbox_24, checkbox_19, checkbox_26,
                     checkbox_20, checkbox_21, checkbox_22, checkbox_23, checkbox_3, checkbox_4, checkbox_6, checkbox_7, checkbox_8,
