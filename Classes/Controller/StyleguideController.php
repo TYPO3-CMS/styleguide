@@ -22,9 +22,12 @@ use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Pagination\ArrayPaginator;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Styleguide\Service\KauderwelschService;
@@ -74,7 +77,7 @@ class StyleguideController extends ActionController
         // Hand over flash message queue to module template
         $this->view->getModuleTemplate()->setFlashMessageQueue($this->getFlashMessageQueue());
         $this->view->assign('actions', ['index', 'typography', 'tca', 'trees', 'tab', 'tables', 'avatar', 'buttons',
-            'infobox', 'flashMessages', 'icons', 'debug', 'modal', 'accordion']);
+            'infobox', 'flashMessages', 'icons', 'debug', 'modal', 'accordion', 'pagination']);
         $this->view->assign('currentAction', $this->request->getControllerActionName());
 
         // Shortcut button
@@ -284,9 +287,63 @@ class StyleguideController extends ActionController
         return $this->htmlResponse($this->view->render());
     }
 
-
     public function accordionAction(): ResponseInterface
     {
+        return $this->htmlResponse($this->view->render());
+    }
+
+    /**
+     * @throws NoSuchArgumentException
+     */
+    public function paginationAction(int $page = 2): ResponseInterface
+    {
+        $itemsToBePaginated = [
+            "Warty Warthog",
+            "Hoary Hedgehog",
+            "Breezy Badger",
+            "Dapper Drake",
+            "Edgy Eft",
+            "Feisty Fawn",
+            "Gutsy Gibbon",
+            "Hardy Heron",
+            "Intrepid Ibex",
+            "Jaunty Jackalope",
+            "Karmic Koala",
+            "Lucid Lynx",
+            "Maverick Meerkat",
+            "Natty Narwhal",
+            "Oneiric Ocelot",
+            "Precise Pangolin",
+            "Quantal Quetzal",
+            "Raring Ringtail",
+            "Saucy Salamander",
+            "Trusty Tahr",
+            "Utopic Unicorn",
+            "Vivid Vervet",
+            "Wily Werewolf",
+            "Xenial Xerus",
+            "Yakkety Yak",
+            "Zesty Zapus",
+            "Artful Aardvark",
+            "Bionic Beaver",
+            "Cosmic Cuttlefish",
+            "Disco Dingo",
+            "Eoan Ermine",
+            "Focal Fossa",
+            "Groovy Gorilla",
+        ];
+        $itemsPerPage = 10;
+
+        if($this->request->hasArgument('page')) {
+            $page = (int)$this->request->getArgument('page');
+        }
+
+        $paginator = new ArrayPaginator($itemsToBePaginated, $page, $itemsPerPage);
+        $this->view->assignMultiple([
+            'paginator' => $paginator,
+            'pagination' => new SimplePagination($paginator)
+        ]);
+
         return $this->htmlResponse($this->view->render());
     }
 }
