@@ -18,6 +18,7 @@ namespace TYPO3\CMS\Styleguide\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
@@ -295,8 +296,9 @@ class StyleguideController extends ActionController
     /**
      * @throws NoSuchArgumentException
      */
-    public function paginationAction(int $page = 2): ResponseInterface
+    public function paginationAction(int $page = 1): ResponseInterface
     {
+        // Prepare example data for pagination list
         $itemsToBePaginated = [
             "Warty Warthog",
             "Hoary Hedgehog",
@@ -338,10 +340,23 @@ class StyleguideController extends ActionController
             $page = (int)$this->request->getArgument('page');
         }
 
+        // Prepare example data for dropdown
+        $userGroupArray = [
+            0 => '[All users]',
+            -1 => 'Self',
+            'gr-7' => 'Group styleguide demo group 1',
+            'gr-8' => 'Group styleguide demo group 2',
+            'us-9' => 'User _cli_',
+            'us-1' => 'User admin',
+            'us-10' => 'User styleguide demo user 1',
+            'us-11' => 'User styleguide demo user 2',
+        ];
+
         $paginator = new ArrayPaginator($itemsToBePaginated, $page, $itemsPerPage);
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => new SimplePagination($paginator)
+            'pagination' => new SimplePagination($paginator),
+            'userGroups' => $userGroupArray,
         ]);
 
         return $this->htmlResponse($this->view->render());

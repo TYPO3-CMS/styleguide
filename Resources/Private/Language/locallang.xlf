@@ -94,7 +94,7 @@
 				<source>Accordion</source>
 			</trans-unit>
 			<trans-unit id="pagination" xml:space="preserve">
-				<source>Pagination</source>
+				<source>Pagination / Filter</source>
 			</trans-unit>
 		</body>
 	</file>
