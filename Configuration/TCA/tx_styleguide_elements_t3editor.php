@@ -38,17 +38,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
+                'type' => 'language'
             ]
         ],
         'l10n_parent' => [
@@ -121,6 +111,16 @@ return [
                         1,
                     ],
                 ],
+            ],
+        ],
+        't3editor_2' => [
+            'label' => 't3editor_2',
+            'description' => 'readOnly=true',
+            'config' => [
+                'type' => 'text',
+                'renderType' => 't3editor',
+                'format' => 'html',
+                'readOnly' => true,
             ],
         ],
         't3editor_inline_1' => [
@@ -231,8 +231,9 @@ return [
         '0' => [
             'showitem' => '
                 --div--;t3editor,
-                    t3editor_1,
                     t3editor_reload_1,
+                    t3editor_1,
+                    t3editor_2,
                 --div--;in inline,
                     t3editor_inline_1,
                 --div--;in flex,

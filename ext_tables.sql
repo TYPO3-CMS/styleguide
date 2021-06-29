@@ -132,6 +132,7 @@ CREATE TABLE tx_styleguide_elements_basic (
     text_18 text,
     text_19 text,
     text_20 text,
+    text_21 text,
 
     checkbox_1 int(11) DEFAULT '0' NOT NULL,
     checkbox_2 int(11) DEFAULT '0' NOT NULL,
@@ -198,6 +199,21 @@ CREATE TABLE tx_styleguide_elements_group (
 );
 
 
+CREATE TABLE tx_styleguide_elements_imagemanipulation (
+    group_db_1 text,
+    group_db_2 text,
+    group_db_3 text,
+    crop_1 text,
+    crop_2 text,
+    crop_3 text,
+    crop_4 text,
+    crop_5 text,
+    crop_6 text,
+    crop_7 text,
+    crop_8 text
+);
+
+
 CREATE TABLE tx_styleguide_elements_rte (
     rte_1 text,
     rte_2 text,
@@ -208,6 +224,17 @@ CREATE TABLE tx_styleguide_elements_rte (
     rte_flex_1 text,
     input_palette_1 text,
     rte_palette_1 text
+);
+
+CREATE TABLE tx_styleguide_elements_slugs (
+    input_1 text,
+    input_2 text,
+    input_3 text,
+    slug_1 text,
+    slug_2 text,
+    slug_3 text,
+    slug_4 text,
+    slug_5 text,
 );
 
 
@@ -241,9 +268,15 @@ CREATE TABLE tx_styleguide_elements_select (
     select_single_13 text,
     select_single_14 text,
     select_single_15 text,
+    select_single_16 text,
+    select_single_17 text,
+    select_single_18 text,
+    select_single_19 text,
+    select_single_20 text,
 
     select_singlebox_1 text,
     select_singlebox_2 text,
+    select_singlebox_3 text,
 
     select_checkbox_1 text,
     select_checkbox_2 text,
@@ -251,6 +284,7 @@ CREATE TABLE tx_styleguide_elements_select (
     select_checkbox_4 text,
     select_checkbox_5 text,
     select_checkbox_6 text,
+    select_checkbox_7 text,
 
     select_multiplesidebyside_1 text,
     select_multiplesidebyside_2 text,
@@ -260,6 +294,7 @@ CREATE TABLE tx_styleguide_elements_select (
     select_multiplesidebyside_7 text,
     select_multiplesidebyside_8 text,
     select_multiplesidebyside_9 text,
+    select_multiplesidebyside_10 text,
 
     select_tree_1 text,
     select_tree_2 text,
@@ -303,7 +338,6 @@ CREATE TABLE tx_styleguide_elements_special (
     special_custom_1 text,
     special_exclude_1 text,
     special_explicitvalues_1 text,
-    special_languages_1 text,
     special_modlistgroup_1 text,
     special_pagetypes_1 text,
     special_tables_1 text,
@@ -315,6 +349,7 @@ CREATE TABLE tx_styleguide_elements_special (
 
 CREATE TABLE tx_styleguide_elements_t3editor (
     t3editor_1 text,
+    t3editor_2 text,
     t3editor_reload_1 int(11) DEFAULT '0' NOT NULL,
     t3editor_inline_1 text,
     t3editor_flex_1 text

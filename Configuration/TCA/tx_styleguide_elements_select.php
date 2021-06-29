@@ -37,17 +37,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
+                'type' => 'language'
             ]
         ],
         'l10n_parent' => [
@@ -284,7 +274,104 @@ return [
                 'MM' => 'tx_styleguide_elements_select_single_15_mm'
             ],
         ],
-
+        'select_single_16' => [
+            'exclude' => 1,
+            'label' => 'select_single_16',
+            'description' => 'itemGroups',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['item 1', 1, '', 'group1'],
+                    ['item 2', 2, '', 'group1'],
+                    ['item 3', 3, '', 'group3'],
+                    ['item 4', 3],
+                ],
+                'itemGroups' => [
+                    'group1' => 'Group 1 with items',
+                    'group2' => 'Group 2 with no items',
+                    'group3' => 'Group 3 with items',
+                ],
+            ],
+        ],
+        'select_single_17' => [
+            'exclude' => 1,
+            'label' => 'select_single_16',
+            'description' => 'itemGroups, size=6',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['item 1', 1, '', 'group1'],
+                    ['item 2', 2, '', 'group1'],
+                    ['item 3', 3, '', 'group3'],
+                    ['item 4', 3],
+                ],
+                'itemGroups' => [
+                    'group1' => 'Group 1 with items',
+                    'group2' => 'Group 2 with no items',
+                    'group3' => 'Group 3 with items',
+                ],
+                'size' => 6,
+            ],
+        ],
+        'select_single_18' => [
+            'exclude' => 1,
+            'label' => 'select_single_18',
+            'description' => 'sortItems label asc',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['Plum tree', 1],
+                    ['Walnut tree', 2],
+                    ['Apple tree', 3],
+                    ['Cherry tree', 4],
+                ],
+                'sortItems' => [
+                    'label' => 'asc'
+                ],
+                'size' => 4,
+            ],
+        ],
+        'select_single_19' => [
+            'exclude' => 1,
+            'label' => 'select_single_19',
+            'description' => 'sortItems value desc',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['Plum tree', 1],
+                    ['Walnut tree', 2],
+                    ['Apple tree', 3],
+                    ['Cherry tree', 4],
+                ],
+                'sortItems' => [
+                    'value' => 'desc'
+                ],
+                'size' => 4,
+            ],
+        ],
+        'select_single_20' => [
+            'exclude' => 1,
+            'label' => 'select_single_20',
+            'description' => 'sortItems custom',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['Plum tree', 1],
+                    ['Walnut tree', 2],
+                    ['Apple tree', 3],
+                    ['Cherry tree', 4],
+                ],
+                'sortItems' => [
+                    'tx_styleguide' => 'TYPO3\CMS\Styleguide\UserFunctions\FormEngine\SelectItemSorter->sortReverseTitles'
+                ],
+                'size' => 4,
+            ],
+        ],
         'select_singlebox_1' => [
             'exclude' => 1,
             'label' => 'select_singlebox_1 description',
@@ -315,6 +402,26 @@ return [
                     ['divider', '--div--'],
                     ['foo 3', 3],
                     ['foo 4', 4],
+                ],
+            ],
+        ],
+        'select_singlebox_3' => [
+            'exclude' => 1,
+            'label' => 'select_singlebox_3',
+            'description' => 'itemGroups',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'items' => [
+                    ['item 1', 1, '', 'group1'],
+                    ['item 2', 2, '', 'group1'],
+                    ['item 3', 3, '', 'group3'],
+                    ['item 4', 3],
+                ],
+                'itemGroups' => [
+                    'group1' => 'Group 1 with items',
+                    'group2' => 'Group 2 with no items',
+                    'group3' => 'Group 3 with items',
                 ],
             ],
         ],
@@ -354,8 +461,8 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectCheckBox',
                 'items' => [
-                    ['foo 1', 1, '', 'optional description'],
-                    ['foo 2', 2, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg', 'LLL:EXT:styleguide/Resources/Private/Language/locallang.xlf:translatedHelpTextForSelectCheckBox3'],
+                    ['foo 1', 1, '', null, ['title' => 'optional title', 'description' => 'optional description']],
+                    ['foo 2', 2, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg', null, 'LLL:EXT:styleguide/Resources/Private/Language/locallang.xlf:translatedHelpTextForSelectCheckBox3'],
                     ['foo 3', 3, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg'],
                     ['foo 4', 4],
                 ],
@@ -410,6 +517,27 @@ return [
                     ['div 2', '--div--'],
                     ['foo 4', 4],
                     ['foo 5', 5],
+                ],
+            ],
+        ],
+        'select_checkbox_7' => [
+            'exclude' => 1,
+            'label' => 'select_checkbox_7',
+            'description' => 'itemGroups',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectCheckBox',
+                'items' => [
+                    ['foo 1', 1, '', 'group1'],
+                    ['foo 2', 2, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg', 'group1'],
+                    ['foo 3', 3, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg'],
+                    ['foo 4', 4],
+                    ['foo 5', 1, '', 'group3'],
+                ],
+                'itemGroups' => [
+                    'group1' => 'Group 1 with items',
+                    'group2' => 'Group 2 with no items',
+                    'group3' => 'Group 3 with items',
                 ],
             ],
         ],
@@ -502,6 +630,9 @@ return [
                 'fieldControl' => [
                     'editPopup' => [
                         'disabled' => false,
+                        'options' => [
+                            'windowOpenParameters' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
+                        ]
                     ],
                     'addRecord' => [
                         'disabled' => false,
@@ -559,6 +690,29 @@ return [
                     ['foo 3', 3],
                     ['bar', 4],
                 ]
+            ],
+        ],
+        'select_multiplesidebyside_10' => [
+            'exclude' => 1,
+            'label' => 'select_multiplesidebyside_1 autoSizeMax=5, size=3 description',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'items' => [
+                    ['item 1', 1, '', 'group1'],
+                    ['item 2', 2, '', 'group1'],
+                    ['item 3', 3, '', 'group3'],
+                    ['item 4', 3],
+                ],
+                'itemGroups' => [
+                    'group1' => 'Group 1 with items',
+                    'group2' => 'Group 2 with no items',
+                    'group3' => 'Group 3 with items',
+                ],
+                'size' => 3,
+                'autoSizeMax' => 5,
+                'multiple' => true,
             ],
         ],
         'select_tree_1' => [
@@ -962,15 +1116,18 @@ return [
                 --div--;renderType=selectSingle,
                     select_single_1, select_single_2, select_single_3, select_single_4, select_single_5,
                     select_single_7, select_single_12, select_single_8, select_single_13, select_single_10,
-                    select_single_11, select_single_14, select_single_15,
+                    select_single_11, select_single_14, select_single_15,select_single_16,select_single_17,
+                    select_single_18, select_single_19, select_single_20,
                 --div--;renderType=selectSingleBox,
-                    select_singlebox_1, select_singlebox_2,
+                    select_singlebox_1, select_singlebox_2,select_singlebox_3,
                 --div--;renderType=selectCheckBox,
-                    select_checkbox_1, select_checkbox_2, select_checkbox_3, select_checkbox_4, select_checkbox_5, select_checkbox_6,
+                    select_checkbox_1, select_checkbox_2, select_checkbox_3, select_checkbox_4, select_checkbox_5,
+                    select_checkbox_6, select_checkbox_7,
                 --div--;renderType=selectMultipleSideBySide,
                     select_multiplesidebyside_1, select_multiplesidebyside_2, select_multiplesidebyside_3,
                     select_multiplesidebyside_5, select_multiplesidebyside_6,
                     select_multiplesidebyside_7, select_multiplesidebyside_8, select_multiplesidebyside_9,
+                    select_multiplesidebyside_10,
                 --div--;renderType=selectTree,
                     select_tree_1, select_tree_2, select_tree_3, select_tree_4, select_tree_5, select_tree_6,
                 --div--;in flex,

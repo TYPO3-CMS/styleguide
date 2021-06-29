@@ -16,21 +16,24 @@ namespace TYPO3\CMS\Styleguide\TcaDataGenerator\FieldGenerator;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\FieldGeneratorInterface;
+use TYPO3\CMS\Styleguide\TcaDataGenerator\RecordFinder;
 
 /**
- * Generate data for type=text fields
+ * Generate data for type=group fields
  */
-class TypeTextWizardTable extends AbstractFieldGenerator implements FieldGeneratorInterface
+class TypeGroupDbAllowedSysFiles extends AbstractFieldGenerator implements FieldGeneratorInterface
 {
     /**
-     * @var array General match if type=text
+     * @var array Match if type=group and allowed=pages
      */
     protected $matchArray = [
         'fieldConfig' => [
             'config' => [
-                'type' => 'text',
-                'renderType' => 'textTable',
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'sys_file',
             ],
         ],
     ];
@@ -43,8 +46,17 @@ class TypeTextWizardTable extends AbstractFieldGenerator implements FieldGenerat
      */
     public function generate(array $data): string
     {
-        return 'row1 col1|row1 col2'
-            . chr(10) . 'row2 col1|row2 col2'
-            . chr(10) . 'row3 col1|row3 col2';
+        /** @var RecordFinder $recordFinder */
+        $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
+        $demoImages = $recordFinder->findDemoFileObjects();
+        $ret = 0;
+        $image = next($demoImages);
+        if ($image == null) {
+            $ret = reset($demoImages);
+        }
+        if ($image != null) {
+            $ret = $image->getUid();
+        }
+        return (string) $ret;
     }
 }

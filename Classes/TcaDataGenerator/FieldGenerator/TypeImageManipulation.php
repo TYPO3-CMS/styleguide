@@ -19,18 +19,17 @@ namespace TYPO3\CMS\Styleguide\TcaDataGenerator\FieldGenerator;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\FieldGeneratorInterface;
 
 /**
- * Generate data for type=text fields
+ * Generate data for type=none fields
  */
-class TypeTextWizardTable extends AbstractFieldGenerator implements FieldGeneratorInterface
+class TypeImageManipulation extends AbstractFieldGenerator implements FieldGeneratorInterface
 {
     /**
-     * @var array General match if type=text
+     * @var array General match if type=input
      */
     protected $matchArray = [
         'fieldConfig' => [
             'config' => [
-                'type' => 'text',
-                'renderType' => 'textTable',
+                'type' => 'imageManipulation',
             ],
         ],
     ];
@@ -43,8 +42,6 @@ class TypeTextWizardTable extends AbstractFieldGenerator implements FieldGenerat
      */
     public function generate(array $data): string
     {
-        return 'row1 col1|row1 col2'
-            . chr(10) . 'row2 col1|row2 col2'
-            . chr(10) . 'row3 col1|row3 col2';
+        return '';
     }
 }

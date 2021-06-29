@@ -54,9 +54,6 @@
 			<trans-unit id="debug" xml:space="preserve">
 				<source>Debug</source>
 			</trans-unit>
-			<trans-unit id="helpers" xml:space="preserve">
-				<source>Helpers</source>
-			</trans-unit>
 			<trans-unit id="tcaCreateButton" xml:space="preserve">
 				<source>Create styleguide page tree with data</source>
 			</trans-unit>
@@ -92,6 +89,12 @@
 			</trans-unit>
 			<trans-unit id="minimalTableTitleField" xml:space="preserve">
 				<source>Title field</source>
+			</trans-unit>
+			<trans-unit id="accordion" xml:space="preserve">
+				<source>Accordion</source>
+			</trans-unit>
+			<trans-unit id="pagination" xml:space="preserve">
+				<source>Pagination / Filter</source>
 			</trans-unit>
 		</body>
 	</file>
