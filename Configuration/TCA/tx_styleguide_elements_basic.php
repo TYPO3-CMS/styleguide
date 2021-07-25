@@ -626,14 +626,14 @@ return [
         'inputdatetime_11' => [
             'exclude' => 1,
             'label' => 'inputdatetime_11',
-            'description' => 'eval=datetime, default=0, range.lower=mktime (now)',
+            'description' => 'eval=datetime, default=0, range.lower=1627208536',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'eval' => 'datetime',
                 'default' => 0,
                 'range' => [
-                    'lower' => mktime(0, 0, 0, (int)date('m'), (int)date('d'), (int)date('Y'))
+                    'lower' => 1627208536
                 ]
             ],
         ],
