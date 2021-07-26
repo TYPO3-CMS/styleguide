@@ -16,8 +16,6 @@ declare(strict_types=1);
  */
 namespace TYPO3\CMS\Styleguide\Tests\Acceptance\Command;
 
-use TYPO3\CMS\Styleguide\Tests\Acceptance\Support\BackendTester;
-
 /**
  * Tests the styleguide backend module can be loaded
  */
@@ -26,9 +24,9 @@ class GenerateCommandCest
     protected string $command = '../../../../../bin/typo3 styleguide:generate ';
 
     /**
-     * @param BackendTester $I
+     * @param \TYPO3\CMS\Styleguide\Tests\Acceptance\Support\BackendTester $I
      */
-    public function runTcaCreateAndDelete(BackendTester $I): void
+    public function runTcaCreateAndDelete(\TYPO3\CMS\Styleguide\Tests\Acceptance\Support\BackendTester $I): void
     {
         $I->amGoingTo('create the TCA page tree');
         $I->runShellCommand($this->command . 'tca --create');
@@ -44,9 +42,9 @@ class GenerateCommandCest
     }
 
     /**
-     * @param BackendTester $I
+     * @param \TYPO3\CMS\Styleguide\Tests\Acceptance\Support\BackendTester $I
      */
-    public function runFrontendCreateAndDelete(BackendTester $I): void
+    public function runFrontendCreateAndDelete(\TYPO3\CMS\Styleguide\Tests\Acceptance\Support\BackendTester $I): void
     {
         $I->amGoingTo('create the frontend page tree');
         $I->runShellCommand($this->command . 'frontend --create');
@@ -62,11 +60,11 @@ class GenerateCommandCest
     }
 
     /**
-     * @param BackendTester $I
+     * @param \TYPO3\CMS\Styleguide\Tests\Acceptance\Support\BackendTester $I
      * @depends runFrontendCreateAndDelete
      * @depends runTcaCreateAndDelete
      */
-    public function runAllGeneratorsCreateAndDelete(BackendTester $I): void
+    public function runAllGeneratorsCreateAndDelete(\TYPO3\CMS\Styleguide\Tests\Acceptance\Support\BackendTester $I): void
     {
         $I->amGoingTo('create the all page trees');
         $I->runShellCommand($this->command . 'all --create');

@@ -62,7 +62,6 @@ class GeneratorFrontend extends AbstractGenerator
                     // Define page as styleguide frontend
                     'tx_styleguide_containsdemo' => 'tx_styleguide_frontend_root',
                     'is_siteroot' => 1,
-                    'extendToSubpages' => 1,
                     'hidden' => 1,
                 ],
             ],
@@ -137,7 +136,7 @@ class GeneratorFrontend extends AbstractGenerator
         $this->executeDataHandler($data);
 
         // Create site configuration for frontend
-        if (isset($GLOBALS['TYPO3_REQUEST'])) {
+        if (!empty($GLOBALS['TYPO3_REQUEST']->getUri()->getHost())) {
             $domain = $GLOBALS['TYPO3_REQUEST']->getUri()->getScheme() . '://' . $GLOBALS['TYPO3_REQUEST']->getUri()->getHost() . '/';
         } else {
             // On cli there is not TYPO3_REUQEST object, therefore use only slash

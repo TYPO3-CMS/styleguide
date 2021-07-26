@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
 namespace TYPO3\CMS\Styleguide\TcaDataGenerator;
 
 /*
@@ -26,7 +25,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\StringUtility;
 
 /**
- * Manage a page tree with all test/demo styleguide data
+ * Manage a page tree with all test / demo styleguide data
  */
 class Generator extends AbstractGenerator
 {
