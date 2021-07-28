@@ -518,7 +518,7 @@ class GeneratorFrontend extends AbstractGenerator
         $this->executeDataHandler($recordData);
     }
 
-    private function populateFeUserAndGroup()
+    private function populateFeUserAndGroup(): void
     {
         /** @var RecordFinder $recordFinder */
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
