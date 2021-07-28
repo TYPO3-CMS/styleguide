@@ -13,6 +13,7 @@ parameters:
   checkMissingIterableValueType: false
 
   ignoreErrors:
+    # @todo: These should probably be fixed in core?!
     -
       message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\Statement\\|int\\.$#"
       count: 4
