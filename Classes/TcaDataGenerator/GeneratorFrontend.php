@@ -136,7 +136,7 @@ class GeneratorFrontend extends AbstractGenerator
 
         // Create site configuration for frontend
         if (isset($GLOBALS['TYPO3_REQUEST']) && empty($basePath)) {
-            $port = $GLOBALS['TYPO3_REQUEST']->getUri()->getPort() ? ':' . $GLOBALS['TYPO3_REQUEST']->getUri()->getHost() : '';
+            $port = $GLOBALS['TYPO3_REQUEST']->getUri()->getPort() ? ':' . $GLOBALS['TYPO3_REQUEST']->getUri()->getPort() : '';
             $domain = $GLOBALS['TYPO3_REQUEST']->getUri()->getScheme() . '://' . $GLOBALS['TYPO3_REQUEST']->getUri()->getHost() . $port . '/';
         } else {
             // On cli there is no TYPO3_REUQEST object
