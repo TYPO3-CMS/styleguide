@@ -2,6 +2,7 @@ namespace: TYPO3\CMS\Styleguide\Tests\Acceptance\Support
 paths:
   tests: Acceptance
   data: .
+  path: .
   log: ../.Build/Web/typo3temp/var/tests/AcceptanceReports
   support: Acceptance/Support
 settings:
@@ -9,6 +10,9 @@ settings:
   memory_limit: 1024M
 modules:
   enabled:
+    - WebDriver:
+        browser: chrome
+        path: ''
     - Codeception\Module\Cli
 extensions:
   enabled:
