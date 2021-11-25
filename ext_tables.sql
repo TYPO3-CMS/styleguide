@@ -759,6 +759,33 @@ CREATE TABLE tx_styleguide_valuesdefault (
     select_2 text
 );
 
+CREATE TABLE tx_styleguide_default_as_readonly (
+    input text,
+    input_colorpicker text,
+    input_datetime text,
+    input_link text,
+    slug text,
+    checkbox int(11) DEFAULT '0' NOT NULL,
+    checkbox_toggle int(11) DEFAULT '0' NOT NULL,
+    checkbox_labeled_toggle int(11) DEFAULT '0' NOT NULL,
+    radio int(11) DEFAULT '0' NOT NULL,
+    group text,
+    group_file text,
+    group_folder text,
+    image_manipulation text,
+    language int(11) DEFAULT '0' NOT NULL,
+    text text,
+    text_rte text,
+    text_belayoutwizard text,
+    text_t3editor text,
+    text_table text,
+    select_single text,
+    select_single_box text,
+    select_checkbox text,
+    select_tree text,
+    select_multipleSideBySide text,
+);
+
 #
 # Table structure for table 'tx_styleguide_inline_parentnosoftdelete'
 #
