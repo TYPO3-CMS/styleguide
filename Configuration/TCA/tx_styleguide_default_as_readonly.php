@@ -207,8 +207,8 @@ return [
                 'type' => 'none',
                 'format' => 'date',
                 'format.' => [
-                    'strftime' => TRUE,
-                    'option' => '%x'
+                    'strftime' => true,
+                    'option' => '%x',
                 ],
             ],
         ],
