@@ -503,6 +503,30 @@ return [
                 ],
             ],
         ],
+
+        // type=inline
+        'inline' => [
+            'label' => 'inline',
+            'l10n_display' => 'defaultAsReadonly',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_styleguide_default_as_readonly',
+                'foreign_field' => 'parentid',
+                'foreign_table_field' => 'parenttable',
+            ],
+        ],
+
+        // type=passthrough
+        'parentid' => [
+            'config' => [
+                'type' => 'passthrough',
+            ]
+        ],
+        'parenttable' => [
+            'config' => [
+                'type' => 'passthrough',
+            ]
+        ],
     ],
 
     'types' => [
@@ -523,6 +547,8 @@ return [
                     --palette--;;text,
                 --div--;Select,
                     --palette--;;select,
+                --div--;Inline,
+                    --palette--;;inline,
                 --div--;Meta,
                     sys_language_uid, l10n_parent, l10n_source,
             ',
@@ -583,6 +609,10 @@ return [
                 --linebreak--,select_multiple_side_by_side_mm
             ',
             'label' => 'type=select'
+        ],
+        'inline' => [
+            'showitem' => 'inline',
+            'label' => 'type=inline'
         ],
     ]
 ];
