@@ -788,6 +788,7 @@ CREATE TABLE tx_styleguide_default_as_readonly (
     select_multiple_side_by_side text,
     select_multiple_side_by_side_mm text,
     inline text,
+    flex text,
     parentid int(11) DEFAULT '0' NOT NULL,
     parenttable text,
 );

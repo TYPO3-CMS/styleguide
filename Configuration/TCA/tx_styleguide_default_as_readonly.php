@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @todo Currently missing are examples for "inline", "flex" and "MM".
- *       Those will be added step by step, while fixing them in core.
- */
-
 return [
     'ctrl' => [
         'title' => 'Form engine - defaultAsReadonly',
@@ -516,6 +511,42 @@ return [
             ],
         ],
 
+        // type=flex
+        // @todo Flex does not implement readOnly at all
+        'flex' => [
+            'label' => 'flex',
+            'l10n_display' => 'defaultAsReadonly',
+            'config' => [
+                'type' => 'flex',
+                'ds' => [
+                    'default' => '
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Sheet Title</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <input>
+                        <TCEforms>
+                            <label>input</label>
+                            <config>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </input>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>
+                    '
+                ],
+            ],
+        ],
+
         // type=passthrough
         'parentid' => [
             'config' => [
@@ -549,6 +580,8 @@ return [
                     --palette--;;select,
                 --div--;Inline,
                     --palette--;;inline,
+                --div--;Flex,
+                    --palette--;;flex,
                 --div--;Meta,
                     sys_language_uid, l10n_parent, l10n_source,
             ',
@@ -613,6 +646,10 @@ return [
         'inline' => [
             'showitem' => 'inline',
             'label' => 'type=inline'
+        ],
+        'flex' => [
+            'showitem' => 'flex',
+            'label' => 'type=flex'
         ],
     ]
 ];
