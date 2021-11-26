@@ -227,6 +227,20 @@ return [
                 ],
             ],
         ],
+        'group_mm' => [
+            'label' => 'group_mm',
+            'l10n_display' => 'defaultAsReadonly',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'pages',
+                'MM' => 'tx_styleguide_group_mm',
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                ],
+            ],
+        ],
         'group_folder' => [
             'label' => 'group_folder',
             'l10n_display' => 'defaultAsReadonly',
@@ -280,6 +294,13 @@ return [
             'config' => [
                 'type' => 'category',
                 'relationship' => 'oneToMany'
+            ]
+        ],
+        'category_mm' => [
+            'label' => 'category_mm',
+            'l10n_display' => 'defaultAsReadonly',
+            'config' => [
+                'type' => 'category',
             ]
         ],
 
@@ -407,6 +428,27 @@ return [
                 ],
             ],
         ],
+        'select_tree_mm' => [
+            'label' => 'select_tree_mm',
+            'l10n_display' => 'defaultAsReadonly',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectTree',
+                'foreign_table' => 'pages',
+                'MM' => 'tx_styleguide_select_tree_mm',
+                'items' => [
+                    [ 'static from tca 4711', 4711 ],
+                    [ 'static from tca 4712', 4712 ],
+                ],
+                'treeConfig' => [
+                    'parentField' => 'pid',
+                    'appearance' => [
+                        'expandAll' => false,
+                        'showHeader' => true,
+                    ],
+                ],
+            ],
+        ],
         'select_multiple_side_by_side' => [
             'label' => 'select_multiple_side_by_side',
             'l10n_display' => 'defaultAsReadonly',
@@ -415,6 +457,33 @@ return [
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'pages',
                 'foreign_table_where' => 'AND {#pages}.{#sys_language_uid} = 0 ORDER BY pages.sorting LIMIT 10',
+                'items' => [
+                    [ 'static from tca 4711', 4711 ],
+                    [ 'static from tca 4712', 4712 ],
+                ],
+                'multiSelectFilterItems' => [
+                    ['', ''],
+                    ['4711', '4711'],
+                    ['4712', '4712'],
+                ],
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => false,
+                    ],
+                ],
+            ],
+        ],
+        'select_multiple_side_by_side_mm' => [
+            'label' => 'select_multiple_side_by_side_mm',
+            'l10n_display' => 'defaultAsReadonly',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_styleguide_staticdata',
+                'MM' => 'tx_styleguide_select_multiple_side_by_side_mm',
                 'items' => [
                     [ 'static from tca 4711', 4711 ],
                     [ 'static from tca 4712', 4712 ],
@@ -482,7 +551,7 @@ return [
             'label' => 'type=none'
         ],
         'group' => [
-            'showitem' => 'group,group_folder',
+            'showitem' => 'group,group_mm,--linebreak--,group_folder',
             'label' => 'type=group'
         ],
         'groupFile' => [
@@ -498,7 +567,7 @@ return [
             'label' => 'type=language'
         ],
         'category' => [
-            'showitem' => 'category_11,category_1n',
+            'showitem' => 'category_11,category_1n,category_mm',
             'label' => 'type=category'
         ],
         'text' => [
@@ -506,7 +575,13 @@ return [
             'labek' => 'type=text'
         ],
         'select' => [
-            'showitem' => 'select_single,select_single_box,--linebreak--,select_checkbox,select_tree,--linebreak--,select_multiple_side_by_side',
+            'showitem' => '
+                select_single,select_single_box,
+                --linebreak--,select_checkbox,
+                --linebreak--,select_tree,select_tree_mm,
+                --linebreak--,select_multiple_side_by_side,
+                --linebreak--,select_multiple_side_by_side_mm
+            ',
             'label' => 'type=select'
         ],
     ]

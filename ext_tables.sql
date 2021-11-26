@@ -770,6 +770,7 @@ CREATE TABLE tx_styleguide_default_as_readonly (
     checkbox_labeled_toggle int(11) DEFAULT '0' NOT NULL,
     radio int(11) DEFAULT '0' NOT NULL,
     group text,
+    group_mm text,
     group_file text,
     group_folder text,
     image_manipulation text,
@@ -783,7 +784,9 @@ CREATE TABLE tx_styleguide_default_as_readonly (
     select_single_box text,
     select_checkbox text,
     select_tree text,
+    select_tree_mm text,
     select_multiple_side_by_side text,
+    select_multiple_side_by_side_mm text,
 );
 
 #
