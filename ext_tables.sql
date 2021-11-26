@@ -783,7 +783,7 @@ CREATE TABLE tx_styleguide_default_as_readonly (
     select_single_box text,
     select_checkbox text,
     select_tree text,
-    select_multipleSideBySide text,
+    select_multiple_side_by_side text,
 );
 
 #

@@ -407,8 +407,8 @@ return [
                 ],
             ],
         ],
-        'select_multipleSideBySide' => [
-            'label' => 'select_multipleSideBySide',
+        'select_multiple_side_by_side' => [
+            'label' => 'select_multiple_side_by_side',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'select',
@@ -506,7 +506,7 @@ return [
             'labek' => 'type=text'
         ],
         'select' => [
-            'showitem' => 'select_single,select_single_box,--linebreak--,select_checkbox,select_tree,--linebreak--,select_multipleSideBySide',
+            'showitem' => 'select_single,select_single_box,--linebreak--,select_checkbox,select_tree,--linebreak--,select_multiple_side_by_side',
             'label' => 'type=select'
         ],
     ]
