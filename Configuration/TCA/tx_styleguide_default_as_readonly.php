@@ -50,8 +50,8 @@ return [
                         0
                     ]
                 ],
-                'foreign_table' => 'tx_styleguide_elements_select',
-                'foreign_table_where' => 'AND {#tx_styleguide_elements_select}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_select}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_styleguide_default_as_readonly',
+                'foreign_table_where' => 'AND {#tx_styleguide_default_as_readonly}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_default_as_readonly}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0
             ]
         ],
@@ -68,8 +68,8 @@ return [
                         0
                     ]
                 ],
-                'foreign_table' => 'tx_styleguide_elements_select',
-                'foreign_table_where' => 'AND {#tx_styleguide_elements_select}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_select}.{#uid}!=###THIS_UID###',
+                'foreign_table' => 'tx_styleguide_default_as_readonly',
+                'foreign_table_where' => 'AND {#tx_styleguide_default_as_readonly}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_default_as_readonly}.{#uid}!=###THIS_UID###',
                 'default' => 0
             ]
         ],
