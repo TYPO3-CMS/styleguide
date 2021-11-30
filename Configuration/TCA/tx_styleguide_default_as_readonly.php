@@ -83,6 +83,7 @@ return [
         // type=input
         'input' => [
             'label' => 'input',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'input',
@@ -90,6 +91,7 @@ return [
         ],
         'input_colorpicker' => [
             'label' => 'input_colorpicker',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'input',
@@ -98,6 +100,7 @@ return [
         ],
         'input_datetime' => [
             'label' => 'input_datetime',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'input',
@@ -107,6 +110,7 @@ return [
         ],
         'input_link' => [
             'label' => 'input_link',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'input',
@@ -117,6 +121,7 @@ return [
         // type=slug
         'slug' => [
             'label' => 'slug',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'slug',
@@ -131,6 +136,7 @@ return [
         // type=check
         'checkbox' => [
             'label' => 'checkbox',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
@@ -142,6 +148,7 @@ return [
         ],
         'checkbox_toggle' => [
             'label' => 'checkbox_toggle',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
@@ -161,6 +168,7 @@ return [
         ],
         'checkbox_labeled_toggle' => [
             'label' => 'checkbox_labeled_toggle',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
@@ -184,6 +192,7 @@ return [
         // type=radio
         'radio' => [
             'label' => 'radio',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'radio',
@@ -197,6 +206,7 @@ return [
         // type=none
         'none' => [
             'label' => 'none',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'none',
@@ -211,6 +221,7 @@ return [
         // type=group
         'group' => [
             'label' => 'group',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'group',
@@ -224,6 +235,7 @@ return [
         ],
         'group_mm' => [
             'label' => 'group_mm',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'group',
@@ -238,6 +250,7 @@ return [
         ],
         'group_folder' => [
             'label' => 'group_folder',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'group',
@@ -246,6 +259,7 @@ return [
         ],
         'group_file' => [
             'label' => 'group_file',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'group',
@@ -258,6 +272,7 @@ return [
         // type=imageManipulation
         'image_manipulation' => [
             'label' => 'image_manipulation',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'imageManipulation',
@@ -268,6 +283,7 @@ return [
         // type=language
         'language' => [
             'label' => 'language',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'language'
@@ -277,6 +293,7 @@ return [
         // type=category
         'category_11' => [
             'label' => 'category_11',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'category',
@@ -285,6 +302,7 @@ return [
         ],
         'category_1n' => [
             'label' => 'category_1n',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'category',
@@ -293,6 +311,7 @@ return [
         ],
         'category_mm' => [
             'label' => 'category_mm',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'category',
@@ -302,6 +321,7 @@ return [
         // type=text
         'text' => [
             'label' => 'text',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'text',
@@ -309,6 +329,7 @@ return [
         ],
         'text_rte' => [
             'label' => 'text_table',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'text',
@@ -319,6 +340,7 @@ return [
         ],
         'text_belayoutwizard' => [
             'label' => 'text_belayoutwizard',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'text',
@@ -327,6 +349,7 @@ return [
         ],
         'text_t3editor' => [
             'label' => 'text_t3editor',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'text',
@@ -337,6 +360,7 @@ return [
         ],
         'text_table' => [
             'label' => 'text_table',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'text',
@@ -351,6 +375,7 @@ return [
         // type=select
         'select_single' => [
             'label' => 'select_single',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'select',
@@ -368,6 +393,7 @@ return [
         ],
         'select_single_box' => [
             'label' => 'select_single_box',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'select',
@@ -385,6 +411,7 @@ return [
         ],
         'select_checkbox' => [
             'label' => 'select_checkbox',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'select',
@@ -405,6 +432,7 @@ return [
         ],
         'select_tree' => [
             'label' => 'select_tree',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'select',
@@ -425,6 +453,7 @@ return [
         ],
         'select_tree_mm' => [
             'label' => 'select_tree_mm',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'select',
@@ -446,6 +475,7 @@ return [
         ],
         'select_multiple_side_by_side' => [
             'label' => 'select_multiple_side_by_side',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'select',
@@ -473,6 +503,7 @@ return [
         ],
         'select_multiple_side_by_side_mm' => [
             'label' => 'select_multiple_side_by_side_mm',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'select',
@@ -502,10 +533,11 @@ return [
         // type=inline
         'inline' => [
             'label' => 'inline',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'inline',
-                'foreign_table' => 'tx_styleguide_default_as_readonly',
+                'foreign_table' => 'tx_styleguide_default_as_readonly_inline_child',
                 'foreign_field' => 'parentid',
                 'foreign_table_field' => 'parenttable',
             ],
@@ -515,6 +547,7 @@ return [
         // @todo Flex does not implement readOnly at all
         'flex' => [
             'label' => 'flex',
+            'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'flex',
@@ -545,18 +578,6 @@ return [
                     '
                 ],
             ],
-        ],
-
-        // type=passthrough
-        'parentid' => [
-            'config' => [
-                'type' => 'passthrough',
-            ]
-        ],
-        'parenttable' => [
-            'config' => [
-                'type' => 'passthrough',
-            ]
         ],
     ],
 

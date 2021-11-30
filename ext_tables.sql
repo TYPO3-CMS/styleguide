@@ -788,9 +788,13 @@ CREATE TABLE tx_styleguide_default_as_readonly (
     select_multiple_side_by_side text,
     select_multiple_side_by_side_mm text,
     inline text,
-    flex text,
+    flex text
+);
+
+CREATE TABLE tx_styleguide_default_as_readonly_inline_child (
     parentid int(11) DEFAULT '0' NOT NULL,
     parenttable text,
+    input text,
 );
 
 #
