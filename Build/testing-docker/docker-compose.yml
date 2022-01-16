@@ -39,7 +39,20 @@ services:
     environment:
       TYPO3_PATH_ROOT: ${ROOT_DIR}/.Build/Web/typo3temp/var/tests/acceptance
       TYPO3_PATH_APP: ${ROOT_DIR}/.Build/Web/typo3temp/var/tests/acceptance
-    command: php -dxdebug.mode=off -S web:8000 -t ${ROOT_DIR}/.Build/Web
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: >
+      /bin/sh -c "
+        if [ ${PHP_XDEBUG_ON} -eq 0 ]; then
+          XDEBUG_MODE=\"off\" \
+          php -S web:8000 -t ${ROOT_DIR}/.Build/Web
+        else
+          XDEBUG_MODE=\"debug,develop\" \
+          XDEBUG_TRIGGER=\"foo\" \
+          XDEBUG_CONFIG=\"client_port=${PHP_XDEBUG_PORT} client_host=host.docker.internal\" \
+          php -S web:8000 -t ${ROOT_DIR}/.Build/Web
+        fi
+      "
 
   acceptance_backend_mariadb10:
     image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
@@ -59,6 +72,8 @@ services:
     - /etc/passwd:/etc/passwd:ro
     - /etc/group:/etc/group:ro
     working_dir: ${ROOT_DIR}/.Build
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command: >
       /bin/sh -c "
         if [ ${SCRIPT_VERBOSE} -eq 1 ]; then
@@ -70,8 +85,17 @@ services:
         done;
         echo Database is up;
         php -v | grep '^PHP';
-        mkdir -p Web/typo3temp/var/tests/ \
-          && php -dxdebug.mode=off vendor/codeception/codeception/codecept run Backend -d -c Web/typo3conf/ext/styleguide/Tests/codeception.yml ${TEST_FILE}
+        mkdir -p Web/typo3temp/var/tests/
+        COMMAND=\"vendor/codeception/codeception/codecept run Backend -d -c Web/typo3conf/ext/styleguide/Tests/codeception.yml ${TEST_FILE}\"
+        if [ ${PHP_XDEBUG_ON} -eq 0 ]; then
+          XDEBUG_MODE=\"off\" \
+          $${COMMAND};
+        else
+          XDEBUG_MODE=\"debug,develop\" \
+          XDEBUG_TRIGGER=\"foo\" \
+          XDEBUG_CONFIG=\"client_port=${PHP_XDEBUG_PORT} client_host=host.docker.internal\" \
+          $${COMMAND};
+        fi
       "
   cgl:
     image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
