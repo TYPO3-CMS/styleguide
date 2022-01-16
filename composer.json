@@ -31,7 +31,12 @@
   },
   "config": {
     "vendor-dir": ".Build/vendor",
-    "bin-dir": ".Build/bin"
+    "bin-dir": ".Build/bin",
+    "allow-plugins": {
+      "typo3/class-alias-loader": true,
+      "typo3/cms-composer-installers": true,
+      "composer/package-versions-deprecated": true
+    }
   },
   "require-dev": {
     "typo3/cms-core": "10.*.*@dev",
