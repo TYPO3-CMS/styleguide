@@ -132,8 +132,8 @@ abstract class AbstractGenerator
                     'fallbacks' => '',
                     'flag' => 'es',
                     'languageId' => $styleguideSysLanguages[3],
-                ]
-            ]
+                ],
+            ],
         ];
         $siteConfiguration->write($siteIdentifier, $configuration);
     }
