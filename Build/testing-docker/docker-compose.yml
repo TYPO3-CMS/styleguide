@@ -122,7 +122,7 @@ services:
             .Build/bin/php-cs-fixer fix \
               -v \
               ${CGLCHECK_DRY_RUN} \
-              --config=.Build/vendor/typo3/coding-standards/templates/extension_php_cs.dist \
+              --config=.Build/vendor/typo3/coding-standards/templates/extension_php-cs-fixer.dist.php  \
               --using-cache=no .
         else
           XDEBUG_MODE=\"debug,develop\" \
@@ -132,7 +132,7 @@ services:
           .Build/bin/php-cs-fixer fix \
             -v \
             ${CGLCHECK_DRY_RUN} \
-            --config=.Build/vendor/typo3/coding-standards/templates/extension_php_cs.dist \
+            --config=.Build/vendor/typo3/coding-standards/templates/extension_php-cs-fixer.dist.php  \
             --using-cache=no .
         fi
       "
