@@ -15,11 +15,6 @@ parameters:
   checkMissingIterableValueType: false
 
   ignoreErrors:
-    # @todo: These should probably be fixed in core?!
-    -
-      message: "#^Cannot call method fetchColumn\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int.$#"
-      count: 2
-      path: %currentWorkingDirectory%/Tests/Functional/TcaDataGenerator/GeneratorTest.php
     # @todo remove this after 11.5.6 release
     -
       message: "#^Parameter \\#1 \\.\\.\\.\\$where of method TYPO3\\\\CMS\\\\Core\\\\Database\\\\Query\\\\QueryBuilder\\:\\:orWhere\\(\\) expects array<int, string>|Doctrine\\\\DBAL\\\\Query\\\\Expression\\\\CompositeExpression, string given\\.$#"
