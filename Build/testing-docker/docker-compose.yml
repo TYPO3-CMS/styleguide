@@ -36,8 +36,6 @@ services:
     stop_grace_period: 1s
     volumes:
     - ${ROOT_DIR}:${ROOT_DIR}
-    - /etc/passwd:/etc/passwd:ro
-    - /etc/group:/etc/group:ro
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
@@ -70,9 +68,6 @@ services:
       typo3DatabaseHost: mariadb10
     volumes:
     - ${ROOT_DIR}:${ROOT_DIR}
-    - ${HOST_HOME}:${HOST_HOME}
-    - /etc/passwd:/etc/passwd:ro
-    - /etc/group:/etc/group:ro
     working_dir: ${ROOT_DIR}/.Build
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -105,9 +100,6 @@ services:
     user: "${HOST_UID}"
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
-      - ${HOST_HOME}:${HOST_HOME}
-      - /etc/passwd:/etc/passwd:ro
-      - /etc/group:/etc/group:ro
     working_dir: ${ROOT_DIR}
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -142,17 +134,16 @@ services:
     user: "${HOST_UID}"
     volumes:
     - ${ROOT_DIR}:${ROOT_DIR}
-    - ${HOST_HOME}:${HOST_HOME}
-    - /etc/passwd:/etc/passwd:ro
-    - /etc/group:/etc/group:ro
     working_dir: ${ROOT_DIR}
+    environment:
+      COMPOSER_CACHE_DIR: ".Build/.cache/composer"
     command: >
       /bin/sh -c "
         if [ ${SCRIPT_VERBOSE} -eq 1 ]; then
           set -x
         fi
         php -v | grep '^PHP';
-        COMPOSER_HOME=${ROOT_DIR}/.Build/.composer composer update --no-progress --no-interaction;
+        composer update --no-progress --no-interaction;
       "
 
   composer_validate:
@@ -160,10 +151,9 @@ services:
     user: "${HOST_UID}"
     volumes:
     - ${ROOT_DIR}:${ROOT_DIR}
-    - ${HOST_HOME}:${HOST_HOME}
-    - /etc/passwd:/etc/passwd:ro
-    - /etc/group:/etc/group:ro
     working_dir: ${ROOT_DIR}
+    environment:
+      COMPOSER_CACHE_DIR: ".Build/.cache/composer"
     command: >
       /bin/sh -c "
         if [ ${SCRIPT_VERBOSE} -eq 1 ]; then
@@ -180,9 +170,6 @@ services:
     - mariadb10
     volumes:
     - ${ROOT_DIR}:${ROOT_DIR}
-    - ${HOST_HOME}:${HOST_HOME}
-    - /etc/passwd:/etc/passwd:ro
-    - /etc/group:/etc/group:ro
     environment:
       typo3DatabaseName: func_test
       typo3DatabaseUsername: root
@@ -220,9 +207,6 @@ services:
     - mssql2019latest
     volumes:
     - ${ROOT_DIR}:${ROOT_DIR}
-    - ${HOST_HOME}:${HOST_HOME}
-    - /etc/passwd:/etc/passwd:ro
-    - /etc/group:/etc/group:ro
     environment:
       typo3DatabaseDriver: sqlsrv
       typo3DatabaseName: func
@@ -264,9 +248,6 @@ services:
     - postgres10
     volumes:
     - ${ROOT_DIR}:${ROOT_DIR}
-    - ${HOST_HOME}:${HOST_HOME}
-    - /etc/passwd:/etc/passwd:ro
-    - /etc/group:/etc/group:ro
     environment:
       typo3DatabaseDriver: pdo_pgsql
       typo3DatabaseName: bamboo
@@ -303,9 +284,6 @@ services:
     user: "${HOST_UID}"
     volumes:
     - ${ROOT_DIR}:${ROOT_DIR}
-    - ${HOST_HOME}:${HOST_HOME}
-    - /etc/passwd:/etc/passwd:ro
-    - /etc/group:/etc/group:ro
     tmpfs:
       - ${ROOT_DIR}/.Build/Web/typo3temp/var/tests/functional-sqlite-dbs/:rw,noexec,nosuid,uid=${HOST_UID}
     environment:
@@ -335,8 +313,6 @@ services:
     user: "${HOST_UID}"
     volumes:
     - ${ROOT_DIR}:${ROOT_DIR}
-    - /etc/passwd:/etc/passwd:ro
-    - /etc/group:/etc/group:ro
     working_dir: ${ROOT_DIR}
     command: >
       /bin/sh -c "
@@ -352,15 +328,13 @@ services:
     user: "${HOST_UID}"
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
-      - ${HOST_HOME}:${HOST_HOME}
-      - /etc/passwd:/etc/passwd:ro
-      - /etc/group:/etc/group:ro
     working_dir: ${ROOT_DIR}
     command: >
       /bin/sh -c "
         if [ ${SCRIPT_VERBOSE} -eq 1 ]; then
           set -x
         fi
+        mkdir -p .Build/.cache
         php -v | grep '^PHP';
         php -dxdebug.mode=off .Build/bin/phpstan analyze -c Build/phpstan.neon
       "
@@ -370,15 +344,13 @@ services:
     user: "${HOST_UID}"
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
-      - ${HOST_HOME}:${HOST_HOME}
-      - /etc/passwd:/etc/passwd:ro
-      - /etc/group:/etc/group:ro
     working_dir: ${ROOT_DIR}
     command: >
       /bin/sh -c "
         if [ ${SCRIPT_VERBOSE} -eq 1 ]; then
           set -x
         fi
+        mkdir -p .Build/.cache
         php -v | grep '^PHP';
         php -dxdebug.mode=off .Build/bin/phpstan analyze -c Build/phpstan.neon --generate-baseline=Build/phpstan-baseline.neon
       "
@@ -388,9 +360,6 @@ services:
     user: "${HOST_UID}"
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
-      - ${HOST_HOME}:${HOST_HOME}
-      - /etc/passwd:/etc/passwd:ro
-      - /etc/group:/etc/group:ro
     working_dir: ${ROOT_DIR}/.Build
     extra_hosts:
       - "host.docker.internal:host-gateway"
