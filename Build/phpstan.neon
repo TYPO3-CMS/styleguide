@@ -1,3 +1,6 @@
+includes:
+  - phpstan-baseline.neon
+
 parameters:
   level: 6
 
@@ -9,15 +12,3 @@ parameters:
     - %currentWorkingDirectory%/Tests/Acceptance/Support/BackendTester.php
     - %currentWorkingDirectory%/Tests/Acceptance/Backend/ModuleCest.php
     - %currentWorkingDirectory%/Tests/Acceptance/Backend/GenerateCommandCest.php
-
-  # @todo Disable vague typehints which comes with level 6. Remove this after typehints have been fixed.
-  #       See: https://phpstan.org/config-reference#vague-typehints
-  checkMissingIterableValueType: false
-
-  ignoreErrors:
-    # @todo remove this after 11.5.6 release
-    -
-      message: "#^Parameter \\#1 \\.\\.\\.\\$where of method TYPO3\\\\CMS\\\\Core\\\\Database\\\\Query\\\\QueryBuilder\\:\\:orWhere\\(\\) expects array<int, string>|Doctrine\\\\DBAL\\\\Query\\\\Expression\\\\CompositeExpression, string given\\.$#"
-      count: 5
-      path: %currentWorkingDirectory%/Classes/TcaDataGenerator/RecordFinder.php
-
