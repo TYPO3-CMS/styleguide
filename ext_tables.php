@@ -24,7 +24,8 @@ $iconRegistry->registerIcon(
     'module-styleguide',
     TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
     [ 'source' => 'EXT:styleguide/Resources/Public/Icons/module.svg' ]
-);// Register styleguide svg for use within backend module
+);
+// Register styleguide svg for use within backend module
 $iconRegistry->registerIcon(
     'tcarecords-tx_styleguide_forms-default',
     TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
