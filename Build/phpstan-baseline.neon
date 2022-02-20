@@ -711,21 +711,6 @@ parameters:
 			path: ../Classes/TcaDataGenerator/RecordFinder.php
 
 		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$predicates of method TYPO3\\\\CMS\\\\Core\\\\Database\\\\Query\\\\QueryBuilder\\:\\:where\\(\\) expects array\\<int, mixed\\>\\|Doctrine\\\\DBAL\\\\Query\\\\Expression\\\\CompositeExpression, string given\\.$#"
-			count: 3
-			path: ../Classes/TcaDataGenerator/RecordFinder.php
-
-		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$where of method TYPO3\\\\CMS\\\\Core\\\\Database\\\\Query\\\\QueryBuilder\\:\\:andWhere\\(\\) expects array\\<int, string\\>\\|Doctrine\\\\DBAL\\\\Query\\\\Expression\\\\CompositeExpression, string given\\.$#"
-			count: 1
-			path: ../Classes/TcaDataGenerator/RecordFinder.php
-
-		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$where of method TYPO3\\\\CMS\\\\Core\\\\Database\\\\Query\\\\QueryBuilder\\:\\:orWhere\\(\\) expects array\\<int, string\\>\\|Doctrine\\\\DBAL\\\\Query\\\\Expression\\\\CompositeExpression, string given\\.$#"
-			count: 1
-			path: ../Classes/TcaDataGenerator/RecordFinder.php
-
-		-
 			message: "#^Method TYPO3\\\\CMS\\\\Styleguide\\\\TcaDataGenerator\\\\TableHandler\\\\AbstractTableHandler\\:\\:copyRecordToLanguage\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../Classes/TcaDataGenerator/TableHandler/AbstractTableHandler.php
