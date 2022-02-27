@@ -4,31 +4,56 @@
 # TYPO3 core test runner based on docker and docker-compose.
 #
 
-# Function to write a .env file in Build/testing-docker/local
+# Function to write a .env file in Build/testing-docker
 # This is read by docker-compose and vars defined here are
-# used in Build/testing-docker/local/docker-compose.yml
+# used in Build/testing-docker/docker-compose.yml
 setUpDockerComposeDotEnv() {
     # Delete possibly existing local .env file if exists
     [ -e .env ] && rm .env
     # Set up a new .env file for docker-compose
-    echo "COMPOSE_PROJECT_NAME=local" >> .env
-    # To prevent access rights of files created by the testing, the docker image later
-    # runs with the same user that is currently executing the script. docker-compose can't
-    # use $UID directly itself since it is a shell variable and not an env variable, so
-    # we have to set it explicitly here.
-    echo "HOST_UID=`id -u`" >> .env
-    # Your local home directory for composer and npm caching
-    echo "HOST_HOME=${HOME}" >> .env
-    # Your local user
-    echo "ROOT_DIR"=${ROOT_DIR} >> .env
-    echo "HOST_USER=${USER}" >> .env
-    echo "TEST_FILE=${TEST_FILE}" >> .env
-    echo "PHP_XDEBUG_ON=${PHP_XDEBUG_ON}" >> .env
-    echo "PHP_XDEBUG_PORT=${PHP_XDEBUG_PORT}" >> .env
-    echo "DOCKER_PHP_IMAGE=${DOCKER_PHP_IMAGE}" >> .env
-    echo "EXTRA_TEST_OPTIONS=${EXTRA_TEST_OPTIONS}" >> .env
-    echo "SCRIPT_VERBOSE=${SCRIPT_VERBOSE}" >> .env
-    echo "CGLCHECK_DRY_RUN=${CGLCHECK_DRY_RUN}" >> .env
+    {
+        echo "COMPOSE_PROJECT_NAME=local"
+        # To prevent access rights of files created by the testing, the docker image later
+        # runs with the same user that is currently executing the script. docker-compose can't
+        # use $UID directly itself since it is a shell variable and not an env variable, so
+        # we have to set it explicitly here.
+        echo "HOST_UID=`id -u`"
+        # Your local user
+        echo "ROOT_DIR=${ROOT_DIR}"
+        echo "HOST_USER=${USER}"
+        echo "TEST_FILE=${TEST_FILE}"
+        echo "PHP_XDEBUG_ON=${PHP_XDEBUG_ON}"
+        echo "PHP_XDEBUG_PORT=${PHP_XDEBUG_PORT}"
+        echo "DOCKER_PHP_IMAGE=${DOCKER_PHP_IMAGE}"
+        echo "EXTRA_TEST_OPTIONS=${EXTRA_TEST_OPTIONS}"
+        echo "SCRIPT_VERBOSE=${SCRIPT_VERBOSE}"
+        echo "CGLCHECK_DRY_RUN=${CGLCHECK_DRY_RUN}"
+        echo "DATABASE_DRIVER=${DATABASE_DRIVER}"
+    } > .env
+}
+
+# Options -a and -d depend on each other. The function
+# validates input combinations and sets defaults.
+handleDbmsAndDriverOptions() {
+    case ${DBMS} in
+        mysql|mariadb)
+            [ -z "${DATABASE_DRIVER}" ] && DATABASE_DRIVER="mysqli"
+            if [ "${DATABASE_DRIVER}" != "mysqli" ] && [ "${DATABASE_DRIVER}" != "pdo_mysql" ]; then
+                echo "Invalid option -a ${DATABASE_DRIVER} with -d ${DBMS}" >&2
+                echo >&2
+                echo "call \".Build/Scripts/runTests.sh -h\" to display help and valid options" >&2
+                exit 1
+            fi
+            ;;
+        postgres|sqlite)
+            if [ -n "${DATABASE_DRIVER}" ]; then
+                echo "Invalid option -a ${DATABASE_DRIVER} with -d ${DBMS}" >&2
+                echo >&2
+                echo "call \".Build/Scripts/runTests.sh -h\" to display help and valid options" >&2
+                exit 1
+            fi
+            ;;
+    esac
 }
 
 # Load help text into $HELP
@@ -36,36 +61,47 @@ read -r -d '' HELP <<EOF
 styleguide test runner. Execute unit test suite and some other details.
 Also used by travis-ci for test execution.
 
-Successfully tested with docker version 18.06.1-ce and docker-compose 1.21.2.
+Recommended docker version is >=20.10 for xdebug break pointing to work reliably, and
+a recent docker-compose (tested >=1.21.2) is needed.
 
 Usage: $0 [options] [file]
 
-No arguments: Run all unit tests with PHP 7.4
+No arguments: Run all unit tests with PHP 8.1
 
 Options:
     -s <...>
         Specifies which test suite to run
             - acceptance: backend acceptance tests
             - cgl: cgl test and fix all php files
-            - composerInstall: "composer install", handy if host has no PHP, uses composer cache of users home
+            - composerUpdate: "composer update", handy if host has no PHP
             - composerValidate: "composer validate"
             - functional: functional tests
             - lint: PHP linting
             - phpstan: phpstan analyze
+            - phpstanGenerateBaseline: regenerate phpstan baseline, handy after phpstan updates
             - unit (default): PHP unit tests
 
-    -d <mariadb|mssql|postgres|sqlite>
-        Only with -s functional
+    -a <mysqli|pdo_mysql>
+        Only with -s acceptance,functional
+        Specifies to use another driver, following combinations are available:
+            - mysql
+                - mysqli (default)
+                - pdo_mysql
+            - mariadb
+                - mysqli (default)
+                - pdo_mysql
+
+    -d <mariadb|mysql|postgres|sqlite>
+        Only with -s acceptance,functional
         Specifies on which DBMS tests are performed
             - mariadb (default): use mariadb
-            - mssql: use mssql microsoft sql server
+            - mysql: use mysql
             - postgres: use postgres
-            - sqlite: use sqlite
+            - sqlite: use sqlite (not for -s acceptance)
 
-    -p <7.4|8.0>
+    -p <8.1>
         Specifies the PHP minor version to be used
-            - 7.4 (default): use PHP 7.4
-            - 8.0: use PHP 8.0
+            - 8.1 (default): use PHP 8.1
 
     -e "<phpunit or codeception options>"
         Only with -s acceptance|functional|unit
@@ -75,7 +111,7 @@ Options:
         named "canRetrieveValueWithGP"
 
     -x
-        Only with -s functional|unit
+        Only with -s functional|unit|acceptance
         Send information to host instance for test or system under test break points. This is especially
         useful if a local PhpStorm instance is listening on default xdebug port 9003. A different port
         can be selected with -y
@@ -101,7 +137,7 @@ Options:
         Show this help.
 
 Examples:
-    # Run unit tests using PHP 7.4
+    # Run unit tests using PHP 8.1
     ./Build/Scripts/runTests.sh
 EOF
 
@@ -120,15 +156,21 @@ cd "$THIS_SCRIPT_DIR" || exit 1
 cd ../testing-docker || exit 1
 
 # Option defaults
-ROOT_DIR=`readlink -f ${PWD}/../../`
+if ! command -v realpath &> /dev/null; then
+  echo "This script works best with realpath installed" >&2
+  ROOT_DIR="${PWD}/../../"
+else
+  ROOT_DIR=`realpath ${PWD}/../../`
+fi
 TEST_SUITE="unit"
 DBMS="mariadb"
-PHP_VERSION="7.4"
+PHP_VERSION="8.1"
 PHP_XDEBUG_ON=0
 PHP_XDEBUG_PORT=9003
 EXTRA_TEST_OPTIONS=""
 SCRIPT_VERBOSE=0
 CGLCHECK_DRY_RUN=""
+DATABASE_DRIVER=""
 
 # Option parsing
 # Reset in case getopts has been used previously in the shell
@@ -136,16 +178,22 @@ OPTIND=1
 # Array for invalid options
 INVALID_OPTIONS=();
 # Simple option parsing based on getopts (! not getopt)
-while getopts ":s:d:p:e:xy:nhuv" OPT; do
+while getopts ":s:a:d:p:e:xy:nhuv" OPT; do
     case ${OPT} in
         s)
             TEST_SUITE=${OPTARG}
+            ;;
+        a)
+            DATABASE_DRIVER=${OPTARG}
             ;;
         d)
             DBMS=${OPTARG}
             ;;
         p)
             PHP_VERSION=${OPTARG}
+            if ! [[ ${PHP_VERSION} =~ ^(8.1)$ ]]; then
+                INVALID_OPTIONS+=("p ${OPTARG}")
+            fi
             ;;
         e)
             EXTRA_TEST_OPTIONS=${OPTARG}
@@ -194,20 +242,9 @@ DOCKER_PHP_IMAGE=`echo "php${PHP_VERSION}" | sed -e 's/\.//'`
 
 # Set $1 to first mass argument, this is the optional test file or test directory to execute
 shift $((OPTIND - 1))
+TEST_FILE=${1}
 if [ -n "${1}" ]; then
     TEST_FILE="Web/typo3conf/ext/styleguide/${1}"
-else
-    case ${TEST_SUITE} in
-        acceptance)
-            TEST_FILE="Web/typo3conf/ext/styleguide/Tests/Acceptance"
-            ;;
-        functional)
-            TEST_FILE="Web/typo3conf/ext/styleguide/Tests/Functional"
-            ;;
-        unit)
-            TEST_FILE="Web/typo3conf/ext/styleguide/Tests/Unit"
-            ;;
-    esac
 fi
 
 if [ ${SCRIPT_VERBOSE} -eq 1 ]; then
@@ -217,24 +254,44 @@ fi
 # Suite execution
 case ${TEST_SUITE} in
     acceptance)
+        handleDbmsAndDriverOptions
         setUpDockerComposeDotEnv
-        docker-compose run acceptance_backend_mariadb10
-        SUITE_EXIT_CODE=$?
+        case ${DBMS} in
+            mysql)
+                echo "Using driver: ${DATABASE_DRIVER}"
+                docker-compose run acceptance_backend_mysql80
+                SUITE_EXIT_CODE=$?
+                ;;
+            mariadb)
+                echo "Using driver: ${DATABASE_DRIVER}"
+                docker-compose run acceptance_backend_mariadb10
+                SUITE_EXIT_CODE=$?
+                ;;
+            postgres)
+                docker-compose run acceptance_backend_postgres10
+                SUITE_EXIT_CODE=$?
+                ;;
+            *)
+                echo "Acceptance tests don't run with DBMS ${DBMS}" >&2
+                echo >&2
+                echo "call \".Build/Scripts/runTests.sh -h\" to display help and valid options" >&2
+                exit 1
+        esac
         docker-compose down
         ;;
     cgl)
         # Active dry-run for cgl needs not "-n" but specific options
         if [[ ! -z ${CGLCHECK_DRY_RUN} ]]; then
-            CGLCHECK_DRY_RUN="--dry-run --diff --diff-format udiff"
+            CGLCHECK_DRY_RUN="--dry-run --diff"
         fi
         setUpDockerComposeDotEnv
         docker-compose run cgl
         SUITE_EXIT_CODE=$?
         docker-compose down
         ;;
-    composerInstall)
+    composerUpdate)
         setUpDockerComposeDotEnv
-        docker-compose run composer_install
+        docker-compose run composer_update
         SUITE_EXIT_CODE=$?
         docker-compose down
         ;;
@@ -245,14 +302,17 @@ case ${TEST_SUITE} in
         docker-compose down
         ;;
     functional)
+        handleDbmsAndDriverOptions
         setUpDockerComposeDotEnv
         case ${DBMS} in
             mariadb)
+                echo "Using driver: ${DATABASE_DRIVER}"
                 docker-compose run functional_mariadb10
                 SUITE_EXIT_CODE=$?
                 ;;
-            mssql)
-                docker-compose run functional_mssql2019latest
+            mysql)
+                echo "Using driver: ${DATABASE_DRIVER}"
+                docker-compose run functional_mysql80
                 SUITE_EXIT_CODE=$?
                 ;;
             postgres)
@@ -260,6 +320,11 @@ case ${TEST_SUITE} in
                 SUITE_EXIT_CODE=$?
                 ;;
             sqlite)
+                # sqlite has a tmpfs as .Build/Web/typo3temp/var/tests/functional-sqlite-dbs/
+                # Since docker is executed as root (yay!), the path to this dir is owned by
+                # root if docker creates it. Thank you, docker. We create the path beforehand
+                # to avoid permission issues.
+                mkdir -p ${ROOT_DIR}/.Build/Web/typo3temp/var/tests/functional-sqlite-dbs/
                 docker-compose run functional_sqlite
                 SUITE_EXIT_CODE=$?
                 ;;
@@ -280,6 +345,12 @@ case ${TEST_SUITE} in
     phpstan)
         setUpDockerComposeDotEnv
         docker-compose run phpstan
+        SUITE_EXIT_CODE=$?
+        docker-compose down
+        ;;
+    phpstanGenerateBaseline)
+        setUpDockerComposeDotEnv
+        docker-compose run phpstan_generate_baseline
         SUITE_EXIT_CODE=$?
         docker-compose down
         ;;

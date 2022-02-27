@@ -16,6 +16,7 @@ namespace TYPO3\CMS\Styleguide\TcaDataGenerator\TableHandler;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\Exception;
@@ -48,8 +49,12 @@ class AbstractTableHandler
      */
     protected function generateTranslatedRecords(string $tableName, $fieldValues): void
     {
+        if (!BackendUtility::isTableLocalizable($tableName)) {
+            return;
+        }
+
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
-        $demoLanguages = $recordFinder->findUidsOfDemoLanguages();
+        $demoLanguages = $recordFinder->findIdsOfDemoLanguages();
 
         $translatedRecord = -42;
         foreach ($demoLanguages as $demoLanguageIndex => $demoLanguageUid) {
@@ -74,7 +79,7 @@ class AbstractTableHandler
                     break;
                 default:
                     throw new Exception(
-                        'Unknown language. No idea what to do with sys_language record ' . (int)$demoLanguageUid . ' for table ' . $tableName,
+                        'Unknown language. No idea what to do with language ' . (int)$demoLanguageUid . ' for table ' . $tableName,
                         1597437985
                     );
             }

@@ -27,9 +27,7 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable',
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
@@ -37,18 +35,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -59,13 +47,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_basic',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_basic}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_basic}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -77,19 +65,19 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_basic',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_basic}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_basic}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
 
         'input_1' => [
@@ -101,7 +89,7 @@ return [
                 'type' => 'input',
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
-                ]
+                ],
             ],
         ],
         'input_2' => [
@@ -481,8 +469,8 @@ return [
                     'linkPopup' => [
                         'options' => [
                             'allowedExtensions' => 'png',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ],
         ],
@@ -544,7 +532,7 @@ return [
                 'renderType' => 'inputDateTime',
                 'dbType' => 'date',
                 'eval' => 'date',
-                'default' => '0000-00-00'
+                'default' => '0000-00-00',
             ],
         ],
         'inputdatetime_3' => [
@@ -566,7 +554,7 @@ return [
                 'renderType' => 'inputDateTime',
                 'dbType' => 'datetime',
                 'eval' => 'datetime',
-                'default' => '0000-00-00 00:00:00'
+                'default' => '0000-00-00 00:00:00',
             ],
         ],
         'inputdatetime_5' => [
@@ -631,6 +619,20 @@ return [
                 'renderType' => 'inputDateTime',
                 'eval' => 'timesec',
                 'readOnly' => true,
+            ],
+        ],
+        'inputdatetime_11' => [
+            'exclude' => 1,
+            'label' => 'inputdatetime_11',
+            'description' => 'eval=datetime, default=0, range.lower=1627208536',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime',
+                'default' => 0,
+                'range' => [
+                    'lower' => 1627208536,
+                ],
             ],
         ],
 
@@ -710,15 +712,6 @@ return [
             'config' => [
                 'type' => 'text',
                 'eval' => 'trim',
-            ],
-        ],
-        'text_8' => [
-            'exclude' => 1,
-            'label' => 'text_8',
-            'description' => 'eval with user function',
-            'config' => [
-                'type' => 'text',
-                'eval' => 'TYPO3\\CMS\\Styleguide\\UserFunctions\\FormEngine\\TypeText9Eval',
             ],
         ],
         'text_9' => [
@@ -812,8 +805,6 @@ return [
             'config' => [
                 'type' => 'text',
                 'renderType' => 'textTable',
-                'cols' => '40',
-                'rows' => '5',
             ],
         ],
         'text_18' => [
@@ -843,36 +834,28 @@ return [
                 'type' => 'text',
                 'renderType' => 'belayoutwizard',
                 'default' => '
-mod.web_layout.BackendLayouts {
-  exampleKey {
-    title = Example
-    icon = EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg
-    config {
-      backend_layout {
-        colCount = 2
-        rowCount = 2
-        rows {
-          1 {
-            columns {
-              1 {
-                name = Left
-                rowspan = 2
-                colPos = 1
-              }
-              2 {
-                name = Main
-                colPos = 0
-              }
-            }
-          }
-          2 {
-            columns {
-              1 {
-                name = Footer
-                colPos = 24
-              }
-            }
-          }
+backend_layout {
+  colCount = 2
+  rowCount = 2
+  rows {
+    1 {
+      columns {
+        1 {
+          name = Left
+          rowspan = 2
+          colPos = 1
+        }
+        2 {
+          name = Main
+          colPos = 0
+        }
+      }
+    }
+    2 {
+      columns {
+        1 {
+          name = Footer
+          colPos = 24
         }
       }
     }
@@ -887,7 +870,7 @@ mod.web_layout.BackendLayouts {
             'description' => 'field description',
             'config' => [
                 'type' => 'check',
-            ]
+            ],
         ],
         'checkbox_2' => [
             'exclude' => 1,
@@ -896,9 +879,9 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo', ''],
+                    ['foo'],
                 ],
-            ]
+            ],
         ],
         'checkbox_3' => [
             'exclude' => 1,
@@ -907,11 +890,10 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo', ''],
-                    ['', ''],
+                    ['foo'],
+                    [''],
                     [
                         'foobar',
-                        '',
                         'iconIdentifierChecked' => 'content-beside-text-img-below-center',
                         'iconIdentifierUnchecked' => 'content-beside-text-img-below-center',
                     ],
@@ -925,15 +907,14 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo', ''],
+                    ['foo'],
                     [
                         'foo and this here is very long text that maybe does not really fit into the form in one line.'
                         . ' Ok let us add even more text to see how this looks like if wrapped. Is this enough now? No?'
                         . ' Then let us add some even more useless text here!',
-                        ''
                     ],
-                    ['foobar', ''],
-                    ['foobar', ''],
+                    ['foobar'],
+                    ['foobar'],
                 ],
             ],
         ],
@@ -945,8 +926,8 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo', ''],
-                    ['bar', ''],
+                    ['foo'],
+                    ['bar'],
                 ],
                 'itemsProcFunc' => 'TYPO3\\CMS\\Styleguide\\UserFunctions\\FormEngine\\TypeCheckbox8ItemsProcFunc->itemsProcFunc',
             ],
@@ -983,8 +964,8 @@ mod.web_layout.BackendLayouts {
                 'type' => 'check',
                 'readOnly' => 1,
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
+                    ['foo1'],
+                    ['foo2'],
                 ],
             ],
         ],
@@ -995,9 +976,9 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
                 ],
                 'cols' => '1',
             ],
@@ -1009,9 +990,9 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
                 ],
                 'cols' => '2',
             ],
@@ -1023,10 +1004,10 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
-                    ['foo4', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
+                    ['foo4'],
                 ],
                 'cols' => '3',
             ],
@@ -1038,18 +1019,17 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
+                    ['foo1'],
+                    ['foo2'],
                     [
                         'foo3 and this here is very long text that maybe does not really fit into the'
                         . ' form in one line. Ok let us add even more text to see how',
-                        ''
                     ],
-                    ['foo4', ''],
-                    ['foo5', ''],
-                    ['foo6', ''],
-                    ['foo7', ''],
-                    ['foo8', ''],
+                    ['foo4'],
+                    ['foo5'],
+                    ['foo6'],
+                    ['foo7'],
+                    ['foo8'],
                 ],
                 'cols' => '4',
             ],
@@ -1061,13 +1041,13 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
-                    ['foo4', ''],
-                    ['foo5', ''],
-                    ['foo6', ''],
-                    ['foo7', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
+                    ['foo4'],
+                    ['foo5'],
+                    ['foo6'],
+                    ['foo7'],
                 ],
                 'cols' => '5',
             ],
@@ -1079,13 +1059,13 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
-                    ['foo4', ''],
-                    ['foo5', ''],
-                    ['foo6', ''],
-                    ['foo7', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
+                    ['foo4'],
+                    ['foo5'],
+                    ['foo6'],
+                    ['foo7'],
                 ],
                 'cols' => '6',
             ],
@@ -1097,13 +1077,13 @@ mod.web_layout.BackendLayouts {
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['Mo', ''],
-                    ['Tu', ''],
-                    ['We', ''],
-                    ['Th', ''],
-                    ['Fr', ''],
-                    ['Sa', ''],
-                    ['Su', ''],
+                    ['Mo'],
+                    ['Tu'],
+                    ['We'],
+                    ['Th'],
+                    ['Fr'],
+                    ['Sa'],
+                    ['Su'],
                 ],
                 'cols' => 'inline',
             ],
@@ -1118,12 +1098,11 @@ mod.web_layout.BackendLayouts {
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
-                        'labelUnchecked' => 'Disabled'
-                    ]
+                        'labelUnchecked' => 'Disabled',
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_18' => [
             'exclude' => 1,
@@ -1135,13 +1114,12 @@ mod.web_layout.BackendLayouts {
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                        'invertStateDisplay' => true
-                    ]
+                        'invertStateDisplay' => true,
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_19' => [
             'exclude' => 1,
@@ -1153,12 +1131,11 @@ mod.web_layout.BackendLayouts {
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_20' => [
             'exclude' => 1,
@@ -1170,25 +1147,22 @@ mod.web_layout.BackendLayouts {
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'On',
                         'labelUnchecked' => 'Off',
                     ],
                     [
                         0 => 'bar',
-                        1 => '',
                         'labelChecked' => 'On',
                         'labelUnchecked' => 'Off',
                     ],
                     [
                         0 => 'inv',
-                        1 => '',
                         'labelChecked' => 'On',
                         'labelUnchecked' => 'Off',
-                        'invertStateDisplay' => true
-                    ]
+                        'invertStateDisplay' => true,
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_21' => [
             'exclude' => 1,
@@ -1200,13 +1174,12 @@ mod.web_layout.BackendLayouts {
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                        'invertStateDisplay' => true
-                    ]
+                        'invertStateDisplay' => true,
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_24' => [
             'exclude' => 1,
@@ -1216,25 +1189,13 @@ mod.web_layout.BackendLayouts {
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
                 'items' => [
-                    [
-                        0 => 'foo',
-                        1 => '',
-                    ],
-                    [
-                        0 => 'bar',
-                        1 => '',
-                    ],
-                    [
-                        0 => 'baz',
-                        1 => '',
-                    ],
-                    [
-                        0 => 'husel',
-                        1 => '',
-                    ]
+                    ['foo'],
+                    ['bar'],
+                    ['baz'],
+                    ['husel'],
                 ],
                 'cols' => '4',
-            ]
+            ],
         ],
         'checkbox_25' => [
             'exclude' => 1,
@@ -1247,12 +1208,11 @@ mod.web_layout.BackendLayouts {
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
-                        'labelUnchecked' => 'Disabled'
-                    ]
+                        'labelUnchecked' => 'Disabled',
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_26' => [
             'exclude' => 1,
@@ -1265,12 +1225,11 @@ mod.web_layout.BackendLayouts {
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ],
 
         'radio_1' => [
@@ -1297,7 +1256,7 @@ mod.web_layout.BackendLayouts {
                         'foo and this here is very long text that maybe does not really fit into the form in one line.'
                         . ' Ok let us add even more text to see how this looks like if wrapped. Is this enough now?'
                         . ' No? Then let us add some even more useless text here!',
-                        1
+                        1,
                     ],
                     ['bar', 2],
                     ['foobar', 3],
@@ -1479,7 +1438,6 @@ mod.web_layout.BackendLayouts {
                                                                 <options>
                                                                     <title>Link</title>
                                                                     <blindLinkOptions>mail,folder,spec</blindLinkOptions>
-                                                                    <windowOpenParameters>height=300,width=500,status=0,menubar=0,scrollbars=1</windowOpenParameters>
                                                                 </options>
                                                             </linkPopup>
                                                         </fieldControl>
@@ -1746,8 +1704,9 @@ mod.web_layout.BackendLayouts {
                 --div--;inputDateTime,
                     inputdatetime_1, inputdatetime_2, inputdatetime_3, inputdatetime_4, inputdatetime_5,
                     inputdatetime_6, inputdatetime_7, inputdatetime_8, inputdatetime_9, inputdatetime_10,
+                    inputdatetime_11,
                 --div--;text,
-                    text_1, text_2, text_3, text_4, text_5, text_6, text_7, text_8, text_9, text_10,
+                    text_1, text_2, text_3, text_4, text_5, text_6, text_7, text_9, text_10,
                     text_11, text_12, text_13, text_18, text_14, text_15, text_16, text_17, text_19,
                     text_20,
                 --div--;check,

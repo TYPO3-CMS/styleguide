@@ -28,9 +28,7 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable',
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
@@ -38,18 +36,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -60,13 +48,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_t3editor',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_t3editor}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_t3editor}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -78,19 +66,19 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_t3editor',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_t3editor}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_t3editor}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
 
         't3editor_1' => [
@@ -121,6 +109,16 @@ return [
                         1,
                     ],
                 ],
+            ],
+        ],
+        't3editor_2' => [
+            'label' => 't3editor_2',
+            'description' => 'readOnly=true',
+            'config' => [
+                'type' => 'text',
+                'renderType' => 't3editor',
+                'format' => 'html',
+                'readOnly' => true,
             ],
         ],
         't3editor_inline_1' => [
@@ -231,8 +229,9 @@ return [
         '0' => [
             'showitem' => '
                 --div--;t3editor,
-                    t3editor_1,
                     t3editor_reload_1,
+                    t3editor_1,
+                    t3editor_2,
                 --div--;in inline,
                     t3editor_inline_1,
                 --div--;in flex,

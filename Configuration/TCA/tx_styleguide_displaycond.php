@@ -27,26 +27,16 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable'
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
         'sys_language_uid' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1],
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0]
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -59,8 +49,8 @@ return [
                 ],
                 'foreign_table' => 'tx_styleguide_required',
                 'foreign_table_where' => 'AND {#tx_styleguide_required}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_required}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -72,18 +62,18 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_required',
                 'foreign_table_where' => 'AND {#tx_styleguide_required}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_required}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
 
         // Tab FIELD REQ start
@@ -227,10 +217,10 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo', ''],
-                    ['bar', ''],
+                    ['foo'],
+                    ['bar'],
                 ],
-            ]
+            ],
         ],
         'input_19' => [
             'exclude' => 1,
@@ -255,10 +245,13 @@ return [
                     'FIELD:checkbox_1:=:0',
                     'OR' => [
                         'FIELD:select_2:=:1',
-                        'FIELD:select_2:>:3'
-                    ]
-                ]
-            ]
+                        'FIELD:select_2:>:3',
+                    ],
+                ],
+            ],
+            'config' => [
+                'type' => 'input',
+            ],
         ],
         // Tab FIELD AND OR end
 

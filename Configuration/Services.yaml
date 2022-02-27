@@ -1,0 +1,22 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  TYPO3\CMS\Styleguide\:
+    resource: '../Classes/*'
+
+  TYPO3\CMS\Styleguide\Command\KauderwelschCommand:
+    tags:
+      - name: 'console.command'
+        command: 'styleguide:kauderwelsch'
+        description: 'Generate some bacon text'
+        schedulable: false
+
+  TYPO3\CMS\Styleguide\Command\GeneratorCommand:
+    tags:
+      - name: 'console.command'
+        command: 'styleguide:generate'
+        description: 'Generate page tree for Styleguide TCA backend and/or Styleguide frontend'
+        schedulable: false

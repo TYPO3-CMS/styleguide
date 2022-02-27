@@ -28,9 +28,7 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable',
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
@@ -38,18 +36,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -60,13 +48,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_rte',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_rte}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_rte}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -78,19 +66,19 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_rte',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_rte}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_rte}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
 
         'rte_1' => [
@@ -100,11 +88,6 @@ return [
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
-                'fieldControl' => [
-                    'fullScreenRichtext' => [
-                        'disabled' => false,
-                    ],
-                ],
             ],
         ],
         'rte_2' => [
@@ -131,7 +114,7 @@ return [
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
-                'richtextConfiguration' => 'minimal'
+                'richtextConfiguration' => 'minimal',
             ],
         ],
         'rte_5' => [
@@ -140,7 +123,7 @@ return [
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
-                'richtextConfiguration' => 'full'
+                'richtextConfiguration' => 'full',
             ],
         ],
 

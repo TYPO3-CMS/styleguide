@@ -39,7 +39,7 @@ for own extensions:
   of what the backend editing is capable of out-of-the-box and which parts can be
   sold to customers without adding expensive implementation burdens to developers.
 
-* Styleguide is a "require-dev" dependency of the [TYPO3 CMS core mono repository](https://github.com/TYPO3/TYPO3.CMS).
+* Styleguide is a "require-dev" dependency of the [TYPO3 CMS core mono repository](https://github.com/typo3/typo3).
   It is used by **core developers** to test and verify changes to JavaScript, HTML
   and PHP code do not break layout or functionality of backend modules. The extension
   is also used in core backend acceptance tests to verify FormEngine details do not
@@ -64,16 +64,18 @@ seconds for the system to crunch the data.
 
 ## Composer
 With [composer based](https://docs.typo3.org/m/typo3/guide-installation/master/en-us/QuickInstall/Composer/Index.html)
-TYPO3 installations, styleguide is easily added to the project:
+TYPO3 installations, styleguide is easily added to the project.
+
+TYPO3 v11 based project:
 
 ```
-composer require --dev typo3/cms-styleguide
+composer require --dev typo3/cms-styleguide:^11
 ```
 
-Composer will automatically find, download and extract the appropriate version. After
-that, activate Styleguide using TYPO3 Extension Manager, or via CLI:
+TYPO3 v10 based project:
 
 ```
+composer require --dev typo3/cms-styleguide:^10
 bin/typo3 extension:activate styleguide
 ```
 
@@ -92,7 +94,7 @@ Find detailed usage examples by executing `Build/Scripts/runTests.sh -h` and hav
 Example usage:
 
 ```
-Build/Scripts/runTests.sh -s composerInstall
+Build/Scripts/runTests.sh -s composerUpdate
 Build/Scripts/runTests.sh -s unit
 ```
 

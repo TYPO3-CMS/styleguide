@@ -2,8 +2,8 @@ CREATE TABLE pages (
     tx_styleguide_containsdemo varchar(255) DEFAULT '' NOT NULL
 );
 
-CREATE TABLE sys_language (
-    tx_styleguide_isdemorecord tinyint(1) unsigned DEFAULT '0' NOT NULL
+CREATE TABLE tt_content (
+    tx_styleguide_containsdemo varchar(255) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE be_groups (
@@ -12,6 +12,14 @@ CREATE TABLE be_groups (
 
 CREATE TABLE be_users (
     tx_styleguide_isdemorecord tinyint(1) unsigned DEFAULT '0' NOT NULL
+);
+
+CREATE TABLE fe_groups (
+    tx_styleguide_containsdemo varchar(255) DEFAULT '' NOT NULL
+);
+
+CREATE TABLE fe_users (
+    tx_styleguide_containsdemo varchar(255) DEFAULT '' NOT NULL
 );
 
 
@@ -111,6 +119,7 @@ CREATE TABLE tx_styleguide_elements_basic (
     inputdatetime_8 text,
     inputdatetime_9 text,
     inputdatetime_10 text,
+    inputdatetime_11 text,
 
     text_1 text,
     text_2 text,
@@ -119,7 +128,6 @@ CREATE TABLE tx_styleguide_elements_basic (
     text_5 text,
     text_6 text,
     text_7 text,
-    text_8 text,
     text_9 text,
     text_10 text,
     text_11 text,
@@ -191,10 +199,30 @@ CREATE TABLE tx_styleguide_elements_group (
     group_db_9 text,
     group_db_10 text,
     group_db_11 text,
-    group_folder_1 text,
     group_requestUpdate_1 text,
 
     flex_1 text
+);
+
+CREATE TABLE tx_styleguide_elements_folder
+(
+    folder_1 text,
+    folder_2 text,
+    flex_1 text
+);
+
+CREATE TABLE tx_styleguide_elements_imagemanipulation (
+    group_db_1 text,
+    group_db_2 text,
+    group_db_3 text,
+    crop_1 text,
+    crop_2 text,
+    crop_3 text,
+    crop_4 text,
+    crop_5 text,
+    crop_6 text,
+    crop_7 text,
+    crop_8 text
 );
 
 
@@ -208,6 +236,17 @@ CREATE TABLE tx_styleguide_elements_rte (
     rte_flex_1 text,
     input_palette_1 text,
     rte_palette_1 text
+);
+
+CREATE TABLE tx_styleguide_elements_slugs (
+    input_1 text,
+    input_2 text,
+    input_3 text,
+    slug_1 text,
+    slug_2 text,
+    slug_3 text,
+    slug_4 text,
+    slug_5 text,
 );
 
 
@@ -241,9 +280,15 @@ CREATE TABLE tx_styleguide_elements_select (
     select_single_13 text,
     select_single_14 text,
     select_single_15 text,
+    select_single_16 text,
+    select_single_17 text,
+    select_single_18 text,
+    select_single_19 text,
+    select_single_20 text,
 
     select_singlebox_1 text,
     select_singlebox_2 text,
+    select_singlebox_3 text,
 
     select_checkbox_1 text,
     select_checkbox_2 text,
@@ -251,6 +296,7 @@ CREATE TABLE tx_styleguide_elements_select (
     select_checkbox_4 text,
     select_checkbox_5 text,
     select_checkbox_6 text,
+    select_checkbox_7 text,
 
     select_multiplesidebyside_1 text,
     select_multiplesidebyside_2 text,
@@ -260,6 +306,7 @@ CREATE TABLE tx_styleguide_elements_select (
     select_multiplesidebyside_7 text,
     select_multiplesidebyside_8 text,
     select_multiplesidebyside_9 text,
+    select_multiplesidebyside_10 text,
 
     select_tree_1 text,
     select_tree_2 text,
@@ -279,23 +326,16 @@ CREATE TABLE tx_styleguide_elements_select_single_12_foreign (
 );
 
 
-CREATE TABLE tx_styleguide_elements_select_single_15_mm (
-    uid_local int(11) DEFAULT '0' NOT NULL,
-    uid_foreign int(11) DEFAULT '0' NOT NULL,
-    sorting int(11) DEFAULT '0' NOT NULL,
+# MM tables for fields defined in flex form data structures
+# are NOT auto created by DefaultTcaSchema
+CREATE TABLE tx_styleguide_elements_select_flex_1_multiplesidebyside_2_mm (
+	uid_local int(11) unsigned DEFAULT 0 NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT 0 NOT NULL,
+	sorting int(11) unsigned DEFAULT 0 NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT 0 NOT NULL,
 
-    KEY uid_local (uid_local),
-    KEY uid_foreign (uid_foreign)
-);
-
-
-CREATE TABLE tx_styleguide_elements_select_multiplesidebyside_8_mm (
-    uid_local int(11) DEFAULT '0' NOT NULL,
-    uid_foreign int(11) DEFAULT '0' NOT NULL,
-    sorting int(11) DEFAULT '0' NOT NULL,
-
-    KEY uid_local (uid_local),
-    KEY uid_foreign (uid_foreign)
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
 );
 
 
@@ -303,7 +343,6 @@ CREATE TABLE tx_styleguide_elements_special (
     special_custom_1 text,
     special_exclude_1 text,
     special_explicitvalues_1 text,
-    special_languages_1 text,
     special_modlistgroup_1 text,
     special_pagetypes_1 text,
     special_tables_1 text,
@@ -315,6 +354,7 @@ CREATE TABLE tx_styleguide_elements_special (
 
 CREATE TABLE tx_styleguide_elements_t3editor (
     t3editor_1 text,
+    t3editor_2 text,
     t3editor_reload_1 int(11) DEFAULT '0' NOT NULL,
     t3editor_inline_1 text,
     t3editor_flex_1 text
@@ -486,40 +526,10 @@ CREATE TABLE tx_styleguide_inline_mm (
 );
 
 
-CREATE TABLE tx_styleguide_inline_mm_child_rel (
-    uid int(11) NOT NULL auto_increment,
-    uid_local int(11) DEFAULT '0' NOT NULL,
-    uid_foreign int(11) DEFAULT '0' NOT NULL,
-    tablenames varchar(255) DEFAULT '' NOT NULL,
-    sorting int(11) DEFAULT '0' NOT NULL,
-    sorting_foreign int(11) DEFAULT '0' NOT NULL,
-    ident varchar(255) DEFAULT '' NOT NULL,
-
-    KEY uid_local (uid_local),
-    KEY uid_foreign (uid_foreign),
-    PRIMARY KEY (uid)
-);
-
-
 CREATE TABLE tx_styleguide_inline_mm_child (
     title tinytext,
     parents int(11) DEFAULT '0' NOT NULL,
     inline_2 int(11) DEFAULT '0' NOT NULL
-);
-
-
-CREATE TABLE tx_styleguide_inline_mm_child_childchild_rel (
-    uid int(11) NOT NULL auto_increment,
-    uid_local int(11) DEFAULT '0' NOT NULL,
-    uid_foreign int(11) DEFAULT '0' NOT NULL,
-    tablenames varchar(255) DEFAULT '' NOT NULL,
-    sorting int(11) DEFAULT '0' NOT NULL,
-    sorting_foreign int(11) DEFAULT '0' NOT NULL,
-    ident varchar(255) DEFAULT '' NOT NULL,
-
-    KEY uid_local (uid_local),
-    KEY uid_foreign (uid_foreign),
-    PRIMARY KEY (uid)
 );
 
 
@@ -748,6 +758,45 @@ CREATE TABLE tx_styleguide_valuesdefault (
 
     select_1 text,
     select_2 text
+);
+
+CREATE TABLE tx_styleguide_l10nreadonly (
+    input text,
+    input_colorpicker text,
+    input_datetime text,
+    input_link text,
+    slug text,
+    checkbox int(11) DEFAULT '0' NOT NULL,
+    checkbox_toggle int(11) DEFAULT '0' NOT NULL,
+    checkbox_labeled_toggle int(11) DEFAULT '0' NOT NULL,
+    radio int(11) DEFAULT '0' NOT NULL,
+    none text,
+    group text,
+    group_mm text,
+    group_file text,
+    folder text,
+    image_manipulation text,
+    language int(11) DEFAULT '0' NOT NULL,
+    text text,
+    text_rte text,
+    text_belayoutwizard text,
+    text_t3editor text,
+    text_table text,
+    select_single text,
+    select_single_box text,
+    select_checkbox text,
+    select_tree text,
+    select_tree_mm text,
+    select_multiplesidebyside text,
+    select_multiplesidebyside_mm text,
+    inline text,
+    flex text
+);
+
+CREATE TABLE tx_styleguide_l10nreadonly_inline_child (
+    parentid int(11) DEFAULT '0' NOT NULL,
+    parenttable text,
+    input text,
 );
 
 #

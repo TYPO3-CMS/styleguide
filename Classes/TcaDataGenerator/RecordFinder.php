@@ -17,10 +17,13 @@ namespace TYPO3\CMS\Styleguide\TcaDataGenerator;
  */
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
+use TYPO3\CMS\Core\Exception\SiteNotFoundException;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\Folder;
 use TYPO3\CMS\Core\Resource\StorageRepository;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -52,8 +55,8 @@ class RecordFinder
                     $queryBuilder->createNamedParameter('tx_styleguide', \PDO::PARAM_STR)
                 )
             )
-            ->execute()
-            ->fetchAll();
+            ->executeQuery()
+            ->fetchAllAssociative();
         $uids = [];
         if (is_array($rows)) {
             foreach ($rows as $row) {
@@ -82,11 +85,18 @@ class RecordFinder
                 $queryBuilder->expr()->eq(
                     'tx_styleguide_containsdemo',
                     $queryBuilder->createNamedParameter($tableName, \PDO::PARAM_STR)
+                ),
+                // only default language pages needed
+                $queryBuilder->expr()->eq(
+                    'sys_language_uid',
+                    $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)
                 )
             )
             ->orderBy('pid', 'DESC')
-            ->execute()
-            ->fetch();
+            // add uid as deterministic last sorting, as not all dbms in all versions do that
+            ->addOrderBy('uid', 'ASC')
+            ->executeQuery()
+            ->fetchAssociative();
         if (count($row) !== 1) {
             throw new Exception(
                 'Found no page for main table ' . $tableName,
@@ -97,31 +107,44 @@ class RecordFinder
     }
 
     /**
-     * Find uids of styleguide demo sys_language`s
+     * Find ids of styleguide demo languages
      *
-     * @return array List of uids
+     * @return array List of language ids
      */
-    public function findUidsOfDemoLanguages(): array
+    public function findIdsOfDemoLanguages(): array
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_language');
-        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
-        $rows = $queryBuilder->select('uid')
-            ->from('sys_language')
-            ->where(
-                $queryBuilder->expr()->eq(
-                    'tx_styleguide_isdemorecord',
-                    $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)
-                )
-            )
-            ->execute()
-            ->fetchAll();
+        try {
+            $site = GeneralUtility::makeInstance(SiteFinder::class)->getSiteByRootPageId($this->findUidsOfStyleguideEntryPages()[0]);
+        } catch (SiteNotFoundException $e) {
+            return [];
+        }
+
         $result = [];
-        if (is_array($rows)) {
-            foreach ($rows as $row) {
-                $result[] = $row['uid'];
+        foreach ($site->getAllLanguages() as $language) {
+            if ($language->getLanguageId() === 0) {
+                continue;
             }
+            $result[] = $language->getLanguageId();
         }
         return $result;
+    }
+
+    /**
+     * Returns the highest language id from all sites
+     *
+     * @return int
+     */
+    public function findHighestLanguageId(): int
+    {
+        $lastLanguageId = 0;
+        foreach (GeneralUtility::makeInstance(SiteFinder::class)->getAllSites() as $site) {
+            foreach ($site->getAllLanguages() as $language) {
+                if ($language->getLanguageId() > $lastLanguageId) {
+                    $lastLanguageId = $language->getLanguageId();
+                }
+            }
+        }
+        return $lastLanguageId;
     }
 
     /**
@@ -141,8 +164,8 @@ class RecordFinder
                     $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)
                 )
             )
-            ->execute()
-            ->fetchAll();
+            ->executeQuery()
+            ->fetchAllAssociative();
         $result = [];
         if (is_array($rows)) {
             foreach ($rows as $row) {
@@ -169,8 +192,8 @@ class RecordFinder
                     $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)
                 )
             )
-            ->execute()
-            ->fetchAll();
+            ->executeQuery()
+            ->fetchAllAssociative();
         $result = [];
         if (is_array($rows)) {
             foreach ($rows as $row) {
@@ -198,8 +221,8 @@ class RecordFinder
                     $queryBuilder->createNamedParameter($pageUid, \PDO::PARAM_INT)
                 )
             )
-            ->execute()
-            ->fetchAll();
+            ->executeQuery()
+            ->fetchAllAssociative();
         $result = [];
         if (is_array($rows)) {
             foreach ($rows as $row) {
@@ -214,12 +237,12 @@ class RecordFinder
      *
      * @return File[]
      */
-    public function findDemoFileObjects(): array
+    public function findDemoFileObjects(string $path = 'styleguide'): array
     {
         $storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
         $storage = $storageRepository->findByUid(1);
         $folder = $storage->getRootLevelFolder();
-        $folder = $folder->getSubfolder('styleguide');
+        $folder = $folder->getSubfolder($path);
         return $folder->getFiles();
     }
 
@@ -234,5 +257,122 @@ class RecordFinder
         $storage = $storageRepository->findByUid(1);
         $folder = $storage->getRootLevelFolder();
         return $folder->getSubfolder('styleguide');
+    }
+
+    /**
+     * Get all styleguide frontend page UIDs
+     *
+     * @param array|string[] $types
+     * @return array
+     */
+    public function findUidsOfFrontendPages(array $types = ['tx_styleguide_frontend_root', 'tx_styleguide_frontend'], array $doktype = []): array
+    {
+        $allowedTypes = ['tx_styleguide_frontend_root', 'tx_styleguide_frontend'];
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
+        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder->select('uid')
+            ->from('pages');
+
+        foreach ($types as $type) {
+            if (!in_array($type, $allowedTypes)) {
+                continue;
+            }
+
+            if (!empty($doktype)) {
+                $queryBuilder->orWhere(
+                    $queryBuilder->expr()->andX(
+                        $queryBuilder->expr()->eq(
+                            'tx_styleguide_containsdemo',
+                            $queryBuilder->createNamedParameter((string)$type),
+                        ),
+                        $queryBuilder->expr()->eq(
+                            'doktype',
+                            $queryBuilder->createNamedParameter('254')
+                        )
+                    )
+                );
+            } else {
+                $queryBuilder->orWhere(
+                    $queryBuilder->expr()->eq(
+                        'tx_styleguide_containsdemo',
+                        $queryBuilder->createNamedParameter((string)$type)
+                    )
+                );
+            }
+        }
+
+        $rows = $queryBuilder->orderBy('pid', 'DESC')->execute()->fetchAllAssociative();
+        $result = [];
+        if (is_array($rows)) {
+            $result = array_column($rows, 'uid');
+            sort($result);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Find tt_content by ctype and identifier
+     *
+     * @param array|string[] $types
+     * @param string $identifier
+     * @return array
+     */
+    public function findTtContent(array $types = ['textmedia', 'textpic', 'image', 'uploads'], string $identifier = 'tx_styleguide_frontend'): array
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder->select('uid', 'pid', 'CType')
+            ->from('tt_content')->where(
+                $queryBuilder->expr()->eq(
+                    'tx_styleguide_containsdemo',
+                    $queryBuilder->createNamedParameter($identifier)
+                )
+            );
+
+        if (!empty($types)) {
+            $orX = $queryBuilder->expr()->orX();
+            foreach ($types as $type) {
+                $orX->add($queryBuilder->expr()->eq('CType', $queryBuilder->createNamedParameter($type)));
+            }
+            $queryBuilder->andWhere((string)$orX);
+        }
+
+        return $queryBuilder->orderBy('uid', 'DESC')->execute()->fetchAllAssociative();
+    }
+
+    public function findFeUserGroups(): array
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_groups');
+
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder->select('uid', 'pid', 'title')
+            ->from('fe_groups')->where(
+                $queryBuilder->expr()->eq(
+                    'tx_styleguide_containsdemo',
+                    $queryBuilder->createNamedParameter('tx_styleguide_frontend')
+                )
+            );
+
+        return $queryBuilder->orderBy('uid', 'DESC')->execute()->fetchAllAssociative();
+    }
+
+    public function findFeUsers(): array
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder->select('uid', 'pid', 'username')
+            ->from('fe_users')->where(
+                $queryBuilder->expr()->eq(
+                    'tx_styleguide_containsdemo',
+                    $queryBuilder->createNamedParameter('tx_styleguide_frontend')
+                )
+            );
+
+        return $queryBuilder->orderBy('uid', 'DESC')->execute()->fetchAllAssociative();
     }
 }

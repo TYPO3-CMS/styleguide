@@ -25,30 +25,20 @@ return [
             'config' => [
                 'type' => 'passthrough',
                 'default' => '',
-            ]
+            ],
         ],
         'disable' => [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.disable',
             'config' => [
-                'type' => 'check'
-            ]
+                'type' => 'check',
+            ],
         ],
         'sys_language_uid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -59,13 +49,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_inline_1n_child',
                 'foreign_table_where' => 'AND {#tx_styleguide_inline_1n_child}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_1n_child}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -77,24 +67,24 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_inline_1n_child',
                 'foreign_table_where' => 'AND {#tx_styleguide_inline_1n_child}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_1n_child}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
 
         'parentid' => [
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'parenttable' => [
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'input_1' => [
             'l10n_mode' => 'prefixLangTitle',
@@ -137,7 +127,6 @@ return [
             'label' => 'group_db_1 allowed=tx_styleguide_staticdata',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'tx_styleguide_staticdata',
             ],
         ],

@@ -21,19 +21,11 @@ return [
 
     'columns' => [
         'sys_language_uid' => [
-            'exclude' => 1,
-            'label'  => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1],
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0]
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -46,8 +38,8 @@ return [
                 ],
                 'foreign_table' => 'tx_styleguide_elements_rte_flex_1_inline_1_child',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_rte_flex_1_inline_1_child}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_rte_flex_1_inline_1_child}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -59,35 +51,35 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_rte_flex_1_inline_1_child',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_rte_flex_1_inline_1_child}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_rte_flex_1_inline_1_child}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'hidden' => [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
-                'default' => '0'
+                'default' => '0',
             ],
         ],
         'parentid' => [
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'parenttable' => [
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'rte_1' => [
             'label' => 'rte_1',

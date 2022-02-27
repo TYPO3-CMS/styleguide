@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TYPO3\CMS\Styleguide\Tests\Functional\TcaDataGenerator;
 
 /*
@@ -15,9 +17,9 @@ namespace TYPO3\CMS\Styleguide\Tests\Functional\TcaDataGenerator;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Core\ApplicationContext;
 use TYPO3\CMS\Core\Core\Bootstrap;
-use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\Generator;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -27,71 +29,77 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 class GeneratorTest extends FunctionalTestCase
 {
     /**
-     * @var array Have styleguide loaded
+     * @var string[] Have styleguide loaded
      */
-    protected $testExtensionsToLoad = [
+    protected array $testExtensionsToLoad = [
         'typo3conf/ext/styleguide',
     ];
 
     /**
-     * Just a dummy to show that at least one test is actually executed on mssql
-     *
      * @test
-     */
-    public function dummy(): void
-    {
-        self::assertTrue(true);
-    }
-
-    /**
-     * @test
-     * @group not-mssql
-     * @todo Generator does not work using mssql DMBS yet ... fix this
      */
     public function generatorCreatesBasicRecord(): void
     {
-        // This call is a hack. Path stuff should be solved by typo3/testing-framework
-        // correctly at this point already so single extension functional tests do not
-        // need to deal with this anymore.
-        Environment::initialize(
-            new ApplicationContext('Production'),
-            Environment::isCli(),
-            Environment::isComposerMode(),
-            Environment::getProjectPath(),
-            Environment::getPublicPath(),
-            Environment::getVarPath(),
-            Environment::getConfigPath(),
-            Environment::getBackendPath() . '/index.php',
-            Environment::isWindows() ? 'WINDOWS' : 'UNIX'
-        );
-
-        // styleguide generator uses DataHandler for some parts. DataHandler needs an
-        // initialized BE user with admin right and the live workspace.
-        Bootstrap::initializeBackendUser();
-        $GLOBALS['BE_USER']->user['admin'] = 1;
-        $GLOBALS['BE_USER']->user['uid'] = 1;
-        $GLOBALS['BE_USER']->workspace = 0;
+        $this->setUpBackendUserFromFixture(1);
         Bootstrap::initializeLanguageObject();
 
         // Verify there is no tx_styleguide_elements_basic yet
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_styleguide_elements_basic');
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_styleguide_elements_basic');
         $queryBuilder->getRestrictions()->removeAll();
-        $count = $queryBuilder->count('uid')
+        $count = (int)$queryBuilder->count('uid')
             ->from('tx_styleguide_elements_basic')
-            ->execute()
-            ->fetchColumn(0);
+            ->executeQuery()
+            ->fetchOne();
         self::assertEquals(0, $count);
 
         $generator = new Generator();
         $generator->create();
 
         // Verify there is at least one tx_styleguide_elements_basic record now
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_styleguide_elements_basic');
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_styleguide_elements_basic');
         $queryBuilder->getRestrictions()->removeAll();
-        $count = $queryBuilder->count('uid')
+        $count = (int)$queryBuilder->count('uid')
             ->from('tx_styleguide_elements_basic')
-            ->execute()
-            ->fetchColumn(0);
+            ->where(
+                $queryBuilder->expr()->eq(
+                    'pid',
+                    $queryBuilder->createNamedParameter($this->getPageUidFor('tx_styleguide_elements_basic'), \PDO::PARAM_INT)
+                )
+            )
+            ->executeQuery()
+            ->fetchOne();
         self::assertGreaterThan(0, $count);
+    }
+
+    protected function getPageUidFor(string $dataTable): ?int
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable('pages')
+            ->createQueryBuilder();
+
+        $row = $queryBuilder
+            ->select(...['uid'])
+            ->from('pages')
+            ->where(
+                $queryBuilder->expr()->eq(
+                    'tx_styleguide_containsdemo',
+                    $queryBuilder->createNamedParameter($dataTable, \PDO::PARAM_STR)
+                ),
+                // only default language pages needed
+                $queryBuilder->expr()->eq(
+                    'sys_language_uid',
+                    $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)
+                )
+            )
+            ->orderBy('pid', 'DESC')
+            // add uid as deterministic last sorting, as not all dbms in all versions do that
+            ->addOrderBy('uid', 'ASC')
+            ->executeQuery()
+            ->fetchAssociative();
+
+        if ($row['uid'] ?? false) {
+            return (int)$row['uid'];
+        }
+        return null;
     }
 }

@@ -21,18 +21,10 @@ return [
     'columns' => [
 
         'sys_language_uid' => [
-            'exclude' => 1,
-            'label' => 'sys_language_uid',
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => [
-                    ['all Languages', -1],
-                    ['default', 0],
-                ],
-                'default' => 0,
+                'type' => 'language',
             ],
         ],
         'l10n_parent' => [
@@ -46,7 +38,7 @@ return [
                 ],
                 'foreign_table' => 'tx_styleguide_inline_parentnosoftdelete',
                 'foreign_table_where' => 'AND {#tx_styleguide_inline_parentnosoftdelete}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_parentnosoftdelete}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
+                'default' => 0,
             ],
         ],
         'l10n_source' => [
@@ -59,13 +51,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_inline_parentnosoftdelete',
                 'foreign_table_where' => 'AND {#tx_styleguide_inline_parentnosoftdelete}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_parentnosoftdelete}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
@@ -78,9 +70,7 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable',
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
@@ -129,7 +119,7 @@ return [
         '1' => [
             'showitem' => '
                 sys_language_uid, l10n_parent, l10n_diffsource, hidden, text_1, inline_1
-            '
+            ',
         ],
     ],
 
