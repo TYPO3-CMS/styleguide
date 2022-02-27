@@ -90,7 +90,7 @@ return [
                 'foreign_table_field' => 'parenttable',
                 'appearance' => [
                     'collapseAll' => false,
-                ]
+                ],
             ],
         ],
 
