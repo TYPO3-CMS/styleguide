@@ -759,7 +759,7 @@ CREATE TABLE tx_styleguide_valuesdefault (
     select_2 text
 );
 
-CREATE TABLE tx_styleguide_default_as_readonly (
+CREATE TABLE tx_styleguide_l10nreadonly (
     input text,
     input_colorpicker text,
     input_datetime text,
@@ -769,6 +769,7 @@ CREATE TABLE tx_styleguide_default_as_readonly (
     checkbox_toggle int(11) DEFAULT '0' NOT NULL,
     checkbox_labeled_toggle int(11) DEFAULT '0' NOT NULL,
     radio int(11) DEFAULT '0' NOT NULL,
+    none text,
     group text,
     group_mm text,
     group_file text,
@@ -785,13 +786,13 @@ CREATE TABLE tx_styleguide_default_as_readonly (
     select_checkbox text,
     select_tree text,
     select_tree_mm text,
-    select_multiple_side_by_side text,
-    select_multiple_side_by_side_mm text,
+    select_multiplesidebyside text,
+    select_multiplesidebyside_mm text,
     inline text,
     flex text
 );
 
-CREATE TABLE tx_styleguide_default_as_readonly_inline_child (
+CREATE TABLE tx_styleguide_l10nreadonly_inline_child (
     parentid int(11) DEFAULT '0' NOT NULL,
     parenttable text,
     input text,

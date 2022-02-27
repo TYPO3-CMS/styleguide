@@ -50,8 +50,8 @@ return [
                         0
                     ]
                 ],
-                'foreign_table' => 'tx_styleguide_default_as_readonly',
-                'foreign_table_where' => 'AND {#tx_styleguide_default_as_readonly}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_default_as_readonly}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_styleguide_l10nreadonly',
+                'foreign_table_where' => 'AND {#tx_styleguide_l10nreadonly}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_l10nreadonly}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0
             ]
         ],
@@ -68,8 +68,8 @@ return [
                         0
                     ]
                 ],
-                'foreign_table' => 'tx_styleguide_default_as_readonly',
-                'foreign_table_where' => 'AND {#tx_styleguide_default_as_readonly}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_default_as_readonly}.{#uid}!=###THIS_UID###',
+                'foreign_table' => 'tx_styleguide_l10nreadonly',
+                'foreign_table_where' => 'AND {#tx_styleguide_l10nreadonly}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_l10nreadonly}.{#uid}!=###THIS_UID###',
                 'default' => 0
             ]
         ],
@@ -240,7 +240,7 @@ return [
             'config' => [
                 'type' => 'group',
                 'allowed' => 'pages',
-                'MM' => 'tx_styleguide_group_mm',
+                'MM' => 'tx_styleguide_l10nreadonly_group_mm',
                 'fieldControl' => [
                     'editPopup' => [
                         'disabled' => false,
@@ -264,8 +264,6 @@ return [
             'config' => [
                 'type' => 'group',
                 'allowed' => 'sys_file',
-                // This id must exist, as otherwise field "image_manipulation" does not work
-                'default' => 14
             ],
         ],
 
@@ -459,7 +457,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectTree',
                 'foreign_table' => 'pages',
-                'MM' => 'tx_styleguide_select_tree_mm',
+                'MM' => 'tx_styleguide_l10nreadonly_select_tree_mm',
                 'items' => [
                     [ 'static from tca 4711', 4711 ],
                     [ 'static from tca 4712', 4712 ],
@@ -473,8 +471,8 @@ return [
                 ],
             ],
         ],
-        'select_multiple_side_by_side' => [
-            'label' => 'select_multiple_side_by_side',
+        'select_multiplesidebyside' => [
+            'label' => 'select_multiplesidebyside',
             'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
@@ -501,15 +499,15 @@ return [
                 ],
             ],
         ],
-        'select_multiple_side_by_side_mm' => [
-            'label' => 'select_multiple_side_by_side_mm',
+        'select_multiplesidebyside_mm' => [
+            'label' => 'select_multiplesidebyside_mm',
             'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_styleguide_staticdata',
-                'MM' => 'tx_styleguide_select_multiple_side_by_side_mm',
+                'MM' => 'tx_styleguide_l10nreadonly_select_multiplesidebyside_mm',
                 'items' => [
                     [ 'static from tca 4711', 4711 ],
                     [ 'static from tca 4712', 4712 ],
@@ -537,7 +535,7 @@ return [
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'inline',
-                'foreign_table' => 'tx_styleguide_default_as_readonly_inline_child',
+                'foreign_table' => 'tx_styleguide_l10nreadonly_inline_child',
                 'foreign_field' => 'parentid',
                 'foreign_table_field' => 'parenttable',
             ],
@@ -659,8 +657,8 @@ return [
                 select_single,select_single_box,
                 --linebreak--,select_checkbox,
                 --linebreak--,select_tree,select_tree_mm,
-                --linebreak--,select_multiple_side_by_side,
-                --linebreak--,select_multiple_side_by_side_mm
+                --linebreak--,select_multiplesidebyside,
+                --linebreak--,select_multiplesidebyside_mm
             ',
             'label' => 'type=select'
         ],
