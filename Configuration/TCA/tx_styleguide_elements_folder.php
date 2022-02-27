@@ -2,7 +2,7 @@
 
 return [
     'ctrl' => [
-        'title' => 'Form engine elements - t3editor',
+        'title' => 'Form engine elements - folder',
         'label' => 'uid',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -41,7 +41,7 @@ return [
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'label' => 'Translation parent',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -51,8 +51,8 @@ return [
                         0,
                     ],
                 ],
-                'foreign_table' => 'tx_styleguide_elements_t3editor',
-                'foreign_table_where' => 'AND {#tx_styleguide_elements_t3editor}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_t3editor}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_styleguide_elements_folder',
+                'foreign_table_where' => 'AND {#tx_styleguide_elements_folder}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_folder}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -69,8 +69,8 @@ return [
                         0,
                     ],
                 ],
-                'foreign_table' => 'tx_styleguide_elements_t3editor',
-                'foreign_table_where' => 'AND {#tx_styleguide_elements_t3editor}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_t3editor}.{#uid}!=###THIS_UID###',
+                'foreign_table' => 'tx_styleguide_elements_folder',
+                'foreign_table_where' => 'AND {#tx_styleguide_elements_folder}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_folder}.{#uid}!=###THIS_UID###',
                 'default' => 0,
             ],
         ],
@@ -81,92 +81,61 @@ return [
             ],
         ],
 
-        't3editor_1' => [
+        'folder_1' => [
             'exclude' => 1,
-            'label' => 't3editor_1 format=html, rows=7',
+            'label' => 'folder_1 description',
             'description' => 'field description',
             'config' => [
-                'type' => 'text',
-                'renderType' => 't3editor',
-                'format' => 'html',
-                'rows' => 7,
+                'type' => 'folder',
             ],
         ],
-        't3editor_reload_1' => [
+
+        'folder_2' => [
             'exclude' => 1,
-            'label' => 't3editor_reload_1',
-            'onChange' => 'reload',
+            'label' => 'folder_2 hideMoveIcons=true',
+            'description' => 'field description',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    [
-                        'label1',
-                        0,
-                    ],
-                    [
-                        'label2',
-                        1,
-                    ],
-                ],
+                'type' => 'folder',
+                'hideMoveIcons' => true,
             ],
         ],
-        't3editor_2' => [
-            'label' => 't3editor_2',
-            'description' => 'readOnly=true',
-            'config' => [
-                'type' => 'text',
-                'renderType' => 't3editor',
-                'format' => 'html',
-                'readOnly' => true,
-            ],
-        ],
-        't3editor_inline_1' => [
+
+        'flex_1' => [
             'exclude' => 1,
-            'label' => 't3editor_inline_1',
-            'config' => [
-                'type' => 'inline',
-                'foreign_table' => 'tx_styleguide_elements_t3editor_inline_1_child',
-                'foreign_field' => 'parentid',
-                'foreign_table_field' => 'parenttable',
-            ],
-        ],
-        't3editor_flex_1' => [
-            'exclude' => 1,
-            'label' => 't3editor_flex_1',
+            'label' => 'flex_1',
             'config' => [
                 'type' => 'flex',
                 'ds' => [
                     'default' => '
                         <T3DataStructure>
                             <sheets>
-                                <sGeneral>
+
+                                <sDb>
                                     <ROOT>
-                                        <TCEforms>
-                                            <sheetTitle>tab</sheetTitle>
-                                        </TCEforms>
                                         <type>array</type>
+                                        <TCEforms>
+                                            <sheetTitle>folder</sheetTitle>
+                                        </TCEforms>
                                         <el>
-                                            <t3editor_1>
+                                            <folder_1>
                                                 <TCEforms>
-                                                    <label>t3editor_1 description</label>
+                                                    <label>folder_1 description</label>
                                                     <description>field description</description>
                                                     <config>
-                                                        <type>text</type>
-                                                        <renderType>t3editor</renderType>
-                                                        <format>html</format>
+                                                        <type>folder</type>
                                                     </config>
                                                 </TCEforms>
-                                            </t3editor_1>
+                                            </folder_1>
                                         </el>
                                     </ROOT>
-                                </sGeneral>
+                                </sDb>
+
                                 <sSection>
                                     <ROOT>
+                                        <type>array</type>
                                         <TCEforms>
                                             <sheetTitle>section</sheetTitle>
                                         </TCEforms>
-                                        <type>array</type>
                                         <el>
                                             <section_1>
                                                 <title>section_1</title>
@@ -177,17 +146,15 @@ return [
                                                         <type>array</type>
                                                         <title>container_1</title>
                                                         <el>
-                                                            <t3editor_1>
+                                                            <folder_1>
                                                                 <TCEforms>
-                                                                    <label>t3editor_1 description</label>
-                                                                    <description>field description</description>
+                                                                    <label>folder_1</label>
                                                                     <config>
-                                                                        <type>text</type>
-                                                                        <renderType>t3editor</renderType>
-                                                                        <format>html</format>
+                                                                        <type>folder</type>
+                                                                        <size>5</size>
                                                                     </config>
                                                                 </TCEforms>
-                                                            </t3editor_1>
+                                                            </folder_1>
                                                         </el>
                                                     </container_1>
                                                 </el>
@@ -195,27 +162,7 @@ return [
                                         </el>
                                     </ROOT>
                                 </sSection>
-                                <sInline>
-                                    <ROOT>
-                                        <TCEforms>
-                                            <sheetTitle>inline</sheetTitle>
-                                        </TCEforms>
-                                        <type>array</type>
-                                        <el>
-                                            <inline_1>
-                                                <TCEforms>
-                                                    <label>inline_1</label>
-                                                    <config>
-                                                        <type>inline</type>
-                                                        <foreign_table>tx_styleguide_elements_t3editor_flex_1_inline_1_child</foreign_table>
-                                                        <foreign_field>parentid</foreign_field>
-                                                        <foreign_table_field>parenttable</foreign_table_field>
-                                                    </config>
-                                                </TCEforms>
-                                            </inline_1>
-                                        </el>
-                                    </ROOT>
-                                </sInline>
+
                             </sheets>
                         </T3DataStructure>
                     ',
@@ -228,14 +175,12 @@ return [
     'types' => [
         '0' => [
             'showitem' => '
-                --div--;t3editor,
-                    t3editor_reload_1,
-                    t3editor_1,
-                    t3editor_2,
-                --div--;in inline,
-                    t3editor_inline_1,
+                --div--;type=folder,
+                    folder_1, folder_2,
                 --div--;in flex,
-                    t3editor_flex_1,
+                    flex_1,
+                --div--;meta,
+                disable, sys_language_uid, l10n_parent, l10n_source,
             ',
         ],
     ],

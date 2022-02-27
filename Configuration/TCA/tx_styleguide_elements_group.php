@@ -36,8 +36,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'language'
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -48,13 +48,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_group',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_group}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_group}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -66,19 +66,19 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_group',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_group}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_group}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
 
         'group_db_1' => [
@@ -179,7 +179,7 @@ return [
                 'type' => 'group',
                 'allowed' => 'be_users',
                 'readOnly' => 1,
-            ]
+            ],
         ],
         'group_db_7' => [
             'exclude' => 1,
@@ -201,19 +201,9 @@ return [
                 'suggestOptions' => [
                     'default' => [
                         'additionalSearchFields' => 'nav_title, alias, url',
-                        'addWhere' => 'AND pages.doktype = 1'
-                    ]
-                ]
-            ]
-        ],
-
-        'group_folder_1' => [
-            'exclude' => 1,
-            'label' => 'group_folder_1 desription',
-            'description' => 'field description',
-            'config' => [
-                'type' => 'group',
-                'internal_type' => 'folder',
+                        'addWhere' => 'AND pages.doktype = 1',
+                    ],
+                ],
             ],
         ],
 
@@ -335,10 +325,8 @@ return [
     'types' => [
         '0' => [
             'showitem' => '
-                --div--;db,
+                --div--;type=group,
                     group_db_1, group_db_2, group_db_9, group_db_3, group_db_8, group_db_11, group_db_4, group_db_5, group_db_7, group_db_10,
-                --div--;internal_type=folder,
-                    group_folder_1,
                 --div--;in flex,
                     flex_1,
                 --div--;requestUpdate,

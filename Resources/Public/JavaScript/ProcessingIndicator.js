@@ -17,7 +17,7 @@
 define('TYPO3/CMS/Styleguide/ProcessingIndicator', ['nprogress', 'TYPO3/CMS/Backend/Icons', 'TYPO3/CMS/Backend/Notification', 'TYPO3/CMS/Core/lit-helper'], function(NProgress, Icons, Notification, lll) {
   let itemProcessing = 0;
 
-  Icons.getIcon('spinner-circle-dark', Icons.sizes.small).done(function(spinner) {
+  Icons.getIcon('spinner-circle-dark', Icons.sizes.small).then(function(spinner) {
     document.querySelectorAll('.t3js-generator-action').forEach((button) => {
       let url = button.dataset.href;
       button.addEventListener('click', (e) => {
@@ -50,7 +50,7 @@ define('TYPO3/CMS/Styleguide/ProcessingIndicator', ['nprogress', 'TYPO3/CMS/Back
           // Set button states
           e.target.querySelector('.t3js-icon').outerHTML = originalIcon;
           disabledButton.classList.remove('disabled');
-        }).done(() => {
+        }).finally(() => {
           // Party when done
         }).catch((error) => {
           // Action failed, reset to its original state

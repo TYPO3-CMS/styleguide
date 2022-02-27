@@ -6,10 +6,6 @@ CREATE TABLE tt_content (
     tx_styleguide_containsdemo varchar(255) DEFAULT '' NOT NULL
 );
 
-CREATE TABLE sys_language (
-    tx_styleguide_isdemorecord tinyint(1) unsigned DEFAULT '0' NOT NULL
-);
-
 CREATE TABLE be_groups (
     tx_styleguide_isdemorecord tinyint(1) unsigned DEFAULT '0' NOT NULL
 );
@@ -19,11 +15,11 @@ CREATE TABLE be_users (
 );
 
 CREATE TABLE fe_groups (
-    tx_styleguide_containsdemo tinyint(1) unsigned DEFAULT '0' NOT NULL
+    tx_styleguide_containsdemo varchar(255) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE fe_users (
-    tx_styleguide_containsdemo tinyint(1) unsigned DEFAULT '0' NOT NULL
+    tx_styleguide_containsdemo varchar(255) DEFAULT '' NOT NULL
 );
 
 
@@ -144,7 +140,6 @@ CREATE TABLE tx_styleguide_elements_basic (
     text_18 text,
     text_19 text,
     text_20 text,
-    text_21 text,
 
     checkbox_1 int(11) DEFAULT '0' NOT NULL,
     checkbox_2 int(11) DEFAULT '0' NOT NULL,
@@ -204,12 +199,17 @@ CREATE TABLE tx_styleguide_elements_group (
     group_db_9 text,
     group_db_10 text,
     group_db_11 text,
-    group_folder_1 text,
     group_requestUpdate_1 text,
 
     flex_1 text
 );
 
+CREATE TABLE tx_styleguide_elements_folder
+(
+    folder_1 text,
+    folder_2 text,
+    flex_1 text
+);
 
 CREATE TABLE tx_styleguide_elements_imagemanipulation (
     group_db_1 text,

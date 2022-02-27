@@ -2,23 +2,13 @@
 
 defined('TYPO3') or die();
 
-// Register "Styleguide" backend module
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-    'styleguide',
-    'help',
-    'styleguide',
-    '',
-    [
-        \TYPO3\CMS\Styleguide\Controller\BackendController::class => 'index, typography, trees, tables, buttons, infobox, avatar, flashMessages, tca, tcaCreate, tcaDelete, debug, icons, tab, modal, accordion, pagination, frontendCreate, frontendDelete'
-    ],
-    [
-        'access' => 'user,group',
-        'icon'   => 'EXT:styleguide/Resources/Public/Icons/module.svg',
-        'labels' => 'LLL:EXT:styleguide/Resources/Private/Language/locallang_styleguide.xlf',
-    ]
-);
-
 $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+// Register styleguide module icon
+$iconRegistry->registerIcon(
+    'module-styleguide',
+    TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+    [ 'source' => 'EXT:styleguide/Resources/Public/Icons/module.svg' ]
+);
 // Register styleguide svg for use within backend module
 $iconRegistry->registerIcon(
     'tcarecords-tx_styleguide_forms-default',
@@ -49,7 +39,7 @@ $iconRegistry->registerIcon(
     \TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider::class,
     [
         'name' => 'spinner',
-        'spinning' => true
+        'spinning' => true,
     ]
 );
 
@@ -64,9 +54,9 @@ $GLOBALS['TYPO3_CONF_VARS']['BE']['customPermOptions']['tx_styleguide_custom'] =
                 'Description 1',
             ],
         'key2' => [
-            'Option 2'
+            'Option 2',
         ],
-    ]
+    ],
 ];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_styleguide_ctrl_common');
@@ -76,6 +66,7 @@ $GLOBALS['TYPO3_CONF_VARS']['BE']['customPermOptions']['tx_styleguide_custom'] =
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_styleguide_elements_basic');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_styleguide_elements_group');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_styleguide_elements_folder');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_styleguide_elements_imagemanipulation');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_styleguide_elements_rte');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_styleguide_elements_rte_inline_1_child');

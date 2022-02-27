@@ -35,8 +35,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'language'
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -47,13 +47,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_basic',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_basic}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_basic}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -65,19 +65,19 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_basic',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_basic}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_basic}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
 
         'input_1' => [
@@ -89,7 +89,7 @@ return [
                 'type' => 'input',
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
-                ]
+                ],
             ],
         ],
         'input_2' => [
@@ -469,8 +469,8 @@ return [
                     'linkPopup' => [
                         'options' => [
                             'allowedExtensions' => 'png',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ],
         ],
@@ -532,7 +532,7 @@ return [
                 'renderType' => 'inputDateTime',
                 'dbType' => 'date',
                 'eval' => 'date',
-                'default' => '0000-00-00'
+                'default' => '0000-00-00',
             ],
         ],
         'inputdatetime_3' => [
@@ -554,7 +554,7 @@ return [
                 'renderType' => 'inputDateTime',
                 'dbType' => 'datetime',
                 'eval' => 'datetime',
-                'default' => '0000-00-00 00:00:00'
+                'default' => '0000-00-00 00:00:00',
             ],
         ],
         'inputdatetime_5' => [
@@ -631,8 +631,8 @@ return [
                 'eval' => 'datetime',
                 'default' => 0,
                 'range' => [
-                    'lower' => 1627208536
-                ]
+                    'lower' => 1627208536,
+                ],
             ],
         ],
 
@@ -805,8 +805,6 @@ return [
             'config' => [
                 'type' => 'text',
                 'renderType' => 'textTable',
-                'cols' => '40',
-                'rows' => '5',
             ],
         ],
         'text_18' => [
@@ -866,31 +864,13 @@ backend_layout {
             ],
         ],
 
-        'text_21' => [
-            'label' => 'text_21',
-            'description' => 'renderType=textTable tableWizard numNewRows=3',
-            'config' => [
-                'type' => 'text',
-                'renderType' => 'textTable',
-                'cols' => 40,
-                'rows' => 5,
-                'fieldControl' => [
-                    'tableWizard' => [
-                        'options' => [
-                            'numNewRows' => 3,
-                        ],
-                    ],
-                ],
-            ],
-        ],
-
         'checkbox_1' => [
             'exclude' => 1,
             'label' => 'checkbox_1',
             'description' => 'field description',
             'config' => [
                 'type' => 'check',
-            ]
+            ],
         ],
         'checkbox_2' => [
             'exclude' => 1,
@@ -901,7 +881,7 @@ backend_layout {
                 'items' => [
                     ['foo'],
                 ],
-            ]
+            ],
         ],
         'checkbox_3' => [
             'exclude' => 1,
@@ -1119,10 +1099,10 @@ backend_layout {
                     [
                         0 => 'foo',
                         'labelChecked' => 'Enabled',
-                        'labelUnchecked' => 'Disabled'
-                    ]
+                        'labelUnchecked' => 'Disabled',
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_18' => [
             'exclude' => 1,
@@ -1136,10 +1116,10 @@ backend_layout {
                         0 => 'foo',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                        'invertStateDisplay' => true
-                    ]
+                        'invertStateDisplay' => true,
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_19' => [
             'exclude' => 1,
@@ -1153,9 +1133,9 @@ backend_layout {
                         0 => 'foo',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_20' => [
             'exclude' => 1,
@@ -1179,10 +1159,10 @@ backend_layout {
                         0 => 'inv',
                         'labelChecked' => 'On',
                         'labelUnchecked' => 'Off',
-                        'invertStateDisplay' => true
-                    ]
+                        'invertStateDisplay' => true,
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_21' => [
             'exclude' => 1,
@@ -1196,10 +1176,10 @@ backend_layout {
                         0 => 'foo',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                        'invertStateDisplay' => true
-                    ]
+                        'invertStateDisplay' => true,
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_24' => [
             'exclude' => 1,
@@ -1212,10 +1192,10 @@ backend_layout {
                     ['foo'],
                     ['bar'],
                     ['baz'],
-                    ['husel']
+                    ['husel'],
                 ],
                 'cols' => '4',
-            ]
+            ],
         ],
         'checkbox_25' => [
             'exclude' => 1,
@@ -1229,10 +1209,10 @@ backend_layout {
                     [
                         0 => 'foo',
                         'labelChecked' => 'Enabled',
-                        'labelUnchecked' => 'Disabled'
-                    ]
+                        'labelUnchecked' => 'Disabled',
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_26' => [
             'exclude' => 1,
@@ -1247,9 +1227,9 @@ backend_layout {
                         0 => 'foo',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ],
 
         'radio_1' => [
@@ -1276,7 +1256,7 @@ backend_layout {
                         'foo and this here is very long text that maybe does not really fit into the form in one line.'
                         . ' Ok let us add even more text to see how this looks like if wrapped. Is this enough now?'
                         . ' No? Then let us add some even more useless text here!',
-                        1
+                        1,
                     ],
                     ['bar', 2],
                     ['foobar', 3],
@@ -1728,7 +1708,7 @@ backend_layout {
                 --div--;text,
                     text_1, text_2, text_3, text_4, text_5, text_6, text_7, text_9, text_10,
                     text_11, text_12, text_13, text_18, text_14, text_15, text_16, text_17, text_19,
-                    text_21, text_20,
+                    text_20,
                 --div--;check,
                     checkbox_1, checkbox_9, checkbox_2, checkbox_17, checkbox_25, checkbox_18, checkbox_24, checkbox_19, checkbox_26,
                     checkbox_20, checkbox_21, checkbox_22, checkbox_23, checkbox_3, checkbox_4, checkbox_6, checkbox_7, checkbox_8,
