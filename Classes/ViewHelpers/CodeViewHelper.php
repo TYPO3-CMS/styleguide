@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-namespace TYPO3\CMS\Styleguide\ViewHelpers;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -15,10 +14,13 @@ namespace TYPO3\CMS\Styleguide\ViewHelpers;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+namespace TYPO3\CMS\Styleguide\ViewHelpers;
+
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
- * Class CodeViewHelper
+ * Render code snippets in a usable way
  */
 class CodeViewHelper extends AbstractViewHelper
 {
@@ -32,22 +34,16 @@ class CodeViewHelper extends AbstractViewHelper
      */
     protected $escapeChildren = false;
 
-    /**
-     * Initializes the arguments
-     */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('language', 'string', 'the language identifier, e.g. html, php, etc.', true);
         $this->registerArgument('codeonly', 'bool', 'if true show only the code but not the example', false, false);
     }
 
-    /**
-     * @return mixed
-     */
-    public function render()
+    public function render(): string
     {
         $content = $this->renderChildren();
-        $_lines = explode(chr(10), $content);
+        $_lines = explode("\n", $content);
         $lines = [];
         foreach ($_lines as $line) {
             $line = preg_replace('/(\s)/', ' ', $line);
@@ -58,9 +54,9 @@ class CodeViewHelper extends AbstractViewHelper
         $indentSize = strlen($lines[0]) - strlen(ltrim($lines[0]));
         $content = '';
         foreach ($lines as $line) {
-            $tmp = substr($line, $indentSize);
+            $tmp = substr($line, $indentSize) ?: '';
             $spaces = strlen($tmp) - strlen(ltrim($tmp));
-            $content .= str_repeat('  ', $spaces) . ltrim($tmp) . chr(10);
+            $content .= str_repeat('  ', $spaces) . ltrim($line) . chr(10);
         }
 
         $markup = [];

@@ -23,19 +23,11 @@ return [
     'columns' => [
 
         'sys_language_uid' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1],
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0]
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -48,8 +40,8 @@ return [
                 ],
                 'foreign_table' => 'tx_styleguide_inline_mngroup_mm',
                 'foreign_table_where' => 'AND {#tx_styleguide_inline_mngroup_mm}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_mngroup_mm}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -61,33 +53,32 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_inline_mngroup_mm',
                 'foreign_table_where' => 'AND {#tx_styleguide_inline_mngroup_mm}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_mngroup_mm}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'hidden' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
-                'default' => '0'
-            ]
+                'default' => '0',
+            ],
         ],
 
         'parentid' => [
             'label' => 'parentid',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'size' => 1,
                 'eval' => 'int',
                 'maxitems' => 1,
@@ -99,13 +90,12 @@ return [
                         'disabled' => true,
                     ],
                 ],
-            ]
+            ],
         ],
         'childid' => [
             'label' => 'childid',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'size' => 1,
                 'eval' => 'int',
                 'maxitems' => 1,
@@ -117,17 +107,17 @@ return [
                         'disabled' => true,
                     ],
                 ],
-            ]
+            ],
         ],
         'parentsort' => [
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'childsort' => [
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'check_1' => [
             'label' => 'check_1',
@@ -141,8 +131,8 @@ return [
         '0' => [
             'showitem' => '
                 --div--;General, parentid, childid, check_1,
-                --div--;Visibility, sys_language_uid, l18n_parent, l18n_diffsource, hidden, hotelsort, branchsort'
-        ]
+                --div--;Visibility, sys_language_uid, l18n_parent, l18n_diffsource, hidden, hotelsort, branchsort',
+        ],
     ],
 
 ];

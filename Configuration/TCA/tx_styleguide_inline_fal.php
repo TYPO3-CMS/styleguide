@@ -27,9 +27,7 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable',
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
@@ -37,18 +35,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -59,13 +47,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_inline_fal',
                 'foreign_table_where' => 'AND {#tx_styleguide_inline_fal}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_fal}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -77,19 +65,19 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_inline_fal',
                 'foreign_table_where' => 'AND {#tx_styleguide_inline_fal}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_fal}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
 
         'inline_1' => [
@@ -99,7 +87,7 @@ return [
                 'inline_1',
                 [
                     'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
+                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
                     ],
                     'overrideChildTca' => [
                         'columns' => [
@@ -111,7 +99,7 @@ return [
                             \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
                                 'showitem' => '
                                 --palette--;;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
                         ],
                     ],
@@ -126,7 +114,7 @@ return [
                 'inline_2',
                 [
                     'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
+                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
                     ],
                     'overrideChildTca' => [
                         'columns' => [
@@ -138,7 +126,7 @@ return [
                             \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
                                 'showitem' => '
                                 --palette--;;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
                         ],
                     ],
@@ -162,6 +150,20 @@ return [
                 [
                     'behaviour' => [
                         'allowLanguageSynchronization' => true,
+                    ],
+                ],
+                $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext']
+            ),
+        ],
+        'inline_5' => [
+            'label' => 'inline_5 appearance localization toggles',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'inline_5',
+                [
+                    'appearance' => [
+                        'showPossibleLocalizationRecords' => true,
+                        'showAllLocalizationLink' => true,
+                        'showSynchronizationLink' => true,
                     ],
                 ],
                 $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext']
@@ -213,7 +215,6 @@ return [
                                                             <height>45c</height>
                                                         </headerThumbnail>
                                                         <showPossibleLocalizationRecords>0</showPossibleLocalizationRecords>
-                                                        <showRemovedLocalizationRecords>0</showRemovedLocalizationRecords>
                                                         <showSynchronizationLink>0</showSynchronizationLink>
                                                         <showAllLocalizationLink>0</showAllLocalizationLink>
                                                         <enabledControls>
@@ -291,7 +292,7 @@ return [
                 --div--;typical fal,
                     inline_1, inline_2,
                 --div--;media,
-                    inline_3, inline_4,
+                    inline_3, inline_4, inline_5,
                 --div--;in flex,
                     inline_flex_1,
             ',

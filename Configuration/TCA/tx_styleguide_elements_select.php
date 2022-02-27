@@ -27,9 +27,7 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable',
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
@@ -37,18 +35,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -59,13 +47,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_select',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_select}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_select}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -77,19 +65,19 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_select',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_select}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_select}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
 
         'select_single_1' => [
@@ -104,7 +92,7 @@ return [
                         'foo and this here is very long text that maybe does not really fit into the form in one line.'
                             . ' Ok let us add even more text to see how this looks like if wrapped. Is this enough now? No?'
                             . ' Then let us add some even more useless text here!',
-                        1
+                        1,
                     ],
                     ['bar', 'bar'],
                 ],
@@ -178,9 +166,11 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'fileFolder' => 'EXT:styleguide/Resources/Public/Icons',
-                'fileFolder_extList' => 'svg',
-                'fileFolder_recursions' => 1,
+                'fileFolderConfig' => [
+                    'folder' => 'EXT:styleguide/Resources/Public/Icons',
+                    'allowedExtensions' => 'svg',
+                    'depth' => 1,
+                ],
                 'fieldWizard' => [
                     'selectIcons' => [
                         'disabled' => false,
@@ -281,10 +271,107 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_styleguide_staticdata',
-                'MM' => 'tx_styleguide_elements_select_single_15_mm'
+                'MM' => 'tx_styleguide_elements_select_single_15_mm',
             ],
         ],
-
+        'select_single_16' => [
+            'exclude' => 1,
+            'label' => 'select_single_16',
+            'description' => 'itemGroups',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['item 1', 1, '', 'group1'],
+                    ['item 2', 2, '', 'group1'],
+                    ['item 3', 3, '', 'group3'],
+                    ['item 4', 3],
+                ],
+                'itemGroups' => [
+                    'group1' => 'Group 1 with items',
+                    'group2' => 'Group 2 with no items',
+                    'group3' => 'Group 3 with items',
+                ],
+            ],
+        ],
+        'select_single_17' => [
+            'exclude' => 1,
+            'label' => 'select_single_16',
+            'description' => 'itemGroups, size=6',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['item 1', 1, '', 'group1'],
+                    ['item 2', 2, '', 'group1'],
+                    ['item 3', 3, '', 'group3'],
+                    ['item 4', 3],
+                ],
+                'itemGroups' => [
+                    'group1' => 'Group 1 with items',
+                    'group2' => 'Group 2 with no items',
+                    'group3' => 'Group 3 with items',
+                ],
+                'size' => 6,
+            ],
+        ],
+        'select_single_18' => [
+            'exclude' => 1,
+            'label' => 'select_single_18',
+            'description' => 'sortItems label asc',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['Plum tree', 1],
+                    ['Walnut tree', 2],
+                    ['Apple tree', 3],
+                    ['Cherry tree', 4],
+                ],
+                'sortItems' => [
+                    'label' => 'asc',
+                ],
+                'size' => 4,
+            ],
+        ],
+        'select_single_19' => [
+            'exclude' => 1,
+            'label' => 'select_single_19',
+            'description' => 'sortItems value desc',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['Plum tree', 1],
+                    ['Walnut tree', 2],
+                    ['Apple tree', 3],
+                    ['Cherry tree', 4],
+                ],
+                'sortItems' => [
+                    'value' => 'desc',
+                ],
+                'size' => 4,
+            ],
+        ],
+        'select_single_20' => [
+            'exclude' => 1,
+            'label' => 'select_single_20',
+            'description' => 'sortItems custom',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['Plum tree', 1],
+                    ['Walnut tree', 2],
+                    ['Apple tree', 3],
+                    ['Cherry tree', 4],
+                ],
+                'sortItems' => [
+                    'tx_styleguide' => 'TYPO3\CMS\Styleguide\UserFunctions\FormEngine\SelectItemSorter->sortReverseTitles',
+                ],
+                'size' => 4,
+            ],
+        ],
         'select_singlebox_1' => [
             'exclude' => 1,
             'label' => 'select_singlebox_1 description',
@@ -303,7 +390,7 @@ return [
         ],
         'select_singlebox_2' => [
             'exclude' => 1,
-            'label' => 'select_singlebox_1 readOnly description',
+            'label' => 'select_singlebox_2 readOnly description',
             'description' => 'field description',
             'config' => [
                 'type' => 'select',
@@ -315,6 +402,26 @@ return [
                     ['divider', '--div--'],
                     ['foo 3', 3],
                     ['foo 4', 4],
+                ],
+            ],
+        ],
+        'select_singlebox_3' => [
+            'exclude' => 1,
+            'label' => 'select_singlebox_3',
+            'description' => 'itemGroups',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'items' => [
+                    ['item 1', 1, '', 'group1'],
+                    ['item 2', 2, '', 'group1'],
+                    ['item 3', 3, '', 'group3'],
+                    ['item 4', 3],
+                ],
+                'itemGroups' => [
+                    'group1' => 'Group 1 with items',
+                    'group2' => 'Group 2 with no items',
+                    'group3' => 'Group 3 with items',
                 ],
             ],
         ],
@@ -354,15 +461,14 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectCheckBox',
                 'items' => [
-                    ['foo 1', 1, '', 'optional description'],
-                    ['foo 2', 2, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg', 'LLL:EXT:styleguide/Resources/Private/Language/locallang.xlf:translatedHelpTextForSelectCheckBox3'],
+                    ['foo 1', 1, '', null, ['title' => 'optional title', 'description' => 'optional description']],
+                    ['foo 2', 2, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg', null, 'LLL:EXT:styleguide/Resources/Private/Language/locallang.xlf:translatedHelpTextForSelectCheckBox3'],
                     ['foo 3', 3, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg'],
                     ['foo 4', 4],
                 ],
             ],
         ],
         'select_checkbox_4' => [
-            // @todo: readOnly select checkbox renders no body?!
             'exclude' => 1,
             'label' => 'select_checkbox_4 readOnly description',
             'description' => 'field description',
@@ -383,7 +489,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectCheckBox',
                 'appearance' => [
-                    'expandAll' => true
+                    'expandAll' => true,
                 ],
                 'items' => [
                     ['div 1', '--div--'],
@@ -413,10 +519,31 @@ return [
                 ],
             ],
         ],
+        'select_checkbox_7' => [
+            'exclude' => 1,
+            'label' => 'select_checkbox_7',
+            'description' => 'itemGroups',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectCheckBox',
+                'items' => [
+                    ['foo 1', 1, '', 'group1'],
+                    ['foo 2', 2, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg', 'group1'],
+                    ['foo 3', 3, 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg'],
+                    ['foo 4', 4],
+                    ['foo 5', 1, '', 'group3'],
+                ],
+                'itemGroups' => [
+                    'group1' => 'Group 1 with items',
+                    'group2' => 'Group 2 with no items',
+                    'group3' => 'Group 3 with items',
+                ],
+            ],
+        ],
 
         'select_multiplesidebyside_1' => [
             'exclude' => 1,
-            'label' => 'select_multiplesidebyside_1 autoSizeMax=5, size=3 description',
+            'label' => 'select_multiplesidebyside_1 autoSizeMax=10, size=3 description',
             'description' => 'field description',
             'config' => [
                 'type' => 'select',
@@ -431,7 +558,7 @@ return [
                     ['foo 6', 6],
                 ],
                 'size' => 3,
-                'autoSizeMax' => 5,
+                'autoSizeMax' => 10,
                 'multiple' => true,
             ],
         ],
@@ -502,6 +629,9 @@ return [
                 'fieldControl' => [
                     'editPopup' => [
                         'disabled' => false,
+                        'options' => [
+                            'windowOpenParameters' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
+                        ],
                     ],
                     'addRecord' => [
                         'disabled' => false,
@@ -530,7 +660,7 @@ return [
                 ],
                 'readOnly' => true,
                 'size' => 3,
-                'autoSizeMax' => 5,
+                'autoSizeMax' => 10,
                 'multiple' => true,
             ],
         ],
@@ -543,7 +673,7 @@ return [
                 'foreign_table' => 'tx_styleguide_staticdata',
                 'MM' => 'tx_styleguide_elements_select_multiplesidebyside_8_mm',
                 'size' => 3,
-                'autoSizeMax' => 5,
+                'autoSizeMax' => 10,
             ],
         ],
         'select_multiplesidebyside_9' => [
@@ -558,7 +688,30 @@ return [
                     ['foo 2', 2],
                     ['foo 3', 3],
                     ['bar', 4],
-                ]
+                ],
+            ],
+        ],
+        'select_multiplesidebyside_10' => [
+            'exclude' => 1,
+            'label' => 'select_multiplesidebyside_1 autoSizeMax=10, size=3 description',
+            'description' => 'field description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'items' => [
+                    ['item 1', 1, '', 'group1'],
+                    ['item 2', 2, '', 'group1'],
+                    ['item 3', 3, '', 'group3'],
+                    ['item 4', 4],
+                ],
+                'itemGroups' => [
+                    'group1' => 'Group 1 with items',
+                    'group2' => 'Group 2 with no items',
+                    'group3' => 'Group 3 with items',
+                ],
+                'size' => 3,
+                'autoSizeMax' => 10,
+                'multiple' => true,
             ],
         ],
         'select_tree_1' => [
@@ -601,7 +754,7 @@ return [
                     'appearance' => [
                         'expandAll' => true,
                         'showHeader' => false,
-                        'nonSelectableLevels' => '0,1'
+                        'nonSelectableLevels' => '0,1',
                     ],
                 ],
             ],
@@ -695,7 +848,7 @@ return [
                 'items' => [
                     [
                         'Just an item',
-                        1
+                        1,
                     ],
                     ['bar', 'bar'],
                     ['and yet another one', -1],
@@ -712,7 +865,6 @@ return [
                     'default' => '
                         <T3DataStructure>
                             <sheets>
-
                                 <sSingle>
                                     <ROOT>
                                         <type>array</type>
@@ -802,34 +954,6 @@ return [
                                                     </config>
                                                 </TCEforms>
                                             </select_tree_1>
-                                            <select_tree_2_condition>
-                                                <TCEforms>
-                                                    <label>select_tree_2_condition, display select_tree_2?</label>
-                                                    <config>
-                                                        <type>check</type>
-                                                    </config>
-                                                </TCEforms>
-                                            </select_tree_2_condition>
-                                            <select_tree_2>
-                                                <TCEforms>
-                                                    <label>select_tree_2 displayCond</label>
-                                                    <displayCond>FIELD:select_tree_2_condition:REQ:TRUE</displayCond>
-                                                    <config>
-                                                        <type>select</type>
-                                                        <renderType>selectTree</renderType>
-                                                        <foreign_table>pages</foreign_table>
-                                                        <size>20</size>
-                                                        <maxitems>4</maxitems>
-                                                        <treeConfig>
-                                                            <expandAll>1</expandAll>
-                                                            <parentField>pid</parentField>
-                                                            <appearance>
-                                                                <showHeader>1</showHeader>
-                                                            </appearance>
-                                                        </treeConfig>
-                                                    </config>
-                                                </TCEforms>
-                                            </select_tree_2>
                                         </el>
                                     </ROOT>
                                 </sTree>
@@ -886,6 +1010,20 @@ return [
                                                     </config>
                                                 </TCEforms>
                                             </select_multiplesidebyside_1>
+                                            <select_multiplesidebyside_2>
+                                                <TCEforms>
+                                                    <label>select_multiplesidebyside_2</label>
+                                                    <description>select_multiplesidebyside_2 foreign_table MM</description>
+                                                    <config>
+                                                        <type>select</type>
+                                                        <renderType>selectMultipleSideBySide</renderType>
+                                                        <foreign_table>tx_styleguide_staticdata</foreign_table>
+                                                        <MM>tx_styleguide_elements_select_flex_1_multiplesidebyside_2_mm</MM>
+                                                        <size>5</size>
+                                                        <autoSizeMax>5</autoSizeMax>
+                                                    </config>
+                                                </TCEforms>
+                                            </select_multiplesidebyside_2>
                                         </el>
                                     </ROOT>
                                 </sMultiplesidebyside>
@@ -991,15 +1129,18 @@ return [
                 --div--;renderType=selectSingle,
                     select_single_1, select_single_2, select_single_3, select_single_4, select_single_5,
                     select_single_7, select_single_12, select_single_8, select_single_13, select_single_10,
-                    select_single_11, select_single_14, select_single_15,
+                    select_single_11, select_single_14, select_single_15,select_single_16,select_single_17,
+                    select_single_18, select_single_19, select_single_20,
                 --div--;renderType=selectSingleBox,
-                    select_singlebox_1, select_singlebox_2,
+                    select_singlebox_1, select_singlebox_2,select_singlebox_3,
                 --div--;renderType=selectCheckBox,
-                    select_checkbox_1, select_checkbox_2, select_checkbox_3, select_checkbox_4, select_checkbox_5, select_checkbox_6,
+                    select_checkbox_1, select_checkbox_2, select_checkbox_3, select_checkbox_4, select_checkbox_5,
+                    select_checkbox_6, select_checkbox_7,
                 --div--;renderType=selectMultipleSideBySide,
                     select_multiplesidebyside_1, select_multiplesidebyside_2, select_multiplesidebyside_3,
                     select_multiplesidebyside_5, select_multiplesidebyside_6,
                     select_multiplesidebyside_7, select_multiplesidebyside_8, select_multiplesidebyside_9,
+                    select_multiplesidebyside_10,
                 --div--;renderType=selectTree,
                     select_tree_1, select_tree_2, select_tree_3, select_tree_4, select_tree_5, select_tree_6,
                 --div--;in flex,

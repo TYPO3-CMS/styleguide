@@ -27,9 +27,7 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable',
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
@@ -37,18 +35,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -59,13 +47,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_basic',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_basic}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_basic}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -77,19 +65,19 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_basic',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_basic}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_basic}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
 
         'input_1' => [
@@ -101,13 +89,14 @@ return [
                 'type' => 'input',
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
-                ]
+                ],
             ],
         ],
         'input_2' => [
             'l10n_mode' => 'prefixLangTitle',
             'exclude' => 1,
-            'label' => 'input_2, size=10',
+            'label' => 'input_2',
+            'description' => 'size=10',
             'config' => [
                 'type' => 'input',
                 'size' => 10,
@@ -115,7 +104,8 @@ return [
         ],
         'input_3' => [
             'exclude' => 1,
-            'label' => 'input_3 max=4',
+            'label' => 'input_3',
+            'description' => 'max=4',
             'config' => [
                 'type' => 'input',
                 'max' => 4,
@@ -123,7 +113,8 @@ return [
         ],
         'input_4' => [
             'exclude' => 1,
-            'label' => 'input_4 eval=alpha',
+            'label' => 'input_4',
+            'description' => 'eval=alpha',
             'config' => [
                 'type' => 'input',
                 'eval' => 'alpha',
@@ -131,7 +122,8 @@ return [
         ],
         'input_5' => [
             'exclude' => 1,
-            'label' => 'input_5 eval=alphanum',
+            'label' => 'input_5',
+            'description' => 'eval=alphanum',
             'config' => [
                 'type' => 'input',
                 'eval' => 'alphanum',
@@ -139,7 +131,8 @@ return [
         ],
         'input_8' => [
             'exclude' => 1,
-            'label' => 'input_8 eval=double2',
+            'label' => 'input_8',
+            'description' => 'eval=double2',
             'config' => [
                 'type' => 'input',
                 'eval' => 'double2',
@@ -147,7 +140,8 @@ return [
         ],
         'input_9' => [
             'exclude' => 1,
-            'label' => 'input_9 eval=int',
+            'label' => 'input_9',
+            'description' => 'eval=int',
             'config' => [
                 'type' => 'input',
                 'eval' => 'int',
@@ -155,7 +149,8 @@ return [
         ],
         'input_10' => [
             'exclude' => 1,
-            'label' => 'input_10 eval=is_in is_in=abc123',
+            'label' => 'input_10',
+            'description' => 'eval=is_in is_in=abc123',
             'config' => [
                 'type' => 'input',
                 'eval' => 'is_in',
@@ -164,7 +159,8 @@ return [
         ],
         'input_11' => [
             'exclude' => 1,
-            'label' => 'input_11 eval=lower',
+            'label' => 'input_11',
+            'description' => 'eval=lower',
             'config' => [
                 'type' => 'input',
                 'eval' => 'lower',
@@ -172,7 +168,8 @@ return [
         ],
         'input_12' => [
             'exclude' => 1,
-            'label' => 'input_12 eval=md5',
+            'label' => 'input_12',
+            'description' => 'eval=md5',
             'config' => [
                 'type' => 'input',
                 'eval' => 'md5',
@@ -180,7 +177,8 @@ return [
         ],
         'input_13' => [
             'exclude' => 1,
-            'label' => 'input_13 eval=nospace',
+            'label' => 'input_13',
+            'description' => 'eval=nospace',
             'config' => [
                 'type' => 'input',
                 'eval' => 'nospace',
@@ -188,7 +186,8 @@ return [
         ],
         'input_14' => [
             'exclude' => 1,
-            'label' => 'input_14 eval=null',
+            'label' => 'input_14',
+            'description' => 'eval=null',
             'config' => [
                 'type' => 'input',
                 'eval' => 'null',
@@ -196,7 +195,8 @@ return [
         ],
         'input_15' => [
             'exclude' => 1,
-            'label' => 'input_15 eval=num',
+            'label' => 'input_15',
+            'description' => 'eval=num',
             'config' => [
                 'type' => 'input',
                 'eval' => 'num',
@@ -204,7 +204,8 @@ return [
         ],
         'input_16' => [
             'exclude' => 1,
-            'label' => 'input_16 eval=password',
+            'label' => 'input_16',
+            'description' => 'eval=password',
             'config' => [
                 'type' => 'input',
                 'eval' => 'password',
@@ -212,7 +213,8 @@ return [
         ],
         'input_19' => [
             'exclude' => 1,
-            'label' => 'input_19 eval=trim',
+            'label' => 'input_19',
+            'description' => 'eval=trim',
             'config' => [
                 'type' => 'input',
                 'eval' => 'trim',
@@ -220,7 +222,8 @@ return [
         ],
         'input_20' => [
             'exclude' => 1,
-            'label' => 'input_20 eval with user function',
+            'label' => 'input_20',
+            'description' => 'eval with user function',
             'config' => [
                 'type' => 'input',
                 'eval' => 'TYPO3\\CMS\\Styleguide\\UserFunctions\\FormEngine\\TypeInput21Eval',
@@ -228,7 +231,8 @@ return [
         ],
         'input_21' => [
             'exclude' => 1,
-            'label' => 'input_21 eval=unique',
+            'label' => 'input_21',
+            'description' => 'eval=unique',
             'config' => [
                 'type' => 'input',
                 'eval' => 'unique',
@@ -236,7 +240,8 @@ return [
         ],
         'input_22' => [
             'exclude' => 1,
-            'label' => 'input_22 eval=uniqueInPid',
+            'label' => 'input_22',
+            'description' => 'eval=uniqueInPid',
             'config' => [
                 'type' => 'input',
                 'eval' => 'uniqueInPid',
@@ -244,7 +249,8 @@ return [
         ],
         'input_23' => [
             'exclude' => 1,
-            'label' => 'input_23 eval=upper',
+            'label' => 'input_23',
+            'description' => 'eval=upper',
             'config' => [
                 'type' => 'input',
                 'eval' => 'upper',
@@ -252,7 +258,8 @@ return [
         ],
         'input_24' => [
             'exclude' => 1,
-            'label' => 'input_24 eval=year',
+            'label' => 'input_24',
+            'description' => 'eval=year',
             'config' => [
                 'type' => 'input',
                 'eval' => 'year',
@@ -260,7 +267,8 @@ return [
         ],
         'input_25' => [
             'exclude' => 1,
-            'label' => 'input_25 eval=int default=0 range lower=-2 range upper=2',
+            'label' => 'input_25',
+            'description' => 'eval=int default=0 range lower=-2 range upper=2',
             'config' => [
                 'type' => 'input',
                 'eval' => 'int',
@@ -273,7 +281,8 @@ return [
         ],
         'input_26' => [
             'exclude' => 1,
-            'label' => 'input_26 default="input_26", value for input_27 and input_28',
+            'label' => 'input_26',
+            'description' => 'default="input_26", value for input_27 and input_28',
             'config' => [
                 'type' => 'input',
                 'default' => 'input_26',
@@ -281,7 +290,8 @@ return [
         ],
         'input_27' => [
             'exclude' => 1,
-            'label' => 'input_27 placeholder=__row|input_26',
+            'label' => 'input_27',
+            'description' => 'placeholder=__row|input_26',
             'config' => [
                 'type' => 'input',
                 'placeholder' => '__row|input_26',
@@ -289,7 +299,8 @@ return [
         ],
         'input_28' => [
             'exclude' => 1,
-            'label' => 'input_28 placeholder=__row|input_26 mode=useOrOverridePlaceholder eval=null default=null',
+            'label' => 'input_28',
+            'description' => 'placeholder=__row|input_26 mode=useOrOverridePlaceholder eval=null default=null',
             'config' => [
                 'type' => 'input',
                 'placeholder' => '__row|input_26',
@@ -300,8 +311,8 @@ return [
         ],
         'input_29' => [
             'exclude' => 1,
-            'label' => 'input_29 renderType=inputLink description',
-            'description' => 'field description',
+            'label' => 'input_29',
+            'description' => 'renderType=inputLink',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputLink',
@@ -309,7 +320,8 @@ return [
         ],
         'input_30' => [
             'exclude' => 1,
-            'label' => 'input_30 slider step=10 width=200 eval=trim,int',
+            'label' => 'input_30',
+            'description' => 'slider step=10 width=200 eval=trim,int',
             'config' => [
                 'type' => 'input',
                 'size' => 5,
@@ -327,7 +339,8 @@ return [
         ],
         'input_31' => [
             'exclude' => 1,
-            'label' => 'input_31 slider default=14.5 step=0.5 width=150 eval=trim,double2',
+            'label' => 'input_31',
+            'description' => 'slider default=14.5 step=0.5 width=150 eval=trim,double2',
             'config' => [
                 'type' => 'input',
                 'size' => 5,
@@ -345,7 +358,8 @@ return [
         ],
         'input_32' => [
             'exclude' => 1,
-            'label' => 'input_32 wizard userFunc',
+            'label' => 'input_32',
+            'description' => 'wizard userFunc',
             'config' => [
                 'type' => 'input',
                 'size' => 10,
@@ -363,7 +377,8 @@ return [
         ],
         'input_33' => [
             'exclude' => 1,
-            'label' => 'input_33 valuePicker',
+            'label' => 'input_33',
+            'description' => 'valuePicker',
             'config' => [
                 'type' => 'input',
                 'size' => 20,
@@ -380,8 +395,8 @@ return [
         ],
         'input_34' => [
             'exclude' => 1,
-            'label' => 'input_34 renderType=colorpicker description',
-            'description' => 'field description',
+            'label' => 'input_34',
+            'description' => 'renderType=colorpicker',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'colorpicker',
@@ -390,7 +405,8 @@ return [
         ],
         'input_35' => [
             'exclude' => 1,
-            'label' => 'input_35 valuePicker append',
+            'label' => 'input_35',
+            'description' => 'valuePicker append',
             'config' => [
                 'type' => 'input',
                 'size' => 20,
@@ -408,7 +424,8 @@ return [
         ],
         'input_36' => [
             'exclude' => 1,
-            'label' => 'input_36 valuePicker prepend',
+            'label' => 'input_36',
+            'description' => 'valuePicker prepend',
             'config' => [
                 'type' => 'input',
                 'size' => 20,
@@ -426,7 +443,8 @@ return [
         ],
         'input_37' => [
             'exclude' => 1,
-            'label' => 'input_37 renderType=colorpicker valuePicker',
+            'label' => 'input_37',
+            'description' => 'renderType=colorpicker valuePicker',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'colorpicker',
@@ -442,7 +460,8 @@ return [
         ],
         'input_38' => [
             'exclude' => 1,
-            'label' => 'input_38 inputLink allowedExtensions=png',
+            'label' => 'input_38',
+            'description' => 'inputLink allowedExtensions=png',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputLink',
@@ -450,14 +469,15 @@ return [
                     'linkPopup' => [
                         'options' => [
                             'allowedExtensions' => 'png',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ],
         ],
         'input_39' => [
             'exclude' => 1,
-            'label' => 'input_39 eval=email',
+            'label' => 'input_39',
+            'description' => 'eval=email',
             'config' => [
                 'type' => 'input',
                 'eval' => 'email',
@@ -465,8 +485,8 @@ return [
         ],
         'input_40' => [
             'exclude' => 1,
-            'label' => 'input_40 readOnly description',
-            'description' => 'field description',
+            'label' => 'input_40',
+            'description' => 'readOnly',
             'config' => [
                 'type' => 'input',
                 'readOnly' => true,
@@ -474,8 +494,8 @@ return [
         ],
         'input_41' => [
             'exclude' => 1,
-            'label' => 'input_41     renderType=inputLink readOnly description',
-            'description' => 'field description',
+            'label' => 'input_41',
+            'description' => 'renderType=inputLink readOnly',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputLink',
@@ -484,8 +504,8 @@ return [
         ],
         'input_42' => [
             'exclude' => 1,
-            'label' => 'input_42 renderType=colorpicker readOnly description',
-            'description' => 'field description',
+            'label' => 'input_42',
+            'description' => 'renderType=colorpicker readOnly',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'colorpicker',
@@ -495,8 +515,8 @@ return [
 
         'inputdatetime_1' => [
             'exclude' => 1,
-            'label' => 'inputdatetime_1 eval=date description',
-            'description' => 'field description',
+            'label' => 'inputdatetime_1',
+            'description' => 'eval=date',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -505,18 +525,20 @@ return [
         ],
         'inputdatetime_2' => [
             'exclude' => 1,
-            'label' => 'inputdatetime_2 dbType=date eval=date',
+            'label' => 'inputdatetime_2',
+            'description' => 'dbType=date eval=date',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'dbType' => 'date',
                 'eval' => 'date',
-                'default' => '0000-00-00'
+                'default' => '0000-00-00',
             ],
         ],
         'inputdatetime_3' => [
             'exclude' => 1,
-            'label' => 'inputdatetime_3 eval=datetime',
+            'label' => 'inputdatetime_3',
+            'description' => 'eval=datetime',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -525,18 +547,20 @@ return [
         ],
         'inputdatetime_4' => [
             'exclude' => 1,
-            'label' => 'inputdatetime_4 dbType=datetime eval=datetime',
+            'label' => 'inputdatetime_4',
+            'description' => 'dbType=datetime eval=datetime',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'dbType' => 'datetime',
                 'eval' => 'datetime',
-                'default' => '0000-00-00 00:00:00'
+                'default' => '0000-00-00 00:00:00',
             ],
         ],
         'inputdatetime_5' => [
             'exclude' => 1,
-            'label' => 'inputdatetime_5 eval=time',
+            'label' => 'inputdatetime_5',
+            'description' => 'eval=time',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -545,7 +569,8 @@ return [
         ],
         'inputdatetime_6' => [
             'exclude' => 1,
-            'label' => 'inputdatetime_6 eval=timesec',
+            'label' => 'inputdatetime_6',
+            'description' => 'eval=timesec',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -554,8 +579,8 @@ return [
         ],
         'inputdatetime_7' => [
             'exclude' => 1,
-            'label' => 'inputdatetime_7 eval=date readOnly description',
-            'description' => 'field description',
+            'label' => 'inputdatetime_7',
+            'description' => 'eval=date readOnly',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -565,7 +590,8 @@ return [
         ],
         'inputdatetime_8' => [
             'exclude' => 1,
-            'label' => 'inputdatetime_8 eval=datetime readOnly',
+            'label' => 'inputdatetime_8',
+            'description' => 'eval=datetime readOnly',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -575,7 +601,8 @@ return [
         ],
         'inputdatetime_9' => [
             'exclude' => 1,
-            'label' => 'inputdatetime_9 eval=time readOnly',
+            'label' => 'inputdatetime_9',
+            'description' => 'eval=time readOnly',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -585,12 +612,27 @@ return [
         ],
         'inputdatetime_10' => [
             'exclude' => 1,
-            'label' => 'inputdatetime_10 eval=timesec readOnly',
+            'label' => 'inputdatetime_10',
+            'description' => 'eval=timesec readOnly',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'eval' => 'timesec',
                 'readOnly' => true,
+            ],
+        ],
+        'inputdatetime_11' => [
+            'exclude' => 1,
+            'label' => 'inputdatetime_11',
+            'description' => 'eval=datetime, default=0, range.lower=1627208536',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime',
+                'default' => 0,
+                'range' => [
+                    'lower' => 1627208536,
+                ],
             ],
         ],
 
@@ -606,7 +648,8 @@ return [
         'text_2' => [
             'l10n_mode' => 'prefixLangTitle',
             'exclude' => 1,
-            'label' => 'text_2 cols=20',
+            'label' => 'text_2',
+            'description' => 'cols=20',
             'config' => [
                 'type' => 'text',
                 'cols' => 20,
@@ -614,7 +657,8 @@ return [
         ],
         'text_3' => [
             'exclude' => 1,
-            'label' => 'text_3 rows=2',
+            'label' => 'text_3',
+            'description' => 'rows=2',
             'config' => [
                 'type' => 'text',
                 'rows' => 2,
@@ -622,7 +666,8 @@ return [
         ],
         'text_4' => [
             'exclude' => 1,
-            'label' => 'text_4 cols=20, rows=2',
+            'label' => 'text_4',
+            'description' => 'cols=20, rows=2',
             'config' => [
                 'type' => 'text',
                 'cols' => 20,
@@ -631,7 +676,8 @@ return [
         ],
         'text_5' => [
             'exclude' => 1,
-            'label' => 'text_5 wrap=off, long default text',
+            'label' => 'text_5',
+            'description' => 'wrap=off, long default text',
             'config' => [
                 'type' => 'text',
                 'wrap' => 'off',
@@ -645,7 +691,8 @@ return [
         ],
         'text_6' => [
             'exclude' => 1,
-            'label' => 'text_6 wrap=virtual, long default text',
+            'label' => 'text_6',
+            'description' => 'wrap=virtual, long default text',
             'config' => [
                 'type' => 'text',
                 'wrap' => 'virtual',
@@ -660,24 +707,17 @@ return [
         ],
         'text_7' => [
             'exclude' => 1,
-            'label' => 'text_7 eval=trim',
+            'label' => 'text_7',
+            'description' => 'eval=trim',
             'config' => [
                 'type' => 'text',
                 'eval' => 'trim',
             ],
         ],
-        'text_8' => [
-            'exclude' => 1,
-            'label' => 'text_8 eval with user function',
-            'config' => [
-                'type' => 'text',
-                'eval' => 'TYPO3\\CMS\\Styleguide\\UserFunctions\\FormEngine\\TypeText9Eval',
-            ],
-        ],
         'text_9' => [
             'exclude' => 1,
-            'label' => 'text_9 readOnly=1 description',
-            'description' => 'field description',
+            'label' => 'text_9',
+            'description' => 'readOnly=1',
             'config' => [
                 'type' => 'text',
                 'readOnly' => 1,
@@ -685,7 +725,8 @@ return [
         ],
         'text_10' => [
             'exclude' => 1,
-            'label' => 'text_10 readOnly=1, format=datetime',
+            'label' => 'text_10',
+            'description' => 'readOnly=1, format=datetime',
             'config' => [
                 'type' => 'text',
                 'readOnly' => 1,
@@ -694,7 +735,8 @@ return [
         ],
         'text_11' => [
             'exclude' => 1,
-            'label' => 'text_11 max=30',
+            'label' => 'text_11',
+            'description' => 'max=30',
             'config' => [
                 'type' => 'text',
                 'cols' => 30,
@@ -704,7 +746,8 @@ return [
         ],
         'text_12' => [
             'exclude' => 1,
-            'label' => 'text_12 default="text_12", value for text_13 and text_14',
+            'label' => 'text_12',
+            'description' => 'default="text_12", value for text_13 and text_14',
             'config' => [
                 'type' => 'input',
                 'default' => 'text_12',
@@ -712,7 +755,8 @@ return [
         ],
         'text_13' => [
             'exclude' => 1,
-            'label' => 'text_13 placeholder=__row|text_12',
+            'label' => 'text_13',
+            'description' => 'placeholder=__row|text_12',
             'config' => [
                 'type' => 'text',
                 'placeholder' => '__row|text_12',
@@ -720,7 +764,8 @@ return [
         ],
         'text_14' => [
             'exclude' => 1,
-            'label' => 'text_14 placeholder=__row|text_12, mode=useOrOverridePlaceholder, eval=null',
+            'label' => 'text_14',
+            'description' => 'placeholder=__row|text_12, mode=useOrOverridePlaceholder, eval=null',
             'config' => [
                 'type' => 'text',
                 'placeholder' => '__row|text_12',
@@ -730,7 +775,8 @@ return [
         ],
         'text_15' => [
             'exclude' => 1,
-            'label' => 'text_15 enableTabulator, fixedFont',
+            'label' => 'text_15',
+            'description' => 'enableTabulator, fixedFont',
             'config' => [
                 'type' => 'text',
                 'enableTabulator' => true,
@@ -738,7 +784,8 @@ return [
             ],
         ],
         'text_16' => [
-            'label' => 'text_16 valuePicker',
+            'label' => 'text_16',
+            'description' => 'valuePicker',
             'config' => [
                 'type' => 'text',
                 'cols' => '40',
@@ -753,32 +800,67 @@ return [
             ],
         ],
         'text_17' => [
-            'label' => 'text_17 renderType=textTable description',
-            'description' => 'field description',
+            'label' => 'text_17',
+            'description' => 'renderType=textTable',
             'config' => [
                 'type' => 'text',
                 'renderType' => 'textTable',
-                'cols' => '40',
-                'rows' => '5',
             ],
         ],
         'text_18' => [
             'exclude' => 1,
-            'label' => 'text_18, eval=null',
+            'label' => 'text_18',
+            'description' => 'eval=null',
             'config' => [
                 'type' => 'text',
                 'eval' => 'null',
             ],
         ],
         'text_19' => [
-            'label' => 'text_19 renderType=textTable readOnly description',
-            'description' => 'field description',
+            'label' => 'text_19',
+            'description' => 'renderType=textTable readOnly',
             'config' => [
                 'type' => 'text',
                 'renderType' => 'textTable',
                 'readOnly' => true,
                 'cols' => '40',
                 'rows' => '5',
+            ],
+        ],
+        'text_20' => [
+            'label' => 'text_20',
+            'description' => 'renderType=belayoutwizard',
+            'config' => [
+                'type' => 'text',
+                'renderType' => 'belayoutwizard',
+                'default' => '
+backend_layout {
+  colCount = 2
+  rowCount = 2
+  rows {
+    1 {
+      columns {
+        1 {
+          name = Left
+          rowspan = 2
+          colPos = 1
+        }
+        2 {
+          name = Main
+          colPos = 0
+        }
+      }
+    }
+    2 {
+      columns {
+        1 {
+          name = Footer
+          colPos = 24
+        }
+      }
+    }
+  }
+}',
             ],
         ],
 
@@ -788,29 +870,30 @@ return [
             'description' => 'field description',
             'config' => [
                 'type' => 'check',
-            ]
+            ],
         ],
         'checkbox_2' => [
             'exclude' => 1,
-            'label' => 'checkbox_2 one checkbox with label',
+            'label' => 'checkbox_2',
+            'description' => 'one checkbox with label',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo', ''],
+                    ['foo'],
                 ],
-            ]
+            ],
         ],
         'checkbox_3' => [
             'exclude' => 1,
-            'label' => 'checkbox_3 three checkboxes, two with labels, one without',
+            'label' => 'checkbox_3',
+            'description' => 'three checkboxes, two with labels, one without',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo', ''],
-                    ['', ''],
+                    ['foo'],
+                    [''],
                     [
                         'foobar',
-                        '',
                         'iconIdentifierChecked' => 'content-beside-text-img-below-center',
                         'iconIdentifierUnchecked' => 'content-beside-text-img-below-center',
                     ],
@@ -819,38 +902,40 @@ return [
         ],
         'checkbox_4' => [
             'exclude' => 1,
-            'label' => 'checkbox_4 four checkboxes with labels, long text',
+            'label' => 'checkbox_4',
+            'description' => 'four checkboxes with labels, long text',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo', ''],
+                    ['foo'],
                     [
                         'foo and this here is very long text that maybe does not really fit into the form in one line.'
                         . ' Ok let us add even more text to see how this looks like if wrapped. Is this enough now? No?'
                         . ' Then let us add some even more useless text here!',
-                        ''
                     ],
-                    ['foobar', ''],
-                    ['foobar', ''],
+                    ['foobar'],
+                    ['foobar'],
                 ],
             ],
         ],
         'checkbox_6' => [
             // @todo: Checking a checkbox that is added by itemsProcFunc is not persisted correctly.
             // @todo: HTML looks good, so this is probably an issue in DataHandler?
-            'label' => 'checkbox_6 itemsProcFunc',
+            'label' => 'checkbox_6',
+            'description' => 'itemsProcFunc',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo', ''],
-                    ['bar', ''],
+                    ['foo'],
+                    ['bar'],
                 ],
                 'itemsProcFunc' => 'TYPO3\\CMS\\Styleguide\\UserFunctions\\FormEngine\\TypeCheckbox8ItemsProcFunc->itemsProcFunc',
             ],
         ],
         'checkbox_7' => [
             'exclude' => 1,
-            'label' => 'checkbox_7 eval=maximumRecordsChecked, table wide',
+            'label' => 'checkbox_7',
+            'description' => 'eval=maximumRecordsChecked, table wide',
             'config' => [
                 'type' => 'check',
                 'eval' => 'maximumRecordsChecked',
@@ -861,7 +946,8 @@ return [
         ],
         'checkbox_8' => [
             'exclude' => 1,
-            'label' => 'checkbox_8 eval=maximumRecordsCheckedInPid, for this PID',
+            'label' => 'checkbox_8',
+            'description' => 'eval=maximumRecordsCheckedInPid, for this PID',
             'config' => [
                 'type' => 'check',
                 'eval' => 'maximumRecordsCheckedInPid',
@@ -872,258 +958,249 @@ return [
         ],
         'checkbox_9' => [
             'exclude' => 1,
-            'label' => 'checkbox_9 readonly=1 description',
-            'description' => 'field description',
+            'label' => 'checkbox_9',
+            'description' => 'readonly=1',
             'config' => [
                 'type' => 'check',
                 'readOnly' => 1,
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
+                    ['foo1'],
+                    ['foo2'],
                 ],
             ],
         ],
         'checkbox_10' => [
             'exclude' => 1,
-            'label' => 'checkbox_10 cols=1',
+            'label' => 'checkbox_10',
+            'description' => 'cols=1',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
                 ],
                 'cols' => '1',
             ],
         ],
         'checkbox_11' => [
             'exclude' => 1,
-            'label' => 'checkbox_11 cols=2',
+            'label' => 'checkbox_11',
+            'description' => 'cols=2',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
                 ],
                 'cols' => '2',
             ],
         ],
         'checkbox_12' => [
             'exclude' => 1,
-            'label' => 'checkbox_12 cols=3',
+            'label' => 'checkbox_12',
+            'description' => 'cols=3',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
-                    ['foo4', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
+                    ['foo4'],
                 ],
                 'cols' => '3',
             ],
         ],
         'checkbox_13' => [
             'exclude' => 1,
-            'label' => 'checkbox_13 cols=4',
+            'label' => 'checkbox_13',
+            'description' => 'cols=4',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
+                    ['foo1'],
+                    ['foo2'],
                     [
                         'foo3 and this here is very long text that maybe does not really fit into the'
                         . ' form in one line. Ok let us add even more text to see how',
-                        ''
                     ],
-                    ['foo4', ''],
-                    ['foo5', ''],
-                    ['foo6', ''],
-                    ['foo7', ''],
-                    ['foo8', ''],
+                    ['foo4'],
+                    ['foo5'],
+                    ['foo6'],
+                    ['foo7'],
+                    ['foo8'],
                 ],
                 'cols' => '4',
             ],
         ],
         'checkbox_14' => [
             'exclude' => 1,
-            'label' => 'checkbox_14 cols=5',
+            'label' => 'checkbox_14',
+            'description' => 'cols=5',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
-                    ['foo4', ''],
-                    ['foo5', ''],
-                    ['foo6', ''],
-                    ['foo7', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
+                    ['foo4'],
+                    ['foo5'],
+                    ['foo6'],
+                    ['foo7'],
                 ],
                 'cols' => '5',
             ],
         ],
         'checkbox_15' => [
             'exclude' => 1,
-            'label' => 'checkbox_15 cols=6',
+            'label' => 'checkbox_15',
+            'description' => 'cols=6',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
-                    ['foo4', ''],
-                    ['foo5', ''],
-                    ['foo6', ''],
-                    ['foo7', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
+                    ['foo4'],
+                    ['foo5'],
+                    ['foo6'],
+                    ['foo7'],
                 ],
                 'cols' => '6',
             ],
         ],
         'checkbox_16' => [
             'exclude' => 1,
-            'label' => 'checkbox_16 cols=inline',
+            'label' => 'checkbox_16',
+            'description' => 'cols=inline',
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['Mo', ''],
-                    ['Tu', ''],
-                    ['We', ''],
-                    ['Th', ''],
-                    ['Fr', ''],
-                    ['Sa', ''],
-                    ['Su', ''],
+                    ['Mo'],
+                    ['Tu'],
+                    ['We'],
+                    ['Th'],
+                    ['Fr'],
+                    ['Sa'],
+                    ['Su'],
                 ],
                 'cols' => 'inline',
             ],
         ],
         'checkbox_17' => [
             'exclude' => 1,
-            'label' => 'checkbox_17 renderType=checkboxToggle single description',
-            'description' => 'field description',
+            'label' => 'checkbox_17',
+            'description' => 'renderType=checkboxToggle single',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
-                        'labelUnchecked' => 'Disabled'
-                    ]
+                        'labelUnchecked' => 'Disabled',
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_18' => [
             'exclude' => 1,
-            'label' => 'checkbox_18 renderType=checkboxToggle single inverted state display',
+            'label' => 'checkbox_18',
+            'description' => 'renderType=checkboxToggle single inverted state display',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                        'invertStateDisplay' => true
-                    ]
+                        'invertStateDisplay' => true,
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_19' => [
             'exclude' => 1,
-            'label' => 'checkbox_19 renderType=checkboxLabeledToggle single description',
-            'description' => 'field description',
+            'label' => 'checkbox_19',
+            'description' => 'renderType=checkboxLabeledToggle single',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxLabeledToggle',
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_20' => [
             'exclude' => 1,
-            'label' => 'checkbox_20 renderType=checkboxLabeledToggle multiple',
+            'label' => 'checkbox_20',
+            'description' => 'renderType=checkboxLabeledToggle multiple',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxLabeledToggle',
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'On',
                         'labelUnchecked' => 'Off',
                     ],
                     [
                         0 => 'bar',
-                        1 => '',
                         'labelChecked' => 'On',
                         'labelUnchecked' => 'Off',
                     ],
                     [
                         0 => 'inv',
-                        1 => '',
                         'labelChecked' => 'On',
                         'labelUnchecked' => 'Off',
-                        'invertStateDisplay' => true
-                    ]
+                        'invertStateDisplay' => true,
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_21' => [
             'exclude' => 1,
-            'label' => 'checkbox_21 renderType=checkboxLabeledToggle single inverted state display',
+            'label' => 'checkbox_21',
+            'description' => 'renderType=checkboxLabeledToggle single inverted state display',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxLabeledToggle',
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                        'invertStateDisplay' => true
-                    ]
+                        'invertStateDisplay' => true,
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_24' => [
             'exclude' => 1,
-            'label' => 'checkbox_24 renderType=checkboxToggle multiple',
+            'label' => 'checkbox_24',
+            'description' => 'renderType=checkboxToggle multiple',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
                 'items' => [
-                    [
-                        0 => 'foo',
-                        1 => '',
-                    ],
-                    [
-                        0 => 'bar',
-                        1 => '',
-                    ],
-                    [
-                        0 => 'baz',
-                        1 => '',
-                    ],
-                    [
-                        0 => 'husel',
-                        1 => '',
-                    ]
+                    ['foo'],
+                    ['bar'],
+                    ['baz'],
+                    ['husel'],
                 ],
                 'cols' => '4',
-            ]
+            ],
         ],
         'checkbox_25' => [
             'exclude' => 1,
-            'label' => 'checkbox_25 renderType=checkboxToggle single readOnly description',
-            'description' => 'field description',
+            'label' => 'checkbox_25',
+            'description' => 'renderType=checkboxToggle single readOnly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -1131,17 +1208,16 @@ return [
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
-                        'labelUnchecked' => 'Disabled'
-                    ]
+                        'labelUnchecked' => 'Disabled',
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_26' => [
             'exclude' => 1,
-            'label' => 'checkbox_26 renderType=checkboxLabeledToggle single readOnly description',
-            'description' => 'field description',
+            'label' => 'checkbox_26 description',
+            'description' => 'renderType=checkboxLabeledToggle single readOnly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxLabeledToggle',
@@ -1149,18 +1225,17 @@ return [
                 'items' => [
                     [
                         0 => 'foo',
-                        1 => '',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ],
 
         'radio_1' => [
             'exclude' => 1,
-            'label' => 'radio_1 three options, one without label description',
-            'description' => 'field description',
+            'label' => 'description',
+            'description' => 'radio_1 three options, one without label',
             'config' => [
                 'type' => 'radio',
                 'items' => [
@@ -1172,7 +1247,8 @@ return [
         ],
         'radio_2' => [
             'exclude' => 1,
-            'label' => 'radio_2 three options, long text',
+            'label' => 'radio_2',
+            'description' => 'three options, long text',
             'config' => [
                 'type' => 'radio',
                 'items' => [
@@ -1180,7 +1256,7 @@ return [
                         'foo and this here is very long text that maybe does not really fit into the form in one line.'
                         . ' Ok let us add even more text to see how this looks like if wrapped. Is this enough now?'
                         . ' No? Then let us add some even more useless text here!',
-                        1
+                        1,
                     ],
                     ['bar', 2],
                     ['foobar', 3],
@@ -1189,7 +1265,8 @@ return [
         ],
         'radio_3' => [
             'exclude' => 1,
-            'label' => 'radio_3 many options',
+            'label' => 'radio_3',
+            'description' => 'many options',
             'config' => [
                 'type' => 'radio',
                 'items' => [
@@ -1214,7 +1291,8 @@ return [
         ],
         'radio_4' => [
             'exclude' => 1,
-            'label' => 'radio_4 string values',
+            'label' => 'radio_4',
+            'description' => 'string values',
             'config' => [
                 'type' => 'radio',
                 'items' => [
@@ -1227,7 +1305,8 @@ return [
             // @todo: Radio elements added by itemsProcFunc are not persisted correctly.
             // @todo: HTML looks good, so this is probably an issue in DataHandler?
             'exclude' => 1,
-            'label' => 'radio_5 itemsProcFunc',
+            'label' => 'radio_5',
+            'description' => 'itemsProcFunc',
             'config' => [
                 'type' => 'radio',
                 'items' => [
@@ -1239,8 +1318,8 @@ return [
         ],
         'radio_6' => [
             'exclude' => 1,
-            'label' => 'radio_6 readonly=1 description',
-            'description' => 'field description',
+            'label' => 'radio_6',
+            'description' => 'readonly=1',
             'config' => [
                 'type' => 'radio',
                 'readOnly' => 1,
@@ -1253,8 +1332,8 @@ return [
 
         'none_1' => [
             'exclude' => 1,
-            'label' => 'none_1 pass_content=1 description',
-            'description' => 'field description',
+            'label' => 'none_1',
+            'description' => 'pass_content=1',
             'config' => [
                 'type' => 'none',
                 'pass_content' => 1,
@@ -1262,7 +1341,8 @@ return [
         ],
         'none_2' => [
             'exclude' => 1,
-            'label' => 'none_2 pass_content=0',
+            'label' => 'none_2',
+            'description' => 'pass_content=0',
             'config' => [
                 'type' => 'none',
                 'pass_content' => 0,
@@ -1270,7 +1350,8 @@ return [
         ],
         'none_3' => [
             'exclude' => 1,
-            'label' => 'none_3 cols=2',
+            'label' => 'none_3',
+            'description' => 'cols=2',
             'config' => [
                 'type' => 'none',
                 'cols' => 2,
@@ -1278,7 +1359,8 @@ return [
         ],
         'none_4' => [
             'exclude' => 1,
-            'label' => 'none_4 size=6',
+            'label' => 'none_4',
+            'description' => 'size=6',
             'config' => [
                 'type' => 'none',
                 'size' => 6,
@@ -1286,7 +1368,8 @@ return [
         ],
         'none_5' => [
             'exculde' => 1,
-            'label' => 'none_5, format=datetime',
+            'label' => 'none_5',
+            'description' => 'format=datetime',
             'config' => [
                 'type' => 'none',
                 'format' => 'datetime',
@@ -1295,14 +1378,16 @@ return [
 
         'passthrough_1' => [
             'exclude' => 1,
-            'label' => 'passthrough_1 field should NOT be shown',
+            'label' => 'passthrough_1',
+            'description' => 'field should NOT be shown',
             'config' => [
                 'type' => 'passthrough',
             ],
         ],
         'passthrough_2' => [
             'exclude' => 1,
-            'label' => 'passthrough_2 not shown, default applied',
+            'label' => 'passthrough_2',
+            'description' => 'not shown, default applied',
             'config' => [
                 'type' => 'passthrough',
                 'default' => 42,
@@ -1311,7 +1396,8 @@ return [
 
         'user_1' => [
             'exclude' => 1,
-            'label' => 'user_1 parameter=color=green',
+            'label' => 'user_1',
+            'description' => 'parameter=color=green',
             'config' => [
                 'type' => 'user',
                 'renderType' => 'user1Element',
@@ -1352,7 +1438,6 @@ return [
                                                                 <options>
                                                                     <title>Link</title>
                                                                     <blindLinkOptions>mail,folder,spec</blindLinkOptions>
-                                                                    <windowOpenParameters>height=300,width=500,status=0,menubar=0,scrollbars=1</windowOpenParameters>
                                                                 </options>
                                                             </linkPopup>
                                                         </fieldControl>
@@ -1619,9 +1704,11 @@ return [
                 --div--;inputDateTime,
                     inputdatetime_1, inputdatetime_2, inputdatetime_3, inputdatetime_4, inputdatetime_5,
                     inputdatetime_6, inputdatetime_7, inputdatetime_8, inputdatetime_9, inputdatetime_10,
+                    inputdatetime_11,
                 --div--;text,
-                    text_1, text_2, text_3, text_4, text_5, text_6, text_7, text_8, text_9, text_10,
+                    text_1, text_2, text_3, text_4, text_5, text_6, text_7, text_9, text_10,
                     text_11, text_12, text_13, text_18, text_14, text_15, text_16, text_17, text_19,
+                    text_20,
                 --div--;check,
                     checkbox_1, checkbox_9, checkbox_2, checkbox_17, checkbox_25, checkbox_18, checkbox_24, checkbox_19, checkbox_26,
                     checkbox_20, checkbox_21, checkbox_22, checkbox_23, checkbox_3, checkbox_4, checkbox_6, checkbox_7, checkbox_8,

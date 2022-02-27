@@ -86,14 +86,19 @@ class FieldGeneratorResolver
         FieldGenerator\TypeUser::class,
 
         // type=group
-        FieldGenerator\TypeGroupDbFal::class,
-        FieldGenerator\TypeGroupDbAllowedBeUsersBeGroups::class,
-        FieldGenerator\TypeGroupDbAllowedBeUsers::class,
-        FieldGenerator\TypeGroupDbAllowedStaticdata::class,
-        FieldGenerator\TypeGroupFolder::class,
+        FieldGenerator\TypeGroupFal::class,
+        FieldGenerator\TypeGroupAllowedBeUsersBeGroups::class,
+        FieldGenerator\TypeGroupAllowedBeUsers::class,
+        FieldGenerator\TypeGroupAllowedStaticdata::class,
+        FieldGenerator\TypeGroupAllowedPages::class,
+        FieldGenerator\TypeGroupAllowedSysFiles::class,
+
+        // type=folder
+        FieldGenerator\TypeFolder::class,
 
         // type=select
         FieldGenerator\TypeSelectRenderTypeSingleForeignTable::class,
+        FieldGenerator\TypeSelectRenderTypeSingleForeignTableForType::class,
         FieldGenerator\TypeSelectRenderTypeMultipleForeignTableStaticData::class,
         FieldGenerator\TypeSelectRenderTypeSelectTree::class,
         FieldGenerator\TypeSelect::class,
@@ -102,6 +107,10 @@ class FieldGeneratorResolver
         FieldGenerator\TypeInlineFal::class,
         FieldGenerator\TypeInlineExpandsingle::class,
         FieldGenerator\TypeInlineUsecombination::class,
+
+        // type=imageManipulation
+        FieldGenerator\TypeImageManipulation::class,
+
         // General type=inline for simple 1:n parent child relations
         FieldGenerator\TypeInline1n::class,
 

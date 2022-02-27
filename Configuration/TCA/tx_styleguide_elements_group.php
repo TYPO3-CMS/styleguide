@@ -28,9 +28,7 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable',
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
@@ -38,18 +36,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -60,13 +48,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_group',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_group}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_group}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -78,19 +66,19 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_elements_group',
                 'foreign_table_where' => 'AND {#tx_styleguide_elements_group}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_elements_group}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
 
         'group_db_1' => [
@@ -99,7 +87,6 @@ return [
             'description' => 'field description',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'be_users,be_groups',
                 'fieldControl' => [
                     'editPopup' => [
@@ -119,7 +106,6 @@ return [
             'label' => 'group_db_2 allowed=be_users,be_groups, recordsOverview disabled',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'be_users,be_groups',
                 'fieldWizard' => [
                     'recordsOverview' => [
@@ -133,7 +119,6 @@ return [
             'label' => 'group_db_9 allowed=be_users,be_groups, disable tableList',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'be_users,be_groups',
                 'fieldWizard' => [
                     'tableList' => [
@@ -144,14 +129,13 @@ return [
         ],
         'group_db_3' => [
             'exclude' => 1,
-            'label' => 'group_db_3 allowed=tx_styleguide_staticdata, disable elementBrowser',
+            'label' => 'group_db_3 allowed=tx_styleguide_staticdata, disabled elementBrowser',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'tx_styleguide_staticdata',
                 'fieldControl' => [
                     'elementBrowser' => [
-                        'disable' => true,
+                        'disabled' => true,
                     ],
                 ],
             ],
@@ -161,9 +145,20 @@ return [
             'label' => 'group_db_8 allowed=tx_styleguide_staticdata, multiple',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
+                'hideSuggest' => false,
                 'allowed' => 'tx_styleguide_staticdata',
                 'multiple' => true,
+            ],
+        ],
+        'group_db_11' => [
+            'exclude' => 1,
+            'label' => 'group_db_11 hideSuggest=true allowed=tx_styleguide_staticdata, multiple, autoSizeMax=10',
+            'config' => [
+                'type' => 'group',
+                'hideSuggest' => true,
+                'allowed' => 'tx_styleguide_staticdata',
+                'multiple' => true,
+                'autoSizeMax' => 10,
             ],
         ],
         'group_db_4' => [
@@ -171,7 +166,6 @@ return [
             'label' => 'group_db_4 allowed=tx_styleguide_staticdata, size=1',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'tx_styleguide_staticdata',
                 'size' => 1,
                 'maxitems' => 1,
@@ -183,28 +177,33 @@ return [
             'description' => 'field description',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'be_users',
                 'readOnly' => 1,
-            ]
+            ],
         ],
         'group_db_7' => [
             'exclude' => 1,
             'label' => 'group_db_7 allowed=be_users, prepend_tname=false',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'be_users',
             ],
         ],
-
-        'group_folder_1' => [
+        'group_db_10' => [
             'exclude' => 1,
-            'label' => 'group_folder_1 desription',
-            'description' => 'field description',
+            'label' => 'group_db_10 allowed=pages size=1',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'folder',
+                'allowed' => 'pages',
+                'maxitems' => 1,
+                'minitems' => 0,
+                'size' => 1,
+                'suggestOptions' => [
+                    'default' => [
+                        'additionalSearchFields' => 'nav_title, alias, url',
+                        'addWhere' => 'AND pages.doktype = 1',
+                    ],
+                ],
             ],
         ],
 
@@ -214,7 +213,6 @@ return [
             'onChange' => 'reload',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'be_users,be_groups',
             ],
         ],
@@ -233,7 +231,7 @@ return [
                                     <ROOT>
                                         <type>array</type>
                                         <TCEforms>
-                                            <sheetTitle>internal_type=db</sheetTitle>
+                                            <sheetTitle>group</sheetTitle>
                                         </TCEforms>
                                         <el>
                                             <group_db_1>
@@ -242,7 +240,6 @@ return [
                                                     <description>field description</description>
                                                     <config>
                                                         <type>group</type>
-                                                        <internal_type>db</internal_type>
                                                         <allowed>tx_styleguide_staticdata</allowed>
                                                     </config>
                                                 </TCEforms>
@@ -252,7 +249,6 @@ return [
                                                     <label>group_db_2 suggest, order by uid DESC</label>
                                                     <config>
                                                         <type>group</type>
-                                                        <internal_type>db</internal_type>
                                                         <allowed>tx_styleguide_staticdata</allowed>
                                                         <suggestOptions>
                                                             <default>
@@ -304,7 +300,6 @@ return [
                                                                     <label>group_db_1</label>
                                                                     <config>
                                                                         <type>group</type>
-                                                                        <internal_type>db</internal_type>
                                                                         <allowed>pages</allowed>
                                                                         <size>5</size>
                                                                     </config>
@@ -330,10 +325,8 @@ return [
     'types' => [
         '0' => [
             'showitem' => '
-                --div--;internal_type=db,
-                    group_db_1, group_db_2, group_db_9, group_db_3, group_db_8, group_db_4, group_db_5, group_db_7,
-                --div--;internal_type=folder,
-                    group_folder_1,
+                --div--;type=group,
+                    group_db_1, group_db_2, group_db_9, group_db_3, group_db_8, group_db_11, group_db_4, group_db_5, group_db_7, group_db_10,
                 --div--;in flex,
                     flex_1,
                 --div--;requestUpdate,

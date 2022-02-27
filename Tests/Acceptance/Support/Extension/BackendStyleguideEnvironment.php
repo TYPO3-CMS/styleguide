@@ -34,13 +34,12 @@ class BackendStyleguideEnvironment extends BackendEnvironment
             'extbase',
             'fluid',
             'backend',
-            'about',
             'install',
             'frontend',
             'recordlist',
         ],
         'testExtensionsToLoad' => [
-            'typo3conf/ext/styleguide'
+            'typo3conf/ext/styleguide',
         ],
         'xmlDatabaseFixtures' => [
             'PACKAGE:typo3/testing-framework/Resources/Core/Acceptance/Fixtures/be_users.xml',

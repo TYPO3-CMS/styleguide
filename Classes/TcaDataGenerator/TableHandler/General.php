@@ -54,10 +54,16 @@ class General extends AbstractTableHandler implements TableHandlerInterface
         // some fields need this uid for relations later.
         $fieldValues = [
             'pid' => $recordFinder->findPidOfMainTableRecord($tableName),
-            'tstamp' => $context->getAspect('date')->get('timestamp'),
-            'crdate' => $context->getAspect('date')->get('timestamp'),
-            'cruser_id' => $context->getAspect('backend.user')->get('id'),
         ];
+        if (!empty($GLOBALS['TCA'][$tableName]['ctrl']['tstamp'])) {
+            $fieldValues[$GLOBALS['TCA'][$tableName]['ctrl']['tstamp']] = $context->getAspect('date')->get('timestamp');
+        }
+        if (!empty($GLOBALS['TCA'][$tableName]['ctrl']['crdate'])) {
+            $fieldValues[$GLOBALS['TCA'][$tableName]['ctrl']['crdate']] = $context->getAspect('date')->get('timestamp');
+        }
+        if (!empty($GLOBALS['TCA'][$tableName]['ctrl']['cruser_id'])) {
+            $fieldValues[$GLOBALS['TCA'][$tableName]['ctrl']['cruser_id']] = $context->getAspect('backend.user')->get('id');
+        }
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($tableName);
         $connection->insert($tableName, $fieldValues);
         $fieldValues['uid'] = $connection->lastInsertId($tableName);

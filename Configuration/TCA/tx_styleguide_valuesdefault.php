@@ -28,26 +28,16 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable',
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
         'sys_language_uid' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1],
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0]
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -60,8 +50,8 @@ return [
                 ],
                 'foreign_table' => 'tx_styleguide_valuesdefault',
                 'foreign_table_where' => 'AND {#tx_styleguide_valuesdefault}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_valuesdefault}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -73,18 +63,18 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_valuesdefault',
                 'foreign_table_where' => 'AND {#tx_styleguide_valuesdefault}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_valuesdefault}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
 
         'input_1' => [
@@ -135,7 +125,7 @@ return [
             'config' => [
                 'type' => 'check',
                 'default' => 1,
-            ]
+            ],
         ],
         'checkbox_2' => [
             'exclude' => 1,
@@ -143,10 +133,10 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo', ''],
+                    ['foo'],
                 ],
-                'default' => 1
-            ]
+                'default' => 1,
+            ],
         ],
         'checkbox_3' => [
             'exclude' => 1,
@@ -154,11 +144,29 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    ['foo1', ''],
-                    ['foo2', ''],
-                    ['foo3', ''],
-                    ['foo4', ''],
+                    ['foo1'],
+                    ['foo2'],
+                    ['foo3'],
+                    ['foo4'],
                 ],
+                'default' => 5,
+            ],
+        ],
+        'checkbox_4' => [
+            'exclude' => 1,
+            'label' => 'checkbox_4 cols=inline, "MO" and "WE" pre-selected',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    ['Mo'],
+                    ['Tu'],
+                    ['We'],
+                    ['Th'],
+                    ['Fr'],
+                    ['Sa'],
+                    ['Su'],
+                ],
+                'cols' => 'inline',
                 'default' => 5,
             ],
         ],
@@ -174,6 +182,32 @@ return [
                     ['foo3', 3],
                 ],
                 'default' => 2,
+            ],
+        ],
+        'radio_2' => [
+            'exclude' => 1,
+            'label' => 'radio_2 default=y, three options, second pre-selected',
+            'config' => [
+                'type' => 'radio',
+                'items' => [
+                    ['foo1', 'x'],
+                    ['foo2', 'y'],
+                    ['foo3', 'z'],
+                ],
+                'default' => 'y',
+            ],
+        ],
+        'radio_3' => [
+            'exclude' => 1,
+            'label' => 'radio_3 empty default',
+            'config' => [
+                'type' => 'radio',
+                'items' => [
+                    ['foo1', 'x'],
+                    ['foo2', 'y'],
+                    ['foo3', 'z'],
+                ],
+                'default' => '',
             ],
         ],
 
@@ -205,7 +239,7 @@ return [
                     ['foo 3', 3],
                     ['foo 4', 4],
                 ],
-                'default' => '1,3'
+                'default' => '1,3',
             ],
         ],
 
@@ -217,8 +251,8 @@ return [
                 --div--;basic,
                     input_1, input_2, input_3,
                     text_1,
-                    checkbox_1, checkbox_2, checkbox_3,
-                    radio_1,
+                    checkbox_1, checkbox_2, checkbox_3, checkbox_4,
+                    radio_1, radio_2, radio_3,
                 --div--;select,
                     select_1,select_2,
             ',

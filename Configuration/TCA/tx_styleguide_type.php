@@ -3,7 +3,7 @@
 return [
     'ctrl' => [
         'title' => 'Form engine - type',
-        'label' => 'uid',
+        'label' => 'input_1',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -19,7 +19,7 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'type' => 'type',
+        'type' => 'record_type',
     ],
 
     'columns' => [
@@ -29,26 +29,16 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'Disable',
-                    ],
+                    ['Disable'],
                 ],
             ],
         ],
         'sys_language_uid' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1],
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0]
-                ],
-                'default' => 0,
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -61,8 +51,8 @@ return [
                 ],
                 'foreign_table' => 'tx_styleguide_type',
                 'foreign_table_where' => 'AND {#tx_styleguide_type}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_type}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -74,30 +64,43 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_type',
                 'foreign_table_where' => 'AND {#tx_styleguide_type}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_type}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
 
-        'type' => [
-            'exclude' => 1,
+        'record_type' => [
             'label' => 'type',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
                     ['type 0', '0'],
-                    ['type test', 'test'],
+                    ['Type with changed fields', 'withChangedFields'],
+                    ['Type with columnsOverrides', 'withColumnsOverrides'],
                 ],
+            ],
+        ],
+        'input_1' => [
+            'label' => 'input_1',
+            'config' => [
+                'type' => 'input',
+            ],
+        ],
+        'input_2' => [
+            'label' => 'input_2, renderType=colorpicker',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'colorpicker',
             ],
         ],
 
@@ -113,11 +116,22 @@ return [
 
     'types' => [
         '0' => [
-            'showitem' => 'type, text_1',
+            'showitem' => 'record_type, input_1, text_1',
         ],
-        'test' => [
-            'showitem' => 'type, text_1',
+        'withChangedFields' => [
+            'showitem' => 'record_type, input_1, input_2, text_1',
+        ],
+        'withColumnsOverrides' => [
+            'showitem' => 'record_type, input_1, input_2, text_1',
             'columnsOverrides' => [
+                'input_2' => [
+                    'label' => 'input_2, readOnly, size=10, empty renderType',
+                    'config' => [
+                        'renderType' => '',
+                        'readOnly' => true,
+                        'size' => 10,
+                    ],
+                ],
                 'text_1' => [
                     'config' => [
                         'renderType' => 't3editor',
