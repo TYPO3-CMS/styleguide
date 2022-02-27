@@ -2,8 +2,8 @@
 
 return [
     'ctrl' => [
-        'title' => 'Form engine - inline expand child inline_1',
-        'label' => 'uid',
+        'title' => 'Form engine - inline 1:n inline_2 foreign field child',
+        'label' => 'input_1',
         'iconfile' => 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -36,8 +36,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_styleguide_inline_expand_inline_1_child',
-                'foreign_table_where' => 'AND {#tx_styleguide_inline_expand_inline_1_child}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_expand_inline_1_child}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_styleguide_inline_1n_inline_2_child',
+                'foreign_table_where' => 'AND {#tx_styleguide_inline_1n_inline_2_child}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_1n_inline_2_child}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -54,8 +54,8 @@ return [
                         0,
                     ],
                 ],
-                'foreign_table' => 'tx_styleguide_inline_expand_inline_1_child',
-                'foreign_table_where' => 'AND {#tx_styleguide_inline_expand_inline_1_child}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_expand_inline_1_child}.{#uid}!=###THIS_UID###',
+                'foreign_table' => 'tx_styleguide_inline_1n_inline_2_child',
+                'foreign_table_where' => 'AND {#tx_styleguide_inline_1n_inline_2_child}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_inline_1n_inline_2_child}.{#uid}!=###THIS_UID###',
                 'default' => 0,
             ],
         ],
@@ -83,9 +83,9 @@ return [
             ],
         ],
 
-        'dummy_1' => [
+        'input_1' => [
             'exclude' => 1,
-            'label' => 'dummy 1',
+            'label' => 'input 1',
             'config' => [
                 'type' => 'input',
             ],
@@ -209,9 +209,7 @@ return [
         '0' => [
             'showitem' => '
                 --div--;fields,
-                    inline_fal_1, rte_1, select_tree_1, t3editor_1,
-                --div--;dummy,
-                    dummy_1,
+                    input_1, inline_fal_1, rte_1, select_tree_1, t3editor_1
             ',
         ],
 
