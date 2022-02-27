@@ -773,7 +773,7 @@ CREATE TABLE tx_styleguide_l10nreadonly (
     group text,
     group_mm text,
     group_file text,
-    group_folder text,
+    folder text,
     image_manipulation text,
     language int(11) DEFAULT '0' NOT NULL,
     text text,

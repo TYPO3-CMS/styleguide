@@ -248,15 +248,6 @@ return [
                 ],
             ],
         ],
-        'group_folder' => [
-            'label' => 'group_folder',
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-            'config' => [
-                'type' => 'group',
-                'internal_type' => 'folder',
-            ],
-        ],
         'group_file' => [
             'label' => 'group_file',
             'l10n_mode' => 'exclude',
@@ -264,6 +255,15 @@ return [
             'config' => [
                 'type' => 'group',
                 'allowed' => 'sys_file',
+            ],
+        ],
+
+        'folder' => [
+            'label' => 'group_folder',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
+            'config' => [
+                'type' => 'folder',
             ],
         ],
 
@@ -590,6 +590,7 @@ return [
                     --palette--;;none,
                     --palette--;;group,
                     --palette--;;groupFile,
+                    --palette--;;folder,
                     --palette--;;imageManipulation,
                     --palette--;;language,
                     --palette--;;category,
@@ -635,6 +636,10 @@ return [
         'groupFile' => [
             'showitem' => 'group_file',
             'isHiddenPalette' => true,
+        ],
+        'folder' => [
+            'showitem' => 'folder',
+            'label' => 'type=folder',
         ],
         'imageManipulation' => [
             'showitem' => 'image_manipulation',
