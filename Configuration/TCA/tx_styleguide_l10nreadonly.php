@@ -35,8 +35,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'language'
-            ]
+                'type' => 'language',
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -47,13 +47,13 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_l10nreadonly',
                 'foreign_table_where' => 'AND {#tx_styleguide_l10nreadonly}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_l10nreadonly}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_source' => [
             'exclude' => true,
@@ -65,19 +65,19 @@ return [
                 'items' => [
                     [
                         '',
-                        0
-                    ]
+                        0,
+                    ],
                 ],
                 'foreign_table' => 'tx_styleguide_l10nreadonly',
                 'foreign_table_where' => 'AND {#tx_styleguide_l10nreadonly}.{#pid}=###CURRENT_PID### AND {#tx_styleguide_l10nreadonly}.{#uid}!=###THIS_UID###',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
 
         // type=input
@@ -158,13 +158,13 @@ return [
                         0 => 'foo',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                        'invertStateDisplay' => true
+                        'invertStateDisplay' => true,
                     ],
                     [
                         0 => 'bar',
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ],
         'checkbox_labeled_toggle' => [
             'label' => 'checkbox_labeled_toggle',
@@ -178,15 +178,15 @@ return [
                         0 => 'foo',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                        'invertStateDisplay' => true
+                        'invertStateDisplay' => true,
                     ],
                     [
                         0 => 'bar',
                         'labelChecked' => 'Enabled',
                         'labelUnchecked' => 'Disabled',
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ],
 
         // type=radio
@@ -274,7 +274,7 @@ return [
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'imageManipulation',
-                'file_field' => 'group_file'
+                'file_field' => 'group_file',
             ],
         ],
 
@@ -284,8 +284,8 @@ return [
             'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
-                'type' => 'language'
-            ]
+                'type' => 'language',
+            ],
         ],
 
         // type=category
@@ -295,8 +295,8 @@ return [
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'category',
-                'relationship' => 'oneToOne'
-            ]
+                'relationship' => 'oneToOne',
+            ],
         ],
         'category_1n' => [
             'label' => 'category_1n',
@@ -304,8 +304,8 @@ return [
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'category',
-                'relationship' => 'oneToMany'
-            ]
+                'relationship' => 'oneToMany',
+            ],
         ],
         'category_mm' => [
             'label' => 'category_mm',
@@ -313,7 +313,7 @@ return [
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'category',
-            ]
+            ],
         ],
 
         // type=text
@@ -424,8 +424,8 @@ return [
                 'foreign_table_where' => 'AND {#tx_styleguide_staticdata}.{#value_1} LIKE \'%foo%\' ORDER BY uid',
                 'foreign_table_prefix' => 'A prefix: ',
                 'appearance' => [
-                    'expandAll' => true
-                ]
+                    'expandAll' => true,
+                ],
             ],
         ],
         'select_tree' => [
@@ -573,7 +573,7 @@ return [
         </sDEF>
     </sheets>
 </T3DataStructure>
-                    '
+                    ',
                 ],
             ],
         ],
@@ -610,47 +610,47 @@ return [
     'palettes' => [
         'input' => [
             'showitem' => 'input,input_colorpicker,--linebreak--,input_datetime,input_link',
-            'label' => 'type=input'
+            'label' => 'type=input',
         ],
         'slug' => [
             'showitem' => 'slug',
-            'label' => 'type=slug'
+            'label' => 'type=slug',
         ],
         'check' => [
             'showitem' => 'checkbox,checkbox_toggle,checkbox_labeled_toggle',
-            'label' => 'type=check'
+            'label' => 'type=check',
         ],
         'radio' => [
             'showitem' => 'radio',
-            'label' => 'type=radio'
+            'label' => 'type=radio',
         ],
         'none' => [
             'showitem' => 'none',
-            'label' => 'type=none'
+            'label' => 'type=none',
         ],
         'group' => [
             'showitem' => 'group,group_mm,--linebreak--,group_folder',
-            'label' => 'type=group'
+            'label' => 'type=group',
         ],
         'groupFile' => [
             'showitem' => 'group_file',
-            'isHiddenPalette' => true
+            'isHiddenPalette' => true,
         ],
         'imageManipulation' => [
             'showitem' => 'image_manipulation',
-            'label' => 'type=imageManipulation'
+            'label' => 'type=imageManipulation',
         ],
         'language' => [
             'showitem' => 'language',
-            'label' => 'type=language'
+            'label' => 'type=language',
         ],
         'category' => [
             'showitem' => 'category_11,category_1n,category_mm',
-            'label' => 'type=category'
+            'label' => 'type=category',
         ],
         'text' => [
             'showitem' => 'text,--linebreak--,text_rte,--linebreak--,text_belayoutwizard,--linebreak--,text_t3editor,--linebreak--,text_table',
-            'labek' => 'type=text'
+            'labek' => 'type=text',
         ],
         'select' => [
             'showitem' => '
@@ -660,15 +660,15 @@ return [
                 --linebreak--,select_multiplesidebyside,
                 --linebreak--,select_multiplesidebyside_mm
             ',
-            'label' => 'type=select'
+            'label' => 'type=select',
         ],
         'inline' => [
             'showitem' => 'inline',
-            'label' => 'type=inline'
+            'label' => 'type=inline',
         ],
         'flex' => [
             'showitem' => 'flex',
-            'label' => 'type=flex'
+            'label' => 'type=flex',
         ],
-    ]
+    ],
 ];
