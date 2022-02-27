@@ -99,7 +99,7 @@ return [
     'types' => [
         '0' => [
             'showitem' => '
-                inline_1,inline_2
+                inline_1
             ',
         ],
     ],
