@@ -668,7 +668,7 @@ return [
             'config' => [
                 'type' => 'password',
                 'readOnly' => true,
-                'default' => 'somePassword1!'
+                'default' => 'somePassword1!',
             ],
         ],
 
