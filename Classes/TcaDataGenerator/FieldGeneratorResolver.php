@@ -64,6 +64,9 @@ class FieldGeneratorResolver
         // General type=link generator
         FieldGenerator\TypeLink::class,
 
+        // General type=link generator
+        FieldGenerator\TypeLink::class,
+
         FieldGenerator\TypeTextDefaultExtrasRichtext::class,
         FieldGenerator\TypeTextFormatDatetime::class,
         FieldGenerator\TypeTextFormatT3editor::class,
