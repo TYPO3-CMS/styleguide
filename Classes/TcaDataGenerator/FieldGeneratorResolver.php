@@ -64,8 +64,8 @@ class FieldGeneratorResolver
         // General type=link generator
         FieldGenerator\TypeLink::class,
 
-        // General type=link generator
-        FieldGenerator\TypeLink::class,
+        // General type=password generator
+        FieldGenerator\TypePassword::class,
 
         FieldGenerator\TypeTextDefaultExtrasRichtext::class,
         FieldGenerator\TypeTextFormatDatetime::class,
