@@ -35,6 +35,10 @@ class FieldGeneratorResolver
         FieldGenerator\TypeInputEvalDateDbTypeDate::class,
         FieldGenerator\TypeInputEvalDatetimeDbTypeDatetime::class,
 
+        // p/w generators are *before* 'default', so hashing kicks in, even if default is set.
+        FieldGenerator\TypePasswordHashedFalse::class,
+        FieldGenerator\TypePassword::class,
+
         // Use value from ['config']['default'] if given
         FieldGenerator\ConfigDefault::class,
 
@@ -63,9 +67,6 @@ class FieldGeneratorResolver
 
         // General type=link generator
         FieldGenerator\TypeLink::class,
-
-        // General type=password generator
-        FieldGenerator\TypePassword::class,
 
         FieldGenerator\TypeTextDefaultExtrasRichtext::class,
         FieldGenerator\TypeTextFormatDatetime::class,

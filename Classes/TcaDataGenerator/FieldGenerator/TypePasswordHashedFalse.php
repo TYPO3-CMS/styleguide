@@ -16,14 +16,12 @@ namespace TYPO3\CMS\Styleguide\TcaDataGenerator\FieldGenerator;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\FieldGeneratorInterface;
 
 /**
- * Generate data for hashed type=password fields
+ * Generate data for type=password fields that should not be hashed.
  */
-class TypePassword extends AbstractFieldGenerator implements FieldGeneratorInterface
+class TypePasswordHashedFalse extends AbstractFieldGenerator implements FieldGeneratorInterface
 {
     /**
      * General match if type=password
@@ -34,6 +32,7 @@ class TypePassword extends AbstractFieldGenerator implements FieldGeneratorInter
         'fieldConfig' => [
             'config' => [
                 'type' => 'password',
+                'hashed' => false,
             ],
         ],
     ];
@@ -43,12 +42,6 @@ class TypePassword extends AbstractFieldGenerator implements FieldGeneratorInter
      */
     public function generate(array $data): string
     {
-        $saltFactory = GeneralUtility::makeInstance(PasswordHashFactory::class);
-        $defaultHashInstance = $saltFactory->getDefaultHashInstance('BE');
-        $plainText = $this->kauderwelschService->getPassword();
-        if (array_key_exists('default', $data['fieldConfig']['config'])) {
-            $plainText = $data['fieldConfig']['config']['default'];
-        }
-        return $defaultHashInstance->getHashedPassword($plainText);
+        return $this->kauderwelschService->getPassword();
     }
 }
