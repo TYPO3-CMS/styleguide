@@ -53,8 +53,6 @@ class KauderwelschService
 
     /**
      * Get a single password
-     *
-     * @return string
      */
     public function getPassword(): string
     {

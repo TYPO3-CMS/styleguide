@@ -24,7 +24,9 @@ use TYPO3\CMS\Styleguide\TcaDataGenerator\FieldGeneratorInterface;
 class TypePassword extends AbstractFieldGenerator implements FieldGeneratorInterface
 {
     /**
-     * @var array General match if type=password
+     * General match if type=password
+     *
+     * @var array
      */
     protected $matchArray = [
         'fieldConfig' => [
@@ -36,9 +38,6 @@ class TypePassword extends AbstractFieldGenerator implements FieldGeneratorInter
 
     /**
      * Returns the generated value to be inserted into DB for this field
-     *
-     * @param array $data
-     * @return string
      */
     public function generate(array $data): string
     {
