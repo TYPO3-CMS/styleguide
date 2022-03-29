@@ -89,10 +89,8 @@ return [
             'exclude' => 1,
             'label' => 'input_26 default=0, eval=datetime, readonly=1',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'readOnly' => 1,
-                'eval' => 'datetime',
                 'default' => 0,
             ],
         ],

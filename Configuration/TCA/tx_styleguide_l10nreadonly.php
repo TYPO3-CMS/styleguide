@@ -103,9 +103,8 @@ return [
             'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'date',
+                'type' => 'datetime',
+                'format' => 'date',
             ],
         ],
 

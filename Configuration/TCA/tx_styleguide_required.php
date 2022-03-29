@@ -98,9 +98,8 @@ return [
             'exclude' => 1,
             'label' => 'input_2 eval=required,trim,date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'trim,date',
+                'type' => 'datetime',
+                'format' => 'date',
                 'required' => true,
             ],
         ],

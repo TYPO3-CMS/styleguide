@@ -473,9 +473,8 @@ return [
             'label' => 'inputdatetime_1',
             'description' => 'eval=date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'date',
+                'type' => 'datetime',
+                'format' => 'date',
             ],
         ],
         'inputdatetime_2' => [
@@ -483,11 +482,9 @@ return [
             'label' => 'inputdatetime_2',
             'description' => 'dbType=date eval=date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'dbType' => 'date',
-                'eval' => 'date',
-                'default' => '0000-00-00',
+                'format' => 'date',
             ],
         ],
         'inputdatetime_3' => [
@@ -495,9 +492,7 @@ return [
             'label' => 'inputdatetime_3',
             'description' => 'eval=datetime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'type' => 'datetime',
             ],
         ],
         'inputdatetime_4' => [
@@ -505,11 +500,8 @@ return [
             'label' => 'inputdatetime_4',
             'description' => 'dbType=datetime eval=datetime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'dbType' => 'datetime',
-                'eval' => 'datetime',
-                'default' => '0000-00-00 00:00:00',
             ],
         ],
         'inputdatetime_5' => [
@@ -517,9 +509,8 @@ return [
             'label' => 'inputdatetime_5',
             'description' => 'eval=time',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'time',
+                'type' => 'datetime',
+                'format' => 'time',
             ],
         ],
         'inputdatetime_6' => [
@@ -527,9 +518,8 @@ return [
             'label' => 'inputdatetime_6',
             'description' => 'eval=timesec',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'timesec',
+                'type' => 'datetime',
+                'format' => 'timesec',
             ],
         ],
         'inputdatetime_7' => [
@@ -537,9 +527,8 @@ return [
             'label' => 'inputdatetime_7',
             'description' => 'eval=date readOnly',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'date',
+                'type' => 'datetime',
+                'format' => 'date',
                 'readOnly' => true,
             ],
         ],
@@ -548,9 +537,7 @@ return [
             'label' => 'inputdatetime_8',
             'description' => 'eval=datetime readOnly',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'type' => 'datetime',
                 'readOnly' => true,
             ],
         ],
@@ -559,9 +546,8 @@ return [
             'label' => 'inputdatetime_9',
             'description' => 'eval=time readOnly',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'time',
+                'type' => 'datetime',
+                'format' => 'time',
                 'readOnly' => true,
             ],
         ],
@@ -570,9 +556,8 @@ return [
             'label' => 'inputdatetime_10',
             'description' => 'eval=timesec readOnly',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'timesec',
+                'type' => 'datetime',
+                'format' => 'timesec',
                 'readOnly' => true,
             ],
         ],
@@ -581,9 +566,7 @@ return [
             'label' => 'inputdatetime_11',
             'description' => 'eval=datetime, default=0, range.lower=1627208536',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'type' => 'datetime',
                 'default' => 0,
                 'range' => [
                     'lower' => 1627208536,
