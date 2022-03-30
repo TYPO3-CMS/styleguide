@@ -23,7 +23,6 @@ return [
 
     'columns' => [
         'hidden' => [
-            'exclude' => 1,
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -32,7 +31,6 @@ return [
             ],
         ],
         'sys_language_uid' => [
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'language',
@@ -56,7 +54,6 @@ return [
             ],
         ],
         'l10n_source' => [
-            'exclude' => true,
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'label' => 'Translation source',
             'config' => [
@@ -82,7 +79,6 @@ return [
 
         'input_1' => [
             'l10n_mode' => 'prefixLangTitle',
-            'exclude' => 1,
             'label' => 'input_1 description',
             'description' => 'field description',
             'config' => [
@@ -94,7 +90,6 @@ return [
         ],
         'input_2' => [
             'l10n_mode' => 'prefixLangTitle',
-            'exclude' => 1,
             'label' => 'input_2',
             'description' => 'size=10',
             'config' => [
@@ -103,7 +98,6 @@ return [
             ],
         ],
         'input_3' => [
-            'exclude' => 1,
             'label' => 'input_3',
             'description' => 'max=4',
             'config' => [
@@ -112,7 +106,6 @@ return [
             ],
         ],
         'input_4' => [
-            'exclude' => 1,
             'label' => 'input_4',
             'description' => 'eval=alpha',
             'config' => [
@@ -121,7 +114,6 @@ return [
             ],
         ],
         'input_5' => [
-            'exclude' => 1,
             'label' => 'input_5',
             'description' => 'eval=alphanum',
             'config' => [
@@ -130,7 +122,6 @@ return [
             ],
         ],
         'input_8' => [
-            'exclude' => 1,
             'label' => 'input_8',
             'description' => 'eval=double2',
             'config' => [
@@ -139,7 +130,6 @@ return [
             ],
         ],
         'input_9' => [
-            'exclude' => 1,
             'label' => 'input_9',
             'description' => 'eval=int',
             'config' => [
@@ -148,7 +138,6 @@ return [
             ],
         ],
         'input_10' => [
-            'exclude' => 1,
             'label' => 'input_10',
             'description' => 'eval=is_in is_in=abc123',
             'config' => [
@@ -158,7 +147,6 @@ return [
             ],
         ],
         'input_11' => [
-            'exclude' => 1,
             'label' => 'input_11',
             'description' => 'eval=lower',
             'config' => [
@@ -167,7 +155,6 @@ return [
             ],
         ],
         'input_12' => [
-            'exclude' => 1,
             'label' => 'input_12',
             'description' => 'eval=md5',
             'config' => [
@@ -176,7 +163,6 @@ return [
             ],
         ],
         'input_13' => [
-            'exclude' => 1,
             'label' => 'input_13',
             'description' => 'eval=nospace',
             'config' => [
@@ -185,7 +171,6 @@ return [
             ],
         ],
         'input_14' => [
-            'exclude' => 1,
             'label' => 'input_14',
             'description' => 'eval=null',
             'config' => [
@@ -194,7 +179,6 @@ return [
             ],
         ],
         'input_15' => [
-            'exclude' => 1,
             'label' => 'input_15',
             'description' => 'eval=num',
             'config' => [
@@ -203,7 +187,6 @@ return [
             ],
         ],
         'input_19' => [
-            'exclude' => 1,
             'label' => 'input_19',
             'description' => 'eval=trim',
             'config' => [
@@ -212,7 +195,6 @@ return [
             ],
         ],
         'input_20' => [
-            'exclude' => 1,
             'label' => 'input_20',
             'description' => 'eval with user function',
             'config' => [
@@ -221,7 +203,6 @@ return [
             ],
         ],
         'input_21' => [
-            'exclude' => 1,
             'label' => 'input_21',
             'description' => 'eval=unique',
             'config' => [
@@ -230,7 +211,6 @@ return [
             ],
         ],
         'input_22' => [
-            'exclude' => 1,
             'label' => 'input_22',
             'description' => 'eval=uniqueInPid',
             'config' => [
@@ -239,7 +219,6 @@ return [
             ],
         ],
         'input_23' => [
-            'exclude' => 1,
             'label' => 'input_23',
             'description' => 'eval=upper',
             'config' => [
@@ -248,7 +227,6 @@ return [
             ],
         ],
         'input_24' => [
-            'exclude' => 1,
             'label' => 'input_24',
             'description' => 'eval=year',
             'config' => [
@@ -257,7 +235,6 @@ return [
             ],
         ],
         'input_25' => [
-            'exclude' => 1,
             'label' => 'input_25',
             'description' => 'eval=int default=0 range lower=-2 range upper=2',
             'config' => [
@@ -271,7 +248,6 @@ return [
             ],
         ],
         'input_26' => [
-            'exclude' => 1,
             'label' => 'input_26',
             'description' => 'default="input_26", value for input_27 and input_28',
             'config' => [
@@ -280,7 +256,6 @@ return [
             ],
         ],
         'input_27' => [
-            'exclude' => 1,
             'label' => 'input_27',
             'description' => 'placeholder=__row|input_26',
             'config' => [
@@ -289,7 +264,6 @@ return [
             ],
         ],
         'input_28' => [
-            'exclude' => 1,
             'label' => 'input_28',
             'description' => 'placeholder=__row|input_26 mode=useOrOverridePlaceholder eval=null default=null',
             'config' => [
@@ -301,7 +275,6 @@ return [
             ],
         ],
         'input_30' => [
-            'exclude' => 1,
             'label' => 'input_30',
             'description' => 'slider step=10 width=200 eval=trim,int',
             'config' => [
@@ -320,7 +293,6 @@ return [
             ],
         ],
         'input_31' => [
-            'exclude' => 1,
             'label' => 'input_31',
             'description' => 'slider default=14.5 step=0.5 width=150 eval=trim,double2',
             'config' => [
@@ -339,7 +311,6 @@ return [
             ],
         ],
         'input_32' => [
-            'exclude' => 1,
             'label' => 'input_32',
             'description' => 'wizard userFunc',
             'config' => [
@@ -358,7 +329,6 @@ return [
             ],
         ],
         'input_33' => [
-            'exclude' => 1,
             'label' => 'input_33',
             'description' => 'valuePicker',
             'config' => [
@@ -376,7 +346,6 @@ return [
             ],
         ],
         'input_34' => [
-            'exclude' => 1,
             'label' => 'input_34',
             'description' => 'renderType=colorpicker',
             'config' => [
@@ -386,7 +355,6 @@ return [
             ],
         ],
         'input_35' => [
-            'exclude' => 1,
             'label' => 'input_35',
             'description' => 'valuePicker append',
             'config' => [
@@ -405,7 +373,6 @@ return [
             ],
         ],
         'input_36' => [
-            'exclude' => 1,
             'label' => 'input_36',
             'description' => 'valuePicker prepend',
             'config' => [
@@ -424,7 +391,6 @@ return [
             ],
         ],
         'input_37' => [
-            'exclude' => 1,
             'label' => 'input_37',
             'description' => 'renderType=colorpicker valuePicker',
             'config' => [
@@ -441,7 +407,6 @@ return [
             ],
         ],
         'input_39' => [
-            'exclude' => 1,
             'label' => 'input_39',
             'description' => 'type=email',
             'config' => [
@@ -449,7 +414,6 @@ return [
             ],
         ],
         'input_40' => [
-            'exclude' => 1,
             'label' => 'input_40',
             'description' => 'readOnly',
             'config' => [
@@ -458,7 +422,6 @@ return [
             ],
         ],
         'input_42' => [
-            'exclude' => 1,
             'label' => 'input_42',
             'description' => 'renderType=colorpicker readOnly',
             'config' => [
@@ -469,7 +432,6 @@ return [
         ],
 
         'inputdatetime_1' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_1',
             'description' => 'eval=date',
             'config' => [
@@ -478,7 +440,6 @@ return [
             ],
         ],
         'inputdatetime_2' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_2',
             'description' => 'dbType=date eval=date',
             'config' => [
@@ -488,7 +449,6 @@ return [
             ],
         ],
         'inputdatetime_3' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_3',
             'description' => 'eval=datetime',
             'config' => [
@@ -496,7 +456,6 @@ return [
             ],
         ],
         'inputdatetime_4' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_4',
             'description' => 'dbType=datetime eval=datetime',
             'config' => [
@@ -505,7 +464,6 @@ return [
             ],
         ],
         'inputdatetime_5' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_5',
             'description' => 'eval=time',
             'config' => [
@@ -514,7 +472,6 @@ return [
             ],
         ],
         'inputdatetime_6' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_6',
             'description' => 'eval=timesec',
             'config' => [
@@ -523,7 +480,6 @@ return [
             ],
         ],
         'inputdatetime_7' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_7',
             'description' => 'eval=date readOnly',
             'config' => [
@@ -533,7 +489,6 @@ return [
             ],
         ],
         'inputdatetime_8' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_8',
             'description' => 'eval=datetime readOnly',
             'config' => [
@@ -542,7 +497,6 @@ return [
             ],
         ],
         'inputdatetime_9' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_9',
             'description' => 'eval=time readOnly',
             'config' => [
@@ -552,7 +506,6 @@ return [
             ],
         ],
         'inputdatetime_10' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_10',
             'description' => 'eval=timesec readOnly',
             'config' => [
@@ -562,7 +515,6 @@ return [
             ],
         ],
         'inputdatetime_11' => [
-            'exclude' => 1,
             'label' => 'inputdatetime_11',
             'description' => 'eval=datetime, default=0, range.lower=1627208536',
             'config' => [
@@ -575,7 +527,6 @@ return [
         ],
 
         'link_1' => [
-            'exclude' => 1,
             'label' => 'link_1',
             'description' => 'type=link',
             'config' => [
@@ -583,7 +534,6 @@ return [
             ],
         ],
         'link_2' => [
-            'exclude' => 1,
             'label' => 'link_2',
             'description' => 'type=link allowedTypes=file allowedOptions=allowedFileExtensions=png',
             'config' => [
@@ -595,7 +545,6 @@ return [
             ],
         ],
         'link_3' => [
-            'exclude' => 1,
             'label' => 'link_3',
             'description' => 'type=link readOnly',
             'config' => [
@@ -604,7 +553,6 @@ return [
             ],
         ],
         'link_4' => [
-            'exclude' => 1,
             'label' => 'link_2',
             'description' => 'type=link linkBrowser disabled',
             'config' => [
@@ -615,7 +563,6 @@ return [
             ],
         ],
         'link_5' => [
-            'exclude' => 1,
             'label' => 'link_5',
             'description' => 'type=link allowedOptions=target,title custom browser title',
             'config' => [
@@ -628,7 +575,6 @@ return [
         ],
 
         'password_1' => [
-            'exclude' => 1,
             'label' => 'password_1',
             'description' => 'type=password',
             'config' => [
@@ -636,7 +582,6 @@ return [
             ],
         ],
         'password_2' => [
-            'exclude' => 1,
             'label' => 'password_2',
             'description' => 'type=password hashed=false',
             'config' => [
@@ -645,7 +590,6 @@ return [
             ],
         ],
         'password_3' => [
-            'exclude' => 1,
             'label' => 'password_3',
             'description' => 'type=password readOnly=true',
             'config' => [
@@ -658,7 +602,6 @@ return [
         'text_1' => [
             'l10n_mode' => 'prefixLangTitle description',
             'description' => 'field description',
-            'exclude' => 1,
             'label' => 'text_1',
             'config' => [
                 'type' => 'text',
@@ -666,7 +609,6 @@ return [
         ],
         'text_2' => [
             'l10n_mode' => 'prefixLangTitle',
-            'exclude' => 1,
             'label' => 'text_2',
             'description' => 'cols=20',
             'config' => [
@@ -675,7 +617,6 @@ return [
             ],
         ],
         'text_3' => [
-            'exclude' => 1,
             'label' => 'text_3',
             'description' => 'rows=2',
             'config' => [
@@ -684,7 +625,6 @@ return [
             ],
         ],
         'text_4' => [
-            'exclude' => 1,
             'label' => 'text_4',
             'description' => 'cols=20, rows=2',
             'config' => [
@@ -694,7 +634,6 @@ return [
             ],
         ],
         'text_5' => [
-            'exclude' => 1,
             'label' => 'text_5',
             'description' => 'wrap=off, long default text',
             'config' => [
@@ -709,7 +648,6 @@ return [
             ],
         ],
         'text_6' => [
-            'exclude' => 1,
             'label' => 'text_6',
             'description' => 'wrap=virtual, long default text',
             'config' => [
@@ -725,7 +663,6 @@ return [
             ],
         ],
         'text_7' => [
-            'exclude' => 1,
             'label' => 'text_7',
             'description' => 'eval=trim',
             'config' => [
@@ -734,7 +671,6 @@ return [
             ],
         ],
         'text_9' => [
-            'exclude' => 1,
             'label' => 'text_9',
             'description' => 'readOnly=1',
             'config' => [
@@ -743,7 +679,6 @@ return [
             ],
         ],
         'text_10' => [
-            'exclude' => 1,
             'label' => 'text_10',
             'description' => 'readOnly=1, format=datetime',
             'config' => [
@@ -753,7 +688,6 @@ return [
             ],
         ],
         'text_11' => [
-            'exclude' => 1,
             'label' => 'text_11',
             'description' => 'max=30',
             'config' => [
@@ -764,7 +698,6 @@ return [
             ],
         ],
         'text_12' => [
-            'exclude' => 1,
             'label' => 'text_12',
             'description' => 'default="text_12", value for text_13 and text_14',
             'config' => [
@@ -773,7 +706,6 @@ return [
             ],
         ],
         'text_13' => [
-            'exclude' => 1,
             'label' => 'text_13',
             'description' => 'placeholder=__row|text_12',
             'config' => [
@@ -782,7 +714,6 @@ return [
             ],
         ],
         'text_14' => [
-            'exclude' => 1,
             'label' => 'text_14',
             'description' => 'placeholder=__row|text_12, mode=useOrOverridePlaceholder, eval=null',
             'config' => [
@@ -793,7 +724,6 @@ return [
             ],
         ],
         'text_15' => [
-            'exclude' => 1,
             'label' => 'text_15',
             'description' => 'enableTabulator, fixedFont',
             'config' => [
@@ -827,7 +757,6 @@ return [
             ],
         ],
         'text_18' => [
-            'exclude' => 1,
             'label' => 'text_18',
             'description' => 'eval=null',
             'config' => [
@@ -884,7 +813,6 @@ backend_layout {
         ],
 
         'checkbox_1' => [
-            'exclude' => 1,
             'label' => 'checkbox_1',
             'description' => 'field description',
             'config' => [
@@ -892,7 +820,6 @@ backend_layout {
             ],
         ],
         'checkbox_2' => [
-            'exclude' => 1,
             'label' => 'checkbox_2',
             'description' => 'one checkbox with label',
             'config' => [
@@ -903,7 +830,6 @@ backend_layout {
             ],
         ],
         'checkbox_3' => [
-            'exclude' => 1,
             'label' => 'checkbox_3',
             'description' => 'three checkboxes, two with labels, one without',
             'config' => [
@@ -920,7 +846,6 @@ backend_layout {
             ],
         ],
         'checkbox_4' => [
-            'exclude' => 1,
             'label' => 'checkbox_4',
             'description' => 'four checkboxes with labels, long text',
             'config' => [
@@ -952,7 +877,6 @@ backend_layout {
             ],
         ],
         'checkbox_7' => [
-            'exclude' => 1,
             'label' => 'checkbox_7',
             'description' => 'eval=maximumRecordsChecked, table wide',
             'config' => [
@@ -964,7 +888,6 @@ backend_layout {
             ],
         ],
         'checkbox_8' => [
-            'exclude' => 1,
             'label' => 'checkbox_8',
             'description' => 'eval=maximumRecordsCheckedInPid, for this PID',
             'config' => [
@@ -976,7 +899,6 @@ backend_layout {
             ],
         ],
         'checkbox_9' => [
-            'exclude' => 1,
             'label' => 'checkbox_9',
             'description' => 'readonly=1',
             'config' => [
@@ -989,7 +911,6 @@ backend_layout {
             ],
         ],
         'checkbox_10' => [
-            'exclude' => 1,
             'label' => 'checkbox_10',
             'description' => 'cols=1',
             'config' => [
@@ -1003,7 +924,6 @@ backend_layout {
             ],
         ],
         'checkbox_11' => [
-            'exclude' => 1,
             'label' => 'checkbox_11',
             'description' => 'cols=2',
             'config' => [
@@ -1017,7 +937,6 @@ backend_layout {
             ],
         ],
         'checkbox_12' => [
-            'exclude' => 1,
             'label' => 'checkbox_12',
             'description' => 'cols=3',
             'config' => [
@@ -1032,7 +951,6 @@ backend_layout {
             ],
         ],
         'checkbox_13' => [
-            'exclude' => 1,
             'label' => 'checkbox_13',
             'description' => 'cols=4',
             'config' => [
@@ -1054,7 +972,6 @@ backend_layout {
             ],
         ],
         'checkbox_14' => [
-            'exclude' => 1,
             'label' => 'checkbox_14',
             'description' => 'cols=5',
             'config' => [
@@ -1072,7 +989,6 @@ backend_layout {
             ],
         ],
         'checkbox_15' => [
-            'exclude' => 1,
             'label' => 'checkbox_15',
             'description' => 'cols=6',
             'config' => [
@@ -1090,7 +1006,6 @@ backend_layout {
             ],
         ],
         'checkbox_16' => [
-            'exclude' => 1,
             'label' => 'checkbox_16',
             'description' => 'cols=inline',
             'config' => [
@@ -1108,7 +1023,6 @@ backend_layout {
             ],
         ],
         'checkbox_17' => [
-            'exclude' => 1,
             'label' => 'checkbox_17',
             'description' => 'renderType=checkboxToggle single',
             'config' => [
@@ -1124,7 +1038,6 @@ backend_layout {
             ],
         ],
         'checkbox_18' => [
-            'exclude' => 1,
             'label' => 'checkbox_18',
             'description' => 'renderType=checkboxToggle single inverted state display',
             'config' => [
@@ -1141,7 +1054,6 @@ backend_layout {
             ],
         ],
         'checkbox_19' => [
-            'exclude' => 1,
             'label' => 'checkbox_19',
             'description' => 'renderType=checkboxLabeledToggle single',
             'config' => [
@@ -1157,7 +1069,6 @@ backend_layout {
             ],
         ],
         'checkbox_20' => [
-            'exclude' => 1,
             'label' => 'checkbox_20',
             'description' => 'renderType=checkboxLabeledToggle multiple',
             'config' => [
@@ -1184,7 +1095,6 @@ backend_layout {
             ],
         ],
         'checkbox_21' => [
-            'exclude' => 1,
             'label' => 'checkbox_21',
             'description' => 'renderType=checkboxLabeledToggle single inverted state display',
             'config' => [
@@ -1201,7 +1111,6 @@ backend_layout {
             ],
         ],
         'checkbox_24' => [
-            'exclude' => 1,
             'label' => 'checkbox_24',
             'description' => 'renderType=checkboxToggle multiple',
             'config' => [
@@ -1217,7 +1126,6 @@ backend_layout {
             ],
         ],
         'checkbox_25' => [
-            'exclude' => 1,
             'label' => 'checkbox_25',
             'description' => 'renderType=checkboxToggle single readOnly',
             'config' => [
@@ -1234,7 +1142,6 @@ backend_layout {
             ],
         ],
         'checkbox_26' => [
-            'exclude' => 1,
             'label' => 'checkbox_26 description',
             'description' => 'renderType=checkboxLabeledToggle single readOnly',
             'config' => [
@@ -1252,7 +1159,6 @@ backend_layout {
         ],
 
         'radio_1' => [
-            'exclude' => 1,
             'label' => 'description',
             'description' => 'radio_1 three options, one without label',
             'config' => [
@@ -1265,7 +1171,6 @@ backend_layout {
             ],
         ],
         'radio_2' => [
-            'exclude' => 1,
             'label' => 'radio_2',
             'description' => 'three options, long text',
             'config' => [
@@ -1283,7 +1188,6 @@ backend_layout {
             ],
         ],
         'radio_3' => [
-            'exclude' => 1,
             'label' => 'radio_3',
             'description' => 'many options',
             'config' => [
@@ -1309,7 +1213,6 @@ backend_layout {
             ],
         ],
         'radio_4' => [
-            'exclude' => 1,
             'label' => 'radio_4',
             'description' => 'string values',
             'config' => [
@@ -1323,7 +1226,6 @@ backend_layout {
         'radio_5' => [
             // @todo: Radio elements added by itemsProcFunc are not persisted correctly.
             // @todo: HTML looks good, so this is probably an issue in DataHandler?
-            'exclude' => 1,
             'label' => 'radio_5',
             'description' => 'itemsProcFunc',
             'config' => [
@@ -1336,7 +1238,6 @@ backend_layout {
             ],
         ],
         'radio_6' => [
-            'exclude' => 1,
             'label' => 'radio_6',
             'description' => 'readonly=1',
             'config' => [
@@ -1350,7 +1251,6 @@ backend_layout {
         ],
 
         'none_1' => [
-            'exclude' => 1,
             'label' => 'none_1',
             'description' => 'pass_content=true',
             'config' => [
@@ -1359,7 +1259,6 @@ backend_layout {
             ],
         ],
         'none_2' => [
-            'exclude' => 1,
             'label' => 'none_2',
             'description' => 'pass_content=false',
             'config' => [
@@ -1368,7 +1267,6 @@ backend_layout {
             ],
         ],
         'none_4' => [
-            'exclude' => 1,
             'label' => 'none_4',
             'description' => 'size=6',
             'config' => [
@@ -1377,7 +1275,6 @@ backend_layout {
             ],
         ],
         'none_5' => [
-            'exclude' => 1,
             'label' => 'none_5',
             'description' => 'format=datetime',
             'config' => [
@@ -1387,7 +1284,6 @@ backend_layout {
         ],
 
         'passthrough_1' => [
-            'exclude' => 1,
             'label' => 'passthrough_1',
             'description' => 'field should NOT be shown',
             'config' => [
@@ -1395,7 +1291,6 @@ backend_layout {
             ],
         ],
         'passthrough_2' => [
-            'exclude' => 1,
             'label' => 'passthrough_2',
             'description' => 'not shown, default applied',
             'config' => [
@@ -1405,7 +1300,6 @@ backend_layout {
         ],
 
         'user_1' => [
-            'exclude' => 1,
             'label' => 'user_1',
             'description' => 'parameter=color=green',
             'config' => [
@@ -1418,7 +1312,6 @@ backend_layout {
         ],
 
         'flex_1' => [
-            'exclude' => 1,
             'label' => 'flex_1',
             'config' => [
                 'type' => 'flex',

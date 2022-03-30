@@ -24,7 +24,6 @@ return [
     'columns' => [
 
         'hidden' => [
-            'exclude' => 1,
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -33,7 +32,6 @@ return [
             ],
         ],
         'sys_language_uid' => [
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'language',
@@ -54,7 +52,6 @@ return [
             ],
         ],
         'l10n_source' => [
-            'exclude' => true,
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'label' => 'Translation source',
             'config' => [
@@ -78,7 +75,6 @@ return [
         ],
 
         'input_1' => [
-            'exclude' => 1,
             'label' => 'input_1 default=Default value"',
             'config' => [
                 'type' => 'input',
@@ -86,7 +82,6 @@ return [
             ],
         ],
         'input_2' => [
-            'exclude' => 1,
             'label' => 'input_26 default=0, eval=datetime, readonly=1',
             'config' => [
                 'type' => 'datetime',
@@ -95,7 +90,6 @@ return [
             ],
         ],
         'input_3' => [
-            'exclude' => 1,
             'label' => 'input_27 default=3, eval=int, range lower=2, range upper=7',
             'config' => [
                 'type' => 'input',
@@ -109,7 +103,6 @@ return [
         ],
 
         'text_1' => [
-            'exclude' => 1,
             'label' => 'text_12 default="text_12"',
             'config' => [
                 'type' => 'text',
@@ -118,7 +111,6 @@ return [
         ],
 
         'checkbox_1' => [
-            'exclude' => 1,
             'label' => 'checkbox_1 default=1',
             'config' => [
                 'type' => 'check',
@@ -126,7 +118,6 @@ return [
             ],
         ],
         'checkbox_2' => [
-            'exclude' => 1,
             'label' => 'checkbox_2 default=1, one checkbox with label',
             'config' => [
                 'type' => 'check',
@@ -137,7 +128,6 @@ return [
             ],
         ],
         'checkbox_3' => [
-            'exclude' => 1,
             'label' => 'checkbox_3 default=5, four checkboxes, 1 and 3 pre-selected',
             'config' => [
                 'type' => 'check',
@@ -151,7 +141,6 @@ return [
             ],
         ],
         'checkbox_4' => [
-            'exclude' => 1,
             'label' => 'checkbox_4 cols=inline, "MO" and "WE" pre-selected',
             'config' => [
                 'type' => 'check',
@@ -170,7 +159,6 @@ return [
         ],
 
         'radio_1' => [
-            'exclude' => 1,
             'label' => 'radio_1 default=2, three options, second pre-selected',
             'config' => [
                 'type' => 'radio',
@@ -183,7 +171,6 @@ return [
             ],
         ],
         'radio_2' => [
-            'exclude' => 1,
             'label' => 'radio_2 default=y, three options, second pre-selected',
             'config' => [
                 'type' => 'radio',
@@ -196,7 +183,6 @@ return [
             ],
         ],
         'radio_3' => [
-            'exclude' => 1,
             'label' => 'radio_3 empty default',
             'config' => [
                 'type' => 'radio',
@@ -212,7 +198,6 @@ return [
          // @todo add default value examples for type=none
 
         'select_1' => [
-            'exclude' => 1,
             'label' => 'select_1 default=2, renderType=selectSingle, three items, second pre-selected',
             'config' => [
                 'type' => 'select',
@@ -226,7 +211,6 @@ return [
             ],
         ],
         'select_2' => [
-            'exclude' => 1,
             'label' => 'select_2 default=1,3 renderType=selectCheckBox',
             'config' => [
                 'type' => 'select',

@@ -24,7 +24,6 @@ return [
 
     'columns' => [
         'hidden' => [
-            'exclude' => 1,
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -33,7 +32,6 @@ return [
             ],
         ],
         'sys_language_uid' => [
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'language',
@@ -54,7 +52,6 @@ return [
             ],
         ],
         'l10n_source' => [
-            'exclude' => true,
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'label' => 'Translation source',
             'config' => [
@@ -78,7 +75,6 @@ return [
         ],
 
         'notrequired_1' => [
-            'exclude' => 1,
             'label' => 'notrequired_1',
             'config' => [
                 'type' => 'input',
@@ -86,7 +82,6 @@ return [
         ],
 
         'input_1' => [
-            'exclude' => 1,
             'label' => 'input_1 eval=required',
             'config' => [
                 'type' => 'input',
@@ -95,7 +90,6 @@ return [
             ],
         ],
         'input_2' => [
-            'exclude' => 1,
             'label' => 'input_2 eval=required,trim,date',
             'config' => [
                 'type' => 'datetime',
@@ -104,7 +98,6 @@ return [
             ],
         ],
         'link_1' => [
-            'exclude' => 1,
             'label' => 'link_1 eval=required, type=link',
             'config' => [
                 'type' => 'link',
@@ -114,7 +107,6 @@ return [
         ],
 
         'text_1' => [
-            'exclude' => 1,
             'label' => 'text_1 eval=required',
             'config' => [
                 'type' => 'text',
@@ -123,7 +115,6 @@ return [
         ],
 
         'select_1' => [
-            'exclude' => 1,
             'label' => 'select_1 selectMultipleSideBySide, minitems=2, maxitems=5',
             'config' => [
                 'type' => 'select',
@@ -142,7 +133,6 @@ return [
             ],
         ],
         'select_2' => [
-            'exclude' => 1,
             'label' => 'select_2 selectSingle, minitems=1, maxitems=1',
             'config' => [
                 'type' => 'select',
@@ -159,7 +149,6 @@ return [
             ],
         ],
         'select_3' => [
-            'exclude' => 1,
             'label' => 'select_3, selectSingleBox, minitems=1, maxitems=2',
             'config' => [
                 'type' => 'select',
@@ -176,7 +165,6 @@ return [
             ],
         ],
         'select_4' => [
-            'exclude' => 1,
             'label' => 'select_4 selectCheckBox, minitems=1, maxitems=2',
             'config' => [
                 'type' => 'select',
@@ -193,7 +181,6 @@ return [
             ],
         ],
         'select_5' => [
-            'exclude' => 1,
             'label' => 'select_5 selectTree, minitems=1, maxitems=3',
             'config' => [
                 'type' => 'select',
@@ -213,7 +200,6 @@ return [
         ],
 
         'group_1' => [
-            'exclude' => 1,
             'label' => 'group_1 db, minitems=1, maxitems=3',
             'config' => [
                 'type' => 'group',
@@ -223,7 +209,6 @@ return [
             ],
         ],
         'group_2' => [
-            'exclude' => 1,
             'label' => 'group_2 db, minitems = 1, maxitems=1, size=1',
             'config' => [
                 'type' => 'group',
@@ -235,7 +220,6 @@ return [
         ],
 
         'rte_1' => [
-            'exclude' => 1,
             'label' => 'rte_1 eval=required',
             'config' => [
                 'type' => 'text',
@@ -246,7 +230,6 @@ return [
             ],
         ],
         'rte_2' => [
-            'exclude' => 1,
             'label' => 'rte_2 inline',
             'config' => [
                 'type' => 'inline',
@@ -257,7 +240,6 @@ return [
         ],
 
         'inline_1' => [
-            'exclude' => 1,
             'label' => 'inline_1 minitems=1, maxitems=1',
             'config' => [
                 'type' => 'inline',
@@ -269,7 +251,6 @@ return [
             ],
         ],
         'inline_2' => [
-            'exclude' => 1,
             'label' => 'inline_2 required field in inline child',
             'config' => [
                 'type' => 'inline',
@@ -279,7 +260,6 @@ return [
             ],
         ],
         'inline_3' => [
-            'exclude' => 1,
             'label' => 'inline_3 minitems=1, maxitems=3, required field in inline child',
             'config' => [
                 'type' => 'inline',
@@ -292,7 +272,6 @@ return [
         ],
 
         'flex_1' => [
-            'exclude' => 1,
             'label' => 'flex_1 required field in flex',
             'config' => [
                 'type' => 'flex',
@@ -319,7 +298,6 @@ return [
             ],
         ],
         'flex_2' => [
-            'exclude' => 1,
             'label' => 'flex_2 tabs, section container, inline',
             'config' => [
                 'type' => 'flex',
@@ -407,7 +385,6 @@ return [
         ],
 
         'palette_input_1' => [
-            'exclude' => 1,
             'label' => 'palette_input_1 eval=required',
             'config' => [
                 'type' => 'input',
@@ -415,7 +392,6 @@ return [
             ],
         ],
         'palette_input_2' => [
-            'exclude' => 1,
             'label' => 'palette_input_2 eval=required',
             'config' => [
                 'type' => 'input',
