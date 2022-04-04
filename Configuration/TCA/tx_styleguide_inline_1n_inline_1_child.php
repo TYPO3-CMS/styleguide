@@ -99,9 +99,9 @@ return [
                 'size' => 10,
                 'valuePicker' => [
                     'items' => [
-                        [ 'blue', '#0000FF'],
-                        [ 'red', '#FF0000'],
-                        [ 'typo3 orange', '#FF8700'],
+                        ['blue', '#0000FF'],
+                        ['red', '#FF0000'],
+                        ['typo3 orange', '#FF8700'],
                     ],
                 ],
             ],

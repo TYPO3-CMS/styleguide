@@ -337,10 +337,10 @@ return [
                 'eval' => 'trim',
                 'valuePicker' => [
                     'items' => [
-                        [ 'spring', 'Spring'],
-                        [ 'summer', 'Summer'],
-                        [ 'autumn', 'Autumn'],
-                        [ 'winter', 'Winter'],
+                        ['Spring', 'spring'],
+                        ['Summer', 'summer'],
+                        ['Autumn', 'autumn'],
+                        ['Winter', 'winter'],
                     ],
                 ],
             ],
@@ -355,10 +355,10 @@ return [
                 'valuePicker' => [
                     'mode' => 'append',
                     'items' => [
-                        [ 'spring', 'Spring'],
-                        [ 'summer', 'Summer'],
-                        [ 'autumn', 'Autumn'],
-                        [ 'winter', 'Winter'],
+                        ['Spring', 'spring'],
+                        ['Summer', 'summer'],
+                        ['Autumn', 'autumn'],
+                        ['Winter', 'winter'],
                     ],
                 ],
             ],
@@ -373,10 +373,10 @@ return [
                 'valuePicker' => [
                     'mode' => 'prepend',
                     'items' => [
-                        [ 'spring', 'Spring'],
-                        [ 'summer', 'Summer'],
-                        [ 'autumn', 'Autumn'],
-                        [ 'winter', 'Winter'],
+                        ['Spring', 'spring'],
+                        ['Summer', 'summer'],
+                        ['Autumn', 'autumn'],
+                        ['Winter', 'winter'],
                     ],
                 ],
             ],
