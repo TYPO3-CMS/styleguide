@@ -104,6 +104,7 @@ class AbstractTableHandler
             ],
         ];
         $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $dataHandler->bypassAccessCheckForRecords = true;
         $dataHandler->enableLogging = false;
         $dataHandler->start([], $commandMap);
         $dataHandler->process_cmdmap();
@@ -128,6 +129,7 @@ class AbstractTableHandler
             ],
         ];
         $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $dataHandler->bypassAccessCheckForRecords = true;
         $dataHandler->enableLogging = false;
         $dataHandler->start([], $commandMap);
         $dataHandler->process_cmdmap();
