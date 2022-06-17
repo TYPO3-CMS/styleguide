@@ -445,12 +445,14 @@ CREATE TABLE tx_styleguide_inline_1nnol10n_child (
 
 
 CREATE TABLE tx_styleguide_inline_1n1n (
-    inline_1 int(11) DEFAULT '0' NOT NULL
+    inline_1 int(11) DEFAULT '0' NOT NULL,
+    inline_2 int(11) DEFAULT '0' NOT NULL
 );
 
 
 CREATE TABLE tx_styleguide_inline_1n1n_child (
     parentid int(11) DEFAULT '0' NOT NULL,
+    parentid_2 int(11) DEFAULT '0' NOT NULL,
     parenttable text,
 
     inline_1 int(11) DEFAULT '0' NOT NULL

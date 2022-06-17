@@ -87,13 +87,27 @@ return [
                 'foreign_table_field' => 'parenttable',
             ],
         ],
-
+        'inline_2' => [
+            'label' => 'inline_2, maxitems=1, minitems=1, levelLinksPosition="bottom"',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_styleguide_inline_1n1n_child',
+                'foreign_field' => 'parentid_2',
+                'foreign_table_field' => 'parenttable',
+                'maxitems' => 1,
+                'minitems' => 1,
+                'appearance' => [
+                    'levelLinksPosition' => 'bottom',
+                ],
+            ],
+        ],
     ],
 
     'types' => [
         '0' => [
             'showitem' => '
                 inline_1,
+                inline_2,
                 --div--;meta,
                     disable, sys_language_uid, l10n_parent, l10n_source,
             ',
