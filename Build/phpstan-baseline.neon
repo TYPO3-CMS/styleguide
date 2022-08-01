@@ -781,6 +781,16 @@ parameters:
 			path: ../Classes/UserFunctions/FormEngine/WizardInput33.php
 
 		-
+			message: "#^Method TYPO3\\\\CMS\\\\Styleguide\\\\ViewHelpers\\\\CodeViewHelper\\:\\:initializeArguments\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../Classes/ViewHelpers/CodeViewHelper.php
+
+		-
+			message: "#^Method TYPO3\\\\CMS\\\\Styleguide\\\\ViewHelpers\\\\InitialsViewHelper\\:\\:initializeArguments\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../Classes/ViewHelpers/InitialsViewHelper.php
+
+		-
 			message: "#^Property TYPO3\\\\CMS\\\\Styleguide\\\\Tests\\\\Acceptance\\\\Support\\\\Extension\\\\BackendStyleguideEnvironment\\:\\:\\$localConfig type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../Tests/Acceptance/Support/Extension/BackendStyleguideEnvironment.php

@@ -1,7 +1,9 @@
 name: publish
+
 on:
   push:
     tag:
+
 jobs:
   publish:
     name: Publish new version to TER
