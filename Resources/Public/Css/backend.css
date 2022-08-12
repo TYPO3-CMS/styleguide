@@ -41,6 +41,7 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
   code[class*="language-"],
   pre[class*="language-"] {
     text-shadow: none; } }
+
 /* Code blocks */
 pre[class*="language-"] {
   padding: 1em;
@@ -123,12 +124,13 @@ pre[class*="language-"] {
   #container-navigation {
     position: fixed;
     width: 260px; }
-
   #container-content {
     margin-left: 300px; } }
+
 @media (min-width: 769px) and (max-height: 660px) {
   #container-navigation {
     position: absolute; } }
+
 .example {
   background-color: #fff;
   border: 1px solid #ededed;
@@ -209,7 +211,6 @@ div.icon-container {
     background-color: #eee;
     min-height: 50px;
     padding: 5px; }
-  div.icon-container:hover span.icon-container-icon, div.icon-container:hover span.icon-container-label {
+  div.icon-container:hover span.icon-container-icon,
+  div.icon-container:hover span.icon-container-label {
     background-color: #e1e1e1; }
-
-/*# sourceMappingURL=backend.css.map */
