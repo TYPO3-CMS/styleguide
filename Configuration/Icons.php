@@ -1,4 +1,5 @@
 <?php
+
 return [
     // Register styleguide module icon
     'module-styleguide' => [
