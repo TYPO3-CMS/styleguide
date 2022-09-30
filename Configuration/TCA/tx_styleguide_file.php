@@ -128,7 +128,7 @@ return [
             'label' => 'file_3 media fal',
             'config' => [
                 'type' => 'file',
-                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext']
+                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'],
             ],
         ],
         'file_4' => [
