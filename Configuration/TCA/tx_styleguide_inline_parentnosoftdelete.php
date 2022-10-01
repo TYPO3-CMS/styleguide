@@ -84,7 +84,7 @@ return [
             'label' => 'file_1',
             'config' => [
                 'type' => 'file',
-                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
+                'allowed' => 'common-image-types',
             ],
         ],
 

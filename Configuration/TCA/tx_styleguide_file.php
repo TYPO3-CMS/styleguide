@@ -80,7 +80,7 @@ return [
             'label' => 'file_1 typical fal image',
             'config' => [
                 'type' => 'file',
-                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
+                'allowed' => 'common-image-types',
                 'appearance' => [
                     'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
                 ],
@@ -128,14 +128,14 @@ return [
             'label' => 'file_3 media fal',
             'config' => [
                 'type' => 'file',
-                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'],
+                'allowed' => 'common-media-types',
             ],
         ],
         'file_4' => [
             'label' => 'file_4 media fal with allowLanguageSynchronization',
             'config' => [
                 'type' => 'file',
-                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'],
+                'allowed' => 'common-media-types',
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
@@ -145,7 +145,7 @@ return [
             'label' => 'file_5 appearance localization toggles',
             'config' => [
                 'type' => 'file',
-                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'],
+                'allowed' => 'common-media-types',
                 'appearance' => [
                     'showPossibleLocalizationRecords' => true,
                     'showAllLocalizationLink' => true,

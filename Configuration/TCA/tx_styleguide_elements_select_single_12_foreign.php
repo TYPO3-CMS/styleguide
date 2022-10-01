@@ -74,7 +74,7 @@ return [
             'label' => 'fal_1 selicon_field',
             'config' => [
                 'type' => 'file',
-                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'],
+                'allowed' => 'common-media-types',
                 'maxitems' => 1,
             ],
         ],
