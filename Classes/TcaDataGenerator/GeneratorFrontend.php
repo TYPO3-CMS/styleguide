@@ -460,8 +460,10 @@ class GeneratorFrontend extends AbstractGenerator
                     $fieldname = 'image';
             }
 
+            $newIds = [];
             foreach ($files as $image) {
                 $newId = StringUtility::getUniqueId('NEW');
+                $newIds[] = $newId;
                 $recordData['sys_file_reference'][$newId] = [
                     'table_local' => 'sys_file',
                     'uid_local' => $image->getUid(),
@@ -469,6 +471,11 @@ class GeneratorFrontend extends AbstractGenerator
                     'tablenames' => 'tt_content',
                     'fieldname' => $fieldname,
                     'pid' => $content['pid'],
+                ];
+            }
+            if ($newIds !== []) {
+                $recordData['tt_content'][$content['uid']] = [
+                    $fieldname => implode(',', $newIds),
                 ];
             }
         }
