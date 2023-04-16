@@ -27,6 +27,7 @@ setUpDockerComposeDotEnv() {
     echo "EXTRA_TEST_OPTIONS=${EXTRA_TEST_OPTIONS}" >> .env
     echo "SCRIPT_VERBOSE=${SCRIPT_VERBOSE}" >> .env
     echo "CGLCHECK_DRY_RUN=${CGLCHECK_DRY_RUN}" >> .env
+    echo "IMAGE_PREFIX=${IMAGE_PREFIX}" >> .env
 }
 
 # Load help text into $HELP
@@ -136,6 +137,7 @@ PHP_XDEBUG_PORT=9003
 EXTRA_TEST_OPTIONS=""
 SCRIPT_VERBOSE=0
 CGLCHECK_DRY_RUN=""
+IMAGE_PREFIX="ghcr.io/typo3/"
 
 # Option parsing
 # Reset in case getopts has been used previously in the shell
@@ -298,9 +300,9 @@ case ${TEST_SUITE} in
         ;;
     update)
         # pull typo3/core-testing-*:latest versions of those ones that exist locally
-        docker images typo3/core-testing-*:latest --format "{{.Repository}}:latest" | xargs -I {} docker pull {}
+        docker images ${IMAGE_PREFIX}core-testing-*:latest --format "{{.Repository}}:latest" | xargs -I {} docker pull {}
         # remove "dangling" typo3/core-testing-* images (those tagged as <none>)
-        docker images typo3/core-testing-* --filter "dangling=true" --format "{{.ID}}" | xargs -I {} docker rmi {}
+        docker images ${IMAGE_PREFIX}core-testing-* --filter "dangling=true" --format "{{.ID}}" | xargs -I {} docker rmi {}
         ;;
     *)
         echo "Invalid -s option argument ${TEST_SUITE}" >&2
