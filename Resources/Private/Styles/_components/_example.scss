@@ -5,8 +5,6 @@
 	padding: 12px;
 	margin-bottom: 12px;
 	&.code {
-		background-color: #272822;
-		color: #f8f8f8;
 		font-family: monospace, fixed;
 
         &:before {
@@ -21,7 +19,7 @@
 		margin: 0;
 	}
 	pre code {
-		overflow: scroll;
+		overflow: auto;
 		width: 100%;
 		display: block;
 	}
