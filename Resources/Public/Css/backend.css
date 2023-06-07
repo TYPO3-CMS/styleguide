@@ -159,8 +159,6 @@ pre[class*=language-] {
   margin-bottom: 12px;
 }
 .example.code {
-  background-color: #272822;
-  color: #f8f8f8;
   font-family: monospace, fixed;
 }
 .example.code:before {
@@ -174,7 +172,7 @@ pre[class*=language-] {
   margin: 0;
 }
 .example pre code {
-  overflow: scroll;
+  overflow: auto;
   width: 100%;
   display: block;
 }
