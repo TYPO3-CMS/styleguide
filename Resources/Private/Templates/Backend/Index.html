@@ -42,12 +42,12 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button data-href="{f:be.uri(route: 'help_styleguide', parameters: '{action: \'tcaCreate\'}')}" class="btn btn-default{f:if(condition: '{demoExists} = true', then: ' disabled')} t3js-generator-action">
+                    <button data-href="{f:be.uri(route: 'help_styleguide', parameters: '{action: \'tcaCreate\'}')}" class="btn btn-default{f:if(condition: '{demoExists} = true', then: ' disabled')} t3js-generator-action" id="t3-tca-pagetree-create">
                         <i class="fa fa-plus fa-fw"></i>
                         <f:translate key="LLL:EXT:styleguide/Resources/Private/Language/locallang.xlf:tcaCreateButton" />
                     </button>
 
-                    <button data-href="{f:be.uri(route: 'help_styleguide', parameters: '{action: \'tcaDelete\'}')}" class="btn btn-danger{f:if(condition: '{demoExists} != true', then: ' disabled')}  t3js-generator-action">
+                    <button data-href="{f:be.uri(route: 'help_styleguide', parameters: '{action: \'tcaDelete\'}')}" class="btn btn-danger{f:if(condition: '{demoExists} != true', then: ' disabled')}  t3js-generator-action" id="t3-tca-pagetree-delete">
                         <i class="fa fa-trash fa-fw"></i>
                         <f:translate key="LLL:EXT:styleguide/Resources/Private/Language/locallang.xlf:tcaDeleteButton" />
                     </button>
@@ -67,12 +67,12 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button data-href="{f:be.uri(route:'help_styleguide', parameters: '{action: \'frontendCreate\'}')}" class="btn btn-default{f:if(condition: '{demoFrontendExists} = true', then: ' disabled')}  t3js-generator-action">
+                    <button data-href="{f:be.uri(route:'help_styleguide', parameters: '{action: \'frontendCreate\'}')}" class="btn btn-default{f:if(condition: '{demoFrontendExists} = true', then: ' disabled')}  t3js-generator-action" id="t3-ce-pagetree-create">
                         <i class="fa fa-plus fa-fw"></i>
                         <f:translate key="LLL:EXT:styleguide/Resources/Private/Language/locallang.xlf:frontendCreateButton" />
                     </button>
 
-                    <button data-href="{f:be.uri(route:'help_styleguide', parameters: '{action: \'frontendDelete\'}')}" class="btn btn-danger{f:if(condition: '{demoFrontendExists} != true', then: ' disabled')}  t3js-generator-action">
+                    <button data-href="{f:be.uri(route:'help_styleguide', parameters: '{action: \'frontendDelete\'}')}" class="btn btn-danger{f:if(condition: '{demoFrontendExists} != true', then: ' disabled')}  t3js-generator-action" id="t3-ce-pagetree-delete">
                         <i class="fa fa-trash fa-fw"></i>
                         <f:translate key="LLL:EXT:styleguide/Resources/Private/Language/locallang.xlf:frontendDeleteButton" />
                     </button>
