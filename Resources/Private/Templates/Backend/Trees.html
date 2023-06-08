@@ -38,16 +38,16 @@
             File trees are rendered as one big SVG construct and initialized via TypeScript like the page trees.
         </p>
 
-        <h3>Known usage</h3>
-        <p>
-            Filelist module
-        </p>
-
         <sg:code language="html" codeonly="true">
             <div class="navigation-tree-container">
                 <typo3-backend-navigation-component-filestorage-tree id="typo3-filestoragetree-tree" class="svg-tree-wrapper" .setup=${e}></typo3-backend-navigation-component-filestorage-tree>
             </div>
         </sg:code>
+
+        <h3>Known usage</h3>
+        <p>
+            Filelist module
+        </p>
 
         <h2>Collapsible trees</h2>
 
@@ -55,11 +55,6 @@
             Collapsible trees are used to show the configuration in a more structured way. Lower levels can be opened
             and closed, while the entries are collapsed by default. If a user opens entries, this state is saved in the
             session.
-        </p>
-
-        <h3>Known usage</h3>
-        <p>
-            Page TSconfig, TypoScript, and Configuration backend modules.
         </p>
 
         <sg:code language="html">
@@ -169,6 +164,10 @@
             />
         </sg:code>
 
+        <h3>Known usage</h3>
+        <p>
+            Page TSconfig, TypoScript, and Configuration backend modules.
+        </p>
     </div>
 
 </f:section>
