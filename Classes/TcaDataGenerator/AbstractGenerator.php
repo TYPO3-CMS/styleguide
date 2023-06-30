@@ -42,7 +42,15 @@ abstract class AbstractGenerator
     {
         $recordFinder = GeneralUtility::makeInstance(RecordFinder::class);
         // When the DataHandler created the page tree, a default site configuration has been added. Fetch,  rename, update.
-        $site = GeneralUtility::makeInstance(SiteFinder::class)->getSiteByRootPageId($topPageUid);
+        $siteFinder = GeneralUtility::makeInstance(SiteFinder::class);
+
+        /**
+         * In acceptance tests $siteFinder->getSiteByRootPageId() fails when runtime cache
+         * gets injected into SiteFinder, see https://review.typo3.org/c/Packages/TYPO3.CMS/+/78311/19..21
+         */
+        $siteFinder->getAllSites(false);
+
+        $site = $siteFinder->getSiteByRootPageId($topPageUid);
         $siteConfiguration = GeneralUtility::makeInstance(SiteConfiguration::class);
         $siteIdentifier = 'styleguide-demo-' . $topPageUid;
         $siteConfiguration->rename($site->getIdentifier(), $siteIdentifier);
