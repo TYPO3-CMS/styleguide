@@ -1279,8 +1279,6 @@ backend_layout {
                 'items' => [
                     [
                         'label' => 'foo',
-                        'labelChecked' => 'Enabled',
-                        'labelUnchecked' => 'Disabled',
                     ],
                 ],
             ],
@@ -1294,8 +1292,6 @@ backend_layout {
                 'items' => [
                     [
                         'label' => 'foo',
-                        'labelChecked' => 'Enabled',
-                        'labelUnchecked' => 'Disabled',
                         'invertStateDisplay' => true,
                     ],
                 ],
@@ -1383,8 +1379,6 @@ backend_layout {
                 'items' => [
                     [
                         'label' => 'foo',
-                        'labelChecked' => 'Enabled',
-                        'labelUnchecked' => 'Disabled',
                     ],
                 ],
             ],
