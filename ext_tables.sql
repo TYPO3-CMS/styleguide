@@ -167,18 +167,6 @@ CREATE TABLE tx_styleguide_elements_basic (
 );
 
 CREATE TABLE tx_styleguide_elements_group (
-    group_db_1 text,
-    group_db_2 text,
-    group_db_3 text,
-    group_db_4 text,
-    group_db_5 text,
-    group_db_7 text,
-    group_db_8 text,
-    group_db_9 text,
-    group_db_10 text,
-    group_db_11 text,
-    group_requestUpdate_1 text,
-
     flex_1 text
 );
 
@@ -188,9 +176,6 @@ CREATE TABLE tx_styleguide_elements_folder
 );
 
 CREATE TABLE tx_styleguide_elements_imagemanipulation (
-    group_db_1 text,
-    group_db_2 text,
-    group_db_3 text,
     crop_1 text,
     crop_2 text,
     crop_3 text,
@@ -377,7 +362,6 @@ CREATE TABLE tx_styleguide_inline_1n_inline_1_child (
     input_1 text,
     input_3 text,
     color_1 text,
-    group_db_1 text,
     select_tree_1 text
 );
 
@@ -517,8 +501,6 @@ CREATE TABLE tx_styleguide_inline_mngroup (
 
 
 CREATE TABLE tx_styleguide_inline_mngroup_mm (
-    parentid int(11) DEFAULT '0' NOT NULL,
-    childid int(11) DEFAULT '0' NOT NULL,
     parentsort int(10) DEFAULT '0' NOT NULL,
     childsort int(10) DEFAULT '0' NOT NULL,
 );
@@ -550,8 +532,6 @@ CREATE TABLE tx_styleguide_inline_mnsymmetricgroup (
 
 
 CREATE TABLE tx_styleguide_inline_mnsymmetricgroup_mm (
-    hotelid int(11) DEFAULT '0' NOT NULL,
-    branchid int(11) DEFAULT '0' NOT NULL,
     hotelsort int(10) DEFAULT '0' NOT NULL,
     branchsort int(10) DEFAULT '0' NOT NULL
 );
@@ -618,9 +598,6 @@ CREATE TABLE tx_styleguide_required (
     select_3 text,
     select_4 text,
     select_5 text,
-
-    group_1 text,
-    group_2 text,
 
     rte_1 text,
     rte_2 text,
@@ -719,9 +696,6 @@ CREATE TABLE tx_styleguide_l10nreadonly (
     link text,
     radio int(11) DEFAULT '0' NOT NULL,
     none text,
-    group text,
-    group_mm text,
-    group_file text,
     image_manipulation text,
     language int(11) DEFAULT '0' NOT NULL,
     text text,
