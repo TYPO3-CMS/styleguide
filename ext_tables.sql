@@ -57,8 +57,6 @@ CREATE TABLE tx_styleguide_displaycond (
     number_2 int(11) DEFAULT '0' NOT NULL,
     number_3 int(11) DEFAULT '0' NOT NULL,
 
-    checkbox_1 int(11) DEFAULT '0' NOT NULL,
-
     select_1 text,
     select_2 text,
     select_3 text,
@@ -146,32 +144,6 @@ CREATE TABLE tx_styleguide_elements_basic (
     text_19 text,
     text_20 text,
 
-    checkbox_1 int(11) DEFAULT '0' NOT NULL,
-    checkbox_2 int(11) DEFAULT '0' NOT NULL,
-    checkbox_3 int(11) DEFAULT '0' NOT NULL,
-    checkbox_4 int(11) DEFAULT '0' NOT NULL,
-    checkbox_6 int(11) DEFAULT '0' NOT NULL,
-    checkbox_7 int(11) DEFAULT '0' NOT NULL,
-    checkbox_8 int(11) DEFAULT '0' NOT NULL,
-    checkbox_9 int(11) DEFAULT '0' NOT NULL,
-    checkbox_10 int(11) DEFAULT '0' NOT NULL,
-    checkbox_11 int(11) DEFAULT '0' NOT NULL,
-    checkbox_12 int(11) DEFAULT '0' NOT NULL,
-    checkbox_13 int(11) DEFAULT '0' NOT NULL,
-    checkbox_14 int(11) DEFAULT '0' NOT NULL,
-    checkbox_15 int(11) DEFAULT '0' NOT NULL,
-    checkbox_16 int(11) DEFAULT '0' NOT NULL,
-    checkbox_17 int(11) DEFAULT '0' NOT NULL,
-    checkbox_18 int(11) DEFAULT '0' NOT NULL,
-    checkbox_19 int(11) DEFAULT '0' NOT NULL,
-    checkbox_20 int(11) DEFAULT '0' NOT NULL,
-    checkbox_21 int(11) DEFAULT '0' NOT NULL,
-    checkbox_22 int(11) DEFAULT '0' NOT NULL,
-    checkbox_23 int(11) DEFAULT '0' NOT NULL,
-    checkbox_24 int(11) DEFAULT '0' NOT NULL,
-    checkbox_25 int(11) DEFAULT '0' NOT NULL,
-    checkbox_26 int(11) DEFAULT '0' NOT NULL,
-
     radio_1 int(11) DEFAULT '0' NOT NULL,
     radio_2 int(11) DEFAULT '0' NOT NULL,
     radio_3 int(11) DEFAULT '0' NOT NULL,
@@ -212,8 +184,6 @@ CREATE TABLE tx_styleguide_elements_group (
 
 CREATE TABLE tx_styleguide_elements_folder
 (
-    folder_1 text,
-    folder_2 text,
     flex_1 text
 );
 
@@ -531,8 +501,6 @@ CREATE TABLE tx_styleguide_inline_mn_mm (
     childid int(11) DEFAULT '0' NOT NULL,
     parentsort int(10) DEFAULT '0' NOT NULL,
     childsort int(10) DEFAULT '0' NOT NULL,
-
-    check_1 int(11) DEFAULT '0' NOT NULL
 );
 
 
@@ -553,8 +521,6 @@ CREATE TABLE tx_styleguide_inline_mngroup_mm (
     childid int(11) DEFAULT '0' NOT NULL,
     parentsort int(10) DEFAULT '0' NOT NULL,
     childsort int(10) DEFAULT '0' NOT NULL,
-
-    check_1 int(11) DEFAULT '0' NOT NULL
 );
 
 
@@ -624,8 +590,6 @@ CREATE TABLE tx_styleguide_inline_usecombinationbox_child (
 
 
 CREATE TABLE tx_styleguide_palette (
-    palette_1_1 int(11) DEFAULT '0' NOT NULL,
-    palette_1_3 int(11) DEFAULT '0' NOT NULL,
     palette_2_1 text,
     palette_3_1 text,
     palette_3_2 text,
@@ -741,11 +705,6 @@ CREATE TABLE tx_styleguide_valuesdefault (
 
     text_1 text,
 
-    checkbox_1 int(11) DEFAULT '0' NOT NULL,
-    checkbox_2 int(11) DEFAULT '0' NOT NULL,
-    checkbox_3 int(11) DEFAULT '0' NOT NULL,
-    checkbox_4 int(11) DEFAULT '0' NOT NULL,
-
     radio_1 int(11) DEFAULT '0' NOT NULL,
     radio_2 text,
     radio_3 text,
@@ -758,15 +717,11 @@ CREATE TABLE tx_styleguide_l10nreadonly (
     input text,
     color text,
     link text,
-    checkbox int(11) DEFAULT '0' NOT NULL,
-    checkbox_toggle int(11) DEFAULT '0' NOT NULL,
-    checkbox_labeled_toggle int(11) DEFAULT '0' NOT NULL,
     radio int(11) DEFAULT '0' NOT NULL,
     none text,
     group text,
     group_mm text,
     group_file text,
-    folder text,
     image_manipulation text,
     language int(11) DEFAULT '0' NOT NULL,
     text text,
