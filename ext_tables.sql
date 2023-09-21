@@ -176,14 +176,6 @@ CREATE TABLE tx_styleguide_elements_folder
 );
 
 CREATE TABLE tx_styleguide_elements_imagemanipulation (
-    crop_1 text,
-    crop_2 text,
-    crop_3 text,
-    crop_4 text,
-    crop_5 text,
-    crop_6 text,
-    crop_7 text,
-    crop_8 text
 );
 
 
@@ -532,6 +524,10 @@ CREATE TABLE tx_styleguide_inline_mnsymmetricgroup (
 
 
 CREATE TABLE tx_styleguide_inline_mnsymmetricgroup_mm (
+    # int() kept for now, similar issue in core, needs further type=group works
+    hotelid int(11) DEFAULT '0' NOT NULL,
+    # int() kept for now, similar issue in core, needs further type=group works
+    branchid int(11) DEFAULT '0' NOT NULL,
     hotelsort int(10) DEFAULT '0' NOT NULL,
     branchsort int(10) DEFAULT '0' NOT NULL
 );
@@ -696,7 +692,6 @@ CREATE TABLE tx_styleguide_l10nreadonly (
     link text,
     radio int(11) DEFAULT '0' NOT NULL,
     none text,
-    image_manipulation text,
     language int(11) DEFAULT '0' NOT NULL,
     text text,
     text_rte text,
