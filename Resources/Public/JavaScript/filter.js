@@ -10,22 +10,4 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
-
-/**
- * Javascript functions regarding the filter module
- */
-
-import DocumentService from '@typo3/core/document-service.js';
-import DateTimePicker from '@typo3/backend/date-time-picker.js';
-
-class Filter {
-  constructor() {
-    DocumentService.ready().then(() => {
-      document.querySelectorAll('.t3js-datetimepicker')?.forEach((element) => {
-        DateTimePicker.initialize(element);
-      })
-    });
-  }
-}
-
-export default new Filter();
+import DocumentService from"@typo3/core/document-service.js";import DateTimePicker from"@typo3/backend/date-time-picker.js";DocumentService.ready().then((()=>{const e=document.querySelectorAll(".t3js-datetimepicker");e?.forEach((e=>{DateTimePicker.initialize(e)}))}));
