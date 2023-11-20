@@ -24,7 +24,7 @@ use TYPO3\CMS\Styleguide\TcaDataGenerator\FieldGeneratorInterface;
  *
  * @internal
  */
-final class TypeTextFormatT3editor extends AbstractFieldGenerator implements FieldGeneratorInterface
+final class TypeTextFormatCodeEditor extends AbstractFieldGenerator implements FieldGeneratorInterface
 {
     /**
      * @var array General match if type=text
@@ -33,7 +33,7 @@ final class TypeTextFormatT3editor extends AbstractFieldGenerator implements Fie
         'fieldConfig' => [
             'config' => [
                 'type' => 'text',
-                'renderType' => 't3editor',
+                'renderType' => 'codeEditor',
                 'format' => 'html',
             ],
         ],
