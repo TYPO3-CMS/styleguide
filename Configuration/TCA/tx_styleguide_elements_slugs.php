@@ -99,7 +99,6 @@ return [
                 'generatorOptions' => [
                     'fields' => ['input_1', 'input_2'],
                     'fieldSeparator' => '/',
-                    'prefixParentPageSlug' => true,
                     'replacements' => [
                         '/' => '',
                     ],
@@ -120,7 +119,6 @@ return [
                 'generatorOptions' => [
                     'fields' => ['input_1'],
                     'fieldSeparator' => '/',
-                    'prefixParentPageSlug' => true,
                 ],
                 'fallbackCharacter' => '-',
                 'eval' => 'uniqueInSite',
@@ -133,7 +131,6 @@ return [
                 'type' => 'slug',
                 'generatorOptions' => [
                     'fields' => ['input_1', 'input_2'],
-                    'prefixParentPageSlug' => false,
                 ],
                 'fallbackCharacter' => '-',
                 'eval' => 'uniqueInSite',
@@ -146,7 +143,6 @@ return [
                 'type' => 'slug',
                 'generatorOptions' => [
                     'fields' => [['input_1', 'input_2']],
-                    'prefixParentPageSlug' => false,
                 ],
                 'fallbackCharacter' => '-',
                 'eval' => 'uniqueInSite',
