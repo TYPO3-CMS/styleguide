@@ -46,7 +46,7 @@ final class GeneratorCommand extends Command
 
     protected function configure(): void
     {
-        $this->addArgument('type', InputArgument::OPTIONAL, 'Create page tree data, valid arguments are "tca", "frontend", "frontend-systemplate" and "all"', 'all');
+        $this->addArgument('type', InputArgument::OPTIONAL, 'Create page tree data, valid arguments are "tca", "frontend", "frontend-systemplate" and "all"', 'all', ['tca', 'frontend', 'frontend-systemplate', 'all']);
         $this->addOption('delete', 'd', InputOption::VALUE_NONE, 'Delete page tree and its records for the selected type');
         $this->addOption('create', 'c', InputOption::VALUE_NONE, 'Create page tree and its records for the selected type');
     }
