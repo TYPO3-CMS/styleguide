@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace TYPO3\CMS\Styleguide\ViewHelpers;
 
-use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\StringUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -50,12 +49,6 @@ final class ColorSchemeViewHelper extends AbstractViewHelper
     public function render(): string
     {
         $this->pageRenderer->loadJavaScriptModule('@typo3/styleguide/element/theme-switcher-element.js');
-        $this->pageRenderer->addInlineLanguageLabelArray([
-            'colorScheme.selector.label' => $this->getLanguageService()->sL('LLL:EXT:styleguide/Resources/Private/Language/locallang.xlf:colorScheme.selector.label'),
-            'colorScheme.auto' => $this->getLanguageService()->sL('LLL:EXT:backend/Resources/Private/Language/locallang.xlf:colorScheme.auto'),
-            'colorScheme.light' => $this->getLanguageService()->sL('LLL:EXT:backend/Resources/Private/Language/locallang.xlf:colorScheme.light'),
-            'colorScheme.dark' => $this->getLanguageService()->sL('LLL:EXT:backend/Resources/Private/Language/locallang.xlf:colorScheme.dark'),
-        ]);
 
         $content = $this->renderChildren();
         $defaultScheme = $GLOBALS['BE_USER']->uc['colorScheme'] ?? 'auto';
@@ -70,10 +63,5 @@ final class ColorSchemeViewHelper extends AbstractViewHelper
         $markup[] = '</div>';
 
         return implode('', $markup);
-    }
-
-    private function getLanguageService(): LanguageService
-    {
-        return $GLOBALS['LANG'];
     }
 }
