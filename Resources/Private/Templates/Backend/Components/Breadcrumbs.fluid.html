@@ -60,41 +60,74 @@
             </ol>
         </sg:example>
 
-        <h2>Basic Collapsible Webcomponent</h2>
-        <sg:example codePreview="true" codeLanguage="html">
-            <typo3-breadcrumb
-                label='Breadcrumb'
-                nodes='{breadcrumb -> f:format.json()}'
-                style='max-width: 600px;'
-            ></typo3-breadcrumb>
+        <h2>Collapsible Webcomponent</h2>
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
+            <div style="display: flex; flex-direction: column; gap: var(--typo3-spacing);">
+                <typo3-breadcrumb
+                    label='Breadcrumb'
+                    nodes='{breadcrumb -> f:format.json()}'
+                    style='max-width: 600px;'
+                ></typo3-breadcrumb>
+                <typo3-breadcrumb
+                    label='Path'
+                    nodes='{breadcrumb -> f:format.json()}'
+                    mode='path'
+                    style='max-width: 600px;'
+                ></typo3-breadcrumb>
+            </div>
         </sg:example>
 
         <h2>Collapsible Webcomponent: Align Right</h2>
-        <sg:example codePreview="true" codeLanguage="html">
-            <typo3-breadcrumb
-                label='Breadcrumb'
-                nodes='{breadcrumb -> f:format.json()}'
-                alignRight='true'
-                style='max-width: 600px; margin-left: auto;'
-            ></typo3-breadcrumb>
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
+            <div style="display: flex; flex-direction: column; gap: var(--typo3-spacing);">
+                <typo3-breadcrumb
+                    label='Breadcrumb'
+                    nodes='{breadcrumb -> f:format.json()}'
+                    alignRight='true'
+                    style='max-width: 600px; margin-left: auto;'
+                ></typo3-breadcrumb>
+                <typo3-breadcrumb
+                    label='Path'
+                    nodes='{breadcrumb -> f:format.json()}'
+                    mode='path'
+                    alignRight='true'
+                    style='max-width: 600px; margin-left: auto;'
+                ></typo3-breadcrumb>
+            </div>
         </sg:example>
 
         <h2>Collapsible Webcomponent: RTL</h2>
-        <sg:example codePreview="true" codeLanguage="html" rtlDirection="true">
-            <typo3-breadcrumb
-                label='Breadcrumb'
-                nodes='{breadcrumb -> f:format.json()}'
-                style='max-width: 600px;'
-            ></typo3-breadcrumb>
+        <sg:example codePreview="true" codeLanguage="html" rtlDirection="true" colorScheme="true">
+            <div style="display: flex; flex-direction: column; gap: var(--typo3-spacing);">
+                <typo3-breadcrumb
+                    label='Breadcrumb'
+                    nodes='{breadcrumb -> f:format.json()}'
+                    style='max-width: 600px;'
+                ></typo3-breadcrumb>
+                <typo3-breadcrumb
+                    label='Path'
+                    nodes='{breadcrumb -> f:format.json()}'
+                    mode='path'
+                    style='max-width: 600px;'
+                ></typo3-breadcrumb>
+            </div>
         </sg:example>
 
-        <h2>Overflow</h2>
-        <sg:example codePreview="true" codeLanguage="html">
-            <typo3-breadcrumb
-                label='Breadcrumb'
-                nodes='{breadcrumb -> f:format.json()}'
-                style='max-width: 120px;'
-            ></typo3-breadcrumb>
+        <h2>Collapsible Webcomponent: Overflow</h2>
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
+            <div style="display: flex; flex-direction: column; gap: var(--typo3-spacing);">
+                <typo3-breadcrumb
+                    label='Breadcrumb'
+                    nodes='{breadcrumb -> f:format.json()}'
+                    style='max-width: 120px;'
+                ></typo3-breadcrumb>
+                <typo3-breadcrumb
+                    label='Path'
+                    nodes='{breadcrumb -> f:format.json()}'
+                    mode='path'
+                    style='max-width: 120px;'
+                ></typo3-breadcrumb>
+            </div>
         </sg:example>
 
     </div>

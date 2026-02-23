@@ -57,6 +57,7 @@ final class ExampleViewHelper extends AbstractViewHelper
         $this->registerArgument('customCode', 'string', 'custom code displayed as code preview', false, false);
         $this->registerArgument('decodeEntities', 'bool', 'if true, entities like &lt; and &gt; are decoded', false, false);
         $this->registerArgument('rtlDirection', 'bool', 'if true direction is set to right-to-left', false, false);
+        $this->registerArgument('colorScheme', 'bool', 'if true, show a color scheme switcher (light, dark, auto)', false, false);
     }
 
     public function render(): string
@@ -107,17 +108,37 @@ final class ExampleViewHelper extends AbstractViewHelper
             ];
         }
 
+        $uniqueId = uniqid('code');
+        $exampleId = $uniqueId . '-example';
+        $exampleAttributes = [
+            'id' => $exampleId,
+            'class' => 'example',
+        ];
+
         $directionSetting = '';
         if ($this->arguments['rtlDirection']) {
             $directionSetting = 'dir="rtl"';
         }
 
-        $uniqueId = uniqid('code');
+        $colorScheme = $this->arguments['colorScheme'];
+        $colorSchemeDefault = $GLOBALS['BE_USER']->uc['colorScheme'] ?? 'auto';
+        if ($colorScheme) {
+            $this->pageRenderer->loadJavaScriptModule('@typo3/styleguide/element/theme-switcher-element.js');
+            $exampleAttributes['class'] .= ' t3js-styleguide-example';
+            $exampleAttributes['data-color-scheme'] = $colorSchemeDefault;
+        } else {
+            $exampleAttributes['class'] .= ' example--checkered';
+        }
 
         $markup = [];
         $markup[] = '<div class="styleguide-example">';
         $markup[] =     '<div class="styleguide-example-content" ' . $directionSetting . '>';
-        $markup[] =         str_replace('<UNIQUEID>', $uniqueId, $content);
+        $markup[] =         '<div ' . GeneralUtility::implodeAttributes($exampleAttributes, true) . '>';
+        if ($colorScheme) {
+            $markup[] =         '<typo3-styleguide-theme-switcher activetheme="' . htmlspecialchars($colorSchemeDefault) . '" example="#' . htmlspecialchars($exampleId) . '"></typo3-styleguide-theme-switcher>';
+        }
+        $markup[] =             str_replace('<UNIQUEID>', $uniqueId, $content);
+        $markup[] =         '</div>';
         $markup[] =     '</div>';
         if ($this->arguments['codePreview']) {
             $markup[] = '<div class="styleguide-example-code">';
