@@ -7,7 +7,7 @@
         <source>The module offers the creation of a page tree either with TCA demo records or content elements.&lt;br /&gt;In addition, the most well-known backend components that come with the TYPO3 CMS are presented.</source>
       </trans-unit>
       <trans-unit id="description">
-        <source>Styleguide of the TYPO3 CMS</source>
+        <source>Interactively explore TYPO3 backend UI components, design tokens, and example page trees for testing and demonstration.</source>
       </trans-unit>
       <trans-unit id="title">
         <source>Styleguide</source>
