@@ -1291,6 +1291,18 @@
       <trans-unit id="component.datetime.section.customFormats.customFormatString">
         <source>Custom Format String</source>
       </trans-unit>
+      <trans-unit id="component.datetime.section.relativeShowSeconds.headline">
+        <source>Relative Time Without Seconds</source>
+      </trans-unit>
+      <trans-unit id="component.datetime.section.relativeShowSeconds.text">
+        <source>By default, relative mode rounds up to the nearest minute. Use the relative-show-seconds attribute to display exact seconds instead.</source>
+      </trans-unit>
+      <trans-unit id="component.datetime.section.relativeShowSeconds.withoutSeconds">
+        <source>Without Seconds (Default)</source>
+      </trans-unit>
+      <trans-unit id="component.datetime.section.relativeShowSeconds.withSeconds">
+        <source>With Seconds</source>
+      </trans-unit>
       <trans-unit id="component.datetime.section.threshold.headline">
         <source>With Threshold (Show Absolute Date for Old Timestamps)</source>
       </trans-unit>
@@ -1338,6 +1350,12 @@
       </trans-unit>
       <trans-unit id="component.datetime.section.attributes.thresholdDays.description">
         <source>Switch to absolute date format for timestamps older than N days (only for relative mode). Default: 0 (always relative)</source>
+      </trans-unit>
+      <trans-unit id="component.datetime.section.attributes.relativeShowSeconds.type">
+        <source>boolean (optional)</source>
+      </trans-unit>
+      <trans-unit id="component.datetime.section.attributes.relativeShowSeconds.description">
+        <source>Show exact seconds in relative mode. When absent (default), times within the last minute display as "1 minute ago". When present, displays "X seconds ago".</source>
       </trans-unit>
       <!-- Styles: Color tokens -->
       <trans-unit id="styles.colorTokens.headline">

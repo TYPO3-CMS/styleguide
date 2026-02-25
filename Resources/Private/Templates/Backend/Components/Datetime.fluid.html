@@ -66,7 +66,7 @@
                     <f:for each="{examples}" as="example" iteration="iteration">
                         <f:if condition="{iteration.index} < 5">
                             <tr>
-                                <td><typo3-backend-datetime datetime="{example.timestamp}" mode="relative"></typo3-backend-datetime></td>
+                                <td><typo3-backend-datetime datetime="{example.timestamp}" mode="relative" relative-show-seconds></typo3-backend-datetime></td>
                                 <td><small class="text-muted">{example.timestamp}</small></td>
                             </tr>
                         </f:if>
@@ -82,7 +82,8 @@
                 <f:translate key="component.datetime.section.autoUpdate.lastUpdated" domain="styleguide.messages" />
                 <typo3-backend-datetime
                     datetime="{nowTimestamp}"
-                    mode="relative">
+                    mode="relative"
+                    relative-show-seconds>
                 </typo3-backend-datetime>
             </p>
         </sg:example>
@@ -191,6 +192,31 @@
             </table>
         </sg:example>
 
+        <h2><f:translate key="component.datetime.section.relativeShowSeconds.headline" domain="styleguide.messages" /></h2>
+        <p><f:translate key="component.datetime.section.relativeShowSeconds.text" domain="styleguide.messages" /></p>
+        <sg:example codePreview="true" codeLanguage="html">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th><f:translate key="component.datetime.section.basicUsage.isoTimestamp" domain="styleguide.messages" /></th>
+                        <th><f:translate key="component.datetime.section.relativeShowSeconds.withoutSeconds" domain="styleguide.messages" /></th>
+                        <th><f:translate key="component.datetime.section.relativeShowSeconds.withSeconds" domain="styleguide.messages" /></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <f:for each="{examples}" as="example" iteration="iteration">
+                        <f:if condition="{iteration.index} < 3">
+                            <tr>
+                                <td><small class="text-muted">{example.timestamp}</small></td>
+                                <td><typo3-backend-datetime datetime="{example.timestamp}" mode="relative"></typo3-backend-datetime></td>
+                                <td><typo3-backend-datetime datetime="{example.timestamp}" mode="relative" relative-show-seconds></typo3-backend-datetime></td>
+                            </tr>
+                        </f:if>
+                    </f:for>
+                </tbody>
+            </table>
+        </sg:example>
+
         <h2><f:translate key="component.datetime.section.threshold.headline" domain="styleguide.messages" /></h2>
         <p><f:translate key="component.datetime.section.threshold.text" domain="styleguide.messages" /></p>
         <sg:example codePreview="true" codeLanguage="html">
@@ -245,6 +271,11 @@
                     <td><code>threshold-days</code></td>
                     <td><f:translate key="component.datetime.section.attributes.thresholdDays.type" domain="styleguide.messages" /></td>
                     <td><f:translate key="component.datetime.section.attributes.thresholdDays.description" domain="styleguide.messages" /></td>
+                </tr>
+                <tr>
+                    <td><code>relative-show-seconds</code></td>
+                    <td><f:translate key="component.datetime.section.attributes.relativeShowSeconds.type" domain="styleguide.messages" /></td>
+                    <td><f:translate key="component.datetime.section.attributes.relativeShowSeconds.description" domain="styleguide.messages" /></td>
                 </tr>
             </tbody>
         </table>
