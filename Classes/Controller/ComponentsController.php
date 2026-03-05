@@ -55,7 +55,6 @@ final class ComponentsController
         'checkboxes',
         'comboboxes',
         'contentNavigation',
-        'contextPanel',
         'datetime',
         'developerTools',
         'dropdown',
@@ -103,7 +102,6 @@ final class ComponentsController
             'checkboxes' => $this->renderCheckboxesView($request),
             'comboboxes' => $this->renderComboboxesView($request),
             'contentNavigation' => $this->renderContentNavigationView($request),
-            'contextPanel' => $this->renderContextPanelView($request),
             'datetime' => $this->renderDatetimeView($request),
             'developerTools' => $this->renderDeveloperToolsView($request),
             'dropdown' => $this->renderDropdownView($request),
@@ -375,8 +373,8 @@ final class ComponentsController
             'currentAction' => 'modal',
             'routeIdentifier' => 'styleguide_components',
             'variants' => ['notice', 'info', 'ok', 'warning', 'error'],
-            'sizes' => ['small', 'default', 'medium', 'large', 'full'],
-            'positions' => ['center', 'top', 'end', 'bottom', 'start'],
+            'sizes' => ['small', 'default', 'medium', 'large', 'full', 'expand'],
+            'positions' => ['center', 'top', 'end', 'bottom', 'start', 'sheet'],
         ]);
         return $view->renderResponse('Backend/Components/Modal');
     }
@@ -510,20 +508,6 @@ final class ComponentsController
             'routeIdentifier' => 'styleguide_components',
         ]);
         return $view->renderResponse('Backend/Components/ContentNavigation');
-    }
-
-    private function renderContextPanelView(ServerRequestInterface $request): ResponseInterface
-    {
-        $view = $this->createModuleTemplate($request, 'contextPanel');
-        $view->assignMultiple([
-            'actions' => $this->allowedActions,
-            'currentAction' => 'contextPanel',
-            'routeIdentifier' => 'styleguide_components',
-            'sizes' => ['small', 'medium', 'large'],
-            'placements' => ['end', 'start', 'top', 'bottom'],
-            'types' => ['content', 'iframe', 'ajax'],
-        ]);
-        return $view->renderResponse('Backend/Components/ContextPanel');
     }
 
     private function renderDatetimeView(ServerRequestInterface $request): ResponseInterface
