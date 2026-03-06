@@ -137,7 +137,7 @@ final class ExampleViewHelper extends AbstractViewHelper
         if ($colorScheme) {
             $markup[] =         '<typo3-styleguide-theme-switcher activetheme="' . htmlspecialchars($colorSchemeDefault) . '" example="#' . htmlspecialchars($exampleId) . '"></typo3-styleguide-theme-switcher>';
         }
-        $markup[] =             str_replace('<UNIQUEID>', $uniqueId, $content);
+        $markup[] =             str_replace('###UNIQUEID###', $uniqueId, $content);
         $markup[] =         '</div>';
         $markup[] =     '</div>';
         if ($this->arguments['codePreview']) {
@@ -146,9 +146,9 @@ final class ExampleViewHelper extends AbstractViewHelper
             $markup[] =         '<typo3-t3editor-codemirror ' . GeneralUtility::implodeAttributes($codeMirrorConfig, true) . '>';
             $markup[] =             '<textarea ' . GeneralUtility::implodeAttributes($attributes, true) . '>';
             if ($this->arguments['decodeEntities']) {
-                $markup[] =             htmlspecialchars_decode(str_replace('<UNIQUEID>', $uniqueId, $code));
+                $markup[] =             htmlspecialchars_decode(str_replace('###UNIQUEID###', $uniqueId, $code));
             } else {
-                $markup[] =             htmlspecialchars(str_replace('<UNIQUEID>', $uniqueId, $code));
+                $markup[] =             htmlspecialchars(str_replace('###UNIQUEID###', $uniqueId, $code));
             }
             $markup[] =             '</textarea>';
             $markup[] =         '</typo3-t3editor-codemirror>';

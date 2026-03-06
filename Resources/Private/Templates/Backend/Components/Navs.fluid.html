@@ -26,7 +26,7 @@
         </p>
 
         <h2><f:translate key="component.navs.basic.headline" domain="styleguide.messages" /></h2>
-        <sg:example codePreview="true" codeLanguage="html">
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Active</a>
@@ -44,7 +44,7 @@
         </sg:example>
 
         <h2><f:translate key="component.navs.flat.headline" domain="styleguide.messages" /></h2>
-        <sg:example codePreview="true" codeLanguage="html">
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
             <nav class="nav">
                 <a class="nav-link active" aria-current="page" href="#">Active</a>
                 <a class="nav-link" href="#">Link</a>
@@ -54,7 +54,7 @@
         </sg:example>
 
         <h2><f:translate key="component.navs.tabs.headline" domain="styleguide.messages" /></h2>
-        <sg:example codePreview="true" codeLanguage="html">
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
             <div role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation">
@@ -63,8 +63,8 @@
                             class="nav-link active"
                             title="Tab 1"
                             data-bs-toggle="tab"
-                            data-bs-target="#panel-1-<UNIQUEID>"
-                            aria-controls="panel-1-<UNIQUEID>"
+                            data-bs-target="#panel-1-###UNIQUEID###"
+                            aria-controls="panel-1-###UNIQUEID###"
                             role="tab"
                         >
                             Tab 1
@@ -76,8 +76,8 @@
                             class="nav-link"
                             title="Tab 2"
                             data-bs-toggle="tab"
-                            data-bs-target="#panel-2-<UNIQUEID>"
-                            aria-controls="panel-2-<UNIQUEID>"
+                            data-bs-target="#panel-2-###UNIQUEID###"
+                            aria-controls="panel-2-###UNIQUEID###"
                             role="tab"
                         >
                             Tab 2
@@ -85,7 +85,7 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="panel-1-<UNIQUEID>">
+                    <div role="tabpanel" class="tab-pane active" id="panel-1-###UNIQUEID###">
                         <div class="panel">
                             <div class="panel-body">
                                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="panel-2-<UNIQUEID>">
+                    <div role="tabpanel" class="tab-pane" id="panel-2-###UNIQUEID###">
                         <div class="panel">
                             <div class="panel-body">
                                 In venenatis consequat tellus, vel luctus nisi sollicitudin
@@ -110,7 +110,7 @@
         </sg:example>
 
         <h2><f:translate key="component.navs.pills.headline" domain="styleguide.messages" /></h2>
-        <sg:example codePreview="true" codeLanguage="html">
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
             <ul class="nav nav-pills">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Active</a>

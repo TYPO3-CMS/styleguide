@@ -8,7 +8,7 @@
 
 
 <f:section name="Before">
-    <f:asset.module identifier="@typo3/backend/tabs.js"/>
+    <f:asset.module identifier="@typo3/backend/tab.js"/>
 </f:section>
 
 <f:section name="Content">
@@ -30,107 +30,230 @@
 
         <h2><f:translate key="component.tabs.section.default.headline" domain="styleguide.messages" /></h2>
         <p><f:translate key="component.tabs.section.default.text" domain="styleguide.messages" /></p>
-        <sg:example codePreview="true" codeLanguage="html">
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
             <div role="tabpanel">
-                <f:render
-                    section="tabNavigation"
-                    arguments="{
-                        identifier: 'DTM-1721236302',
-                    }"
-                />
-                <f:render
-                    section="tabContent"
-                    arguments="{
-                        identifier: 'DTM-1721236302',
-                    }"
-                />
+                <ul class="nav nav-tabs" role="tablist" id="tabs-###UNIQUEID###">
+                    <li role="presentation" class="nav-item">
+                        <button
+                            type="button"
+                            id="###UNIQUEID###-1-tab"
+                            class="nav-link active"
+                            data-typo3-tab="####UNIQUEID###-1"
+                            aria-controls="###UNIQUEID###-1"
+                            aria-selected="true"
+                            tabindex="0"
+                            role="tab"
+                        >
+                            Tab 1
+                        </button>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <button
+                            type="button"
+                            id="###UNIQUEID###-2-tab"
+                            class="nav-link"
+                            data-typo3-tab="####UNIQUEID###-2"
+                            aria-controls="###UNIQUEID###-2"
+                            aria-selected="false"
+                            tabindex="-1"
+                            role="tab"
+                        >
+                            Tab 2
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="###UNIQUEID###-1" aria-labelledby="###UNIQUEID###-1-tab">
+                        <div class="panel">
+                            <div class="panel-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores.</div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="###UNIQUEID###-2" aria-labelledby="###UNIQUEID###-2-tab">
+                        <div class="panel">
+                            <div class="panel-body">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </sg:example>
 
-        <h2><f:translate key="section.frontend.headline" domain="styleguide.messages" /></h2>
-
-        <h3><f:translate key="section.colorScheme.headline" domain="styleguide.messages" /></h3>
-        <sg:colorScheme>
+        <h2><f:translate key="component.tabs.section.persistence.headline" domain="styleguide.messages" /></h2>
+        <p><f:translate key="component.tabs.section.persistence.text" domain="styleguide.messages" /></p>
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
             <div role="tabpanel">
-                <f:render
-                    section="tabNavigation"
-                    arguments="{
-                        identifier: 'DTM-1721236304',
-                    }"
-                />
-                <f:render
-                    section="tabContent"
-                    arguments="{
-                        identifier: 'DTM-1721236304',
-                    }"
-                />
+                <ul class="nav nav-tabs" role="tablist" id="tabs-styleguide-persistence" data-store-last-tab>
+                    <li role="presentation" class="nav-item">
+                        <button
+                            type="button"
+                            id="styleguide-persistence-1-tab"
+                            class="nav-link active"
+                            data-typo3-tab="#styleguide-persistence-1"
+                            aria-controls="styleguide-persistence-1"
+                            aria-selected="true"
+                            tabindex="0"
+                            role="tab"
+                        >
+                            Tab 1
+                        </button>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <button
+                            type="button"
+                            id="styleguide-persistence-2-tab"
+                            class="nav-link"
+                            data-typo3-tab="#styleguide-persistence-2"
+                            aria-controls="styleguide-persistence-2"
+                            aria-selected="false"
+                            tabindex="-1"
+                            role="tab"
+                        >
+                            Tab 2
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="styleguide-persistence-1" aria-labelledby="styleguide-persistence-1-tab">
+                        <div class="panel">
+                            <div class="panel-body">Switch to Tab 2 and reload the page. The last active tab will be restored.</div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="styleguide-persistence-2" aria-labelledby="styleguide-persistence-2-tab">
+                        <div class="panel">
+                            <div class="panel-body">This tab was restored from the browser session.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </sg:colorScheme>
+        </sg:example>
+
+        <h2><f:translate key="component.tabs.section.validation.headline" domain="styleguide.messages" /></h2>
+        <p>
+            <f:sanitize.html><f:translate key="component.tabs.section.validation.text" domain="styleguide.messages" /></f:sanitize.html>
+        </p>
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist" id="tabs-###UNIQUEID###">
+                    <li role="presentation" class="nav-item">
+                        <button
+                            type="button"
+                            id="###UNIQUEID###-1-tab"
+                            class="nav-link active"
+                            data-typo3-tab="####UNIQUEID###-1"
+                            aria-controls="###UNIQUEID###-1"
+                            aria-selected="true"
+                            tabindex="0"
+                            role="tab"
+                        >
+                            Tab 1
+                        </button>
+                    </li>
+                    <li role="presentation" class="nav-item has-validation-error">
+                        <button
+                            type="button"
+                            id="###UNIQUEID###-2-tab"
+                            class="nav-link"
+                            data-typo3-tab="####UNIQUEID###-2"
+                            aria-controls="###UNIQUEID###-2"
+                            aria-selected="false"
+                            tabindex="-1"
+                            role="tab"
+                        >
+                            Tab 2
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="###UNIQUEID###-1" aria-labelledby="###UNIQUEID###-1-tab">
+                        <div class="panel">
+                            <div class="panel-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores.</div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="###UNIQUEID###-2" aria-labelledby="###UNIQUEID###-2-tab">
+                        <div class="panel">
+                            <div class="panel-body">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sg:example>
+
+        <h2><f:translate key="component.tabs.section.overflow.headline" domain="styleguide.messages" /></h2>
+        <p><f:translate key="component.tabs.section.overflow.text" domain="styleguide.messages" /></p>
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist" id="tabs-styleguide-scrollable" data-store-last-tab>
+                <f:for each="{0: 'General', 1: 'Access', 2: 'Metadata', 3: 'Appearance', 4: 'Categories', 5: 'Language', 6: 'Notes', 7: 'SEO', 8: 'Social Media', 9: 'Permissions', 10: 'History', 11: 'Extended'}" as="label" iteration="iteration">
+                    <li role="presentation" class="nav-item">
+                        <button
+                            type="button"
+                            id="styleguide-scrollable-{iteration.cycle}-tab"
+                            class="nav-link{f:if(condition: '{iteration.cycle} == 1', then: ' active')}"
+                            data-typo3-tab="#styleguide-scrollable-{iteration.cycle}"
+                            aria-controls="styleguide-scrollable-{iteration.cycle}"
+                            aria-selected="{f:if(condition: '{iteration.cycle} == 1', then: 'true', else: 'false')}"
+                            tabindex="{f:if(condition: '{iteration.cycle} == 1', then: '0', else: '-1')}"
+                            role="tab"
+                        >
+                            {label}
+                        </button>
+                    </li>
+                </f:for>
+                </ul>
+                <div class="tab-content">
+                <f:for each="{0: 'General', 1: 'Access', 2: 'Metadata', 3: 'Appearance', 4: 'Categories', 5: 'Language', 6: 'Notes', 7: 'SEO', 8: 'Social Media', 9: 'Permissions', 10: 'History', 11: 'Extended'}" as="label" iteration="iteration">
+                    <div role="tabpanel" class="tab-pane{f:if(condition: '{iteration.cycle} == 1', then: ' active')}" id="styleguide-scrollable-{iteration.cycle}" aria-labelledby="styleguide-scrollable-{iteration.cycle}-tab">
+                        <div class="panel">
+                            <div class="panel-body">Content of "{label}" tab.</div>
+                        </div>
+                    </div>
+                </f:for>
+                </div>
+            </div>
+        </sg:example>
+
+        <h2><f:translate key="component.tabs.section.migration.headline" domain="styleguide.messages" /></h2>
+        <p><f:translate key="component.tabs.section.migration.text" domain="styleguide.messages" /></p>
+        <sg:example codePreview="true" codeLanguage="html" colorScheme="true">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist" id="tabs-###UNIQUEID###">
+                    <li role="presentation" class="nav-item">
+                        <button
+                            type="button"
+                            class="nav-link active"
+                            data-bs-toggle="tab"
+                            data-bs-target="####UNIQUEID###-1"
+                            role="tab"
+                        >
+                            Button Tab
+                        </button>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a
+                            class="nav-link"
+                            data-bs-toggle="tab"
+                            href="####UNIQUEID###-2"
+                            role="tab"
+                        >
+                            Anchor Tab
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="###UNIQUEID###-1">
+                        <div class="panel">
+                            <div class="panel-body">Migrated from button with data-bs-toggle and data-bs-target.</div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="###UNIQUEID###-2">
+                        <div class="panel">
+                            <div class="panel-body">Migrated from anchor with data-bs-toggle and href.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sg:example>
     </div>
 
-</f:section>
-
-<f:section name="tabNavigation">
-    <ul class="nav nav-tabs t3js-tabs" role="tablist" id="tabs-{identifier}" data-store-last-tab="1">
-        <f:render
-            section="tabNavigationItem"
-            arguments="{
-                identifier: identifier,
-                iterator: '1'
-            }"
-        />
-        <f:render
-            section="tabNavigationItem"
-            arguments="{
-                identifier: identifier,
-                iterator: '2'
-            }"
-        />
-    </ul>
-</f:section>
-
-<f:section name="tabNavigationItem">
-    <li role="presentation" class="nav-item t3js-tabmenu-item">
-        <button
-            type="button"
-            class="nav-link{f:if(condition: '{iterator} == 1', then: ' active')}"
-            data-bs-toggle="tab"
-            data-bs-target="#{identifier}-{iterator}"
-            aria-controls="{identifier}-{iterator}"
-            role="tab"
-        >
-            Tab {iterator}
-        </button>
-    </li>
-</f:section>
-
-<f:section name="tabContent">
-    <div class="tab-content">
-        <f:render
-            section="tabItem"
-            arguments="{
-                identifier: identifier,
-                iterator: '1',
-                panelBodyValue: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores.'
-            }"
-        />
-        <f:render
-            section="tabItem"
-            arguments="{
-                identifier: identifier,
-                iterator: '2',
-                panelBodyValue: 'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.',
-            }"
-        />
-    </div>
-</f:section>
-
-<f:section name="tabItem">
-    <div role="tabpanel" class="tab-pane{f:if(condition: '{iterator} == 1', then: ' active')}" id="{identifier}-{iterator}">
-        <div class="panel">
-            <div class="panel-body">{f:if(condition: panelBodyValue, then: panelBodyValue, else: '...')}</div>
-        </div>
-    </div>
 </f:section>
 
 </html>

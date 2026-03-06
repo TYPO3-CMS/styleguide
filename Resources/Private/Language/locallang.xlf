@@ -1197,7 +1197,31 @@
         <source>Default</source>
       </trans-unit>
       <trans-unit id="component.tabs.section.default.text">
-        <source>The last selected tab is stored in local browser storage.</source>
+        <source>Basic tab navigation with two tabs.</source>
+      </trans-unit>
+      <trans-unit id="component.tabs.section.persistence.headline">
+        <source>Persistence</source>
+      </trans-unit>
+      <trans-unit id="component.tabs.section.persistence.text">
+        <source>Adding data-store-last-tab to the tab list stores the last selected tab in the browser session. This requires a stable id on the tab list element.</source>
+      </trans-unit>
+      <trans-unit id="component.tabs.section.validation.headline">
+        <source>Validation State</source>
+      </trans-unit>
+      <trans-unit id="component.tabs.section.validation.text">
+        <source>Tabs containing validation errors are highlighted with a danger indicator. The &lt;code&gt;has-validation-error&lt;/code&gt; class is added to the &lt;code&gt;nav-item&lt;/code&gt; element.</source>
+      </trans-unit>
+      <trans-unit id="component.tabs.section.overflow.headline">
+        <source>Scrollable</source>
+      </trans-unit>
+      <trans-unit id="component.tabs.section.overflow.text">
+        <source>When tabs do not fit in one line, scroll arrows appear at the edges. Resize the container to see the effect.</source>
+      </trans-unit>
+      <trans-unit id="component.tabs.section.migration.headline">
+        <source>Bootstrap Migration</source>
+      </trans-unit>
+      <trans-unit id="component.tabs.section.migration.text">
+        <source>Tabs using Bootstrap data-bs-toggle attributes are automatically migrated to data-typo3-tab at runtime. Anchor elements are replaced with buttons.</source>
       </trans-unit>
       <!-- Component: Table -->
       <trans-unit id="component.table.headline">
