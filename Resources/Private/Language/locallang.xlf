@@ -974,6 +974,15 @@
       <trans-unit id="component.panels.header.headline">
         <source>Header</source>
       </trans-unit>
+      <trans-unit id="component.panels.headerRecord.headline">
+        <source>Header with icon and actions</source>
+      </trans-unit>
+      <trans-unit id="component.panels.headerFile.headline">
+        <source>Header with thumbnail and actions</source>
+      </trans-unit>
+      <trans-unit id="component.panels.headerSection.headline">
+        <source>Header with section controls</source>
+      </trans-unit>
       <trans-unit id="component.panels.body.headline">
         <source>Body</source>
       </trans-unit>

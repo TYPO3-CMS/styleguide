@@ -145,6 +145,702 @@
             </div>
         </sg:colorScheme>
 
+        <h2><f:translate key="component.panels.headerRecord.headline" domain="styleguide.messages" /></h2>
+        <sg:colorScheme>
+            <!-- Collapsed inline record -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-record-collapsed-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-icon">
+                                <core:icon identifier="mimetypes-x-content-text" size="small" />
+                            </div>
+                            <div class="panel-title">Record title</div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-add" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-record-collapsed-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Collapsed record content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Expanded inline record -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button" type="button" data-bs-toggle="collapse" data-bs-target="#panel-record-expanded-<UNIQUEID>" aria-expanded="true">
+                            <span class="caret"></span>
+                            <div class="panel-icon">
+                                <core:icon identifier="mimetypes-x-content-text" size="small" />
+                            </div>
+                            <div class="panel-title">Record title <small class="panel-meta">Description of the record</small></div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-add" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse show" id="panel-record-expanded-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Expanded record content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Hidden inline record (unhide icon) -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-record-hidden-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-icon">
+                                <core:icon identifier="mimetypes-x-content-text" size="small" />
+                            </div>
+                            <div class="panel-title">Hidden record</div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-unhide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default disabled">
+                                    <core:icon identifier="empty-empty" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default disabled">
+                                    <core:icon identifier="empty-empty" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-record-hidden-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Hidden record content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Inline record with localize button -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-record-localize-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-icon">
+                                <core:icon identifier="mimetypes-x-content-text" size="small" />
+                            </div>
+                            <div class="panel-title">Localizable record <span class="panel-meta"><code>[tt_content:44]</code></span></div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-localize" size="small" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-record-localize-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Localizable record content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Inline record with long title (ellipsis) -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-record-long-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-icon">
+                                <core:icon identifier="mimetypes-x-content-text" size="small" />
+                            </div>
+                            <div class="panel-title">This is a very long record title that should be truncated with an ellipsis instead of being cropped server-side to demonstrate the CSS text-overflow behavior <span class="panel-meta"><code>[tt_content:9999]</code></span></div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-record-long-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Long title record content</p>
+                    </div>
+                </div>
+            </div>
+        </sg:colorScheme>
+
+        <h2><f:translate key="component.panels.headerFile.headline" domain="styleguide.messages" /></h2>
+        <sg:colorScheme>
+            <!-- File reference with thumbnail -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-file-thumb-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-thumbnail">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='45'%3E%3Crect width='60' height='45' fill='%23ccc'/%3E%3C/svg%3E" width="60" height="45" alt="" />
+                            </div>
+                            <div class="panel-title">example-image.jpg</div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a class="btn btn-default" href="#">
+                                    <core:icon identifier="actions-open" size="small" />
+                                </a>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-file-thumb-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>File reference content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- File reference with wide source image (object-fit: contain) -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-file-wide-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-thumbnail">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='100'%3E%3Crect width='200' height='100' fill='%23ccc'/%3E%3C/svg%3E" width="200" height="100" alt="" />
+                            </div>
+                            <div class="panel-title">wide-landscape-photo.jpg <span class="panel-meta"><code>[sys_file_reference:10]</code></span></div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a class="btn btn-default" href="#">
+                                    <core:icon identifier="actions-open" size="small" />
+                                </a>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-file-wide-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>File reference content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- File reference with square source image -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-file-square-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-thumbnail">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100' height='100' fill='%23ccc'/%3E%3C/svg%3E" width="100" height="100" alt="" />
+                            </div>
+                            <div class="panel-title">square-photo.jpg <span class="panel-meta"><code>[sys_file_reference:11]</code></span></div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a class="btn btn-default" href="#">
+                                    <core:icon identifier="actions-open" size="small" />
+                                </a>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-file-square-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>File reference content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- File reference with narrow/portrait source image -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-file-narrow-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-thumbnail">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='200'%3E%3Crect width='50' height='200' fill='%23ccc'/%3E%3C/svg%3E" width="50" height="200" alt="" />
+                            </div>
+                            <div class="panel-title">narrow-portrait-photo.jpg <span class="panel-meta"><code>[sys_file_reference:12]</code></span></div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a class="btn btn-default" href="#">
+                                    <core:icon identifier="actions-open" size="small" />
+                                </a>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-file-narrow-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>File reference content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- File reference with icon (non-image file) -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-file-icon-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-icon">
+                                <core:icon identifier="mimetypes-pdf" size="small" />
+                            </div>
+                            <div class="panel-title">document.pdf</div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a class="btn btn-default" href="#">
+                                    <core:icon identifier="actions-open" size="small" />
+                                </a>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-file-icon-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>File reference content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- File reference with missing file badge -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-file-missing-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-icon">
+                                <core:icon identifier="default-not-found" size="small" />
+                            </div>
+                            <div class="panel-title">missing-file.jpg</div>
+                            <div class="panel-badge">
+                                <span class="badge badge-danger">File missing</span>
+                            </div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a class="btn btn-default" href="#">
+                                    <core:icon identifier="actions-open" size="small" />
+                                </a>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <span class="btn btn-default disabled">
+                                    <core:icon identifier="empty-empty" size="small" />
+                                </span>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-file-missing-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Missing file reference content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- File reference expanded with thumbnail -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button" type="button" data-bs-toggle="collapse" data-bs-target="#panel-file-expanded-<UNIQUEID>" aria-expanded="true">
+                            <span class="caret"></span>
+                            <div class="panel-thumbnail">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='45'%3E%3Crect width='60' height='45' fill='%23ccc'/%3E%3C/svg%3E" width="60" height="45" alt="" />
+                            </div>
+                            <div class="panel-title">example-image.jpg</div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a class="btn btn-default" href="#">
+                                    <core:icon identifier="actions-open" size="small" />
+                                </a>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse show" id="panel-file-expanded-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Expanded file reference content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- File reference with long filename (ellipsis) -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-file-long-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-thumbnail">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='45'%3E%3Crect width='60' height='45' fill='%23ccc'/%3E%3C/svg%3E" width="60" height="45" alt="" />
+                            </div>
+                            <div class="panel-title">this-is-a-very-long-filename-that-should-demonstrate-the-ellipsis-overflow-behavior-in-the-panel-header.jpg <span class="panel-meta"><code>[sys_file_reference:42]</code></span></div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a class="btn btn-default" href="#">
+                                    <core:icon identifier="actions-open" size="small" />
+                                </a>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-hide" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                            </div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-document-info" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-up" size="small" />
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-move-down" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-file-long-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Long filename file reference content</p>
+                    </div>
+                </div>
+            </div>
+        </sg:colorScheme>
+
+        <h2><f:translate key="component.panels.headerSection.headline" domain="styleguide.messages" /></h2>
+        <sg:colorScheme>
+            <!-- Collapsed section container -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-section-collapsed-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-title">
+                                Section container title
+                                <output class="content-preview"></output>
+                            </div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-section-collapsed-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Collapsed section content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Expanded section container -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button" type="button" data-bs-toggle="collapse" data-bs-target="#panel-section-expanded-<UNIQUEID>" aria-expanded="true">
+                            <span class="caret"></span>
+                            <div class="panel-title">
+                                Section container title
+                                <output class="content-preview"></output>
+                            </div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse show" id="panel-section-expanded-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Expanded section content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Section container with long title (ellipsis) -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-heading-row">
+                        <button class="panel-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-section-long-<UNIQUEID>" aria-expanded="false">
+                            <span class="caret"></span>
+                            <div class="panel-title">
+                                This is a very long section container title that should be truncated with an ellipsis to demonstrate the CSS text-overflow behavior in flex form sections
+                                <output class="content-preview"></output>
+                            </div>
+                        </button>
+                        <div class="panel-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-default">
+                                    <core:icon identifier="actions-edit-delete" size="small" />
+                                </button>
+                                <span class="btn btn-default sortableHandle">
+                                    <core:icon identifier="actions-move-move" size="small" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="panel-section-long-<UNIQUEID>">
+                    <div class="panel-body">
+                        <p>Long title section content</p>
+                    </div>
+                </div>
+            </div>
+        </sg:colorScheme>
+
         <h2><f:translate key="component.panels.variants.headline" domain="styleguide.messages" /></h2>
         <sg:colorScheme>
             <f:for each="{variants}" as="variant">
