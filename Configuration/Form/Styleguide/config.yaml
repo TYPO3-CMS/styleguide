@@ -1,0 +1,8 @@
+name: typo3/styleguide-form-set
+label: 'TYPO3 Styleguide — Form Configuration'
+
+persistenceManager:
+  allowedExtensionPaths:
+    10: 'EXT:styleguide/Resources/Private/Forms/'
+  allowSaveToExtensionPaths: false
+  allowDeleteFromExtensionPaths: false
