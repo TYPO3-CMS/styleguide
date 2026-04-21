@@ -37,6 +37,7 @@
 		"typo3/cms-fluid-styled-content": "15.0.*@dev",
 		"typo3/cms-form": "15.0.*@dev",
 		"typo3/cms-indexed-search": "15.0.*@dev",
+		"typo3/cms-lowlevel": "15.0.*@dev",
 		"typo3/cms-seo": "15.0.*@dev"
 	},
 	"conflict": {
