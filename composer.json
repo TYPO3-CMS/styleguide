@@ -32,7 +32,8 @@
 		"security": "https://typo3.org/security/"
 	},
 	"require": {
-		"typo3/cms-core": "15.0.*@dev"
+		"typo3/cms-core": "15.0.*@dev",
+		"typo3/cms-lowlevel": "15.0.*@dev"
 	},
 	"conflict": {
 		"typo3/cms": "*"
